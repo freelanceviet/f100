@@ -1,0 +1,99 @@
+extends ../../layout_font_end
+
+block content
+	#content
+		#jobs_left
+			.jl_box
+				h2 Categories
+				.hlb_list_cate
+					a(href="") Design
+					a(href="") Marketing
+					a(href="") DJ Bar Restaurant
+					a(href="") Ca si 
+					a(href="") Teacher
+					a(href="") Development software
+					a(href="") Network
+					a(href="") Home page
+					a(href="") Digital
+			.jl_box
+				h2 Job Type	
+				.hlb_option_job_type
+					.hojt_item
+						input(type="radio", name="job_type")
+						label Any
+					.hojt_item
+						input(type="radio", name="job_type")
+						label Fixed
+						p
+							input(type="text", id="amount-fixed", readonly, style="border:0; color:#f6931f; font-weight:bold;")
+						#slider-range-fixed
+					.hojt_item
+						input(type="radio", name="job_type")
+						label Per hour
+						p
+							input(type="text", id="amount-per-hour", readonly, style="border:0; color:#f6931f; font-weight:bold;")
+						#slider-range-per-hour
+			.jl_box
+				h2 Working location
+				.hlb_option_job_lo
+					.hojl_item
+						input(type="radio", name="job_location")
+						label Remote
+					.hojl_item
+						input(type="radio", name="job_location")
+						label On site
+						p
+							.hojl_i_i
+								input(type="checkbox", name="job_location_detail[]")
+								label HCM (226)
+							.hojl_i_i
+								input(type="checkbox", name="job_location_detail[]")
+								label Ha Noi (192)
+							.hojl_i_i
+								input(type="checkbox", name="job_location_detail[]")
+								label Da Nang (100)
+							.hojl_i_i
+								input(type="checkbox", name="job_location_detail[]")
+								label Nha Trang (50)
+							.hojl_i_i
+								input(type="checkbox", name="job_location_detail[]")
+								label Hoi An (10)
+			.jl_box
+				h2 Job status
+				.hlb_option_job_status
+					.hojs_item
+						input(type="radio", name="job_status")
+						label All
+					.hojs_item
+						input(type="radio", name="job_status")
+						label Open
+					.hojs_item
+						input(type="radio", name="job_status")
+						label Close
+		
+		#jobs_right
+			.jr_form_search
+				table
+					tr
+						td Search
+						td Job status
+						td Sort by
+					tr
+						td 
+							input(type="text", name="job_input_search")
+						td 
+							select(name="job_se_se_status")
+								option(value="all") All
+								option(value="all") Urgent
+								option(value="all") With no proposals
+						td
+							select(name="job_se_se_sort")
+								option(value="all") Latest
+								option(value="all") Popularity
+								option(value="all") Ending soon
+								option(value="all") budget
+			.jr_list_job
+				-	for(var i=0;i<8;i++)
+						a(href="/jobdetail", class="jrlj_item")
+block script
+	script(src='/javascripts/views/jobs.js')

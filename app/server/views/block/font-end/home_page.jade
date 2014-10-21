@@ -1,0 +1,26 @@
+extends ../../layout_font_end
+
+block content
+	#content
+		#banner
+			img(src="/images/banner.jpg")
+		#popular-competition
+			h1 Popular competition
+			-	for(var i=0;i<10;i++)
+					a(href="/contestdetail", class="item_pc")
+			a(href="/contests", class="view-all-c") View all
+		#job-category
+			h1 Our jobs database
+			#our-jobs
+				-	for(var i=0;i<10;i++)
+					a(href="/jobdetail", class="oj_item")
+				a(href="/jobs", class="view-all-j") View all
+			#home_category
+				h3 Categories
+				a(href="") Design (133)
+				a(href="") Php (45)
+				a(href="") Drupal (1232)
+				a(href="") Teacher (3445)
+				a(href="") How are you (34)
+				a(href="") What are you? (343)
+				a(href="") Hello! (5454)

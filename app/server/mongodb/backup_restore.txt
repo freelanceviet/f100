@@ -1,0 +1,55 @@
+giu 2 cau nay mai mot ma dung
+1. export tu localhost
+mongodump -h localhost:27017 -d location -o C:\export
+2. import len mongohq
+mongorestore -h oceanic.mongohq.com:10063 -d location -u userdb -p userdb C:\export\location
+
+// var dbPort 		= 27017;
+// var dbHost 		= 'localhost';
+// var dbName 		= 'location';
+
+start mongo len chua
+thu chay lai xem
+cai link chay quen mat ?
+database cu
+delete cai cu duoc dung ko ?
+ok
+
+mongo oceanic.mongohq.com:10063/location -u <user> -p<password>
+
+ok roi, doi no build lai 
+cho de anh sua file ni luon
+rang rua
+ai beit :(
+nodejs no bi die roi
+em lam cai gi ma no vang loi ra nen chet server
+sao ko thay cai location nao het vay e
+cai do khong dung
+anh dung places
+
+
+no bi chi rua 
+code cua e no phat sinh loi, nen nodejs sever bi chet
+loi nay la loi cu phap hay gi do nen no ko tu restart duoc thi fai, hoac cung co the la do host nay nodejs cu
+nhung ma chac an la dang bi loi =))
+uh
+de anh chay localhot xem thu
+ok
+di aan uong gi di :D
+hum nay ko di choi voi em iu ah :D
+di choi toi hom qua roi
+chieu ranh roi dan em di xem phim
+film rio2 a
+:D
+gio ranh roi thi dan ra ngoai bien cho no nhanh 
+:(
+lau lau fai doi ko khi, nham chan la thu de giet chet tinh yeu :D
+danh ngon do
+
+anh di an cai da
+chac do hom qua sua code no bi loi chi day
+o duoi localhost ma no bi loi thi no cung bi chet server local
+um
+thoi di an di
+ok
+

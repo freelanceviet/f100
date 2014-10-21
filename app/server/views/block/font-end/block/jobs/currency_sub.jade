@@ -1,0 +1,10 @@
+select(name="budget", id="budget")
+	-	for(var i=0; i<resCurrencyRange.length; i++)
+			if(resCurrencyRange[i].is_default==0)
+				option(value=""+resCurrencyRange[i]._id+"")= resCurrencyRange[i].name_en+'('+resCurrencyDefault.title+' '+(resCurrencyRange[i].from*resCurrencyDefault.rate_usd)+'-'+(resCurrencyRange[i].to*resCurrencyDefault.rate_usd)+' '+resCurrencyDefault.name+')'
+			else
+				option(value=""+resCurrencyRange[i]._id+"", selected)= resCurrencyRange[i].name_en+'('+resCurrencyDefault.title+' '+(resCurrencyRange[i].from*resCurrencyDefault.rate_usd)+'-'+(resCurrencyRange[i].to*resCurrencyDefault.rate_usd)+' '+resCurrencyDefault.name+')'
+
+	option(value="custom") Customize budget
+input(type="hidden", class="re_currency_d", id="cu_title_selected", value=""+resCurrencyDefault.title+"")
+input(type="hidden", class="re_currency_d", id="cu_reteusd_selected", value=""+resCurrencyDefault.rate_usd+"")

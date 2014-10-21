@@ -1,0 +1,19 @@
+extends ../../../../layout_font_end
+
+block content
+	#form-login
+		form(method="post", action="", id="register_form", enctype="multipart/form-data;utf-8")
+			p
+				span First name
+				input(type="text", tabindex="1", name="f_firstname", id="f_firstname", placeholder="First name...")
+			p
+				span Last name
+				input(type="text", tabindex="2", name="f_lastname", id="f_lastname", placeholder="Last name...")
+			p
+				span Your email address
+				input(type="text", tabindex="3", name="f_email", id="f_email", placeholder="Your email")
+			p
+				a(onclick="checkLoginState();") Login with facebook
+				#status
+block script
+	script(src='/javascripts/views/login.js')
