@@ -4,7 +4,7 @@ body{
 	margin:0 auto;
 }
 #wrapper{
-	width: 90%;
+	width: 1024px;
 	height: 500px;
 	margin: 0 auto;
 }
@@ -54,7 +54,7 @@ body{
 }	
 #popular-competition .item_pc{
 	float:left;
-	width:230px;
+	width:243px;
 	height:150px;
 	border:1px solid #ccc;
 	margin:5px;
@@ -67,7 +67,7 @@ body{
 }
 #our-jobs{
 	float:left;
-	width:965px;
+	width:770px;
 	min-height:500px;
 	border:1px solid #ccc;
 }
@@ -105,7 +105,7 @@ body{
 #jobs_right{
 	margin-left:5px;
 	display: inline-block;
-	width:967px;
+	width:776px;
 	min-height:500px;
 	background-color:rgb(149, 167, 149);
 }
@@ -135,7 +135,7 @@ body{
 }
 .item_contest{
 	float:left;
-	width:230px;
+	width:243px;
 	height:200px;
 	border:1px solid #ccc;
 	margin:5px;
@@ -218,7 +218,7 @@ body{
 }
 .pfbi_info{
 	float:left;
-	width:780px;
+	width:575px;
 	height:100%;
 	border-right:1px solid #ccc;
 }
@@ -249,7 +249,7 @@ body{
 }
 .pfbc_content{
 	float: left;
-	width: 832px;
+	width: 760px;
 	min-height: 340px;
 	border-right: 1px solid #ccc;
 	padding:5px;
