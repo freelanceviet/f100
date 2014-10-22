@@ -29,7 +29,7 @@ JobPost.prototype.uploadImageForCommentPlace=function(){
 				
 			}, 
 			success:function(response, status, xhr, $form){
-				alert(response);
+				$('.job_post_file_content').html(response);
 				$("#typeSubmitPlace").val(0);
 			}, 
 			error:function(e){

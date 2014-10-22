@@ -339,3 +339,6 @@ body{
 	float:left;
 	margin:10px;
 }
+.ffi_remove{
+	cursor:pointer;
+}

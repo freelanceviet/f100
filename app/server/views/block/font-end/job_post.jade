@@ -22,25 +22,29 @@ block content
 						-	for(var i=0;i<resSkill.length;i++)
 								input(type="hidden", class="skill_name", value=""+resSkill[i].name+"")
 					span Enter some skills that relate to the project:
-					input(type="text", name="job_skill", id="job_skill", value="Phone, Email")
+					input(type="text", id="job_skill", value="Phone, Email")
 					span(class="job_skill_help_err")
 				p
 					span Describe your project in detail:
-					textarea(name="job_description", id="job_description")
+					textarea(name="job_description", id="job_description", style="width:97%")
 					span(class="job_description_help_err")
 				p(id="job_show_file_upload")
 				p
 					span Add file:
 					input(type="file", id="job_post_file", name="files_job[]", multiple="", title="No files selected.", class="valid")
 					span(class="job_post_file_help_err")
+				p(class="job_post_file_content")
+					
 				p
 					span Project type:
-					input(id="hourlyBudgetPeriod_option", name="budgetPeriod", type="radio", value="fixed", checked)
+					input(id="hourlyBudgetPeriod_option", name="budgetPeriod", type="radio", value="1", checked)
 					label I am looking to hire for a fixed price
-					input(id="hourlyBudgetPeriod_option", name="budgetPeriod", type="radio", value="hourly")
+					input(id="hourlyBudgetPeriod_option", name="budgetPeriod", type="radio", value="2")
 					label I am looking to hire per hour
 					span(class="budgetPeriod_help_err")
 				p(id="currency_content")
+					input(type="hidden", id="budget_from", name="budget_from", value="")
+					input(type="hidden", id="budget_to", name="budget_to", value="")
 					span Budget:
 					select(name="currency", id="currency")
 						-	for(var i=0; i<resCurrency.length;i++)
@@ -51,9 +55,9 @@ block content
 					select(name="budget", id="budget")
 						-	for(var i=0; i<resCurrencyRange.length; i++)
 								if(resCurrencyRange[i].is_default==0)
-									option(value=""+resCurrencyRange[i]._id+"")= resCurrencyRange[i].name_en+'('+resCurrencyDefault.title+' '+(resCurrencyRange[i].from*resCurrencyDefault.rate_usd)+'-'+(resCurrencyRange[i].to*resCurrencyDefault.rate_usd)+' '+resCurrencyDefault.name+')'
+									option(value=""+resCurrencyRange[i]._id+"", from=""+resCurrencyRange[i].from+"", to=""+resCurrencyRange[i].to+"")= resCurrencyRange[i].name_en+'('+resCurrencyDefault.title+' '+(resCurrencyRange[i].from*resCurrencyDefault.rate_usd)+'-'+(resCurrencyRange[i].to*resCurrencyDefault.rate_usd)+' '+resCurrencyDefault.name+')'
 								else
-									option(value=""+resCurrencyRange[i]._id+"", selected)= resCurrencyRange[i].name_en+'('+resCurrencyDefault.title+' '+(resCurrencyRange[i].from*resCurrencyDefault.rate_usd)+'-'+(resCurrencyRange[i].to*resCurrencyDefault.rate_usd)+' '+resCurrencyDefault.name+')'
+									option(value=""+resCurrencyRange[i]._id+"", from=""+resCurrencyRange[i].from+"", to=""+resCurrencyRange[i].to+"", selected)= resCurrencyRange[i].name_en+'('+resCurrencyDefault.title+' '+(resCurrencyRange[i].from*resCurrencyDefault.rate_usd)+'-'+(resCurrencyRange[i].to*resCurrencyDefault.rate_usd)+' '+resCurrencyDefault.name+')'
 						option(value="custom") Customize budget
 					input(type="hidden", class="re_currency_d", id="cu_title_selected", value=""+resCurrencyDefault.title+"")
 					input(type="hidden", class="re_currency_d", id="cu_reteusd_selected", value=""+resCurrencyDefault.rate_usd+"")
@@ -63,7 +67,7 @@ block content
 						-	for(var i=0;i<resOptional.length;i++)
 								tr
 									td
-										input(type="checkbox", name="chkbx_assisted", value=""+resOptional[i]._id+"")
+										input(type="checkbox", name="chkbx_assisted[]", value=""+resOptional[i]._id+"")
 									td
 										icon-image
 									td

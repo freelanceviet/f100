@@ -47,10 +47,16 @@ $(document).ready(function(){
 			$.get(urlGet, function(data){
 				$('#budget_custom').css('display','block');
 				$('#budget_custom').html(data);
+				$('#budget_from').val('');
+			$('#budget_to').val('');
 			});
 		}else{
 			$('#budget_custom').css('display','none');
 			$('#budget_custom').empty();
+			var from = $("#budget option:selected").attr('from');
+			var to   = $("#budget option:selected").attr('to');
+			$('#budget_from').val(from);
+			$('#budget_to').val(to);
 		}
 	});
 	// Event upload file

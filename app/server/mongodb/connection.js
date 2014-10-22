@@ -64,6 +64,7 @@ module.exports = {
 	free_optional:db.collection('free_optional'),
 	free_location:db.collection('free_location'),
 	free_user:db.collection('free_user'),
+	free_jobs:db.collection('free_jobs'),
 	ObjectID:ObjectID,
 	moment:moment
 }
