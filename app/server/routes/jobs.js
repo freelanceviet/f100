@@ -23,14 +23,17 @@ module.exports = function (app) {
 					ALL.getAllCurrencyRange(function(errCurrencyRange, resCurrencyRange){
 						ALL.getAllOptional(function(errOptional, resOptional){
 							ALL.getCurrencyDefault(function(errCurrencyDefault, resCurrencyDefault){
-								res.render('block/font-end/job_post', {
-									title:"List jobs",
-									resCategories:resCategories,
-									resSkill:resSkill,
-									resCurrency:resCurrency,
-									resCurrencyRange:resCurrencyRange,
-									resOptional:resOptional,
-									resCurrencyDefault:resCurrencyDefault
+								ALL.getAllLocation(function(errLocation, resLocation){
+									res.render('block/font-end/job_post', {
+										title:"List jobs",
+										resCategories:resCategories,
+										resSkill:resSkill,
+										resCurrency:resCurrency,
+										resCurrencyRange:resCurrencyRange,
+										resOptional:resOptional,
+										resCurrencyDefault:resCurrencyDefault,
+										resLocation:resLocation
+									});
 								});
 							});
 						});
@@ -70,7 +73,7 @@ module.exports = function (app) {
 				category_id : req.param('skill_category'),
 				category_sub_id : req.param('skill_subcategory'),
 				project_name : req.param('project_name'),
-				job_skill : req.param('job_skill')[0][i],
+				job_skill : req.param('job_skill')[0],
 				job_description : req.param('job_description'),
 				file_up : file_all,
 				budgetPeriod : req.param('budgetPeriod'),
@@ -78,6 +81,7 @@ module.exports = function (app) {
 				cu_from : req.param('budget_from'),
 				cu_to : req.param('budget_to'),
 				assisted : req.param('chkbx_assisted')[0],
+				location : req.param('job_location')[0],
 				date_add : addDate.format('YYYY-MM-DD hh:mm:ss'),
 				date_spam : n,
 				date_update : n,
@@ -93,5 +97,4 @@ module.exports = function (app) {
 			});
 		}
 	});
-	
 }

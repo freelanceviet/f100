@@ -1,11 +1,14 @@
 $(document).ready(function(){
 	var JP = new JobPost();
-	// -----------------------------------------------------
-	// Load auto complete tag
-	// -----------------------------------------------------
+	// Load auto complete tag skill
 	var sampleTags = JP.arrAttribute();
 	$('#job_skill').tagit({
 		availableTags: sampleTags
+	});
+	// Load auto complete tag skill
+	var sampleLocation = JP.arrLocation();
+	$('#job_location').tagit({
+		availableTags: sampleLocation
 	});
 	// Event change category to show sub category
 	$('body').on('change', '#skill_category', function (e) {
@@ -66,9 +69,14 @@ $(document).ready(function(){
 	// Set input skill to form
 	$('#rp-bt-action-form').click(function(){
 		$('#rp-attributes-content-cg').empty();
-		$('.tagit-label').each(function(){
+		$('.au_skill').find('.tagit-label').each(function(){
 			var html = '<input type="hidden"  class="job_skill" name="job_skill[]" value="'+$(this).text()+'" >';
 			$('#rp-attributes-content-cg').append(html);
+		});
+		$('#lo-attributes-content-cg').empty();
+		$('.au_location').find('.tagit-label').each(function(){
+			var html = '<input type="hidden"  class="job_location" name="job_location[]" value="'+$(this).text()+'" >';
+			$('#lo-attributes-content-cg').append(html);
 		});
 	});
 	// Form post job action
@@ -78,7 +86,6 @@ $(document).ready(function(){
 		},
 		success	: function(responseText, status, xhr, $form){
 			alert('xxx yyy zzz');
-			//$(location).attr('href',responseText);
 		},
 		error : function(e){
             alert(e.responseText);

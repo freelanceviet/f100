@@ -342,3 +342,99 @@ body{
 .ffi_remove{
 	cursor:pointer;
 }
+#contest_detail_view{
+	display:inline-block;
+	width:100%;
+	min-height:500px;
+}
+#contest_detail_view .banner_contest{
+	float:left;
+	width:100%;
+	height:300px;
+	position:relative;
+}
+.banner_contest img{
+	width:100%;
+	height:100%;
+}
+.avatar{
+	position: absolute;
+	bottom: -45px;
+	left: 77px;
+	width: 160px;
+	height: 160px;
+	border: 1px solid #ccc;
+}
+.avatar img{
+	width:100%;
+	height:100%;
+} 
+.title_contest{
+	position: absolute;
+	left: 300px;
+	bottom: 42px;
+	width: 300px;
+	font-size: 20px;
+	text-align: center;
+}
+.like_share{
+	position:absolute;
+	right:0px;
+	bottom:0px;
+	width:100px;
+	height:30px;
+}
+.like_share a{
+	float:left;
+	margin:5px;
+	color:white;
+}
+.list_option_su{
+	position:absolute;
+	left:300px;
+	bottom:-37px;
+	width:500px;
+	height:30px;
+}
+.list_option_su .los_item{
+	float: left;
+	border-right: 1px solid #ccc;
+	cursor: pointer;
+	margin-left:10px;
+	min-width: 100px;
+	height: 30px;
+}
+.submitssion{
+	position:absolute;
+	right:0px;
+	bottom:-39px;
+	width:100px;
+	height:30px;
+	background-color:green;
+	text-align:center;
+	color:black;
+}
+.content_contest{
+	float:left;
+	width:100%;
+	min-height:500px;
+	margin-top:85px;
+}
+.c2_left{
+	float:left;
+	width:300px;
+}
+.c2_l_item{
+	float:left;
+	width:100%;
+	min-height:300px;
+	border:1px solid #ccc;
+	margin-bottom: 20px;
+}
+.c2_right{
+	float:left;
+	width:703px;
+	min-height:100px;
+	margin-left:20px;
+	background-color:red;
+}

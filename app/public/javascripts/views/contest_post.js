@@ -1,11 +1,14 @@
 $(document).ready(function(){
 	var CP = new ContestPost();
-	// -----------------------------------------------------
 	// Load auto complete tag
-	// -----------------------------------------------------
 	var sampleTags = CP.arrAttribute();
 	$('#contest_skill').tagit({
 		availableTags: sampleTags
+	});
+	// Load auto complete tag skill
+	var sampleLocation = CP.arrLocation();
+	$('#job_location').tagit({
+		availableTags: sampleLocation
 	});
 	// Event change category to show sub category
 	$('body').on('change', '#skill_category', function (e) {
@@ -27,11 +30,11 @@ $(document).ready(function(){
 			// Change optional value price
 			$('.job_optional_price').each(function(){
 				var ta = $(this);
-				var cu_title = $('#cu_title_selected').val();
-				var cu_rate = parseInt($('#cu_reteusd_selected').val());
+				var cu_title = $("#currency option:selected").attr('title');
+				var cu_rate = parseInt($("#currency option:selected").attr('rate_usd'));
 				var price = parseInt(ta.attr('data-price'));
-				var text = cu_title+(price*cu_rate);
-				ta.html(text);
+				var text = ""+cu_title+""+(price*cu_rate);
+				ta.text(text);
 			});
 			// Change title of min or max budget
 			if($('.sum_title').length>0){
@@ -60,10 +63,16 @@ $(document).ready(function(){
 	// Set input skill to form
 	$('#rp-bt-action-form').click(function(){
 		$('#rp-attributes-content-cg').empty();
-		$('.tagit-label').each(function(){
-			var html = '<input type="hidden"  class="job_skill" name="job_skill[]" value="'+$(this).text()+'" >';
+		$('.au_skill').find('.tagit-label').each(function(){
+			var html = '<input type="hidden"  class="contest_skill" name="contest_skill[]" value="'+$(this).text()+'" >';
 			$('#rp-attributes-content-cg').append(html);
 		});
+		$('#lo-attributes-content-cg').empty();
+		$('.au_location').find('.tagit-label').each(function(){
+			var html = '<input type="hidden"  class="contest_location" name="contest_location[]" value="'+$(this).text()+'" >';
+			$('#lo-attributes-content-cg').append(html);
+		});
+		
 	});
 	// Form post job action
 	$('#post_contest_form').ajaxForm({
@@ -77,6 +86,15 @@ $(document).ready(function(){
             alert(e.responseText);
 		}
 	});
+	// Event change currency
+	$('#currency').change(function() {
+		var tite_cu = $("#currency option:selected").attr('title');
+		var rate_cu = $("#currency option:selected").attr('rate_usd');
+		$('#contest_currency_title').html(tite_cu);
+		$('#tygia_value').val(rate_cu);
+		var price = tite_cu + (parseInt($('#budget_value').val())*rate_cu);
+		$('#amount').val(price);
+	});
 	// Show slider for budget
 	$(function() {
 		$( "#slider-range-min" ).slider({
@@ -85,9 +103,11 @@ $(document).ready(function(){
 			min: 1,
 			max: 700,
 			slide: function( event, ui ) {
-				$( "#amount" ).val( "$" + ui.value );
+				$('#budget_value').val(ui.value);
+				var price = $('#contest_currency_title').text() + (parseInt(ui.value)*parseInt($('#tygia_value').val()));
+				$( "#amount" ).val(price);
 			}
 		});
-		$( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value" ) );
+		$( "#amount" ).val( $('#contest_currency_title').text() + $( "#slider-range-min" ).slider( "value" ) );
 	});
 });

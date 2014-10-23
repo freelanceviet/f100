@@ -22,7 +22,8 @@ block content
 						-	for(var i=0;i<resSkill.length;i++)
 								input(type="hidden", class="skill_name", value=""+resSkill[i].name+"")
 					span Enter some skills that relate to the project:
-					input(type="text", id="job_skill", value="Phone, Email")
+					.au_skill
+						input(type="text", id="job_skill", value="Phone, Email")
 					span(class="job_skill_help_err")
 				p
 					span Describe your project in detail:
@@ -62,6 +63,16 @@ block content
 					input(type="hidden", class="re_currency_d", id="cu_title_selected", value=""+resCurrencyDefault.title+"")
 					input(type="hidden", class="re_currency_d", id="cu_reteusd_selected", value=""+resCurrencyDefault.rate_usd+"")
 				p(id="budget_custom", style="display:none")
+				p
+					span Location:
+					#lo-attributes-content-cg
+					.job_location_hidden
+						-	for(var i=0;i<resLocation.length;i++)
+								input(type="hidden", class="location_name", value=""+resLocation[i].lo_name+"")
+					span Enter some location:
+					.au_location
+						input(type="text", id="job_location")
+					span(class="job_location_help_err")
 				p
 					table
 						-	for(var i=0;i<resOptional.length;i++)

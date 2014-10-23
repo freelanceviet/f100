@@ -8,7 +8,7 @@ function JobPost(){
 	
 }
 // -----------------------------------------------------
-// Autocompete show attribute
+// Autocompete_ show attribute
 // -----------------------------------------------------
 JobPost.prototype.arrAttribute=function(){
 	var arr = new Array();
@@ -16,6 +16,17 @@ JobPost.prototype.arrAttribute=function(){
 		arr.push($(this).val());
 	});
 	$('.job_skill_hidden').remove();
+	return arr;
+}
+// -----------------------------------------------------
+// Autocompete_ show location
+// -----------------------------------------------------
+JobPost.prototype.arrLocation=function(){
+	var arr = new Array();
+	$('.location_name').each(function(){
+		arr.push($(this).val());
+	});
+	$('.job_location_hidden').remove();
 	return arr;
 }
 //-----------------------------------------------------
