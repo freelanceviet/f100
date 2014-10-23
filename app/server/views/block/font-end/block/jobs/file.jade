@@ -1,0 +1,8 @@
+-	for(var i=0;i<resFile.length;i++)
+		.free_file_item
+			input(type="hidden", value="", name="public_id[]", value=""+resFile[i].public_id+"")
+			input(type="hidden", value="", name="format[]", value=""+resFile[i].format+"")
+			input(type="hidden", value="", name="created_at[]", value=""+resFile[i].created_at+"")
+			input(type="hidden", value="", name="bytes[]", value=""+resFile[i].bytes+"")
+			input(type="hidden", value="", name="type[]", value=""+resFile[i].type+"")
+			span(class="ffi_remove") Remove
