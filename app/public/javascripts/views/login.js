@@ -1,3 +1,26 @@
+$(document).ready(function(){
+	var lv = new LoginValidator();
+	// Login form 
+	$('#login-form').ajaxForm({
+		beforeSubmit : function(formData, jqForm, options){
+			return lv.validateForm();
+		},
+		success	: function(responseText, status, xhr, $form){
+			if(responseText=="user-not-found"){
+				$().toastmessage('showErrorToast', "User not found");
+			}else if(responseText=="invalid-password"){
+				$().toastmessage('showErrorToast', "Invalid-password");
+			}else{
+				if (status == 'success') window.location.href = '/';
+			}
+		},
+		error : function(e){
+            alert(e.responseText);
+		}
+	}); 
+	//
+});
+
 
 	// 
 	function statusChangeCallback(response) {

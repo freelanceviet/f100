@@ -3,7 +3,7 @@ var ALL      = require('../modules/public-manager');
 var PM       = require('../modules/profile-manager');
 module.exports = function (app) {
 	//--------------------------------------
-	// router admin home page
+	// router profile page
 	//--------------------------------------
 	app.get('/profile', function (req, res) {
 		res.render('block/font-end/profile', {
@@ -22,26 +22,25 @@ module.exports = function (app) {
 		});
 	});
 	//--------------------------------------
-	// Register Form
+	// Store user
 	//--------------------------------------
 	app.post('/storeUser', function (req, res) {
-		ALL.getItemLocation(req.param('f_location'),function(errLoItem, resLoItem){
+		ALL.getItemLocation(req.param('reg-location-tf'),function(errLoItem, resLoItem){
 			var document = {
-				first_name 	: req.param('f_firstname'),
-				last_name 	: req.param('f_lastname'),
-				email    	: req.param('f_email'),
-				pass	  	: req.param('f_password'),
+				first_name 	: req.param('reg-first-name-tf'),
+				last_name 	: req.param('reg-last-name-tf'),
+				email    	: req.param('reg-email-tf'),
+				pass	  	: req.param('reg-pass-tf'),
 				loca_id	  	: ''+resLoItem._id+'',
 				type		: req.param('f_type')
 			};
-			PM.addUser(document, function(errUser, resUser){
-				console.log(resUser);
+			PM.addNewAccount(document, function(errUser, resUser){
+				res.send(resUser,200);
 			});
 		});
-		res.send('xxx',200);
 	});
 	//--------------------------------------
-	// Register Form
+	// Login Form
 	//--------------------------------------
 	app.get('/login', function (req, res) {
 		ALL.getAllLocation(function(errLocation, resLocation){
@@ -50,5 +49,22 @@ module.exports = function (app) {
 				resLocation: resLocation
 			});
 		});
+	});
+	//--------------------------------------
+	// Login post form
+	//--------------------------------------
+	app.post('/login', function (req, res) {
+		PM.manualLogin(req.param('lo-email-tf'), req.param('lo-pass-tf'), function(e, o){
+			if (!o){
+				res.send(e, 200);
+			}else{
+				req.session.user = o;
+				res.send('xxx',200);
+			} 
+		});
+	});
+	app.get('/logout', function(req, res){
+		req.session.destroy();
+		res.redirect('/');
 	});
 }

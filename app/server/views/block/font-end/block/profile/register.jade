@@ -5,31 +5,32 @@ block content
 		form(method="post", action="/storeUser", id="register_form", enctype="multipart/form-data;utf-8")
 			p
 				span First name
-				input(type="text", tabindex="1", name="f_firstname", id="f_firstname", placeholder="First name...")
+				input(type="text", tabindex="1", name="reg-first-name-tf", id="reg-first-name-tf", placeholder="First name...")
 			p
 				span Last name
-				input(type="text", tabindex="2", name="f_lastname", id="f_lastname", placeholder="Last name...")
+				input(type="text", tabindex="2", name="reg-last-name-tf", id="reg-last-name-tf", placeholder="Last name...")
 			p
 				span Your email address
-				input(type="text", tabindex="3", name="f_email", id="f_email", placeholder="Your email")
+				input(type="text", tabindex="3", name="reg-email-tf", id="reg-email-tf", placeholder="Your email")
 			p 
 				span Password
-				input(type="password", tabindex="4", name="f_password", id="f_password", placeholder="......")
+				input(type="password", tabindex="4", name="reg-pass-tf", id="reg-pass-tf", placeholder="......")
 			p 
 				span Location(city)
-				input(type="text", tabindex="5", name="f_location", id="f_location")
+				input(type="text", tabindex="5", name="reg-location-tf", id="reg-location-tf")
 				.form_register_location_au
 					-	for(var i=0;i<resLocation.length;i++)
 							input(type="hidden", class="item_location", value=""+resLocation[i].lo_name+"")
 			p
 				span What are you looking for?
-				input(type="radio", name="f_type", value="0") 
+				input(type="radio", name="f_type", value="0", checked)
 				span Buy services
-				input(type="radio", name="f_type", value="1") 
+				input(type="radio", name="f_type", value="1")
 				span Sell services
-				input(type="radio", name="f_type", value="2") 
+				input(type="radio", name="f_type", value="2")
 				span Both
 			p
 				input(type="submit", value="Sign up", id="rp-bt-action-form")
 block script
+	script(src='/javascripts/form-validators/registerValidator.js')
 	script(src='/javascripts/views/register.js')

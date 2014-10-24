@@ -15,11 +15,10 @@
 // db.open(function(e, d){
 	// if (e) {
 		// //console.log(e);
-	// }	else{
+	// } else{
 		// console.log('connected to database :: ' + dbName);
 	// }
 // });
-
 
 var crypto      = require('crypto');
 var MongoDB  	= require('mongodb').Db;
@@ -57,6 +56,7 @@ db.open(function(e, p_client){
 });
 
 module.exports = {
+	crypto:crypto,
 	free_categories:db.collection('free_categories'),
 	free_skill:db.collection('free_skill'),
 	free_currency:db.collection('free_currency'),
