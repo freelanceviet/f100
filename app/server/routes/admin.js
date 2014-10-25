@@ -7,6 +7,6 @@ module.exports = function (app) {
 	app.get('/admin-home', function (req, res) {
 		res.render('block/admin/home', {
 			title:"Trip setting"
-		});
+		}); 
 	});
 }
