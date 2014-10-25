@@ -13,22 +13,26 @@ exports.addJob = function(document, callback){
 	free_jobs.insert(document, function(errDocument, resDocument){
 		if(resDocument){
 			// Update number for category
-			free_categories.update(
-				{ _id : new ObjectID(resDocument[0].category_id) },
-				{ $inc: { numjob : 1 }},
-				{ safe : true},
-				function (errNumCa, resNumCa) {
-					// Update number for category sub
-					free_categories.update(
-						{ "items.id":resDocument[0].category_sub_id},
-						{ $inc: { "items.$.num" : 1 }},
-						{ safe : true},
-						function (errNumCaSu, resNumCaSu) {
-							callback(null, resDocument);
+			if(resDocument[0].category_id!="-1"){
+				free_categories.update(
+					{ _id : new ObjectID(resDocument[0].category_id) },
+					{ $inc: { numjob : 1 }},
+					{ safe : true},
+					function (errNumCa, resNumCa) {
+						// Update number for category sub
+						if(resDocument[0].category_sub_id){
+							free_categories.update(
+								{ "items.id":resDocument[0].category_sub_id},
+								{ $inc: { "items.$.num" : 1 }},
+								{ safe : true},
+								function (errNumCaSu, resNumCaSu) {
+									callback(null, resDocument);
+								}
+							);
 						}
-					);
-				}
-			);
+					}
+				);
+			}
 		}else{
 			callback(null,null);
 		}

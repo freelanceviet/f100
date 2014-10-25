@@ -97,9 +97,9 @@ module.exports = function (app) {
 			if(type_submit==0){
 				// Sub category
 				var sub_ca = null;
-				if(req.param('skill_subcategory')!=undefined){
-					sub_ca = req.param('skill_subcategory');
-				}
+				// if(req.param('skill_subcategory')!=undefined){
+					// sub_ca = req.param('skill_subcategory');
+				// }
 				// Assisted
 				var assisted = null;
 				if(!req.param('chkbx_assisted')){
