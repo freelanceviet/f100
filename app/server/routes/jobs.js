@@ -5,9 +5,9 @@ var IM = require('../modules/uploadimage-manager');
 var moment   	= Mogodb.moment;
 
 module.exports = function (app) {
-	//--------------------------------------
+	//---------------------------------------
 	// router admin home page
-	//--------------------------------------
+	//---------------------------------------
 	app.get('/jobs', function (req, res) {
 		JM.getJobDefault(20, 0, function(errJobs, resJobs){
 			ALL.getAllCategories(function(errCategories, resCategories){

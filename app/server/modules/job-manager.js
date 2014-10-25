@@ -34,10 +34,10 @@ exports.addJob = function(document, callback){
 		}
 	});
 };
-// ------------------------------------
+// -------------------------------------
 // Get list job default
 // note: 
-// ------------------------------------
+// -------------------------------------
 exports.getJobDefault = function(limit, skip, callback){
 	free_jobs.find({})
 	.limit(parseInt(limit))
