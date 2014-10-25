@@ -1,6 +1,7 @@
 var Mogodb   	  = require('../mongodb/connection');
 
 var free_jobs	          = Mogodb.free_jobs;
+var free_categories	      = Mogodb.free_categories;
 var ObjectID	          = Mogodb.ObjectID;
 
 // ------------------------------------
@@ -10,6 +11,53 @@ var ObjectID	          = Mogodb.ObjectID;
 // ------------------------------------
 exports.addJob = function(document, callback){
 	free_jobs.insert(document, function(errDocument, resDocument){
-		callback(null, resDocument);
+		if(resDocument){
+			// Update number for category
+			free_categories.update(
+				{ _id : new ObjectID(resDocument[0].category_id) },
+				{ $inc: { numjob : 1 }},
+				{ safe : true},
+				function (errNumCa, resNumCa) {
+					// Update number for category sub
+					free_categories.update(
+						{ "items.id":"sdfs23rwerwe"},
+						{ $inc: { "items.$.num" : 1 }},
+						{ safe : true},
+						function (errNumCaSu, resNumCaSu) {
+							callback(null, resDocument);
+						}
+					);
+				}
+			);
+		}else{
+			callback(null,null);
+		}
+	});
+};
+// ------------------------------------
+// Get list job default
+// note: 
+// ------------------------------------
+exports.getJobDefault = function(limit, skip, callback){
+	free_jobs.find({})
+	.limit(parseInt(limit))
+	.skip(parseInt(skip))
+	.sort([['date_spam', 'desc']])
+	.toArray(function(err, items)
+	{
+		callback(null,items);
+	});
+};
+// ------------------------------------
+// Get item job with id
+// note: 
+// ------------------------------------
+exports.getItemJob = function(id, callback){
+	free_jobs.findOne({_id:new ObjectID(id)}, function(errItemJob, resItemJob){
+		if(resItemJob){
+			callback(null,resItemJob);
+		}else{
+			callback(null,null);
+		}
 	});
 };

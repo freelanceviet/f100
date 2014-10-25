@@ -14,12 +14,16 @@ module.exports = function (app) {
 	// Register Form
 	//--------------------------------------
 	app.get('/register', function (req, res) {
-		ALL.getAllLocation(function(errLocation, resLocation){
-			res.render('block/font-end/block/profile/register', {
-				title:"Register form",
-				resLocation: resLocation
+		if(req.session.user==null){
+			ALL.getAllLocation(function(errLocation, resLocation){
+				res.render('block/font-end/block/profile/register', {
+					title:"Register form",
+					resLocation: resLocation
+				});
 			});
-		});
+		}else{
+			res.redirect('/');
+		}
 	});
 	//--------------------------------------
 	// Store user
@@ -32,6 +36,7 @@ module.exports = function (app) {
 				email    	: req.param('reg-email-tf'),
 				pass	  	: req.param('reg-pass-tf'),
 				loca_id	  	: ''+resLoItem._id+'',
+				avatar		: '/upload/profile_avatar/default_avatar.jpg',
 				type		: req.param('f_type')
 			};
 			PM.addNewAccount(document, function(errUser, resUser){
@@ -43,12 +48,16 @@ module.exports = function (app) {
 	// Login Form
 	//--------------------------------------
 	app.get('/login', function (req, res) {
-		ALL.getAllLocation(function(errLocation, resLocation){
-			res.render('block/font-end/block/profile/login', {
-				title:"Register form",
-				resLocation: resLocation
+		if(req.session.user==null){
+			ALL.getAllLocation(function(errLocation, resLocation){
+				res.render('block/font-end/block/profile/login', {
+					title:"Register form",
+					resLocation: resLocation
+				});
 			});
-		});
+		}else{
+			res.redirect('/');
+		}
 	});
 	//--------------------------------------
 	// Login post form

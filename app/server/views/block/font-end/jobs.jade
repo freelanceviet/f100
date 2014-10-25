@@ -6,15 +6,11 @@ block content
 			.jl_box
 				h2 Categories
 				.hlb_list_cate
-					a(href="") Design
-					a(href="") Marketing
-					a(href="") DJ Bar Restaurant
-					a(href="") Ca si 
-					a(href="") Teacher
-					a(href="") Development software
-					a(href="") Network
-					a(href="") Home page
-					a(href="") Digital
+					-	for(var i=0; i<resCategories.length; i++)
+							if(resCategories[i].numjob!=undefined)
+								a(href="")= resCategories[i].name_en + "(" + resCategories[i].numjob + ")"
+							else
+								a(href="")= resCategories[i].name_en
 			.jl_box
 				h2 Job Type	
 				.hlb_option_job_type
@@ -93,7 +89,17 @@ block content
 								option(value="all") Ending soon
 								option(value="all") budget
 			.jr_list_job
-				-	for(var i=0;i<8;i++)
-						a(href="/jobdetail", class="jrlj_item")
+				-	for(var i=0;i<resJobs.length;i++)
+						.jrlj_item
+							a(href="/jobdetail?id="+resJobs[i]._id+"&name="+resJobs[i].project_name.replace(/ /g,"-")+"", class="jrlji_title")= resJobs[i].project_name
+							.jrlji_info
+								a(href="")
+									img(src=""+resJobs[i].user_info.user_av+"")
+								a(href="", class="name")= resJobs[i].user_info.user_name_l + " " + resJobs[i].user_info.user_name_f
+								span(class="time") 45 minutes ago
+								span(class="remote") Remote
+								span(class="proposals") Be the first
+							a(href="", class="jrlji_proposal") Send Proposal
+							
 block script
 	script(src='/javascripts/views/jobs.js')

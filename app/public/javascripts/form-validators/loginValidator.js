@@ -17,7 +17,7 @@ function LoginValidator(){
 	}
 	this.showErrors = function(e){
 		for(var i=0;i<e.length;i++){
-			$().toastmessage('showErrorToast', e[i]);
+			alert(e[i]);
 		}
 	}
 }

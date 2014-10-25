@@ -2,7 +2,6 @@
 // var MongoDB 	= require('mongodb').Db;
 // var Server 		= require('mongodb').Server;
 // var moment 		= require('moment');
-// var moment 		= require('moment');
 // var ObjectID	= require('mongodb').ObjectID;
 
 // var dbPort 		= 27017;
@@ -65,6 +64,7 @@ module.exports = {
 	free_location:db.collection('free_location'),
 	free_user:db.collection('free_user'),
 	free_jobs:db.collection('free_jobs'),
+	free_contests:db.collection('free_contests'),
 	ObjectID:ObjectID,
 	moment:moment
 }

@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	var JP = new JobPost();
+	var V_JP = new JobBostValidator();
 	// Load auto complete tag skill
 	var sampleTags = JP.arrAttribute();
 	$('#job_skill').tagit({
@@ -82,10 +83,14 @@ $(document).ready(function(){
 	// Form post job action
 	$('#post_job_form').ajaxForm({
 		beforeSubmit : function(formData, jqForm, options){
-			//return rp_val.validateForm();
+			return V_JP.validateForm();
 		},
 		success	: function(responseText, status, xhr, $form){
-			alert('xxx yyy zzz');
+			if(responseText=='not-login'){
+				alert("Please login to continue!");
+			}else{
+				alert("Post Success!");
+			}
 		},
 		error : function(e){
             alert(e.responseText);

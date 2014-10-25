@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	var CP = new ContestPost();
+	var v_CP = new ContestBostValidator();
 	// Load auto complete tag
 	var sampleTags = CP.arrAttribute();
 	$('#contest_skill').tagit({
@@ -77,10 +78,14 @@ $(document).ready(function(){
 	// Form post job action
 	$('#post_contest_form').ajaxForm({
 		beforeSubmit : function(formData, jqForm, options){
-			//return rp_val.validateForm();
+			return v_CP.validateForm();
 		},
 		success	: function(responseText, status, xhr, $form){
-			alert(responseText);
+			if(responseText=='not-login'){
+				alert("Please login to continue!");
+			}else{
+				alert("Post Success!");
+			}
 		},
 		error : function(e){
             alert(e.responseText);

@@ -15,7 +15,7 @@ var ObjectID	          = Mogodb.ObjectID;
 // callback: arr list categories
 // ------------------------------------
 exports.getAllCategories = function(callback){
-	free_categories.find({},{'name_en':1,'name_vn':1})
+	free_categories.find({})
 	.sort([['rank', 'asc']])
 	.toArray(
 		function(e, res) {

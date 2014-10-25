@@ -1,11 +1,8 @@
-function JobBostValidator(){
+function ContestBostValidator(){
 	// build array maps of the form inputs & control groups
 	this.formFields = [
 						$('#project_name'),
-						$('#job_skill'),
-						$('#job_description'),
-						$('#min_sum'),
-						$('#max_sum')
+						$('.contest_skill')
 	                  ];
 	
 	this.validateProjectName = function(s){
@@ -13,33 +10,21 @@ function JobBostValidator(){
 	}
 	this.validateSkill = function(s)
 	{
-		return $('.job_skill').length;
-	}
-	this.validateDescription = function(s)
-	{
-		return s.length >= 30;
-	}
-	this.validateMinSum = function(s)
-	{
-		return s.val() >= 10;
-	}
-	this.validateMaxSum = function(s)
-	{
-		return s.length >= 6;
+		return $('.contest_skill').length;
 	}
 	this.showErrors = function(e){
-		
+		for(var i=0;i<e.length;i++){
+			alert(e[i]);
+		}
 	}
 }
-JobBostValidator.prototype.validateForm=function(){
+ContestBostValidator.prototype.validateForm=function(){
 	var e = [];
-	for (var i=0; i < this.controlGroups.length; i++) this.controlGroups[i].removeClass('error');
-	if (this.validateEmail(this.formFields[0].val()) == false) {
-		this.controlGroups[0].addClass('error'); e.push('Please Enter A Valid Email');
+	if (this.validateProjectName(this.formFields[0].val()) == false) {
+		e.push('This field is required (project name).');
 	}
-	if (this.validatePassword(this.formFields[1].val()) == false) {
-		this.controlGroups[1].addClass('error');
-		e.push('Password Should Be At Least 6 Characters');
+	if (this.validateSkill(this.formFields[1].val()) == false) {
+		e.push('Please select at least 1 skill.');
 	}
 	if (e.length) this.showErrors(e);
 	
