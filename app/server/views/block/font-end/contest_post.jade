@@ -5,6 +5,7 @@ block content
 		#form-post-contest
 			form(method="post", action="/addpostcontest", id="post_contest_form", enctype="multipart/form-data;utf-8")
 				input(type="hidden", id="contest_post_type", name="contest_post_type", value="0")
+				input(type="hidden", id="contest_post_f", name="contest_post_f", value="0")
 				p
 					span What work do you require?
 					select(id="skill_category", name="skill_category")

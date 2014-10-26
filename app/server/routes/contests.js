@@ -8,17 +8,21 @@ module.exports = function (app) {
 	// Redirect to home page
 	//--------------------------------------
 	app.get('/contests', function (req, res) {
-		if(req.session.user==null){
-			res.render('block/font-end/contests', {
-				title : "List contests",
-				user : null
-			});
-		}else{
-			res.render('block/font-end/contests', {
-				title:"List contests",
-				user : req.session.user
-			});
-		}
+		CM.getContestDefault(20, 0, function(errContests, resContests) {
+			if(req.session.user==null){
+				res.render('block/font-end/contests', {
+					title : "List contests",
+					user : null,
+					resContests : resContests
+				});
+			}else{
+				res.render('block/font-end/contests', {
+					title:"List contests",
+					user : req.session.user,
+					resContests : resContests
+				});
+			}
+		});
 	});
 	//--------------------------------------
 	// Redirect to page post contest
@@ -99,18 +103,29 @@ module.exports = function (app) {
 					var location = req.param('job_location')[0]
 				}
 				// File up load for contest
-				var file_up = req.param('public_id');
 				var file_all = new Array();
-				if(file_up!=undefined){
-					for(var i=0;i<file_up[0].length;i++){
+				var num_file = req.param('contest_post_f');
+				if(num_file>0){
+					if(num_file==1){
 						var do_file = {
-							public_id: req.param('public_id')[0][i],
-							format: req.param('format')[0][i],
-							created_at: req.param('created_at')[0][i],
-							bytes: req.param('bytes')[0][i],
-							type: req.param('type')[0][i]
+							public_id: req.param('public_id')[0],
+							format: req.param('format')[0],
+							created_at: req.param('created_at')[0],
+							bytes: req.param('bytes')[0],
+							type: req.param('type')[0]
 						};
 						file_all.push(do_file);
+					}else{
+						for(var i=0;i<num_file;i++){
+							var do_file = {
+								public_id: req.param('public_id')[0][i],
+								format: req.param('format')[0][i],
+								created_at: req.param('created_at')[0][i],
+								bytes: req.param('bytes')[0][i],
+								type: req.param('type')[0][i]
+							};
+							file_all.push(do_file);
+						}
 					}
 				}
 				// Date for contest

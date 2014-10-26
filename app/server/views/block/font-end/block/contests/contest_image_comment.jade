@@ -1,0 +1,8 @@
+-	for(var i=0;i<dataImage.length;i++)
+		.tic-item-img
+			.t-i-i-remove
+			img(src='/upload/contests?type=resize&width=380&height=190&name='+dataImage[i].public_id+'.'+dataImage[i].format+'')
+			input(type="hidden", name="bytes[]", value=""+dataImage[i].bytes+"", class="bytes")
+			input(type="hidden", name="created_at[]", value=""+dataImage[i].created_at+"", class="created_at")
+			input(type="hidden", name="format[]", value=""+dataImage[i].format+"", class="format")
+			input(type="hidden", name="public_id[]", value=""+dataImage[i].public_id+"", class="public_id")

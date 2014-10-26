@@ -36,7 +36,7 @@ module.exports = function (app) {
 				email    	: req.param('reg-email-tf'),
 				pass	  	: req.param('reg-pass-tf'),
 				loca_id	  	: ''+resLoItem._id+'',
-				avatar		: '/upload/profile_avatar/default_avatar.jpg',
+				avatar		: '/images/default_avatar.jpg',
 				type		: req.param('f_type')
 			};
 			PM.addNewAccount(document, function(errUser, resUser){

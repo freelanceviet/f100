@@ -82,6 +82,8 @@ $(document).ready(function(){
 	});
 	// Form post job action
 	$('#rp-bt-action-form').click(function(){
+		var num_file = $('.ffi_remove').length;
+		$('#contest_post_f').val(num_file);
 		$('#post_job_form').ajaxForm({
 			beforeSubmit : function(formData, jqForm, options){
 				return V_JP.validateForm();

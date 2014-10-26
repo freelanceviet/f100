@@ -75,21 +75,25 @@ $(document).ready(function(){
 		});
 		
 	});
-	// Form post job action
-	$('#post_contest_form').ajaxForm({
-		beforeSubmit : function(formData, jqForm, options){
-			return v_CP.validateForm();
-		},
-		success	: function(responseText, status, xhr, $form){
-			if(responseText=='not-login'){
-				alert("Please login to continue!");
-			}else{
-				alert("Post Success!");
+	// Form post contest action
+	$('#rp-bt-action-form').click(function(){
+		var num_file = $('.ffi_remove').length;
+		$('#contest_post_f').val(num_file);
+		$('#post_contest_form').ajaxForm({
+			beforeSubmit : function(formData, jqForm, options){
+				return v_CP.validateForm();
+			},
+			success	: function(responseText, status, xhr, $form){
+				if(responseText=='not-login'){
+					alert("Please login to continue!");
+				}else{
+					alert("Post Success!");
+				}
+			},
+			error : function(e){
+				alert(e.responseText);
 			}
-		},
-		error : function(e){
-            alert(e.responseText);
-		}
+		});
 	});
 	// Event change currency
 	$('#currency').change(function() {

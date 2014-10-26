@@ -142,9 +142,19 @@ body{
 .item_contest{
 	float:left;
 	width:243px;
-	height:200px;
+	height:250px;
 	border:1px solid #ccc;
 	margin:5px;
+	overflow: hidden;
+}
+.item_contest .ic_img{
+	float:left;
+	width:100%;
+	height:200px;
+	overflow: hidden;
+}
+.item_contest .ic_img img{
+	width:100%;
 }
 .hlb_option_job_type{
 	float:left;
@@ -417,22 +427,53 @@ body{
 .avatar{
 	position: absolute;
 	bottom: -45px;
-	left: 77px;
+	left: 43px;
 	width: 160px;
 	height: 160px;
 	border: 1px solid #ccc;
 }
-.avatar img{
+.avatar-content{
+	float:left;
+	position:relative;
+	width:100%;
+	height:100%;
+}
+#edit-event-contest-avatar{
+	position:absolute;
+	bottom:0px;
+	right:0px;
+}
+#edit-event-contest-banner{
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+.avatar-content img{
+	position:absolute;
 	width:100%;
 	height:100%;
 } 
 .title_contest{
 	position: absolute;
-	left: 300px;
-	bottom: 42px;
+	left: 223px;
+	bottom: 18px;
 	width: 300px;
 	font-size: 20px;
 	text-align: center;
+}
+.c2li_header{
+	float:left;
+	margin-left:5px;
+	width:96%;
+	height:30px;
+	border-bottom:1px solid #ccc;
+}
+.c2li_header h3{
+	float: left;
+	color: black;
+	font-size: 15px;
+	margin-top: 5px;
+	margin-left: 5px;
 }
 .like_share{
 	position:absolute;
@@ -493,7 +534,18 @@ body{
 	width:703px;
 	min-height:100px;
 	margin-left:20px;
-	background-color:red;
+}
+.c2_right .post_comment_contest{
+	float:left;
+	width:100%;
+	min-height:100px;
+	border:1px solid #ccc;
+}
+.pcc_header{
+	float:left;
+	width:100%;
+	height:30px;
+	border-bottom:1px solid black;
 }
 .description-01{
 	float: left;
@@ -508,4 +560,88 @@ body{
 	background-color: black;
 	margin-left: 10px;
 	margin-bottom:10px;
+}
+.pcc_content{
+	float:left;
+	width:100%;
+	height:40px;
+}
+.pcc_content textarea{
+	float:left;
+	width:99%;
+	height:100%;
+}
+.pcc_image_content{
+	float: left;
+	width: 100%;
+	margin-top: 5px;
+	background-color: red;
+}
+.pcc_buttom{
+	float:left;
+	width:100%;
+	height:30px;
+	margin-top: 12px;
+}
+.tic-item-img{
+	float:left;
+	width:150px;
+	height:100px;
+}
+.tic-item-img img{
+	width:100%;
+	height:100%;
+}
+.list_comment_contest{
+	float:left;
+	width:100%;
+}
+.l2c_item{
+	float:left;
+	border:1px solid #ccc;
+	background-color:red;
+	margin-top:10px;
+	min-height:100px;
+	width:100%;
+}
+.l2ci_info_user{
+	float: left;
+	width: 98%;
+	height: 50px;
+	border-bottom: 1px solid #ccc;
+	margin: 7px;
+}
+.l2ci_info_user img{
+	float:left;
+	width:40px;
+	height:40px;
+	margin:2px;
+}
+.l2ci_info_user a{
+	float:left;
+	width:80%;
+}
+.l2ci_info_user span{
+	float:left;
+	width:80%;
+}
+.l2ci_description{
+	float: left;
+	width: 98%;
+	margin: 10px;
+}
+.l2ci_description span{
+	color:black;
+	font-size:14px;
+}
+.l2ci_image{
+	float: left;
+	width: 98%;
+	margin: 10px;
+}
+.l2ci_image img{
+	float: left;
+	width: 224px;
+	height: 150px;
+	margin-right: 5px;
 }
