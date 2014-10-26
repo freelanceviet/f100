@@ -6,14 +6,14 @@ block content
 			img(src="/images/banner.jpg")
 		#popular-competition
 			h1 Popular competition
-			-	for(var i=0;i<8;i++)
-					a(href="/contestdetail", class="item_pc")
+			-	for(var i=0;i<resContests.length;i++)
+					a(href="/contestdetail?id="+resContests[i]._id+"&value="+resContests[i].project_name.replace(/ /g,"-")+"", class="item_pc")
 			a(href="/contests", class="view-all-c") View all
 		#job-category
 			h1 Our jobs database
 			#our-jobs
-				-	for(var i=0;i<8;i++)
-					a(href="/jobdetail", class="oj_item")
+				-	for(var i=0;i<resJobs.length;i++)
+						a(href="/jobdetail?id="+resJobs[i]._id+"&name="+resJobs[i].project_name.replace(/ /g,"-")+"", class="oj_item")
 				a(href="/jobs", class="view-all-j") View all
 			#home_category
 				h3 Categories
