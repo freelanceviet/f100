@@ -75,8 +75,8 @@ exports.insertCommentContest = function(document, callback){
 // Get list comment of contest with id contest
 // note: 
 // ------------------------------------
-exports.getListCommentContest = function(limit, skip, callback){
-	free_comments.find({})
+exports.getListCommentContest = function(id, limit, skip, callback){
+	free_comments.find({{_id:new ObjectID(id)})
 	.limit(parseInt(limit))
 	.skip(parseInt(skip))
 	.sort([['time_sort', 'asc']])

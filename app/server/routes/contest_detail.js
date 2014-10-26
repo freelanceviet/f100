@@ -10,7 +10,7 @@ module.exports = function (app) {
 		if(req.query.id!=undefined && req.query.value!=undefined){
 			var id_contest = req.query.id;
 			CM.getItemContest(id_contest, function(errContestItem, resContestItem){
-				CM.getListCommentContest(20,0, function(errComments, resComments){
+				CM.getListCommentContest(id_contest, 20, 0, function(errComments, resComments){
 					if(resContestItem){
 						if(req.session.user == null) {
 							res.render('block/font-end/contest_detail', {
