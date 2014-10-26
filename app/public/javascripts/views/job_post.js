@@ -81,19 +81,21 @@ $(document).ready(function(){
 		});
 	});
 	// Form post job action
-	$('#post_job_form').ajaxForm({
-		beforeSubmit : function(formData, jqForm, options){
-			return V_JP.validateForm();
-		},
-		success	: function(responseText, status, xhr, $form){
-			if(responseText=='not-login'){
-				alert("Please login to continue!");
-			}else{
-				alert("Post Success!");
+	$('#rp-bt-action-form').click(function(){
+		$('#post_job_form').ajaxForm({
+			beforeSubmit : function(formData, jqForm, options){
+				return V_JP.validateForm();
+			},
+			success	: function(responseText, status, xhr, $form){
+				if(responseText=='not-login'){
+					alert("Please login to continue!");
+				}else{
+					alert("Post Success!");
+				}
+			},
+			error : function(e){
+				alert(e.responseText);
 			}
-		},
-		error : function(e){
-            alert(e.responseText);
-		}
+		});
 	});
 });

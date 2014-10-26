@@ -29,9 +29,13 @@ exports.addJob = function(document, callback){
 									callback(null, resDocument);
 								}
 							);
+						}else{
+							callback(null, resDocument);
 						}
 					}
 				);
+			}else{
+				callback(null, resDocument);
 			}
 		}else{
 			callback(null,null);

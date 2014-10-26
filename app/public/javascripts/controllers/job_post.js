@@ -42,6 +42,7 @@ JobPost.prototype.uploadImageForCommentPlace=function(){
 			success:function(response, status, xhr, $form){
 				$('.job_post_file_content').html(response);
 				$("#typeSubmitPlace").val(0);
+				$('#job_post_file').attr({ value: '' }); 
 			}, 
 			error:function(e){
 			}
