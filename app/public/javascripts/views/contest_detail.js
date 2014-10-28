@@ -72,5 +72,36 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
+	// Event like comment contest
+	$('body').on('click', '.event_like_comment_contest', function (e) {
+		var se = $(this);
+		var urlGet = "/likeCommentContest?id="+se.attr('data-id')+"&type="+se.attr('data-type')+"";
+		$.get(urlGet, function(data){
+			alert(data);
+		});
+	});
+	// Event click show comment input
+	$('body').on('click', '.event_enter_comment_contest', function (e) {
+		$(this).parents('.l2c_item').find('.option_comment_contest').toggle();
+	});
+	// Event click send message comment of comment contest
+	$('body').on('click', '.bt_submit_comment_sub', function (e) {
+		var se =  $(this).parents('.l2c_item');
+		var text = se.find('textarea').val();
+		if(text){
+			se.find('.form_comment_sub').ajaxForm({
+				beforeSubmit : function(formData, jqForm, options){
+					alert('len luon');
+				},
+				success	: function(responseText, status, xhr, $form){
+					alert(responseText);
+				},
+				error : function(e){
+					alert(e.responseText);
+				}
+			});
+		}else{
+			alert('Please enter content!');
+		}
+	});
 });

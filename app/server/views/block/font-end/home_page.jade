@@ -7,7 +7,7 @@ block content
 		#popular-competition
 			h1 Popular competition
 			-	for(var i=0;i<resContests.length;i++)
-					a(href="/contestdetail?id="+resContests[i]._id+"&value="+resContests[i].project_name.replace(/ /g,"-")+"", class="item_pc")
+					a(href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"", class="item_pc")
 			a(href="/contests", class="view-all-c") View all
 		#job-category
 			h1 Our jobs database

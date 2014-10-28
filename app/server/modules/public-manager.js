@@ -7,6 +7,7 @@ var free_currency	      = Mogodb.free_currency;
 var free_currency_range	  = Mogodb.free_currency_range;
 var free_optional	      = Mogodb.free_optional;
 var free_location	      = Mogodb.free_location;
+var free_comments		  = Mogodb.free_comments;
 var ObjectID	          = Mogodb.ObjectID;
 
 // ------------------------------------
@@ -152,5 +153,27 @@ exports.getItemLocation = function(name,callback){
 		}else{
 			callback(null,null);
 		}
+	});
+};
+
+// ------------------------------------
+// Update like for comment
+// note: 
+// callback: 1 or 0
+// ------------------------------------
+exports.updateLikeContest = function(id, document, callback){
+	free_comments.update({_id:new ObjectID(id)}, {$push: {list_like:document}}, {multi:true}, function(errLikeUpdate,resLikeUpdate) {
+		callback(null,resLikeUpdate);
+	});
+};
+
+// ------------------------------------
+// Update comment for comment
+// note: 
+// callback: 1 or 0
+// ------------------------------------
+exports.updateCommentContest = function(id, document, callback){
+	free_comments.update({_id:new ObjectID(id)}, {$push: {list_comment:document}}, {multi:true}, function(errCommentUpdate,resCommentUpdate) {
+		callback(null,resCommentUpdate);
 	});
 };

@@ -1,0 +1,45 @@
+extends ../../layout_font_end
+
+block content
+	#content
+		#contest_detail_view
+			.banner_contest
+				if(user && user._id==resContestItem.user_info.user_id)
+					form(method="post", action="/change_banner_contest_image", id="edit-event-contest-banner")
+						.upload
+							input(id="photoimg-contest-banner", type="file", name="photos")
+						input(type='hidden', name="id_contest", value=""+resContestItem._id+"")
+				if(resContestItem.image_banner!=undefined)
+					img(src='/upload/profile_avatar?type=resize&width=1000&height=333&name='+resContestItem.image_banner.public_id+'.'+resContestItem.image_banner.format+'', class="banner_contest_jq")
+				else
+					img(src="/images/allthecrg-banner.jpg", class="banner_contest_jq")
+				.avatar
+					.avatar-content
+						if(resContestItem.image_avatar!=undefined)
+							img(src='/upload/profile_avatar?type=resize&width=130&height=130&name='+resContestItem.image_avatar.public_id+'.'+resContestItem.image_avatar.format+'')
+						else
+							img(src="/images/default_contest.png")
+						if(user && user._id==resContestItem.user_info.user_id)
+							form(method="post", action="/change_avatar_contest_image", id="edit-event-contest-avatar")
+								.upload
+									input(id="photoimg-contest-avatar", type="file", name="photos")
+								input(type='hidden', name="id_contest", value=""+resContestItem._id+"")
+				.title_contest= resContestItem.project_name
+				.like_share
+					a(href="") Like
+					a(href="") Share
+				.list_option_su
+					a(href="/contestdetail?id="+resContestItem._id+"&tab=timeline&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Timeline
+					a(href="/contestdetail?id="+resContestItem._id+"&tab=brief&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Cotest Brief
+					a(href="/contestdetail?id="+resContestItem._id+"&tab=proposal&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Proposals
+				.submitssion Submission
+			.content_contest
+				.c2_left
+					include contest_detail_bar
+				.c2_right
+					.c2_r_bief
+						h2 About
+						span= resContestItem.job_description
+block script
+	script(src='/javascripts/form-validators/jobContestValidator.js')
+	script(src='/javascripts/views/contest_detail.js')

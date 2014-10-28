@@ -52,6 +52,7 @@ module.exports = function (app) {
 			cu_rate:cu_rate
 		});
 	});
+	
 	//--------------------------------------
 	// Resize image for page
 	//--------------------------------------
@@ -85,6 +86,55 @@ module.exports = function (app) {
 			var img = fs.readFileSync('app/public/upload/'+type+'/'+name+'');
 			res.writeHead(200, {'Content-Type': 'image/jpg' });
 			res.end(img, 'binary');
+		}
+	});
+	
+	//--------------------------------------
+	// Event click like comment contest
+	//--------------------------------------
+	app.get('/likeCommentContest', function (req, res) {
+		if(req.session.user!=null){
+			if(req.query.id != undefined && req.query.type!=undefined){
+				var d = new Date();
+				var n = d.getTime();
+				var document = {
+					full_name : req.session.user.last_name+" "+req.session.user.first_name,
+					user_id : ""+req.session.user._id+"",
+					time_sort : n
+				};
+				ALL.updateLikeContest(req.query.id, document, function(errLikeContest, resLikeContest){
+					res.send(resLikeContest, 200);
+				});
+			}else{
+				res.send('Url not found!', 200);
+			}
+		}else{
+			res.send('Login to continue!', 200);
+		}
+	});
+	//--------------------------------------
+	// Event click like comment contest
+	//--------------------------------------
+	app.post('/store_comment_sub', function (req, res) {
+		if(req.session.user!=null){
+			var d = new Date();
+			var n = d.getTime();
+			var comment_id = req.param('comment_id');
+			var content = req.param('comment_nd');
+			var document = {
+				comment_id : comment_id,
+				content : content,
+				full_name : req.session.user.last_name+" "+req.session.user.first_name,
+				user_id : ""+req.session.user._id+"",
+				user_avatar : req.session.user.avatar,
+				time_sort : n
+			};
+			ALL.updateCommentContest(comment_id, document, function(errCommentContest, resCommentContest){
+				res.send(resCommentContest, 200);
+			});
+			
+		}else{
+			res.send('Login to continue!', 200);
 		}
 	});
 }

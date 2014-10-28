@@ -7,31 +7,75 @@ module.exports = function (app) {
 	// router admin home page
 	//--------------------------------------
 	app.get('/contestdetail', function (req, res) {
-		if(req.query.id!=undefined && req.query.value!=undefined){
+		if(req.query.id!=undefined && req.query.value!=undefined && req.query.tab!=undefined){
 			var id_contest = req.query.id;
-			CM.getItemContest(id_contest, function(errContestItem, resContestItem){
-				CM.getListCommentContest(id_contest, 20, 0, function(errComments, resComments){
+			if(req.query.tab=="timeline"){
+				CM.getItemContest(id_contest, function(errContestItem, resContestItem){
+					CM.getListCommentContest(id_contest, 20, 0, function(errComments, resComments){
+						if(resContestItem){
+							if(req.session.user == null) {
+								res.render('block/font-end/contest_detail', {
+									title : "List contests",
+									user : null,
+									resContestItem : resContestItem,
+									resComments : resComments
+								});
+							}else{
+								res.render('block/font-end/contest_detail', {
+									title : "List contests",
+									user : req.session.user,
+									resContestItem : resContestItem,
+									resComments : resComments
+								});
+							}
+						}else{
+							res.send('url not correct!', 200);
+						}
+					});
+				});
+			}else if(req.query.tab=="brief"){
+				CM.getItemContest(id_contest, function(errContestItem, resContestItem){
 					if(resContestItem){
 						if(req.session.user == null) {
-							res.render('block/font-end/contest_detail', {
+							res.render('block/font-end/contest_detail_brief', {
 								title : "List contests",
 								user : null,
-								resContestItem : resContestItem,
-								resComments : resComments
+								resContestItem : resContestItem
 							});
 						}else{
-							res.render('block/font-end/contest_detail', {
+							res.render('block/font-end/contest_detail_brief', {
 								title : "List contests",
 								user : req.session.user,
-								resContestItem : resContestItem,
-								resComments : resComments
+								resContestItem : resContestItem
 							});
 						}
 					}else{
 						res.send('url not correct!', 200);
 					}
 				});
-			});
+			}else if(req.query.tab=="proposal"){
+				CM.getItemContest(id_contest, function(errContestItem, resContestItem){
+					if(resContestItem){
+						if(req.session.user == null) {
+							res.render('block/font-end/contest_detail_proposal', {
+								title : "List contests",
+								user : null,
+								resContestItem : resContestItem
+							});
+						}else{
+							res.render('block/font-end/contest_detail_proposal', {
+								title : "List contests",
+								user : req.session.user,
+								resContestItem : resContestItem
+							});
+						}
+					}else{
+						res.send('url not correct!', 200);
+					}
+				});
+			}else{
+				res.send('url not correct!', 200);
+			}
 		}else{
 			res.send('url not correct!', 200);
 		}

@@ -6,7 +6,8 @@ block content
 			.banner_contest
 				if(user && user._id==resContestItem.user_info.user_id)
 					form(method="post", action="/change_banner_contest_image", id="edit-event-contest-banner")
-						input(id="photoimg-contest-banner", type="file", name="photos")
+						.upload
+							input(id="photoimg-contest-banner", type="file", name="photos")
 						input(type='hidden', name="id_contest", value=""+resContestItem._id+"")
 				if(resContestItem.image_banner!=undefined)
 					img(src='/upload/profile_avatar?type=resize&width=1000&height=333&name='+resContestItem.image_banner.public_id+'.'+resContestItem.image_banner.format+'', class="banner_contest_jq")
@@ -20,34 +21,21 @@ block content
 							img(src="/images/default_contest.png")
 						if(user && user._id==resContestItem.user_info.user_id)
 							form(method="post", action="/change_avatar_contest_image", id="edit-event-contest-avatar")
-								input(id="photoimg-contest-avatar", type="file", name="photos")
+								.upload
+									input(id="photoimg-contest-avatar", type="file", name="photos")
 								input(type='hidden', name="id_contest", value=""+resContestItem._id+"")
 				.title_contest= resContestItem.project_name
 				.like_share
 					a(href="") Like
 					a(href="") Share
 				.list_option_su
-					.los_item Timeline
-					.los_item Cotest Brief
-					.los_item Proposals
+					a(href="/contestdetail?id="+resContestItem._id+"&tab=timeline&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Timeline
+					a(href="/contestdetail?id="+resContestItem._id+"&tab=brief&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Cotest Brief
+					a(href="/contestdetail?id="+resContestItem._id+"&tab=proposal&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Proposals
 				.submitssion Submission
 			.content_contest
 				.c2_left
-					.c2_l_item
-						.c2li_header
-							h3 Prize
-					.c2_l_item
-						.c2li_header
-							h3 Deadline & Important Date
-					.c2_l_item
-						.c2li_header
-							h3 People
-					.c2_l_item
-						.c2li_header
-							h3 Recently Proposals
-					.c2_l_item
-						.c2li_header
-							h3 Similar contest
+					include contest_detail_bar
 				.c2_right
 					.post_comment_contest
 						form(method="post", action="/post_comment_contest", id="post-comment-contest")
@@ -56,7 +44,7 @@ block content
 							input(type="hidden", id="contest_post_type", name="contest_post_type", value="0")
 							.pcc_header
 								span Post
-									input(type="file", multiple="true", name="ac_img[]", class="tc0_bt_img", id="photoimg-contest-comment")
+								input(type="file", multiple="true", name="ac_img[]", class="tc0_bt_img", id="photoimg-contest-comment")
 							.pcc_content
 								textarea(name="f_comment_contest", id="f_comment_contest")
 							.pcc_image_content
@@ -75,7 +63,23 @@ block content
 										if(resComments[i].file!=undefined)
 											-	for(var j=0; j<resComments[i].file.length; j++)
 													img(src='/upload/contests?type=resize&width=400&height=300&name='+resComments[i].file[j].public_id+'.'+resComments[i].file[j].format+'')
-										
+									.l2ci_comment
+										if(resComments[i].list_comment!=undefined)
+											-	for(var j=0; j<resComments[i].list_comment.length; j++)
+													.l2ci_item
+														img(src=""+resComments[i].list_comment[j].user_avatar+"")
+														.l2ci_item_info
+															h2= resComments[i].list_comment[j].full_name
+															span= resComments[i].list_comment[j].content
+									.l2ci_option
+										a(href="javascript:void(0);", data-id=""+resComments[i]._id+"", data-type="like", class="event_like_comment_contest") Like
+										a(href="javascript:void(0);", class="event_enter_comment_contest") Comment
+										a(href="") Share
+									.option_comment_contest
+										form(method="post", action="/store_comment_sub", class="form_comment_sub")
+											input(type="hidden", name="comment_id", value=""+resComments[i]._id+"")
+											textarea(name="comment_nd", style="float:left; width:99%;margin-bottom:5px")
+											input(type="submit", value="Send", class="bt_submit_comment_sub")
 block script
 	script(src='/javascripts/form-validators/jobContestValidator.js')
 	script(src='/javascripts/views/contest_detail.js')
