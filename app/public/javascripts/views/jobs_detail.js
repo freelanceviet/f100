@@ -29,7 +29,9 @@ $(document).ready(function(){
 	// Event click submit form
 	$('body').on('click', '#bt_submit_form_proposal', function (e) {
 		var num_file = $('.ffi_remove').length;
+		var num_item = $('.ip_list_item').find('.item_price_pro').length;
 		$('#contest_post_f').val(num_file);
+		$('#contest_post_r').val(num_item);
 		$('#form_post_proposal').ajaxForm({
 			beforeSubmit : function(formData, jqForm, options){
 				return PV.validateForm();

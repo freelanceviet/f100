@@ -2,6 +2,7 @@ var Mogodb   	  = require('../mongodb/connection');
 
 var free_jobs	          = Mogodb.free_jobs;
 var free_categories	      = Mogodb.free_categories;
+var free_proposals	      = Mogodb.free_proposals;
 var ObjectID	          = Mogodb.ObjectID;
 
 // ------------------------------------
@@ -66,6 +67,20 @@ exports.getItemJob = function(id, callback){
 			callback(null,resItemJob);
 		}else{
 			callback(null,null);
+		}
+	});
+};
+
+// ------------------------------------
+// Insert proposal
+// note: 
+// ------------------------------------
+exports.insertProposal = function(document, callback){
+	free_proposals.insert(document, function(errDocument, resDocument){
+		if(resDocument){
+			callback(null, resDocument);
+		}else{
+			callback(null, null);
 		}
 	});
 };

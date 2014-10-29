@@ -68,6 +68,18 @@ module.exports = function (app) {
 						}
 					}
 				}
+				// Item price
+				var price_all = new Array();
+				var num_price = req.param('contest_post_r');
+				for(var i=0; i<num_price;i++){
+					if(req.param('form_proposal_item_name')){
+						var do_price = {
+							item_name : req.param('form_proposal_item_name')[0][i],
+							item_price : req.param('form_proposal_item_value')[0][i]
+						};
+						price_all.push(do_price);
+					}
+				}
 				//
 				var id_job = req.param('job_id');
 				// Date for contest
@@ -86,15 +98,15 @@ module.exports = function (app) {
 					project_id : req.param('job_id'),
 					proposal_description : req.param('des_proposal'),
 					file_up : file_all,
+					price_item : price_all,
 					user_info : user_info, 
 					date_add : addDate.format('YYYY-MM-DD hh:mm:ss'),
 					date_spam : n,
 					date_update : n,
 				};
-				res.send('dang lam khuc nay chua xong',200);
-				// CM.addContest(document, function(errContest, resContest){
-					// res.send('success',200);
-				// });
+				JM.insertProposal(document, function(errProposal, resProposal){
+					res.send('success',200);
+				});
 			}else{
 				IM.uploadimage('proposals',req.files.files_proposal[0], function(errFile, resFile){
 					res.render('block/font-end/block/jobs/file', {
