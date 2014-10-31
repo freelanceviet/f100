@@ -1,0 +1,16 @@
+extends ../../layout_font_end
+
+block content
+	#content
+		#hourlies_content
+			.ho_left
+				.block_search
+					input(type="text", name="hourlie_input_search", placeholder="Search Hourlies...")
+				.jl_box
+					h2 Categories
+					.hlb_list_cate
+						-	for(var i=0; i<resCategories.length; i++)
+								if(resCategories[i].numhourlie!=undefined)
+									a(href="")= resCategories[i].name_en + "(" + resCategories[i].numhourlie + ")"
+								else
+									a(href="")= resCategories[i].name_en

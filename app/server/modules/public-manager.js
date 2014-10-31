@@ -24,6 +24,7 @@ exports.getAllCategories = function(callback){
 		else callback(null, res)
 	});
 };
+
 // ------------------------------------
 // Get list categories
 // note: 

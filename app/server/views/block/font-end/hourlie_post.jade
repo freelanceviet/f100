@@ -1,0 +1,63 @@
+extends ../../layout_font_end
+
+block content
+	#content
+		#form-post-hourlie
+			form(method="post", action="/addposthourlie", id="post_hourlie_form", enctype="multipart/form-data;utf-8")
+				input(type="hidden", id="hourlie_post_type", name="hourlie_post_type", value="0")
+				input(type="hidden", id="hourlie_post_f", name="hourlie_post_f", value="0")
+				p
+					span What work do you require?
+					select(id="skill_category", name="skill_category")
+						option(value="-1") Select a category of work (Optional)
+						-	for(var i=0;i<resCategories.length;i++)
+								option(value=""+resCategories[i]._id+"")= resCategories[i].name_en
+					span(class="skill_category_help_err")
+				p
+					span Project name: 
+					input(type="text", name="project_name", id="project_name", placeholder="What do you need done...")
+					span(class="project_name_help_err")
+				p
+					span Describe your project in detail:
+					textarea(name="job_description", id="job_description", style="width:100%")
+					span(class="job_description_help_err")
+				p
+					span Add file:
+					input(type="file", id="hourlie_post_file", name="files_hourlie[]", multiple="", title="No files selected.", class="valid")
+					span(class="hourlie_post_file_help_err")
+				p(class="hourlie_post_file_content")
+				p
+					span(id="hourlie_currency_title")= resCurrencyDefault.title
+					.hourlie_op_currency
+						select(name="currency", id="currency")
+							-	for(var i=0; i<resCurrency.length;i++)
+									if(resCurrency[i].is_default==0)
+										option(value=""+resCurrency[i]._id+"", title=""+resCurrency[i].title+"", rate_usd=""+resCurrency[i].rate_usd+"")= resCurrency[i].name
+									else
+										option(value=""+resCurrency[i]._id+"", title=""+resCurrency[i].title+"", selected, rate_usd=""+resCurrency[i].rate_usd+"")= resCurrency[i].name
+						
+				p
+					span Price:
+					input(type="text", id="hourlie_price", value="7", maxlength="2", name="hourlie_price")
+				p
+					#add_item_hourlie Add Item
+					#list_hourlie_item
+					.item_pro_default(style="display:none")
+						table
+							tr
+								td
+									input(type="text", style="width:100%", name="form_hourlie_item_name[]", class="item_price_pro")
+								td
+									input(type="text", style="width:100%", placeholder="0.00", name="form_hourlie_item_value[]")
+								td
+									a(href="javascript:void(0);", class="free_delete_item_hourlie") Delete
+				p
+					input(type="submit", value="Post Project Now", id="rp-bt-action-form")
+block script
+	link(rel='stylesheet', href='/plugin/autocomplete/css/examples.css')
+	link(rel='stylesheet', href='/plugin/autocomplete/css/jquery.tagit.css')
+	link(rel='stylesheet', href='/plugin/autocomplete/css/tagit.ui-zendesk.css')
+	script(src='/plugin/autocomplete/js/tag-it.js')
+	script(src='/javascripts/form-validators/hourliePostValidator.js')
+	script(src='/javascripts/controllers/hourlie_post.js')
+	script(src='/javascripts/views/hourlie_post.js')
