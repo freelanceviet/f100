@@ -12,7 +12,7 @@ module.exports = function (app) {
 	app.get('/hourlies', function (req, res) {
 		HM.getHourlieDefault(20, 0, function(errHourlies, resHourlies) {
 			ALL.getAllCategories(function(errCategories, resCategories){
-				ALL.getItemCategorie(function(errItemCategorie, resItemCategorie){
+				ALL.getItemCategory('5441d3bbed7f3d162c7cba71',function(errItemCategorie, resItemCategorie){
 					if(req.session.user==null){
 						res.render('block/font-end/hourlies', {
 							title : "List hourlies",

@@ -815,3 +815,44 @@ div.upload input {
 	height:30px;
 	border:1px solid #ccc;
 }
+.ho_right{
+	float:left;
+	width:824px;
+	min-height:500px;
+}
+#hr_header{
+	float:left;
+	width:98%;
+	margin:20px;
+}
+#hr_header h1{
+	float:left;
+	margin-top:0px;
+}
+#hr_header span{
+	float: left;
+	margin-top: 14px;
+	margin-left: 20px;
+}
+#hr_sort{
+	float:left;
+	width: 98%;
+	height: 30px;
+	background-color: black;
+	margin-left: 20px;
+	margin-top: -33px;
+}
+#hr_conent{
+	float:left;
+	width:98%;
+	margin-left:10px;
+	margin-top:0px;
+}
+.hrc_item{
+	float: left;
+	width: 100%;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	min-height: 30px;
+	margin-left: 10px;
+}

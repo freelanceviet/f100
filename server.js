@@ -64,6 +64,7 @@ require('./app/server/routes/contest_detail')(app);
 require('./app/server/routes/profile')(app);
 require('./app/server/routes/public')(app);
 require('./app/server/routes/hourlie')(app);
+require('./app/server/routes/hourlie_detail')(app);
 
 /**
 * RUN
