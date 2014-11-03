@@ -5,9 +5,17 @@ block content
 		#profile_content
 			#pf_basic_info
 				.pfbi_avatar
-					img(src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/10613060_791975877529222_7968269928891565951_n.jpg?oh=43b72f94135bab491795bd7ef1533aab&oe=54F6E8F2&__gda__=1424897098_b84f34072d22952b3956e10a75845f68")
+					if(resUser.avatar.created_at!=undefined)
+						img(src='/upload/profile_avatar?type=resize&width=1000&height=333&name='+resUser.avatar.public_id+'.'+resUser.avatar.format+'')
+					else
+						img(src=""+resUser.avatar+"")
+					if(user && user._id==resUser._id)
+						form(method="post", action="/change_avatar_profile_user", id="edit-event-profile-avatar")
+							.upload
+								input(id="photoimg-profile-avatar", type="file", name="photos")
+							input(type='hidden', name="id_profile", value=""+resUser._id+"")
 				.pfbi_info
-					a(href="") Dota Dota
+					a(href="")= resUser.last_name+" "+resUser.first_name
 					a(href="") Marketing Manager
 					span	Gioi thieu ve cong viec cua user chan han!... :D
 			#pf_basic_content

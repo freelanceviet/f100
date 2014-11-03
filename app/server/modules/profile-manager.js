@@ -55,6 +55,17 @@ exports.manualLogin = function(email,pass,callback){
 		}
 	});
 }
+
+// ------------------------------------
+// Update avatar image of contest
+// note: 
+// ------------------------------------
+exports.updateAvatarContest = function(id, docImage, callback){
+	free_user.update({_id:new ObjectID(id)}, {$set: {avatar:docImage}}, {multi:true}, function(err) {
+		callback(null, null);
+	});
+};
+
 //
 var generateSalt = function()
 {

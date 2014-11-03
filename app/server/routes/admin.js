@@ -1,12 +1,22 @@
 var Mogodb   = require('../mongodb/connection');
 var AM = require('../modules/admin-manager');
 module.exports = function (app) {
+	
 	//--------------------------------------
-	// router admin home page
+	// Router admin_ home page
 	//--------------------------------------
 	app.get('/admin-home', function (req, res) {
 		res.render('block/admin/home', {
-			title:"Trip setting"
+			title:"Admin"
+		}); 
+	});
+	
+	//--------------------------------------
+	// Router categories
+	//--------------------------------------
+	app.get('/category', function (req, res) {
+		res.render('block/admin/categories', {
+			title:"Categories"
 		}); 
 	});
 }
