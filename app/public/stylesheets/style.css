@@ -856,3 +856,10 @@ div.upload input {
 	min-height: 30px;
 	margin-left: 10px;
 }
+.co_po_item{
+	float:left;
+	width:165px;
+	height:150px;
+	background-color:black;
+	margin:5px;
+}

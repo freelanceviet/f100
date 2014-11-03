@@ -2,6 +2,7 @@ var Mogodb   	   = require('../mongodb/connection');
 
 var free_contests  = Mogodb.free_contests;
 var free_comments  = Mogodb.free_comments;
+var free_proposals = Mogodb.free_proposals;
 var ObjectID	   = Mogodb.ObjectID;
 
 // ------------------------------------
@@ -86,3 +87,31 @@ exports.getListCommentContest = function(id, limit, skip, callback){
 	});
 };
 
+// ------------------------------------
+// Insert proposal
+// note: 
+// ------------------------------------
+exports.insertProposal = function(document, callback){
+	free_proposals.insert(document, function(errDocument, resDocument){
+		if(resDocument){
+			callback(null, resDocument);
+		}else{
+			callback(null, null);
+		}
+	});
+};
+
+// ------------------------------------
+// Get list comment of contest with id contest
+// note: 
+// ------------------------------------
+exports.getListProposalContest = function(id, limit, skip, callback){
+	free_proposals.find({project_id:id})
+	.limit(parseInt(limit))
+	.skip(parseInt(skip))
+	.sort([['date_spam', 'asc']])
+	.toArray(function(err, items)
+	{
+		callback(null,items);
+	});
+};

@@ -37,7 +37,8 @@ block content
 				.c2_left
 					include contest_detail_bar
 				.c2_right
-					h1 Proposal
+					-	for(var i=0; i<resProposalContest.length;i++)
+							.co_po_item
 block script
 	script(src='/javascripts/form-validators/jobContestValidator.js')
 	script(src='/javascripts/views/contest_detail.js')

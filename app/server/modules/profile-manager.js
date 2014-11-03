@@ -9,6 +9,20 @@ var moment   	          = Mogodb.moment;
 // add new account
 // note: 
 // ------------------------------------
+exports.getItemAccount = function(user_id, callback){
+	free_user.findOne({_id:new ObjectID(user_id)}, function(eAccountRe, oAccountRe) {
+		if(oAccountRe){
+			callback(null,oAccountRe);
+		}else{
+			callback(null,null);
+		}
+	});
+};
+
+// ------------------------------------
+// add new account
+// note: 
+// ------------------------------------
 exports.addNewAccount = function(newData, callback){
 	free_user.findOne({email:newData.email}, function(e, o) {
 		if (o){

@@ -6,6 +6,8 @@ module.exports = function (app) {
 	// router profile page
 	//--------------------------------------
 	app.get('/profile', function (req, res) {
+		var id_user = '544b00bf0ee563480a000001';
+		
 		res.render('block/font-end/profile', {
 			title:"List jobs"
 		});

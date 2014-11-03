@@ -32,11 +32,12 @@ block content
 					a(href="/contestdetail?id="+resContestItem._id+"&tab=timeline&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Timeline
 					a(href="/contestdetail?id="+resContestItem._id+"&tab=brief&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Cotest Brief
 					a(href="/contestdetail?id="+resContestItem._id+"&tab=proposal&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Proposals
-				.submitssion Submission
+				a(href="javascript:void(0);", class="submitssion", data-id=""+resContestItem._id+"") Submission
 			.content_contest
 				.c2_left
 					include contest_detail_bar
 				.c2_right
+					.post_form_proposal
 					.post_comment_contest
 						form(method="post", action="/post_comment_contest", id="post-comment-contest")
 							input(type='hidden', name="id_contest", value=""+resContestItem._id+"")
@@ -82,4 +83,5 @@ block content
 											input(type="submit", value="Send", class="bt_submit_comment_sub")
 block script
 	script(src='/javascripts/form-validators/jobContestValidator.js')
+	script(src='/javascripts/form-validators/proposalContestValidator.js')
 	script(src='/javascripts/views/contest_detail.js')
