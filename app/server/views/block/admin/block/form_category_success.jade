@@ -1,0 +1,9 @@
+tr(class="odd gradeX")
+	td= resItem.name_en
+	td
+		a(href="/category?id="+resItem._id+"") null null
+	td(class="center")
+		button(type="button", class="btn btn-warning btn-circle btn_delete_category", data-id=""+resItem._id+"", style="margin-right:5px")
+			i(class="fa fa-times")
+		button(type="button", class="btn btn-primary btn-circle")
+			i(class="fa fa-list")

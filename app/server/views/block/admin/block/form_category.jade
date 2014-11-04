@@ -1,0 +1,13 @@
+.row
+	.col-lg-6
+		form(role="form", method="post", action="/store_category", id="form_admin_category_add", enctype="multipart/form-data;utf-8")
+			.form-group
+				lable Name EN
+				input(class="form-control", name="admin_category_name_en")
+			.form-group
+				lable Name VN
+				input(class="form-control", name="admin_category_name_vn")
+			.form-group
+				lable Rank
+				input(class="form-control", name="admin_category_rank")
+			input(type="submit", class="btn btn-default", value="Submit Button", id="bt_admin_category_submit")
