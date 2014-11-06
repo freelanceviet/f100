@@ -1,0 +1,36 @@
+extends ../../layout_admin
+
+block content
+	.row
+		.col-lg-12
+			h1(class="page-header") Currencies
+	.row
+		.col-lg-12
+			.panel.panel-default
+				.panel-heading
+					button(type="button", class="btn btn-primary", id="event_add_currency") Add currency
+				#form_currency.panel-heading(style="display:none")
+				.panel-body
+					.table-responsive
+						table(class="table table-striped table-bordered table-hover", id="currency-table")
+							thead
+								tr
+									th Name
+									th Title
+									th Is default
+									th Rate Usd
+									th 
+							tbody
+								-	for(var i=0; i<resCurrency.length;i++)
+										tr(class="odd gradeX")
+											td= resCurrency[i].name
+											td= resCurrency[i].title
+											td= resCurrency[i].is_default
+											td= resCurrency[i].rate_usd
+											td(class="center")
+												button(type="button", class="btn btn-warning btn_delete_currency btn-circle", data-id=""+resCurrency[i]._id+"", style="margin-right:5px")
+													i(class="fa fa-times")
+												button(type="button", class="btn btn-primary btn-circle")
+													i(class="fa fa-list")
+block script
+	script(src='/plugin/admin/js/currencies.js')

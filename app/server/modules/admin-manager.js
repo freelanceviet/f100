@@ -102,13 +102,173 @@ exports.deleteCategory = function(id, callback){
 // callback:
 // ------------------------------------
 exports.deleteCategorySub = function(id, id_sub, callback){
-	console.log(id);
-	console.log(id_sub);
 	free_categories.update({_id:new ObjectID(id)}, {$unset: {items:id_sub}}, function(err,res) {
 		if(res){
 			callback(null, res);
 		}else{
 			callback(null, null);
 		}
+	});
+};
+
+// ------------------------------------
+// Insert category
+// note: 
+// callback: item insert
+// ------------------------------------
+exports.insertOptional = function(document, callback){
+	free_optional.insert(document, function(errDocument, resDocument){
+		if(resDocument){
+			callback(null, resDocument);
+		}else{
+			callback(null, null);
+		}
+	});
+};
+
+// ------------------------------------
+// Delete category sub
+// note: 
+// callback:
+// ------------------------------------
+exports.deleteOptional = function(id, callback){
+	free_optional.remove({"_id": ObjectID(id)}, function(errDocument, resDocument){
+		callback(null, null);
+	});
+};
+
+// ------------------------------------
+// Get list categories
+// note: 
+// callback: arr list categories
+// ------------------------------------
+exports.getAllCurrency = function(callback){
+	free_currency.find({})
+	.sort([['rank', 'asc']])
+	.toArray(
+		function(e, res) {
+		if (e) callback(e)
+		else callback(null, res)
+	});
+};
+
+// ------------------------------------
+// Insert category
+// note: 
+// callback: item insert
+// ------------------------------------
+exports.insertCurrency = function(document, callback){
+	free_currency.insert(document, function(errDocument, resDocument){
+		if(resDocument){
+			callback(null, resDocument);
+		}else{
+			callback(null, null);
+		}
+	});
+};
+
+// ------------------------------------
+// Delete currency
+// note: 
+// callback:
+// ------------------------------------
+exports.deleteCurrency = function(id, callback){
+	free_currency.remove({"_id": ObjectID(id)}, function(errDocument, resDocument){
+		callback(null, null);
+	});
+};
+
+// ------------------------------------
+// Get list categories
+// note: 
+// callback: arr list categories
+// ------------------------------------
+exports.getAllSkill = function(callback){
+	free_skill.find({})
+	.sort([['rank', 'asc']])
+	.toArray(
+		function(e, res) {
+		if (e) callback(e)
+		else callback(null, res)
+	});
+};
+
+// ------------------------------------
+// Insert category
+// note: 
+// callback: item insert
+// ------------------------------------
+exports.insertSkill = function(document, callback){
+	free_skill.insert(document, function(errDocument, resDocument){
+		if(resDocument){
+			callback(null, resDocument);
+		}else{
+			callback(null, null);
+		}
+	});
+};
+
+// ------------------------------------
+// Delete currency
+// note: 
+// callback:
+// ------------------------------------
+exports.deleteSkill = function(id, callback){
+	free_skill.remove({"_id": ObjectID(id)}, function(errDocument, resDocument){
+		callback(null, null);
+	});
+};
+
+// ------------------------------------
+// Get list categories
+// note: 
+// callback: arr list categories
+// ------------------------------------
+exports.getAllLocation = function(callback){
+	free_location.find({})
+	.toArray(
+		function(e, res) {
+		if (e) callback(e)
+		else callback(null, res)
+	});
+};
+
+// ------------------------------------
+// Insert location
+// note: 
+// callback: item insert
+// ------------------------------------
+exports.insertLocation = function(document, callback){
+	free_location.insert(document, function(errDocument, resDocument){
+		if(resDocument){
+			callback(null, resDocument);
+		}else{
+			callback(null, null);
+		}
+	});
+};
+
+// ------------------------------------
+// Delete currency
+// note: 
+// callback:
+// ------------------------------------
+exports.deleteLocation = function(id, callback){
+	free_location.remove({"_id": ObjectID(id)}, function(errDocument, resDocument){
+		callback(null, null);
+	});
+};
+
+// ------------------------------------
+// Get list categories
+// note: 
+// callback: arr list categories
+// ------------------------------------
+exports.getCurrencyRange = function(callback){
+	free_currency_range.find({})
+	.toArray(
+		function(e, res) {
+		if (e) callback(e)
+		else callback(null, res)
 	});
 };

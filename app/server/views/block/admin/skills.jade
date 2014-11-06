@@ -1,0 +1,30 @@
+extends ../../layout_admin
+
+block content
+	.row
+		.col-lg-12
+			h1(class="page-header") All skills
+	.row
+		.col-lg-12
+			.panel.panel-default
+				.panel-heading
+					button(type="button", class="btn btn-primary", id="event_add_skill") Add skill
+				#form_skill.panel-heading(style="display:none")
+				.panel-body
+					.table-responsive
+						table(class="table table-striped table-bordered table-hover", id="skill-table")
+							thead
+								tr
+									th Skill name
+									th Option
+							tbody
+								-	for(var i=0; i<resSkill.length;i++)
+										tr(class="odd gradeX")
+											td= resSkill[i].name
+											td(class="center")
+												button(type="button", class="btn btn-warning btn_delete_skill btn-circle", data-id=""+resSkill[i]._id+"", style="margin-right:5px")
+													i(class="fa fa-times")
+												button(type="button", class="btn btn-primary btn-circle")
+													i(class="fa fa-list")
+block script
+	script(src='/plugin/admin/js/skills.js')

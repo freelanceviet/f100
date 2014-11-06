@@ -1,0 +1,5 @@
+lable Category Sub
+	select(class="form-control input-sm", name="category_sub")
+		option(value="") -----
+		-	for(var i=0;i<resCategory.items.length;i++)
+				option(value=""+resCategory.items[i].id+"")= resCategory.items[i].name

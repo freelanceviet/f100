@@ -8,16 +8,16 @@ $(document).ready(function(){
 			$('#form_optional').html(data);
 		});
 	});
-	// Event click add submit category 
-	$('body').on('click', '#bt_admin_category_submit', function (e) {
-		$('#form_admin_category_add').ajaxForm({
+	// Event click add submit optional
+	$('body').on('click', '#bt_admin_optional_submit', function (e) {
+		$('#form_admin_optional_add').ajaxForm({
 			beforeSubmit : function(formData, jqForm, options){
 				
 			},
 			success	: function(responseText, status, xhr, $form){
-				$('#category-table').append(responseText);
-				$('#form_category').css('display','none');
-				$('#form_category').empty();
+				$('#optional-table').append(responseText);
+				$('#form_optional').css('display','none');
+				$('#form_optional').empty();
 			},
 			error : function(e){
 				alert(e.responseText);
@@ -25,9 +25,9 @@ $(document).ready(function(){
 		});
 	});
 	// Event click remove category 
-	$('body').on('click', '.btn_delete_category', function (e) {
+	$('body').on('click', '.btn_delete_optional', function (e) {
 		var se = $(this);
-		var getUrl = "/deleteCategory?id="+se.attr('data-id')+"";
+		var getUrl = "/deleteOptional?id="+se.attr('data-id')+"";
 		$.get(getUrl, function(data){
 			se.parents('tr').remove();
 		});

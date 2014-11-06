@@ -1,0 +1,36 @@
+extends ../../layout_admin
+
+block content
+	.row
+		.col-lg-12
+			h1(class="page-header") All currency range
+	.row
+		.col-lg-12
+			.panel.panel-default
+				.panel-heading
+					button(type="button", class="btn btn-primary", id="event_add_currency_range") Add currency range
+				#form_currency_range.panel-heading(style="display:none")
+				.panel-body
+					.table-responsive
+						table(class="table table-striped table-bordered table-hover", id="currency_range-table")
+							thead
+								tr
+									th Currency range name
+									th From
+									th To
+									th Is Default
+									th Option
+							tbody
+								-	for(var i=0; i<resCurrencyRange.length;i++)
+										tr(class="odd gradeX")
+											td= resCurrencyRange[i].name_en
+											td= resCurrencyRange[i].from
+											td= resCurrencyRange[i].to
+											td= resCurrencyRange[i].is_default
+											td(class="center")
+												button(type="button", class="btn btn-warning btn_delete_currency_range btn-circle", data-id=""+resCurrencyRange[i]._id+"", style="margin-right:5px")
+													i(class="fa fa-times")
+												button(type="button", class="btn btn-primary btn-circle")
+													i(class="fa fa-list")
+block script
+	script(src='/plugin/admin/js/currency_ranges.js')
