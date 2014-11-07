@@ -272,3 +272,29 @@ exports.getCurrencyRange = function(callback){
 		else callback(null, res)
 	});
 };
+
+// ------------------------------------
+// Insert currency range
+// note: 
+// callback: item insert
+// ------------------------------------
+exports.insertCurrencyRange = function(document, callback){
+	free_currency_range.insert(document, function(errDocument, resDocument){
+		if(resDocument){
+			callback(null, resDocument);
+		}else{
+			callback(null, null);
+		}
+	});
+};
+
+// ------------------------------------
+// Delete currency
+// note: 
+// callback:
+// ------------------------------------
+exports.deleteCurrencyRange = function(id, callback){
+	free_currency_range.remove({"_id": ObjectID(id)}, function(errDocument, resDocument){
+		callback(null, null);
+	});
+};

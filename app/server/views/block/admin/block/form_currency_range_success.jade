@@ -1,0 +1,10 @@
+tr(class="odd gradeX")
+	td= resItem.name_en
+	td= resItem.from
+	td= resItem.to
+	td= resItem.is_default
+	td(class="center")
+		button(type="button", class="btn btn-warning btn_delete_currency_range btn-circle", data-id=""+resItem._id+"", style="margin-right:5px")
+			i(class="fa fa-times")
+		button(type="button", class="btn btn-primary btn-circle")
+			i(class="fa fa-list")

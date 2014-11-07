@@ -324,4 +324,41 @@ module.exports = function (app) {
 			});
 		});
 	});
+	
+	//--------------------------------------
+	// Router get form location
+	//--------------------------------------
+	app.get('/getFormCurrency_range', function (req, res) {
+		res.render('block/admin/block/form_currency_range', {
+			title : 'Form currency range'
+		});
+	});
+	
+	//-----------------------------------------------------
+	// Store form currency range
+	//-----------------------------------------------------
+	app.post('/store_currency_range', function (req, res) {
+		var document = {
+			name_en : req.param('admin_range_name_en'),
+			name_vn : req.param('admin_range_name_vn'),
+			from : req.param('admin_range_from'),
+			to : req.param('admin_range_to'),
+			is_default : req.param('admin_is_default')
+		};
+		AM.insertCurrencyRange(document, function(errItem, resItem){
+			res.render('block/admin/block/form_currency_range_success', {
+				resItem : resItem[0]
+			});
+		});
+	});
+	
+	//--------------------------------------
+	// Delete currency
+	//--------------------------------------
+	app.get('/deleteCurrency_range', function (req, res) {
+		AM.deleteCurrencyRange(req.query.id, function(errItem, resItem){
+			res.send('success', 200);
+		});
+	});
+	
 }
