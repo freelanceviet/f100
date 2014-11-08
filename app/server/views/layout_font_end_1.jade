@@ -1,0 +1,22 @@
+doctype 5
+html 
+	head
+	- if (typeof(title) == 'undefined')
+		title Admin Pro
+	- else 
+		title= title
+	// include default stylesheets and any view stylesheets
+	link(rel='stylesheet', href='/stylesheets/style.css')
+	link(rel='stylesheet', href='/stylesheets/jquery-ui.css')
+	
+	script(src='/vendor/jquery-1.9.1.min.js')
+	script(src='/vendor/jquery-ui.min-1.8.12.js')
+	script(src='/vendor/jStorage-master/jstorage.js')
+	script(src='/vendor/jStorage-master/cookie.js')
+	script(src='/vendor/jquery.form.js')
+body
+	#wrapper
+		include include/header
+		block content
+		include include/footer
+		block script

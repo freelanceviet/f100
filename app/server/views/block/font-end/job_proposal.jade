@@ -34,15 +34,16 @@ block content
 					a(href="#") Lao
 					a(href="#") Thailand
 		#jobs_right
+			#dialog-form(title="What is the reason for declining?")
 			table(class="job_proposal")
 				-	for(var i=0; i<resProposals.length;i++)
 						tr
 							td= resProposals[i].user_info.user_name_l +" "+resProposals[i].user_info.user_name_f
 							td
-								select
-									option(value="") Accept
-									option(value="") Decline
-									option(value="") Reply
+								select(class="change_status_proposal_job")
+									option(value="0") Accept
+									option(value="1") Decline
+									option(value="2") Reply
 							td
 								if(resProposals[i].price_main!=undefined)
 									span= resProposals[i].price_main
