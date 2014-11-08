@@ -38,6 +38,9 @@ block content
 								.upload
 									input(type="file", id="files_proposal_attach", name="files_proposal[]", multiple="")
 							.job_proposal_file_content
+							
+							label Price
+								input(type="text", name="proposal_price", id="proposal_price")
 							.item_proposal
 								table(class="ip_list_item")
 									tr
@@ -70,6 +73,7 @@ block content
 								input(type="hidden", name="job_id", value=""+resJobs._id+"")
 								
 			#job-detail-right
+				a(href="/proposal?id="+resJobs._id+"&type=job") Mana proposal
 block script
 	script(src='/javascripts/form-validators/proposalValidator.js')
 	script(src='/javascripts/views/jobs_detail.js')

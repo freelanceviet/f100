@@ -84,3 +84,22 @@ exports.insertProposal = function(document, callback){
 		}
 	});
 };
+
+// ------------------------------------
+// Get all item proposal of job
+// note: 
+// ------------------------------------
+exports.getProposalJob = function(id_job, limit, skip, callback){
+	free_proposals.find({project_id : id_job})
+	.sort([['date_spam', 'desc']])
+	.limit(parseInt(limit))
+	.skip(parseInt(skip))
+	.toArray(function(errProposals, resProposals)
+	{
+		if(resProposals){
+			callback(null, resProposals);
+		}else{
+			callback(null, null);
+		}
+	});
+};

@@ -229,17 +229,6 @@ module.exports = function (app) {
 		});
 	});
 	
-	//--------------------------------------
-	// Router get form skill
-	//--------------------------------------
-	app.get('/getSubCategory', function (req, res) {
-		ALL.getItemCategory(req.query.id, function(errCategory, resCategory){
-			res.render('block/admin/block/category_sub', {
-				resCategory : resCategory
-			});
-		});
-	});
-	
 	//-----------------------------------------------------
 	// Store form skill
 	//-----------------------------------------------------

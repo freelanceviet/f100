@@ -864,3 +864,7 @@ div.upload input {
 	background-color:black;
 	margin:5px;
 }
+.job_proposal{
+	float:left;
+	width:100%;
+}

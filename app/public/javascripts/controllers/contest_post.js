@@ -40,7 +40,7 @@ ContestPost.prototype.uploadImageForCommentPlace=function(){
 				
 			}, 
 			success:function(response, status, xhr, $form){
-				$('.job_post_file_content').html(response);
+				$('.job_post_file_content').append(response);
 				$("#contest_post_type").val(0);
 			}, 
 			error:function(e){

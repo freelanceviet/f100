@@ -1,0 +1,50 @@
+extends ../../layout_font_end
+
+block content
+	#content
+		#jobs_left
+			.jl_box
+				h2 Status
+				.hlb_list_cate
+					a(href="#") Accepted
+					a(href="#") Pending
+					a(href="#") Declined
+					a(href="#") Hidden
+					a(href="#") Shortlisted
+			.jl_box
+				h2 Seller's cert level
+				.hlb_list_cate
+					a(href="#") At least 1
+					a(href="#") At least 2
+					a(href="#") At least 3
+					a(href="#") At least 4
+					a(href="#") At least 5
+			.jl_box
+				h2 Seller's Positive Rating
+				.hlb_list_cate
+					a(href="#") All Ratings
+					a(href="#") All least 40%
+					a(href="#") All least 60%
+					a(href="#") All least 80%
+					a(href="#") All least 90%
+			.jl_box
+				h2 Seller's All Countries
+				.hlb_list_cate
+					a(href="#") Viet Nam
+					a(href="#") Lao
+					a(href="#") Thailand
+		#jobs_right
+			table(class="job_proposal")
+				-	for(var i=0; i<resProposals.length;i++)
+						tr
+							td= resProposals[i].user_info.user_name_l +" "+resProposals[i].user_info.user_name_f
+							td
+								select
+									option(value="") Accept
+									option(value="") Decline
+									option(value="") Reply
+							td
+								if(resProposals[i].price_main!=undefined)
+									span= resProposals[i].price_main
+block script
+	script(src='/javascripts/views/job_proposal.js')

@@ -73,10 +73,18 @@ module.exports = function (app) {
 				var num_price = req.param('contest_post_r');
 				for(var i=0; i<num_price;i++){
 					if(req.param('form_proposal_item_name')){
-						var do_price = {
-							item_name : req.param('form_proposal_item_name')[0][i],
-							item_price : req.param('form_proposal_item_value')[0][i]
-						};
+						var do_price;
+						if(num_price>1){
+							do_price = {
+								item_name : req.param('form_proposal_item_name')[0][i],
+								item_price : req.param('form_proposal_item_value')[0][i]
+							};
+						}else{
+							do_price = {
+								item_name : req.param('form_proposal_item_name')[0][0],
+								item_price : req.param('form_proposal_item_value')[0][0]
+							};
+						}
 						price_all.push(do_price);
 					}
 				}
@@ -100,6 +108,7 @@ module.exports = function (app) {
 					file_up : file_all,
 					price_item : price_all,
 					user_info : user_info, 
+					price_main : req.param('proposal_price'),
 					date_add : addDate.format('YYYY-MM-DD hh:mm:ss'),
 					date_spam : n,
 					date_update : n,
@@ -110,7 +119,7 @@ module.exports = function (app) {
 			}else{
 				IM.uploadimage('proposals',req.files.files_proposal[0], function(errFile, resFile){
 					res.render('block/font-end/block/jobs/file', {
-						resFile:resFile
+						resFile : resFile
 					});
 				});
 			}
@@ -119,5 +128,16 @@ module.exports = function (app) {
 		}
 	});
 	
-	
+	//--------------------------------------
+	// router admin home page
+	//--------------------------------------
+	app.get('/proposal', function (req, res) {
+		var id_job = req.query.id;
+		JM.getProposalJob(id_job, 10, 0, function(errProposals, resProposals){
+			res.render('block/font-end/job_proposal', {
+				title : 'Job proposal manager',
+				resProposals : resProposals
+			});
+		});
+	});
 }
