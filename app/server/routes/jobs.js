@@ -8,7 +8,7 @@ module.exports = function (app) {
 	//---------------------------------------
 	// router admin home page
 	//---------------------------------------
-	app.get('/jobs', function (req, res) {
+	app.get('/job-database', function (req, res) {
 		JM.getJobDefault(20, 0, function(errJobs, resJobs){
 			ALL.getAllCategories(function(errCategories, resCategories){
 				if(req.session.user==null){
@@ -32,7 +32,7 @@ module.exports = function (app) {
 	//--------------------------------------
 	// Redirect to page post a job
 	//--------------------------------------
-	app.get('/jobs-post', function (req, res) {
+	app.get('/post-a-job', function (req, res) {
 		if(req.session.user==null){ // Begin if session
 			ALL.getAllCategories(function(errCategories, resCategories){
 				ALL.getAllSkill(function(errSkill, resSkill){

@@ -27,7 +27,7 @@ module.exports = function (app) {
 	//--------------------------------------
 	// Redirect to page post contest
 	//--------------------------------------
-	app.get('/contest-post', function (req, res) {
+	app.get('/post-competition', function (req, res) {
 		if(req.session.user == null) {
 			ALL.getAllCategories(function(errCategories, resCategories) {
 				ALL.getAllSkill(function(errSkill, resSkill) {

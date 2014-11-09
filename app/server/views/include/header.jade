@@ -1,7 +1,7 @@
 header
 	#wrapper
 		h1(class="logo")
-			a(href="") Get
+			a(href="/") Get
 				span Job
 				| Done
 		nav
@@ -11,40 +11,27 @@ header
 					.subNav
 						ul(class="ctnSub")
 							li
-								a(href="") Post Job
+								a(href="/post-a-job") Post A Job
 							li
-								a(href="") Job Contest
+								a(href="/freelancer-services") Browse Freelancers
 							li
-								a(href="") VIP Client
-							li
-								a(href="") Potential Staff
+								a(href="/post-competition") Post A Competition
 				li
 					a(href="#", class="lstNavb") For Freelancers
 					.subNav
 						ul(class="ctnSub")
 							li
-								a(href="") Post Job
+								a(href="/job-database") Browse Jobs
 							li
-								a(href="") Job Contest
-							li
-								a(href="") VIP Client
-							li
-								a(href="") Potential Staff
+								a(href="/promote-your-services") Promote Your Services
 				li
-					a(href="#", class="lstNavc") For Freelancers
-					.subNav
-						ul(class="ctnSub")
-							li
-								a(href="") Post Job
-							li
-								a(href="") Job Contest
-							li
-								a(href="") VIP Client
-							li
-								a(href="") Potential Staff
+					a(href="/how-it-work", class="lstNavc") How It Work
 		.navLogReg
-			a(href="", class="login") login
-			a(href="", class="reg") sign up
+			if(!user)
+				a(href="/login", class="login") login
+				a(href="/register", class="reg") sign up
+			else
+				a(href="/logout", class="reg") logout
 		.lang
 			a(href="", class="langEn activeLang")
 			a(href="", class="langVn")

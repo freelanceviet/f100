@@ -9,7 +9,7 @@ module.exports = function (app) {
 	//--------------------------------------
 	// Redirect to home page
 	//--------------------------------------
-	app.get('/hourlies', function (req, res) {
+	app.get('/freelancer-services', function (req, res) {
 		HM.getHourlieDefault(20, 0, function(errHourlies, resHourlies) {
 			ALL.getAllCategories(function(errCategories, resCategories){
 				ALL.getItemCategory('5441d3bbed7f3d162c7cba71',function(errItemCategorie, resItemCategorie){
@@ -38,7 +38,7 @@ module.exports = function (app) {
 	//--------------------------------------
 	// Redirect to page post a hourlie
 	//--------------------------------------
-	app.get('/hourlie-post', function (req, res) {
+	app.get('/promote-your-services', function (req, res) {
 		if(req.session.user == null) {
 			ALL.getAllCategories(function(errCategories, resCategories) {
 				ALL.getAllCurrency(function(errCurrency, resCurrency) {
