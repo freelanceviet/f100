@@ -12,7 +12,7 @@ module.exports = function (app) {
 		CM.getContestDefault(8, 0, function(errContests, resContests) {
 			JM.getJobDefault(4, 0, function(errJobs, resJobs){
 				ALL.getAllCategories(function(errCategories, resCategories){
-					HM.getHourlieDefault(8, 0, function(errHourlies, resHourlies) {
+					HM.getHourlieDefault(10, 0, function(errHourlies, resHourlies) {
 						if(req.session.user==null){
 							res.render('block/font-end/home_page', {
 								user : null,
