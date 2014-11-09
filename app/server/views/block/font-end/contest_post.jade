@@ -43,6 +43,8 @@ block content
 						input(type="hidden", id="tygia_value", name="tygia_value", value=""+resCurrencyDefault.rate_usd+"")
 						#slider-range-min
 					span(id="contest_currency_title")= resCurrencyDefault.title
+					input(type="hidden", name="contest_currency_title", id="contest_currency_title_", value=""+resCurrencyDefault.title+"")
+					input(type="hidden", name="contest_currency_name", id="contest_currency_name", value=""+resCurrencyDefault.name+"")
 					.contest_op_currency
 						select(name="currency", id="currency")
 							-	for(var i=0; i<resCurrency.length;i++)

@@ -45,12 +45,16 @@ module.exports = function (app) {
 	//--------------------------------------
 	app.post('/storeUser', function (req, res) {
 		ALL.getItemLocation(req.param('reg-location-tf'),function(errLoItem, resLoItem){
+			if(resLoItem){
+				var loc = resLoItem._id;
+			}
 			var document = {
 				first_name 	: req.param('reg-first-name-tf'),
 				last_name 	: req.param('reg-last-name-tf'),
-				email    	: req.param('reg-email-tf'),
+				username	: req.param('reg-username-name-tf').toLowerCase(),
+				email    	: req.param('reg-email-tf').toLowerCase(),
 				pass	  	: req.param('reg-pass-tf'),
-				loca_id	  	: ''+resLoItem._id+'',
+				loca_id	  	: loc,
 				avatar		: '/images/default_avatar.jpg',
 				type		: req.param('f_type')
 			};

@@ -73,7 +73,9 @@ $(document).ready(function(){
 			var html = '<input type="hidden"  class="contest_location" name="contest_location[]" value="'+$(this).text()+'" >';
 			$('#lo-attributes-content-cg').append(html);
 		});
-		
+		$('#contest_currency_title_').val($('#contest_currency_title').text());
+		var val_name_c = $('#currency option:selected').html();
+		$('#contest_currency_name').val(val_name_c);
 	});
 	// Form post contest action
 	$('#rp-bt-action-form').click(function(){

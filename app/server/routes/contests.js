@@ -150,6 +150,8 @@ module.exports = function (app) {
 					assisted : assisted,
 					contest_length : req.param('contest_length'),
 					currency : req.param('currency'),
+					currency_title : req.param('contest_currency_title'),
+					currency_name : req.param('contest_currency_name'),
 					budget : req.param('budget_value'),
 					location : location,
 					user_info : user_info, 

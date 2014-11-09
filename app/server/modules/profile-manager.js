@@ -24,7 +24,7 @@ exports.getItemAccount = function(user_id, callback){
 // note: 
 // ------------------------------------
 exports.addNewAccount = function(newData, callback){
-	free_user.findOne({email:newData.email}, function(e, o) {
+	free_user.findOne({$or:[{email:newData.email.toLowerCase()},{username:newData.username.toLowerCase()}]}, function(e, o) {
 		if (o){
 			callback('username-taken');
 		}else{

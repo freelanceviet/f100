@@ -14,6 +14,22 @@ var express = require('express')
   , async     = require('async')
   , Recaptcha = require('recaptcha').Recaptcha;
 
+// var email   = require("emailjs/email");
+// var server     = email.server.connect({
+   // user:    "duonggiahai89@gmail.com", 
+   // password:"hongmo1991", 
+   // host:    "smtp.gmail.com", 
+   // ssl:     true
+// });
+
+// // send the message and get a callback with an error or details of the message that was sent
+// server.send({
+   // text:    "i hope this works",
+   // from:    "duonggiahai89@gmail.com",
+   // to:      "votrunghieu1996@gmail.com",
+   // subject: "testing emailjs"
+// }, function(err, message) { console.log(err || message); });
+
 
 /**
 * CONFIGURATION

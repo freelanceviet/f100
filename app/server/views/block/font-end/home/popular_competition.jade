@@ -6,14 +6,17 @@
 					.ctnPopu
 						.arThumb
 							a(href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"", class="thumbPopu")
-								img(src="images/thumb.jpg", alt="Web developer")
+								if(resContests[i].image_avatar==undefined)
+									img(src="images/thumb.jpg", alt="Web developer")
+								else
+									img(src='/upload/profile_avatar?type=resize&width=400&height=300&name='+resContests[i].image_avatar.public_id+'.'+resContests[i].image_avatar.format+'', alt="Web developer")
 							.hvCatePopu
 								a(href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"")= resContests[i].job_description
 						.txtCatePopu
 							.lfCtePpu
 								a(href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"", class="titCatePopu")= resContests[i].project_name
-								p $1000 USD
+								p= resContests[i].currency_title+" " +resContests[i].budget+" "+resContests[i].currency_name
 							.rtCtePpu
-								p GJD
+								p= resContests[i].user_info.user_name_l+ " "+resContests[i].user_info.user_name_f
 	.vMore
 		a(href="/contests", class="btnmore") View more

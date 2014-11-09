@@ -10,23 +10,26 @@ block content
 				span Last name
 				input(type="text", tabindex="2", name="reg-last-name-tf", id="reg-last-name-tf", placeholder="Last name...")
 			p
+				span User name
+				input(type="text", tabindex="3", name="reg-username-name-tf", id="reg-username-tf", placeholder="User name...")
+			p
 				span Your email address
-				input(type="text", tabindex="3", name="reg-email-tf", id="reg-email-tf", placeholder="Your email")
+				input(type="text", tabindex="4", name="reg-email-tf", id="reg-email-tf", placeholder="Your email")
 			p 
 				span Password
-				input(type="password", tabindex="4", name="reg-pass-tf", id="reg-pass-tf", placeholder="......")
+				input(type="password", tabindex="5", name="reg-pass-tf", id="reg-pass-tf", placeholder="......")
 			p 
 				span Location(city)
-				input(type="text", tabindex="5", name="reg-location-tf", id="reg-location-tf")
+				input(type="text", tabindex="6", name="reg-location-tf", id="reg-location-tf")
 				.form_register_location_au
 					-	for(var i=0;i<resLocation.length;i++)
 							input(type="hidden", class="item_location", value=""+resLocation[i].lo_name+"")
 			p
 				span What are you looking for?
 				input(type="radio", name="f_type", value="0", checked)
-				span Buy services
+				span Freelancer
 				input(type="radio", name="f_type", value="1")
-				span Sell services
+				span Company
 				input(type="radio", name="f_type", value="2")
 				span Both
 			p
