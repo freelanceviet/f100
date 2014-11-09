@@ -1,0 +1,51 @@
+.container
+	h2(class="titleMtn") Our job database
+	.lfJobData
+		h3(class="titleLtData") Most popular job in Art & Creative Design
+		-	for(var i=0; i<resJobs.length; i++)
+				.ctn_ltData
+					.avaJbData
+						img(src="images/avaPst.jpg")
+					.txtpst
+						h4
+							a(class="titPst coJob", href="/jobdetail?id="+resJobs[i]._id+"&name="+resJobs[i].project_name.replace(/ /g,"-")+"")= resJobs[i].project_name
+						p Oxygen Studio Designs Pte Ltd
+						ul(class="lstPst")
+							li
+								p Min 5 years agency experience.
+							li
+								p Strong conceptual thinking – both visual and interactive.
+							li
+								p Salary will commensurate with education and experience.
+						p 
+							-	skill = ""
+							if( typeof resJobs[i].job_skill === 'string' )
+								-	skill = resJobs[i].job_skill
+							else
+								-	for(var j=0;j<resJobs[i].job_skill.length; j++)
+										-	skill = skill + resJobs[i].job_skill[j] + ","
+							| Skill:
+							span= skill
+					.pcePst
+						p(class="mainPce") $18,000,000 VND
+						p SING, VN, INDO
+					.dtPst
+						p 96 Proposal
+						p 3 days ago
+		.jMore
+			span 1160 more jobs to discover
+			a(class="btnmore btnjMore", href="/jobs") view all
+	.rtJobData
+		h3(class="titleRtData") CATEGORIES
+		#scrolbr
+			.scrollbar
+				.track
+					.thumb
+						.end
+			.arRtData.overview
+				ul(class="ctnRtData overview")
+					-	for(var i=0;i<resCategories.length;i++)
+							li
+								a(href="")= resCategories[i].name_en
+									if(resCategories[i].numjob!=undefined)
+										span= '('+resCategories[i].numjob+')'

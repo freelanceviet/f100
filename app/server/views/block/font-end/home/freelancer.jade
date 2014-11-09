@@ -1,0 +1,28 @@
+.container
+	h2(class="titleMtn") Freelancer Listing
+	.cateFlc
+		.tpFlc
+			label(class="lbFlc") Categories:
+			select(class="slcFlc default-usage-select")
+				option(class="fstOpFlc") All (13,789)
+				option Web Development(5,018)
+				option Video, Photo & Audio(4,424)
+				option Sales & Marketing(3,974)
+				option Business Support(2,816)
+				option Writing & Translation(2,665)
+				option Social media(1,622)
+		.ctnFlc
+			ul(class="lstFlc")
+				-	for(var i=0; i<10; i++)
+						li
+							p(class="thumbFlc")
+								img(src="images/thjb.jpg")
+							.hvFlc
+								a(href="")
+									p(class="avaFlc")
+										img(src="images/thumb2.jpg")
+									h5 Richard Max
+									p I design your logo with beautiful images and ...
+									span 9,000,000 VND
+		.vMore
+			a(href="", class="btnmore") View more
