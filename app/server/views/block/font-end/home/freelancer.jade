@@ -13,16 +13,16 @@
 				option Social media(1,622)
 		.ctnFlc
 			ul(class="lstFlc")
-				-	for(var i=0; i<10; i++)
+				-	for(var i=0; i<resHourlies.length; i++)
 						li
 							p(class="thumbFlc")
 								img(src="images/thjb.jpg")
 							.hvFlc
-								a(href="")
+								a(href="/hourliedetail?id="+resHourlies[i]._id+"&value="+resHourlies[i].project_name.replace(/ /g,"-")+"")
 									p(class="avaFlc")
-										img(src="images/thumb2.jpg")
-									h5 Richard Max
+										img(src=""+resHourlies[i].user_info.user_av+"")
+									h5= resHourlies[i].project_name
 									p I design your logo with beautiful images and ...
 									span 9,000,000 VND
 		.vMore
-			a(href="", class="btnmore") View more
+			a(href="/hourlies", class="btnmore") View more
