@@ -1,29 +1,130 @@
 extends ../../layout_font_end
 
 block content
-	#content
-		#hourlies_content
-			.ho_left
-				.block_search
-					input(type="text", name="hourlie_input_search", placeholder="Search Hourlies...")
-				.jl_box
-					h2 Categories
-					.hlb_list_cate
-						-	for(var i=0; i<resCategories.length; i++)
-								if(resCategories[i].numhourlie!=undefined)
-									a(href="")= resCategories[i].name_en + "(" + resCategories[i].numhourlie + ")"
-								else
-									a(href="")= resCategories[i].name_en
-				.jl_box
-					h2 POPULAR SKILLS
-					.hlb_list_cate
-						-	for(var i=0; i<resItemCategorie.items.length; i++)
-								a(href="")= resItemCategorie.items[i].name
-			.ho_right
-				#hr_header
-					h1 Hourlies
-					span 36,595 found
-				#hr_sort
-				#hr_conent
-					-	for(var i=0;i<resHourlies.length;i++)
-							a(href="/hourliedetail?id="+resHourlies[i]._id+"&value=dsfsdfdsfdsf", class="hrc_item")
+	.container
+		h2(class="titleMtnIn") Freelance Listing
+		.collf_data
+			h3(class="titleRtData") CATEGORIES
+			.arRtData
+				ul(class="ctn_collfin")
+					-	for(var i=0; i<9;i++)
+							li
+								a(href="") Marketing & PR
+									span (4372)
+			.cte_lfin
+				h3(class="titleLtData") Job Type
+				p(class="ip_lfin")
+					input(type="radio", value="Any", id="jobType")
+					label(for="jobType") Any
+				.frm_ipLf
+					p(class="ip_lfin")
+						input(type="radio", value="Any", id="fixed", name="local")
+						label(for="fixed") Fixed
+					.sldFix
+						.txtsldFix
+							span(class="txtmin") Min
+							span(class="txtmax") Max
+						#sliderhand.sldLf
+				.frm_ipLf
+					p(class="ip_lfin")
+						input(type="radio", value="Any", id="perhou", name="local")
+						label(for="perhou") Per Hour
+					.sldFix
+						.txtsldFix
+							span(class="txtmin") Min
+							span(class="txtmax") Max
+						#sliderhandPer.sldLf
+			.cte_lfin
+				h3(class="titleLtData") Working Location
+				p(class="ip_lfin")
+					input(type="radio", value="Any", id="remote", name="local")
+					label(for="remote") Remote
+				.frm_ipLf
+					p(id="acCheckin", class="ip_lfin")
+						input(type="radio", value="Any", id="onsite", name="local")
+						label(for="onsite") On site
+					ul(class="innFrmLf")
+						-	for(var i=0;i<5; i++)
+								li(class="ck_lfin")
+									input(type="radio", value="Any", id="hcm", name="localsite", parent="onsite")
+									label(for="hcm") Ho Chi Minh
+			.cte_lfin
+				h3(class="titleLtData") Job Status
+				p(class="ip_lfin")
+					input(type="radio", value="Any", id="all", name="jbStatus")
+					label(for="all") All
+				p(class="ip_lfin")
+					input(type="radio", value="Any", id="open", name="jbStatus")
+					label(for="open") Open
+				p(class="ip_lfin")
+					input(type="radio", value="Any", id="clsoe", name="jbStatus")
+					label(for="close") Close
+		.colrt_data
+			h3(class="titleNobg")
+				span “Design”
+				| 1165 Job found
+			.boxsea
+				.seaData
+					label Search
+					input(class="ip_seaData", type="text", placeholder="Type a search term and hit Enter...")
+				.sl_jbStaData
+					label Job Status
+					select(class="default-usage-select")
+						option(class="option") All
+						option Web Development(5,018)
+						option Video, Photo & Audio(4,424)
+						option Sales & Marketing(3,974)
+						option Business Support(2,816)
+						option Writing & Translation(2,665)
+						option Social media(1,622)
+				.sl_jbStaData
+					label Sort by
+					select(class="default-usage-select")
+						option(class="option") All
+						option Web Development(5,018)
+						option Video, Photo & Audio(4,424)
+						option Sales & Marketing(3,974)
+						option Business Support(2,816)
+						option Writing & Translation(2,665)
+						option Social media(1,622)
+			.coverAll
+				-	for(var i=0; i<18; i++)
+						.lstItem
+							.coverImg
+								a(href="", class="linkCoImg")
+									img(class="cover_imgFreelist", src="images/228x190.jpg", title="", alt="")
+									.cover_hov
+										span(class="vwHov") Views:
+											span 16,000
+										span(class="soldHov") sold
+											span 36
+							.coverInfo
+								.coverInfo_statis
+									p I design your house with beautiful images and architecture
+								.coverFt
+									.avaJbData
+										a(href="")
+											img(src="images/avaPst.jpg")
+									.naCoverFt
+										a(class="auCover") John Doe
+										p $10,000 USD
+									.rtNaCoFt
+										p Vietnam
+			.pagMore
+				ul(class="pagination")
+					li
+						a(class="prepag", href="")
+					li
+						a(class="actpag", href="") 1
+					li
+						a(class="actpag", href="") 2
+					li
+						a(class="actpag", href="") 3
+					li
+						a(class="morepag", href="") ...
+					li
+						a(class="actpag", href="") 23
+					li
+						a(class="actpag", href="") 24
+					li
+						a(class="nextpag", href="")

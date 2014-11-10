@@ -9,11 +9,11 @@ html
 	link(rel='stylesheet', href='/css/plugin.css')
 	link(rel='stylesheet', href='/css/bxslider.css')
 	link(rel='stylesheet', href='/css/style.css')
-	link(rel='stylesheet', href='/stylesheets/jquery-ui.css')
-	link(rel='stylesheet', href='/stylesheets/style.css')
+	link(rel='stylesheet', href='/css/jquery-ui.css')
+	link(rel='stylesheet', href='/css/style.css')
 	
-	script(src='/vendor/jquery-1.9.1.min.js')
-	script(src='/vendor/jquery-ui.min-1.8.12.js')
+	script(src='/js/jquery.js')
+	script(src='/js/jquery-ui.js')
 	
 	script(src='/vendor/jStorage-master/jstorage.js')
 	script(src='/vendor/jStorage-master/cookie.js')
@@ -26,7 +26,7 @@ html
 body
 	include include/header
 				
-	.main
+	#main
 		block content
 	include include/footer
 	block script

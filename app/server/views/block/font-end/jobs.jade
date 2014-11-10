@@ -1,105 +1,132 @@
 extends ../../layout_font_end
 
 block content
-	#content
-		#jobs_left
-			.jl_box
-				h2 Categories
-				.hlb_list_cate
-					-	for(var i=0; i<resCategories.length; i++)
-							if(resCategories[i].numjob!=undefined)
-								a(href="")= resCategories[i].name_en + "(" + resCategories[i].numjob + ")"
-							else
-								a(href="")= resCategories[i].name_en
-			.jl_box
-				h2 Job Type	
-				.hlb_option_job_type
-					.hojt_item
-						input(type="radio", name="job_type")
-						label Any
-					.hojt_item
-						input(type="radio", name="job_type")
-						label Fixed
-						p
-							input(type="text", id="amount-fixed", readonly, style="border:0; color:#f6931f; font-weight:bold;")
-						#slider-range-fixed
-					.hojt_item
-						input(type="radio", name="job_type")
-						label Per hour
-						p
-							input(type="text", id="amount-per-hour", readonly, style="border:0; color:#f6931f; font-weight:bold;")
-						#slider-range-per-hour
-			.jl_box
-				h2 Working location
-				.hlb_option_job_lo
-					.hojl_item
-						input(type="radio", name="job_location")
-						label Remote
-					.hojl_item
-						input(type="radio", name="job_location")
-						label On site
-						p
-							.hojl_i_i
-								input(type="checkbox", name="job_location_detail[]")
-								label HCM (226)
-							.hojl_i_i
-								input(type="checkbox", name="job_location_detail[]")
-								label Ha Noi (192)
-							.hojl_i_i
-								input(type="checkbox", name="job_location_detail[]")
-								label Da Nang (100)
-							.hojl_i_i
-								input(type="checkbox", name="job_location_detail[]")
-								label Nha Trang (50)
-							.hojl_i_i
-								input(type="checkbox", name="job_location_detail[]")
-								label Hoi An (10)
-			.jl_box
-				h2 Job status
-				.hlb_option_job_status
-					.hojs_item
-						input(type="radio", name="job_status")
-						label All
-					.hojs_item
-						input(type="radio", name="job_status")
-						label Open
-					.hojs_item
-						input(type="radio", name="job_status")
-						label Close
-		
-		#jobs_right
-			.jr_form_search
-				table
-					tr
-						td Search
-						td Job status
-						td Sort by
-					tr
-						td 
-							input(type="text", name="job_input_search")
-						td 
-							select(name="job_se_se_status")
-								option(value="all") All
-								option(value="all") Urgent
-								option(value="all") With no proposals
-						td
-							select(name="job_se_se_sort")
-								option(value="all") Latest
-								option(value="all") Popularity
-								option(value="all") Ending soon
-								option(value="all") budget
-			.jr_list_job
-				-	for(var i=0;i<resJobs.length;i++)
-						.jrlj_item
-							a(href="/jobdetail?id="+resJobs[i]._id+"&name="+resJobs[i].project_name.replace(/ /g,"-")+"", class="jrlji_title")= resJobs[i].project_name
-							.jrlji_info
-								a(href="")
-									img(src=""+resJobs[i].user_info.user_av+"")
-								a(href="", class="name")= resJobs[i].user_info.user_name_l + " " + resJobs[i].user_info.user_name_f
-								span(class="time") 45 minutes ago
-								span(class="remote") Remote
-								span(class="proposals") Be the first
-							a(href="", class="jrlji_proposal") Send Proposal
-							
-block script
-	script(src='/javascripts/views/jobs.js')
+	.container
+		h2(class="titleMtnIn") Our job database
+		.collf_data
+			h3(class="titleRtData") CATEGORIES
+			.arRtData
+				ul(class="ctn_collfin")
+					-	for(var i=0; i<9;i++)
+							li
+								a(href="") Marketing & PR
+									span (4372)
+			.cte_lfin
+				h3(class="titleLtData") Job Type
+				p(class="ip_lfin")
+					input(type="radio", value="Any", id="jobType")
+					label(for="jobType") Any
+				.frm_ipLf
+					p(class="ip_lfin")
+						input(type="radio", value="Any", id="fixed", name="local")
+						label(for="fixed") Fixed
+					.sldFix
+						.txtsldFix
+							span(class="txtmin") Min
+							span(class="txtmax") Max
+						#sliderhand.sldLf
+				.frm_ipLf
+					p(class="ip_lfin")
+						input(type="radio", value="Any", id="perhou", name="local")
+						label(for="perhou") Per Hour
+					.sldFix
+						.txtsldFix
+							span(class="txtmin") Min
+							span(class="txtmax") Max
+						#sliderhandPer.sldLf
+			.cte_lfin
+				h3(class="titleLtData") Working Location
+				p(class="ip_lfin")
+					input(type="radio", value="Any", id="remote", name="local")
+					label(for="remote") Remote
+				.frm_ipLf
+					p(id="acCheckin", class="ip_lfin")
+						input(type="radio", value="Any", id="onsite", name="local")
+						label(for="onsite") On site
+					ul(class="innFrmLf")
+						-	for(var i=0;i<5; i++)
+								li(class="ck_lfin")
+									input(type="radio", value="Any", id="hcm", name="localsite", parent="onsite")
+									label(for="hcm") Ho Chi Minh
+			.cte_lfin
+				h3(class="titleLtData") Job Status
+				p(class="ip_lfin")
+					input(type="radio", value="Any", id="all", name="jbStatus")
+					label(for="all") All
+				p(class="ip_lfin")
+					input(type="radio", value="Any", id="open", name="jbStatus")
+					label(for="open") Open
+				p(class="ip_lfin")
+					input(type="radio", value="Any", id="clsoe", name="jbStatus")
+					label(for="close") Close
+		.colrt_data
+			h3(class="titleNobg")
+				span “Design”
+				| 1165 Job found
+			.boxsea
+				.seaData
+					label Search
+					input(class="ip_seaData", type="text", placeholder="Type a search term and hit Enter...")
+				.sl_jbStaData
+					label Job Status
+					select(class="default-usage-select")
+						option(class="option") All
+						option Web Development(5,018)
+						option Video, Photo & Audio(4,424)
+						option Sales & Marketing(3,974)
+						option Business Support(2,816)
+						option Writing & Translation(2,665)
+						option Social media(1,622)
+				.sl_jbStaData
+					label Sort by
+					select(class="default-usage-select")
+						option(class="option") All
+						option Web Development(5,018)
+						option Video, Photo & Audio(4,424)
+						option Sales & Marketing(3,974)
+						option Business Support(2,816)
+						option Writing & Translation(2,665)
+						option Social media(1,622)
+			-	for(var i=0; i<10; i++)
+					.ctn_ltData
+						.avaJbData
+							img(src="images/avaPst.jpg", alt="")
+						.txtpst
+							h4
+								a(class="titPst coJob", href="") Art Director
+							p Oxygen Studio Designs Pte Ltd
+							ul(class="lstPst")
+								li
+									p Min 5 years agency experience
+								li 
+									p Strong conceptual thinking – both visual and interactive.
+								li 
+									p Salary will commensurate with education and experience.
+							p Skill: 
+								span Creativity, Drawing, HTML
+						.pcePst
+							p(class="mainPce") $18,000,000 VND
+							p SING, VN, INDO
+						.dtPst
+							p 96 Proposal
+							p 3 days ago
+						.sendPropo
+							a(href="", class="btnmore btnPropo") Send proposal
+			.pagMore
+				ul(class="pagination")
+					li
+						a(class="prepag", href="")
+					li
+						a(class="actpag", href="") 1
+					li
+						a(class="actpag", href="") 2
+					li
+						a(class="actpag", href="") 3
+					li
+						a(class="morepag", href="") ...
+					li
+						a(class="actpag", href="") 23
+					li
+						a(class="actpag", href="") 24
+					li
+						a(class="nextpag", href="")

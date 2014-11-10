@@ -178,19 +178,19 @@ a{
 }
 	a:hover, .ctcFt a:hover, .ftBt a:hover {color:#f8674a;text-decoration:none;}
 
-.coJob {color: #f8674a;}
-.coJob:hover, header a:hover {color: #2c3e50;}
+.coJob, .naCoverFt .auCover {color: #f8674a;}
+.coJob:hover, header a:hover, .auCover:hover {color: #2c3e50;}
 
-#wrapper:before, #wrapper:after, .inStp:before, .inStp:after, .popu:before, .popu:after, .txtCatePopu:before, .txtCatePopu:after, .ctn_ltData:before, .ctn_ltData:after, .container:before, .container:after, .jMore:before, .jMore:after, .lstFlc:before, .lstFlc:after, .cnPle:before, .cnPle:after, .statis:before, .statis:after, .mineGj:before, .mineGj:after, .navLogReg:before, .navLogReg:after, .lang:before, .lang:after {
+#wrapper:before, #wrapper:after, .inStp:before, .inStp:after, .popu:before, .popu:after, .txtCatePopu:before, .txtCatePopu:after, .ctn_ltData:before, .ctn_ltData:after, .container:before, .container:after, .jMore:before, .jMore:after, .lstFlc:before, .lstFlc:after, .cnPle:before, .cnPle:after, .statis:before, .statis:after, .mineGj:before, .mineGj:after, .navLogReg:before, .navLogReg:after, .lang:before, .lang:after, .txtsldFix:before, .txtsldFix:after, .boxsea:before, .boxsea:after, .pagination:before, .pagination:after, .coverAll:before, .coverAll:after, .cover_hov:before, .cover_hov:after, .coverFt:before, .coverFt:after {
     content: '';
     display: table;
 }
 
-#wrapper:after, .inStp:after, .popu:after, .txtCatePopu:after, .ctn_ltData:after, .container:after, .jMore:after, .lstFlc:after, .cnPle:after, .statis:after, .mineGj:after, .navLogReg:after, .lang:after {clear: both;}
+#wrapper:after, .inStp:after, .popu:after, .txtCatePopu:after, .ctn_ltData:after, .container:after, .jMore:after, .lstFlc:after, .cnPle:after, .statis:after, .mineGj:after, .navLogReg:after, .lang:after, .txtsldFix:after, .boxsea:after, .pagination:after, .coverAll:after, .cover_hov:after, .coverFt:after {clear: both;}
 
 /*header*/
-	header, .search .btnSch, .rtJobData .titleRtData, .tpFlc .slcFlc, .staft, .chatwt {
-        background: #f8674a;
+	header, .search .btnSch, .titleRtData, .tpFlc .slcFlc, .staft, .chatwt, .pagination li a:hover, .pagination li a.actpag, .pagination li a.prepag:hover, .pagination li a.nextpag:hover {
+        background-color: #f8674a;
     }
 
 	header{
@@ -205,7 +205,7 @@ a{
 	.logo{
 		position:absolute;
 		left:30px;
-		top: 20px;
+		top: 25px;
         font-size: 32px;
         font-weight: 300;
 	}
@@ -228,7 +228,7 @@ a{
 	#nav{
         display: inline-block;
     }
-		#nav > li, .popu li, .lfCtePpu, .rtCtePpu, .lfJobData, .lfJobData, .avaJbData, .txtpst, .pcePst, .dtPst, .lstFlc li, .lstPle, .statis li, .ltFt, .rtFt, .mineGj > li, .lang a {display:block; float:left;position: relative;}
+		#nav > li, .popu li, .lfCtePpu, .rtCtePpu, .lfJobData, .lfJobData, .avaJbData, .txtpst, .pcePst, .dtPst, .lstFlc li, .lstPle, .statis li, .ltFt, .rtFt, .mineGj > li, .lang a, .colrt_data, .seaData, .sl_jbStaData, .sl_sortData, .pagination li, .lstItem, .cover_hov .vwHov, .coverFt .naCoverFt {display:block; float:left;position: relative;}
 		#nav > li > a, .navLogReg a {
 			display: block;
 			padding: 25px 20px;
@@ -323,7 +323,7 @@ a{
     text-align: center;
 }
     .search .ipSch, .search .btnSch {padding: 15px;border-radius: 3px;}
-    .search .ipSch {
+    .search .ipSch, .ip_seaData {
         font-family: 'HelLt';
         font-style: italic;
         border: 1px solid #afafaf;
@@ -357,7 +357,7 @@ a{
         color: #505050;
     }
 
-        .titleMtn {
+        .titleMtn, .titleMtnIn {
             font-family: 'HelBd';
             font-size: 26px;
             color: #505050;
@@ -365,6 +365,8 @@ a{
             text-transform: uppercase;
             text-align: center;
         }
+
+        .titleMtnIn {margin-top: 25px;}
 
             .inStp {
                 margin-left: -30px;
@@ -386,7 +388,7 @@ a{
                     font-family: 'HelRg';
                 }
 
-                    .inStp .thumbStpOne, .inStp .thumbStpTwo, .inStp .thumbStpThree, .telus, .telus, .lstsoci .icoFbFt, .lstsoci .icoGgFt, .lstsoci .icoTwFt, .lstsoci .icoInFt, .mailus, .chatwt p {
+                    .inStp .thumbStpOne, .inStp .thumbStpTwo, .inStp .thumbStpThree, .telus, .telus, .lstsoci .icoFbFt, .lstsoci .icoGgFt, .lstsoci .icoTwFt, .lstsoci .icoInFt, .mailus, .chatwt p, .ip_lfin input + label, .ck_lfin input + label, .seaData .ip_seaData, .sl_jbStaData .jquery-selectbox, .sl_sortData .jquery-selectbox, .pagination li a.prepag , .pagination li a.nextpag, .cover_hov .vwHov, .cover_hov .soldHov  {
                         background: url("../images/icoGjd.png") no-repeat 0 0;
                     }
 
@@ -411,7 +413,7 @@ a{
     /*popular*/
     .popu {margin-left: -20px;}
     .popu li {
-        width: 241px;
+        width: 328px;
         margin-left: 20px;
         margin-bottom: 20px;
         overflow: hidden;
@@ -434,9 +436,9 @@ a{
                     left: 0;
                     background: rgba(0,0,0,0.5);
                     color: #fff;
-                    padding: 5px;
-                    width: 226px;
-                    height: 156px;
+                    padding: 20px;
+                    width: 286px;
+                    height: 126px;
                     transition: all 0.1s ease-in-out;
                 }
 
@@ -456,7 +458,7 @@ a{
                     border-top: 5px solid #f8674a;
                 }
 
-                    .rtCtePpu {float: right;}
+                    .rtCtePpu, .rtNaCoFt {float: right;}
                     .lfCtePpu .titCatePopu {
                         font-family: 'HelBd';
                         color: #000;
@@ -478,18 +480,21 @@ a{
     /*END popular*/
 
     /*outJobData*/
-.lfJobData {
+.lfJobData, .colrt_data {
     width: 775px;
-    border: 1px solid #dfdfdf;
     z-index: 1;
 }
 
-    .lfJobData .titleLtData, .lang, .cateFlc, .ctcFt {
+.lfJobData, .collf_data {
+    border: 1px solid #dfdfdf;
+}
+
+    .titleLtData, .lang, .cateFlc, .ctcFt {
         background: #2c3e50;
     }
 
-    .lfJobData .titleLtData, .rtJobData .titleRtData {
-        font-family: 'HelBd';
+    .titleLtData, .titleRtData, .titleNobg {
+        font-family: 'HelMd';
         display: block;
         color: #fff;
         text-align: center;
@@ -498,10 +503,11 @@ a{
         font-size: 20px;
     }
 
-    .lfJobData .ctn_ltData {
+    .ctn_ltData {
         margin: 0 25px;
         padding: 15px 0;
         border-bottom: 1px solid #999999;
+        position: relative;
     }
 
         .avaJbData {margin-right: 5px;}
@@ -530,22 +536,27 @@ a{
         .pcePst {width: 130px; text-align: right;}
             .mainPce {color: #2c3e50; font-family: 'HelBd'}
         .dtPst {text-align: right; width: 95px;}
-        .jMore {padding: 10px 25px;}
+        .jMore, .pagMore {padding: 10px 25px;}
             .jMore span {line-height: 30px;}
             a.btnjMore, a.btnPmore {background-position: 76px -18px; float: right; line-height: 16px;}
 
-    .rtJobData {
-        margin-left: 776px;
-        /*position: relative;
-        z-index: 1;*/
-        border: 1px solid #dfdfdf;
+    .rtJobData, .collf_data {
+        float: left;
+        width: 245px;
+        overflow: hidden;
     }
 
-        .lfJobData .titleLtData {
+
+    .rtJobData, .colrt_data {
+        border: 1px solid #dfdfdf;
+        margin-left: -1px;
+    }
+
+        .lfJobData .titleLtData, .colrt_data .titleRtData {
             margin-right: -1px;
         }
 
-        .rtJobData .arRtData {
+        .rtJobData .arRtData, .collf_data .arRtData {
             background: #f4f4f4;
         }
 
@@ -553,7 +564,12 @@ a{
                 background: #fff;
                 font-family: 'HelBd';
             }
-            .arRtData .ctnRtData li a {
+
+            .ctn_collfin li:active, .ctn_collfin li.actRtCate {
+                font-family: 'HelBd';
+            }
+
+            .arRtData .ctnRtData li a, .ctn_collfin li a {
                 display: block;
                 padding: 13px;
             }
@@ -603,6 +619,7 @@ a{
                 .lstFlc li .hvFlc {
                     width: 150px;
                     font-family: 'HelLt';
+                    padding: 5px;
                 }
 
                     .hvFlc .avaFlc {
@@ -620,7 +637,6 @@ a{
     /*END Freelancer*/
 
     /*Bussiness*/
-
 .cnPle {margin-top: 55px;}
 
     .cnPle .lstPle {
@@ -648,6 +664,248 @@ a{
         }
         a.btnPmore {float: none;}
     /*END Bussiness*/
+
+/*colLeftIn*/
+
+.cte_lfin {
+    padding-bottom: 13px;
+}
+
+.ip_lfin {
+    display: block;
+    margin: 13px 13px 0;
+}
+
+.ip_lfin input, .innFrmLf input {
+    padding: 0;
+    margin: 0;
+    height: 16px;
+    width: 16px;
+    float: left;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+}
+
+.ip_lfin label, .innFrmLf label {
+    cursor: pointer;
+    display: block;
+    line-height: 16px;
+    color: #000;
+    padding: 0 0 0 24px;
+    -moz-transition: color 1s ease;
+    -o-transition: color 1s ease;
+    -webkit-transition: color 1s ease;
+    transition: color 1s ease;
+}
+
+.ip_lfin input[type=radio] + label {background-position: -124px -303px;}
+.ip_lfin input[type=radio]:checked + label, .actRadio {background-position: -124px -263px !important;}
+.frm_ipLf p.ip_lfin:first-child {border-top: 1px solid #d9d9d9; padding-top: 13px}
+.sldFix, .innFrmLf {margin: 5px 13px 0;}
+.sldLf {margin: 0 4px;}
+.sldFix span {
+    display: inline-block;
+    font-size: 10px;
+    float: left;
+}
+
+    .sldFix .txtmax {float: right;}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: #f8674a;
+}
+
+.ui-slider .ui-slider-handle {
+    width: 10px;
+    height: 10px;
+    border-radius: 70px;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+.ui-widget-content {
+    background: #bebebe;
+    border: none;
+}
+
+.ui-slider-horizontal {height: 6px;}
+
+.ui-slider-horizontal .ui-slider-handle {top: -3px;}
+
+.innFrmLf {margin-left: 24px;}
+    .innFrmLf .ck_lfin {position: relative; margin-top: 10px;}
+        .innFrmLf input[type=radio] + label {background-position: -133px -231px;}
+        .innFrmLf input[type=radio]:checked + label {background-position: -133px -202px;}
+/*END colLeftIn*/
+
+/*colRightIn*/
+.boxsea {
+    background: #eeeeee;
+    padding: 10px 20px 10px 5px;
+}
+
+    .seaData, .sl_jbStaData, .sl_sortData {
+        margin-left: 15px;
+    }
+
+        .seaData label, .sl_jbStaData label, .sl_sortData label {
+            display: block;
+        }
+
+        .seaData .ip_seaData {
+            background-position: 356px -193px;
+            background-color: #fff;
+            width: 343px;
+            border-radius: 3px;
+            padding: 10px 30px 10px 10px;
+            border: 1px solid #cfcfcf;
+        }
+
+        .sl_jbStaData, .sl_sortData {
+        }
+        .sl_jbStaData .jquery-selectbox, .sl_sortData .jquery-selectbox {
+            background-color: #fff;
+            background-position: 134px -85px;
+            width: 126px;
+            color: #000;
+            border: 1px solid #cfcfcf;
+            padding: 4px 20px 2px 10px;
+        }
+        .sl_jbStaData .jquery-selectbox .jquery-selectbox-item, .sl_sortData .jquery-selectbox .jquery-selectbox-item {
+            padding-right: 10px;
+        }
+
+        .sl_jbStaData .jquery-selectbox .jquery-selectbox-list, .sl_sortData .jquery-selectbox .jquery-selectbox-list,
+        .sl_jbStaData .jquery-selectbox .jquery-selectbox-item, .sl_sortData .jquery-selectbox .jquery-selectbox-item {
+            width: auto;
+            white-space: nowrap;
+        }
+
+        .titleNobg {
+            color: #000;
+            text-align: left;
+            padding: 13px;
+        }
+
+        .sendPropo {
+            position: absolute;
+            right: 0;
+            bottom: 18px;
+        }
+
+            .sendPropo .btnPropo {
+                background-position: 120px -18px;
+            }
+
+        /*pagination*/
+.pagMore {}
+    .pagination {
+        width: 221px;
+        margin: 0 auto;
+    }
+    .pagination li {
+        display: inline-block;
+        margin: 0 3px;
+    }
+        .pagination li a.prepag , .pagination li a.nextpag {
+            height: 20px;
+            background-position: 0 -126px;
+            background-color: #2c3e50;
+            border-radius: 2px;
+        }
+        .pagination li a.nextpag {background-position: 0 -147px;}
+
+        .pagination li a {
+            display: block;
+            font-family: 'HelBd';
+            padding: 0 5px;
+            font-size: 12px;
+            color: #fff;
+            background: #cacaca;
+            border-radius: 3px;
+            text-align: center;
+            min-width: 10px;
+        }
+
+        .pagination li a.morepag {background: none; color: #cacaca;}
+        /*END pagination*/
+/*END colRightIn*/
+
+/*freelancerList*/
+.coverAll {
+    padding-top: 14px;
+}
+.lstItem {
+    width: 228px;
+    border: 1px solid #e6e6e6;
+    padding: 5px;
+    background: #f9f9f9;
+    margin: 0 0 14px 14px;
+}
+
+    .lstItem .coverImg {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        width: 228px;
+        height: 190px;
+    }
+
+        .coverImg .cover_imgFreelist {
+            width: 100%;
+            -moz-transition: opacity 0.15s linear;
+            -webkit-transition: opacity 0.15s linear;
+            transition: opacity 0.15s linear;
+        }
+
+        .linkCoImg {
+            display: block;
+            position: relative;
+        }
+            .lstItem:hover .linkCoImg .cover_hov {
+                bottom: 0;
+            }
+            .linkCoImg .cover_hov {
+                position: absolute;
+                bottom: -100%;
+                left: 0;
+                padding: 30px 5px 5px;
+                width: 218px;
+                background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2F2727), to(rgba(0,0,0,0)));
+                background: -webkit-linear-gradient(bottom, #2F2727, rgba(0,0,0,0));
+                background: -moz-linear-gradient(bottom, #2F2727, rgba(0,0,0,0));
+                background: -ms-linear-gradient(bottom, #2F2727, rgba(0,0,0,0));
+                background: -o-linear-gradient(bottom, #2F2727, rgba(0,0,0,0));
+            }
+
+            .cover_hov .vwHov, .cover_hov .soldHov {
+                display: block;
+                background-position: -130px -140px;
+                color: #fff;
+                padding-left: 24px;
+            }
+
+            .cover_hov .soldHov {background-position: -130px -166px;}
+
+            .cover_hov .soldHov {
+                float: right;
+                text-align: right;
+            }
+
+        .coverInfo_statis {
+            padding: 10px 0;
+            border-bottom: 1px dashed #c3c3c3;
+        }
+
+    .coverFt {margin-top: 10px;}
+        .naCoverFt {width: 130px;}
+            .naCoverFt .auCover {font-family: 'HelBd';}
+            .naCoverFt p {font-family: 'HelMd'}
+            .rtNaCoFt {width: 58px; overflow: hidden;}
+
+
+/*END freelancerList*/
 
     /*footer*/
 .staft .container, .ctcFt .container, .ftBt .container, .pgMtnFt .container {margin-bottom: 0;}
