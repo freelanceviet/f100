@@ -99,7 +99,7 @@ module.exports = function (app) {
 		res.redirect('/');
 	});
 	//--------------------------------------
-	// Upage image avatar of user
+	// Update image avatar of user
 	//--------------------------------------
 	app.post('/change_avatar_profile_user', function (req, res) {
 		if(req.session.user==null){
@@ -123,5 +123,57 @@ module.exports = function (app) {
 				});
 			});
 		}
+	});
+	//--------------------------------------
+	// Login with facebook_
+	//--------------------------------------
+	app.post('/login_with_facebook', function(req, res){
+		var sex = 0;
+		if(req.body.gender=="male"){
+			sex = 1;
+		}else{
+			sex = 0;
+		}
+		// test exits account facebook_ on collection
+		AM.testExitsAccountFaceBook(req.body.id,function(errFaceTest,resFaceTest){
+			if(resFaceTest){
+				req.session.user = resFaceTest;
+				if(req.session.user.hm_vicinity.toString()!=req.body.vicinity_name.toString()){
+					AM.updateLocalUser(req.session.user._id,parseFloat(req.body.lon),parseFloat(req.body.lat),req.body.name_short_country,req.body.city_name,req.body.vicinity_name,function(errP,resP){
+						res.send(resFaceTest._id, 200);
+					});
+				}else{
+					res.send(resFaceTest._id, 200);
+				}
+			}else{
+				var document = {
+					'first_name' 	: req.body.first_name,
+					'last_name' 	: req.body.last_name,
+					'search_name'   : req.body.last_name+" "+req.body.first_name,
+					'face_id'       : req.body.id,
+					'email'    	    : null,
+					'email_try'	    : null,
+					'pass'	  	    : null,
+					'month'	  	    : null,
+					'day'	  	    : null,
+					'year'	  	    : null,
+					'sex'  	  	    : sex,
+					'coordinate'	: [parseFloat(req.body.lon),parseFloat(req.body.lat)],
+					'hm_country'    : req.body.name_short_country,
+					'hm_city'       : req.body.city_name,
+					'hm_vicinity'   : req.body.vicinity_name,
+					'avatar'		: "https://graph.facebook.com/"+req.body.id+"/picture?type=large",
+					'banner'		: "../images/default-image/banner-defulat.jpg"
+				};
+				AM.insertAccountFace(document, function(errFaceDocument,resFaceDocument){
+					if(resFaceDocument){
+						req.session.user = resFaceDocument;
+						res.send(resFaceDocument._id, 200);
+					}else{
+						res.send(resFaceDocument._id, 200);
+					}
+				});
+			}
+		});
 	});
 }
