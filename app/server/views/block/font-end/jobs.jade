@@ -7,10 +7,14 @@ block content
 			h3(class="titleRtData") CATEGORIES
 			.arRtData
 				ul(class="ctn_collfin")
-					-	for(var i=0; i<9;i++)
-							li
-								a(href="") Marketing & PR
-									span (4372)
+					-	for(var i=0; i<resCategories.length;i++)
+							if(resCategories[i].numjob!=undefined)
+								li
+									a(href="")= resCategories[i].name_en
+										span= "(" + resCategories[i].numjob + ")"
+							else
+								li
+									a(href="")= resCategories[i].name_en
 			.cte_lfin
 				h3(class="titleLtData") Job Type
 				p(class="ip_lfin")
@@ -87,13 +91,13 @@ block content
 						option Business Support(2,816)
 						option Writing & Translation(2,665)
 						option Social media(1,622)
-			-	for(var i=0; i<10; i++)
+			-	for(var i=0;i<resJobs.length;i++)
 					.ctn_ltData
 						.avaJbData
 							img(src="images/avaPst.jpg", alt="")
 						.txtpst
 							h4
-								a(class="titPst coJob", href="") Art Director
+								a(class="titPst coJob", href="/jobdetail?id="+resJobs[i]._id+"&name="+resJobs[i].project_name.replace(/ /g,"-")+"")= resJobs[i].project_name
 							p Oxygen Studio Designs Pte Ltd
 							ul(class="lstPst")
 								li

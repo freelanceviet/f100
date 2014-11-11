@@ -7,10 +7,14 @@ block content
 			h3(class="titleRtData") CATEGORIES
 			.arRtData
 				ul(class="ctn_collfin")
-					-	for(var i=0; i<9;i++)
-							li
-								a(href="") Marketing & PR
-									span (4372)
+					-	for(var i=0; i<resCategories.length;i++)
+							if(resCategories[i].numjob!=undefined)
+								li
+									a(href="")= resCategories[i].name_en
+										span= "(" + resCategories[i].numjob + ")"
+							else
+								li
+									a(href="")= resCategories[i].name_en
 			.cte_lfin
 				h3(class="titleLtData") Job Type
 				p(class="ip_lfin")
@@ -88,10 +92,10 @@ block content
 						option Writing & Translation(2,665)
 						option Social media(1,622)
 			.coverAll
-				-	for(var i=0; i<18; i++)
+				-	for(var i=0;i<resHourlies.length;i++)
 						.lstItem
 							.coverImg
-								a(href="", class="linkCoImg")
+								a(href="/hourliedetail?id="+resHourlies[i]._id+"&value="+resHourlies[i].project_name.replace(/ /g,"-")+"", class="linkCoImg")
 									img(class="cover_imgFreelist", src="images/228x190.jpg", title="", alt="")
 									.cover_hov
 										span(class="vwHov") Views:

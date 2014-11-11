@@ -9,7 +9,7 @@ module.exports = function (app) {
 	// router admin home page
 	//---------------------------------------
 	app.get('/job-database', function (req, res) {
-		JM.getJobDefault(20, 0, function(errJobs, resJobs){
+		JM.getJobDefault(10, 0, function(errJobs, resJobs){
 			ALL.getAllCategories(function(errCategories, resCategories){
 				if(req.session.user==null){
 					res.render('block/font-end/jobs', {
