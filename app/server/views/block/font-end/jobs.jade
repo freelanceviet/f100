@@ -5,16 +5,28 @@ block content
 		h2(class="titleMtnIn") Our job database
 		.collf_data
 			h3(class="titleRtData") CATEGORIES
+			if(arrOption['category']!=undefined)
+				input(type="hidden", value=""+arrOption['category']+"", id="input_job_category",data-text="category",class="sort_job", data-param="category")
+			else
+				input(type="hidden", value="", id="input_job_category",data-text="category",class="sort_job", data-param="category")
 			.arRtData
-				ul(class="ctn_collfin")
-					-	for(var i=0; i<resCategories.length;i++)
-							if(resCategories[i].numjob!=undefined)
-								li
-									a(href="")= resCategories[i].name_en
-										span= "(" + resCategories[i].numjob + ")"
-							else
-								li
-									a(href="")= resCategories[i].name_en
+				if(resCategoryItem==null)
+					ul(class="ctn_collfin")
+						-	for(var i=0; i<resCategories.length;i++)
+								if(resCategories[i].numjob!=undefined)
+									li
+										a(href="javascript:void(0);", class="event_click_search_job", data-id=""+resCategories[i]._id+"", data-text="category")= resCategories[i].name_en
+											span= "(" + resCategories[i].numjob + ")"
+								else
+									li
+										a(href="javascript:void(0);", class="event_click_search_job", data-id=""+resCategories[i]._id+"")= resCategories[i].name_en
+				else
+					ul(class="ctn_collfin")
+						li
+							a(href="") All Categories
+						li
+							a(href="")= resCategoryItem.name_en
+							
 			.cte_lfin
 				h3(class="titleLtData") Job Type
 				p(class="ip_lfin")
@@ -40,28 +52,30 @@ block content
 						#sliderhandPer.sldLf
 			.cte_lfin
 				h3(class="titleLtData") Working Location
+				input(type="hidden", value="", id="input_job_location",data-text="location",class="sort_job", data-param="location")
 				p(class="ip_lfin")
-					input(type="radio", value="Any", id="remote", name="local")
+					input(type="radio", value="0", data-text="location",id="remote", name="local", class="event_click_search_job")
 					label(for="remote") Remote
 				.frm_ipLf
 					p(id="acCheckin", class="ip_lfin")
-						input(type="radio", value="Any", id="onsite", name="local")
+						input(type="radio", value="1", data-text="location",id="onsite", name="local", class="event_click_search_job")
 						label(for="onsite") On site
 					ul(class="innFrmLf")
-						-	for(var i=0;i<5; i++)
+						-	for(var i=0;i<resLocations.length; i++)
 								li(class="ck_lfin")
-									input(type="radio", value="Any", id="hcm", name="localsite", parent="onsite")
-									label(for="hcm") Ho Chi Minh
+									input(type="radio", value=""+resLocations[i].lo_name+"", id="hcm", data-text="location", name="localsite", parent="onsite", class="event_click_search_job")
+									label(for="hcm")= resLocations[i].lo_name
 			.cte_lfin
 				h3(class="titleLtData") Job Status
+				input(type="hidden", value="", id="input_job_status", data-text="status",class="sort_job", data-param="status")
 				p(class="ip_lfin")
-					input(type="radio", value="Any", id="all", name="jbStatus")
+					input(type="radio", value="", id="all", name="jbStatus", data-text="status",checked, class="event_click_search_job")
 					label(for="all") All
 				p(class="ip_lfin")
-					input(type="radio", value="Any", id="open", name="jbStatus")
+					input(type="radio", value="0", id="open", data-text="status", name="jbStatus", class="event_click_search_job")
 					label(for="open") Open
 				p(class="ip_lfin")
-					input(type="radio", value="Any", id="clsoe", name="jbStatus")
+					input(type="radio", value="1", id="close",  data-text="status", name="jbStatus", class="event_click_search_job")
 					label(for="close") Close
 		.colrt_data
 			h3(class="titleNobg")
@@ -91,31 +105,32 @@ block content
 						option Business Support(2,816)
 						option Writing & Translation(2,665)
 						option Social media(1,622)
-			-	for(var i=0;i<resJobs.length;i++)
-					.ctn_ltData
-						.avaJbData
-							img(src="images/avaPst.jpg", alt="")
-						.txtpst
-							h4
-								a(class="titPst coJob", href="/jobdetail?id="+resJobs[i]._id+"&name="+resJobs[i].project_name.replace(/ /g,"-")+"")= resJobs[i].project_name
-							p Oxygen Studio Designs Pte Ltd
-							ul(class="lstPst")
-								li
-									p Min 5 years agency experience
-								li 
-									p Strong conceptual thinking – both visual and interactive.
-								li 
-									p Salary will commensurate with education and experience.
-							p Skill: 
-								span Creativity, Drawing, HTML
-						.pcePst
-							p(class="mainPce") $18,000,000 VND
-							p SING, VN, INDO
-						.dtPst
-							p 96 Proposal
-							p 3 days ago
-						.sendPropo
-							a(href="", class="btnmore btnPropo") Send proposal
+			#list_job_search
+				-	for(var i=0;i<resJobs.length;i++)
+						.ctn_ltData
+							.avaJbData
+								img(src="images/avaPst.jpg", alt="")
+							.txtpst
+								h4
+									a(class="titPst coJob", href="/jobdetail?id="+resJobs[i]._id+"&name="+resJobs[i].project_name.replace(/ /g,"-")+"")= resJobs[i].project_name
+								p Oxygen Studio Designs Pte Ltd
+								ul(class="lstPst")
+									li
+										p Min 5 years agency experience
+									li 
+										p Strong conceptual thinking – both visual and interactive.
+									li 
+										p Salary will commensurate with education and experience.
+								p Skill: 
+									span Creativity, Drawing, HTML
+							.pcePst
+								p(class="mainPce") $18,000,000 VND
+								p SING, VN, INDO
+							.dtPst
+								p 96 Proposal
+								p 3 days ago
+							.sendPropo
+								a(href="", class="btnmore btnPropo") Send proposal
 			.pagMore
 				ul(class="pagination")
 					li
@@ -134,3 +149,5 @@ block content
 						a(class="actpag", href="") 24
 					li
 						a(class="nextpag", href="")
+block script
+	script(src='/javascripts/views/jobs.js')

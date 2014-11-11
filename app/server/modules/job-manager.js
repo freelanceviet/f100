@@ -6,6 +6,27 @@ var free_proposals	      = Mogodb.free_proposals;
 var ObjectID	          = Mogodb.ObjectID;
 
 // ------------------------------------
+// Sort job example
+exports.jobSortFiller = function(arr, callback){
+	var doc = {};
+	if(arr['category']!=undefined){
+		doc.category_id = arr['category'];
+	}
+	if(arr['subcat']!=undefined){
+		doc.category_sub_id = arr['category_sub_id'];
+	}
+	if(arr['remote']!=undefined){
+		doc.location = arr['remote'];
+	}
+	free_jobs.aggregate([
+	  {$match: doc}
+	],function(err, result) {
+		console.log(result);
+		callback(null,result);
+	});
+};
+
+// ------------------------------------
 // Get list categories
 // note: 
 // callback: arr list categories

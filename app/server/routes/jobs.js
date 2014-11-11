@@ -9,25 +9,92 @@ module.exports = function (app) {
 	// router admin home page
 	//---------------------------------------
 	app.get('/job-database', function (req, res) {
-		JM.getJobDefault(10, 0, function(errJobs, resJobs){
-			ALL.getAllCategories(function(errCategories, resCategories){
-				if(req.session.user==null){
-					res.render('block/font-end/jobs', {
-						title:"List jobs",
-						user : null,
-						resJobs : resJobs,
-						resCategories : resCategories
+		var category = req.query.category;
+		var subcat = req.query.subcat;
+		var remote = req.query.remote;
+		var filter = req.query.filter;
+		var sort = req.query.budget;
+		var page = req.query.page;
+		var arr = {
+			category : req.query.category, 
+			subcat : req.query.subcat,
+			remote : req.query.remote,
+			filter : req.query.filter,
+			sort : req.query.budget,
+			page : req.query.page
+		};
+		if(category==undefined && remote==undefined && filter==undefined && sort==undefined){
+			JM.getJobDefault(10, 0, function(errJobs, resJobs){
+				ALL.getAllCategories(function(errCategories, resCategories){
+					ALL.getAllLocation(function(errLocations, resLocations){
+						if(req.session.user==null){
+							res.render('block/font-end/jobs', {
+								title:"List jobs",
+								user : null,
+								resJobs : resJobs,
+								resCategories : resCategories,
+								resLocations : resLocations,
+								arrOption : arr,
+								resCategoryItem : null
+							});
+						}else{
+							res.render('block/font-end/jobs', {
+								title:"List jobs",
+								user : req.session.user,
+								resJobs : resJobs,
+								resCategories : resCategories,
+								resLocations : resLocations,
+								arrOption : arr,
+								resCategoryItem : null
+							});
+						}
 					});
-				}else{
-					res.render('block/font-end/jobs', {
-						title:"List jobs",
-						user : req.session.user,
-						resJobs : resJobs,
-						resCategories : resCategories
-					});
-				}
+				});
 			});
-		});
+		}else{
+			if(req.query.type=="get"){
+				console.log('xdsfsdf sdfsdfsdfdsfsd');
+				console.log('xdsfsdf sdfsdfsdfdsfsd');
+				console.log('xdsfsdf sdfsdfsdfdsfsd');
+				console.log('xdsfsdf sdfsdfsdfdsfsd');
+				console.log('xdsfsdf sdfsdfsdfdsfsd');
+				JM.jobSortFiller(arr ,function(errJobs, resJobs){
+					res.render('block/font-end/job_get', {
+						resJobs : resJobs
+					});
+				});
+			}else{
+				ALL.getAllCategories(function(errCategories, resCategories){
+					ALL.getAllLocation(function(errLocations, resLocations){
+						ALL.getItemCategory(arr['category'],function(errCategoryItem, resCategoryItem){
+							JM.jobSortFiller(arr ,function(errJobs, resJobs){
+								if(req.session.user==null){
+									res.render('block/font-end/jobs', {
+										title:"List jobs",
+										user : null,
+										resJobs : resJobs,
+										resCategories : resCategories,
+										resLocations : resLocations,
+										arrOption : arr,
+										resCategoryItem : resCategoryItem
+									});
+								}else{
+									res.render('block/font-end/jobs', {
+										title:"List jobs",
+										user : req.session.user,
+										resJobs : resJobs,
+										resCategories : resCategories,
+										resLocations : resLocations,
+										arrOption : arr,
+										resCategoryItem : resCategoryItem
+									});
+								}
+							});
+						});
+					});
+				});
+			}
+		}
 	});
 	//--------------------------------------
 	// Redirect to page post a job
