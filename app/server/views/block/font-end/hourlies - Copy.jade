@@ -1,0 +1,29 @@
+extends ../../layout_font_end
+
+block content
+	#content
+		#hourlies_content
+			.ho_left
+				.block_search
+					input(type="text", name="hourlie_input_search", placeholder="Search Hourlies...")
+				.jl_box
+					h2 Categories
+					.hlb_list_cate
+						-	for(var i=0; i<resCategories.length; i++)
+								if(resCategories[i].numhourlie!=undefined)
+									a(href="")= resCategories[i].name_en + "(" + resCategories[i].numhourlie + ")"
+								else
+									a(href="")= resCategories[i].name_en
+				.jl_box
+					h2 POPULAR SKILLS
+					.hlb_list_cate
+						-	for(var i=0; i<resItemCategorie.items.length; i++)
+								a(href="")= resItemCategorie.items[i].name
+			.ho_right
+				#hr_header
+					h1 Hourlies
+					span 36,595 found
+				#hr_sort
+				#hr_conent
+					-	for(var i=0;i<resHourlies.length;i++)
+							a(href="/hourliedetail?id="+resHourlies[i]._id+"&value=dsfsdfdsfdsf", class="hrc_item")

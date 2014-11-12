@@ -33,7 +33,7 @@ $(document).ready(function(){
 			if($(this).val()!=0 && $(this).val()!=1){
 				$('#input_job_'+$(this).attr('data-text')+'').val($(this).val());
 			}else{
-				$('#input_job_'+$(this).attr('data-text')+'').val();
+				$('#input_job_'+$(this).attr('data-text')+'').val('');
 			}
 		}else if($(this).attr('data-text') == "status"){
 			if($(this).val()){
@@ -41,6 +41,8 @@ $(document).ready(function(){
 			}else{
 				$('#input_job_'+$(this).attr('data-text')+'').val('');
 			}
+		}else if($(this).attr('data-text') == "page"){
+			$('#input_job_'+$(this).attr('data-text')+'').val($(this).attr('data-id'));
 		}
 		var i = 0;
 		var url = "";
@@ -57,6 +59,7 @@ $(document).ready(function(){
 		});
 		var urlGet = "/job-database"+url+"&type=get";
 		var urlPut = "/job-database"+url+"";
+		history.pushState({page:'/job-database'}, '/job-database', '/job-database');
 		$.get(urlGet, function(data){
 			$('#list_job_search').html(data);
 			history.pushState({page:urlPut}, urlPut, urlPut);

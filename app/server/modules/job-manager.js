@@ -18,11 +18,58 @@ exports.jobSortFiller = function(arr, callback){
 	if(arr['remote']!=undefined){
 		doc.location = arr['remote'];
 	}
+	if(arr['sattus']!=undefined){
+		doc.sattus = parseInt(arr['sattus']);
+	}
+	
+	var limit = 7;
+	var skip = 0;
+	if(arr['page']!=undefined){
+		skip = (parseInt(arr['page'])-1)*7;
+	}
 	free_jobs.aggregate([
-	  {$match: doc}
+	  {$match: doc},
+	  { $skip : skip },
+	  { $limit : limit }
 	],function(err, result) {
-		console.log(result);
 		callback(null,result);
+	});
+};
+
+// ------------------------------------
+// Count all jobs
+// note: 
+// callback: num of jobs
+// ------------------------------------
+exports.countAllJobs = function(callback){
+	free_jobs.find().count(
+		function(err, result) {
+			callback(null,result);
+		}
+	);
+};
+
+// ------------------------------------
+// Count all jobs get
+// note: 
+// callback: num of jobs get
+// ------------------------------------
+exports.countAllJobsGet = function(arr, callback){
+	var doc = {};
+	if(arr['category']!=undefined){
+		doc.category_id = arr['category'];
+	}
+	if(arr['subcat']!=undefined){
+		doc.category_sub_id = arr['category_sub_id'];
+	}
+	if(arr['remote']!=undefined){
+		doc.location = arr['remote'];
+	}
+	free_jobs.aggregate([
+	  {$match : doc},
+	  {$group : {_id: "$project_name"}}
+	],function(err, result) {
+		callback(null,result.length);
 	});
 };
 

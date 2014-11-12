@@ -1021,5 +1021,24 @@ a{
             padding: 0 80px 0 60px;
             background-position: 150px -406px;
         }
+.input_slider{
+	float:left;
+	width:100%;
+	float: left;
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 8px;
+}
+.sldFix_sub{
+	float:left;
+	width:100%;
+}
+.srf_sub{
+	float:left;
+	width:90%;
+}
+.cl_sub{
+	height:250px !important;
+}
     /*END footer*/
 /*END main*/

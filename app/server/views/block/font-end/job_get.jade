@@ -1,0 +1,47 @@
+-	for(var i=0;i<resJobs.length;i++)
+		.ctn_ltData
+			.avaJbData
+				img(src="images/avaPst.jpg", alt="")
+			.txtpst
+				h4
+					a(class="titPst coJob", href="/jobdetail?id="+resJobs[i]._id+"&name="+resJobs[i].project_name.replace(/ /g,"-")+"")= resJobs[i].project_name
+				p Oxygen Studio Designs Pte Ltd
+				ul(class="lstPst")
+					li
+						p Min 5 years agency experience
+					li 
+						p Strong conceptual thinking – both visual and interactive.
+					li 
+						p Salary will commensurate with education and experience.
+				p Skill: 
+					span Creativity, Drawing, HTML
+			.pcePst
+				p(class="mainPce") $18,000,000 VND
+				p SING, VN, INDO
+			.dtPst
+				p 96 Proposal
+				p 3 days ago
+			.sendPropo
+				a(href="", class="btnmore btnPropo") Send proposal
+.pagMore
+	if(arrOption['page']!=undefined)
+		input(type="hidden", value=""+arrOption['page']+"", id="input_job_page",data-text="page",class="sort_job", data-param="page")
+	else
+		input(type="hidden", value="", id="input_job_page",data-text="page",class="sort_job", data-param="page")
+	if(resNumJobs>7)
+		ul(class="pagination")
+			-	var num_p = 0;
+			if(resNumJobs%7>0)
+				-	var num_p = parseInt(resNumJobs/7)+1
+			else
+				-	var num_p = parseInt(resNumJobs/7)
+			li
+				a(class="prepag", href="")
+			-	for(var i=1; i<=num_p;i++)
+					li
+						if(i==1)
+							a(data-id=""+i+"", data-text="page", class="actpag event_click_search_job", href="javascript:void(0);")= i
+						else
+							a(data-id=""+i+"", data-text="page", href="javascript:void(0);", class="event_click_search_job")= i
+			li
+				a(class="nextpag", href="")

@@ -11,56 +11,61 @@ module.exports = function (app) {
 	app.get('/job-database', function (req, res) {
 		var category = req.query.category;
 		var subcat = req.query.subcat;
-		var remote = req.query.remote;
+		var remote = req.query.location;
 		var filter = req.query.filter;
 		var sort = req.query.budget;
 		var page = req.query.page;
+		var sattus = req.query.status;
 		var arr = {
 			category : req.query.category, 
 			subcat : req.query.subcat,
-			remote : req.query.remote,
+			remote : req.query.location,
 			filter : req.query.filter,
 			sort : req.query.budget,
-			page : req.query.page
+			page : req.query.page,
+			sattus : req.query.status
 		};
-		if(category==undefined && remote==undefined && filter==undefined && sort==undefined){
-			JM.getJobDefault(10, 0, function(errJobs, resJobs){
+		if(category==undefined && remote==undefined && filter==undefined && sort==undefined && page==undefined && sattus==undefined){
+			JM.getJobDefault(7, 0, function(errJobs, resJobs){
 				ALL.getAllCategories(function(errCategories, resCategories){
 					ALL.getAllLocation(function(errLocations, resLocations){
-						if(req.session.user==null){
-							res.render('block/font-end/jobs', {
-								title:"List jobs",
-								user : null,
-								resJobs : resJobs,
-								resCategories : resCategories,
-								resLocations : resLocations,
-								arrOption : arr,
-								resCategoryItem : null
-							});
-						}else{
-							res.render('block/font-end/jobs', {
-								title:"List jobs",
-								user : req.session.user,
-								resJobs : resJobs,
-								resCategories : resCategories,
-								resLocations : resLocations,
-								arrOption : arr,
-								resCategoryItem : null
-							});
-						}
+						JM.countAllJobs(function(errNumJobs, resNumJobs){
+							if(req.session.user==null){
+								res.render('block/font-end/jobs', {
+									title:"List jobs",
+									user : null,
+									resJobs : resJobs,
+									resCategories : resCategories,
+									resLocations : resLocations,
+									arrOption : arr,
+									resCategoryItem : null,
+									resNumJobs : resNumJobs
+								});
+							}else{
+								res.render('block/font-end/jobs', {
+									title:"List jobs",
+									user : req.session.user,
+									resJobs : resJobs,
+									resCategories : resCategories,
+									resLocations : resLocations,
+									arrOption : arr,
+									resCategoryItem : null,
+									resNumJobs : resNumJobs
+								});
+							}
+						});
 					});
 				});
 			});
 		}else{
 			if(req.query.type=="get"){
-				console.log('xdsfsdf sdfsdfsdfdsfsd');
-				console.log('xdsfsdf sdfsdfsdfdsfsd');
-				console.log('xdsfsdf sdfsdfsdfdsfsd');
-				console.log('xdsfsdf sdfsdfsdfdsfsd');
-				console.log('xdsfsdf sdfsdfsdfdsfsd');
 				JM.jobSortFiller(arr ,function(errJobs, resJobs){
-					res.render('block/font-end/job_get', {
-						resJobs : resJobs
+					JM.countAllJobsGet(arr, function(errNumJobs, resNumJobs){
+						res.render('block/font-end/job_get', {
+							resJobs : resJobs,
+							resNumJobs : resNumJobs,
+							arrOption : arr
+						});
 					});
 				});
 			}else{
@@ -68,27 +73,31 @@ module.exports = function (app) {
 					ALL.getAllLocation(function(errLocations, resLocations){
 						ALL.getItemCategory(arr['category'],function(errCategoryItem, resCategoryItem){
 							JM.jobSortFiller(arr ,function(errJobs, resJobs){
-								if(req.session.user==null){
-									res.render('block/font-end/jobs', {
-										title:"List jobs",
-										user : null,
-										resJobs : resJobs,
-										resCategories : resCategories,
-										resLocations : resLocations,
-										arrOption : arr,
-										resCategoryItem : resCategoryItem
-									});
-								}else{
-									res.render('block/font-end/jobs', {
-										title:"List jobs",
-										user : req.session.user,
-										resJobs : resJobs,
-										resCategories : resCategories,
-										resLocations : resLocations,
-										arrOption : arr,
-										resCategoryItem : resCategoryItem
-									});
-								}
+								JM.countAllJobsGet(arr, function(errNumJobs, resNumJobs){
+									if(req.session.user==null){
+										res.render('block/font-end/jobs', {
+											title:"List jobs",
+											user : null,
+											resJobs : resJobs,
+											resCategories : resCategories,
+											resLocations : resLocations,
+											arrOption : arr,
+											resCategoryItem : resCategoryItem,
+											resNumJobs : resNumJobs
+										});
+									}else{
+										res.render('block/font-end/jobs', {
+											title:"List jobs",
+											user : req.session.user,
+											resJobs : resJobs,
+											resCategories : resCategories,
+											resLocations : resLocations,
+											arrOption : arr,
+											resCategoryItem : resCategoryItem,
+											resNumJobs : resNumJobs
+										});
+									}
+								});
 							});
 						});
 					});
