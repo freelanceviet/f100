@@ -1,0 +1,44 @@
+-	for(var i=0;i<resHourlies.length;i++)
+		.lstItem
+			.coverImg
+				a(href="/hourliedetail?id="+resHourlies[i]._id+"&value="+resHourlies[i].project_name.replace(/ /g,"-")+"", class="linkCoImg")
+					img(class="cover_imgFreelist", src="images/228x190.jpg", title="", alt="")
+					.cover_hov
+						span(class="vwHov") Views:
+							span 16,000
+						span(class="soldHov") sold
+							span 36
+			.coverInfo
+				.coverInfo_statis
+					p I design your house with beautiful images and architecture
+				.coverFt
+					.avaJbData
+						a(href="")
+							img(src="images/avaPst.jpg")
+					.naCoverFt
+						a(class="auCover") John Doe
+						p $10,000 USD
+					.rtNaCoFt
+						p Vietnam
+.pagMore
+	if(arrOption['page']!=undefined)
+		input(type="hidden", value=""+arrOption['page']+"", id="input_hourlie_page",data-text="page",class="sort_hourlie", data-param="page")
+	else
+		input(type="hidden", value="", id="input_hourlie_page",data-text="page",class="sort_hourlie", data-param="page")
+	if(resNumHourlies>9)
+		ul(class="pagination")
+			-	var num_p = 0;
+			if(resNumHourlies%9>0)
+				-	var num_p = parseInt(resNumHourlies/9)+1
+			else
+				-	var num_p = parseInt(resNumHourlies/9)
+			li
+				a(class="prepag", href="")
+			-	for(var i=1; i<=num_p;i++)
+					li
+						if(i==1)
+							a(data-id=""+i+"", data-text="page", class="actpag event_click_search_hourlie", href="javascript:void(0);")= i
+						else
+							a(data-id=""+i+"", data-text="page", href="javascript:void(0);", class="event_click_search_hourlie")= i
+			li
+				a(class="nextpag", href="")

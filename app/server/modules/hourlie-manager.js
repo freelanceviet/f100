@@ -57,3 +57,78 @@ exports.getHourlieDefault = function(limit, skip, callback){
 		callback(null,items);
 	});
 };
+
+// ------------------------------------
+// Count all jobs
+// note: 
+// callback: num of jobs
+// ------------------------------------
+exports.countAllHourlies = function(callback){
+	free_hourlies.find().count(
+		function(err, result) {
+			callback(null,result);
+		}
+	);
+};
+
+// ------------------------------------
+// Sort hourlies example
+// ------------------------------------
+exports.hourlieSortFiller = function(arr, callback){
+	var doc = {};
+	if(arr['category']!=undefined){
+		doc.category_id = arr['category'];
+	}
+	if(arr['subcat']!=undefined){
+		doc.category_sub_id = arr['category_sub_id'];
+	}
+	if(arr['remote']!=undefined){
+		doc.location = arr['remote'];
+	}
+	if(arr['sattus']!=undefined){
+		doc.sattus = parseInt(arr['sattus']);
+	}
+	console.log(doc);
+	
+	var limit = 9;
+	var skip = 0;
+	if(arr['page']!=undefined){
+		skip = (parseInt(arr['page'])-1)*9;
+	}
+	free_hourlies.aggregate([
+	  {$match: doc},
+	  { $skip : skip },
+	  { $limit : limit }
+	],function(err, result) {
+		console.log(result);
+		callback(null,result);
+	});
+};
+
+// ------------------------------------
+// Count all hourlies get
+// note: 
+// callback: number of hourlies get
+// ------------------------------------
+exports.countAllHourliesGet = function(arr, callback){
+	var doc = {};
+	if(arr['category']!=undefined){
+		doc.category_id = arr['category'];
+	}
+	if(arr['subcat']!=undefined){
+		doc.category_sub_id = arr['category_sub_id'];
+	}
+	if(arr['remote']!=undefined){
+		doc.location = arr['remote'];
+	}
+	free_hourlies.aggregate([
+	  {$match : doc},
+	  {$group : {_id: "$project_name"}}
+	],function(err, result) {
+		callback(null,result.length);
+	});
+};
+
+
+
+

@@ -5,74 +5,84 @@ block content
 		h2(class="titleMtnIn") Freelance Listing
 		.collf_data
 			h3(class="titleRtData") CATEGORIES
+			if(arrOption['category']!=undefined)
+				input(type="hidden", value=""+arrOption['category']+"", id="input_hourlie_category",data-text="category",class="sort_hourlie", data-param="category")
+			else
+				input(type="hidden", value="", id="input_hourlie_category",data-text="category",class="sort_hourlie", data-param="category")
 			.arRtData
-				ul(class="ctn_collfin")
-					-	for(var i=0; i<resCategories.length;i++)
-							if(resCategories[i].numjob!=undefined)
-								li
-									a(href="")= resCategories[i].name_en
-										span= "(" + resCategories[i].numjob + ")"
-							else
-								li
-									a(href="")= resCategories[i].name_en
-			.cte_lfin
-				h3(class="titleLtData") Job Type
+				if(resCategoryItem==null)
+					ul(class="ctn_collfin")
+						-	for(var i=0; i<resCategories.length;i++)
+								if(resCategories[i].numhourlie!=undefined)
+									li
+										a(href="javascript:void(0);", class="event_click_search_hourlie", data-id=""+resCategories[i]._id+"", data-text="category")= resCategories[i].name_en
+											span= "(" + resCategories[i].numhourlie + ")"
+								else
+									li
+										a(href="javascript:void(0);", class="event_click_search_hourlie", data-id=""+resCategories[i]._id+"", data-text="category")= resCategories[i].name_en
+				else
+					ul(class="ctn_collfin")
+						li
+							a(href="") All Categories
+						li
+							a(href="")= resCategoryItem.name_en
+							
+			.cte_lfin.cl_sub
+				h3(class="titleLtData") Hourlie Type
 				p(class="ip_lfin")
-					input(type="radio", value="Any", id="jobType")
-					label(for="jobType") Any
-				.frm_ipLf
+					input(type="radio", value="Any", id="hourlieType", name="hourlietype")
+					label(for="hourlieType") Any
+				.frm_ipLf(style="height:70px;")
 					p(class="ip_lfin")
-						input(type="radio", value="Any", id="fixed", name="local")
+						input(type="radio", value="Any", id="fixed", name="hourlietype")
 						label(for="fixed") Fixed
-					.sldFix
-						.txtsldFix
-							span(class="txtmin") Min
-							span(class="txtmax") Max
-						#sliderhand.sldLf
-				.frm_ipLf
+					.sldFix.sldFix_sub
+						input(type="text", id="amount-fixed", readonly, style="border:0; color:#f6931f; font-weight:bold;", class="input_slider")
+						#slider-range-fixed.srf_sub
+				.frm_ipLf(style="height:70px;")
 					p(class="ip_lfin")
-						input(type="radio", value="Any", id="perhou", name="local")
+						input(type="radio", value="Any", id="perhou", name="hourlietype")
 						label(for="perhou") Per Hour
-					.sldFix
-						.txtsldFix
-							span(class="txtmin") Min
-							span(class="txtmax") Max
-						#sliderhandPer.sldLf
+					.sldFix.sldFix_sub
+						input(type="text", id="amount-per-hour", readonly, style="border:0; color:#f6931f; font-weight:bold;", class="input_slider")
+						#slider-range-per-hour.srf_sub
 			.cte_lfin
 				h3(class="titleLtData") Working Location
+				input(type="hidden", value="", id="input_hourlie_location",data-text="location",class="sort_hourlie", data-param="location")
 				p(class="ip_lfin")
-					input(type="radio", value="Any", id="remote", name="local")
+					input(type="radio", value="0", data-text="location",id="remote", name="local", class="event_click_search_hourlie")
 					label(for="remote") Remote
 				.frm_ipLf
 					p(id="acCheckin", class="ip_lfin")
-						input(type="radio", value="Any", id="onsite", name="local")
+						input(type="radio", value="1", data-text="location",id="onsite", name="local", class="event_click_search_hourlie")
 						label(for="onsite") On site
 					ul(class="innFrmLf")
-						-	for(var i=0;i<5; i++)
+						-	for(var i=0;i<resLocations.length; i++)
 								li(class="ck_lfin")
-									input(type="radio", value="Any", id="hcm", name="localsite", parent="onsite")
-									label(for="hcm") Ho Chi Minh
+									input(type="radio", value=""+resLocations[i].lo_name+"", id="hcm", data-text="location", name="localsite", parent="onsite", class="event_click_search_hourlie")
+									label(for="hcm")= resLocations[i].lo_name
 			.cte_lfin
-				h3(class="titleLtData") Job Status
+				h3(class="titleLtData") Hourlie Status
+				input(type="hidden", value="", id="input_hourlie_status", data-text="status",class="sort_hourlie", data-param="status")
 				p(class="ip_lfin")
-					input(type="radio", value="Any", id="all", name="jbStatus")
+					input(type="radio", value="", id="all", name="jbStatus", data-text="status",checked, class="event_click_search_hourlie")
 					label(for="all") All
 				p(class="ip_lfin")
-					input(type="radio", value="Any", id="open", name="jbStatus")
+					input(type="radio", value="0", id="open", data-text="status", name="jbStatus", class="event_click_search_hourlie")
 					label(for="open") Open
 				p(class="ip_lfin")
-					input(type="radio", value="Any", id="clsoe", name="jbStatus")
+					input(type="radio", value="1", id="close",  data-text="status", name="jbStatus", class="event_click_search_hourlie")
 					label(for="close") Close
 		.colrt_data
 			h3(class="titleNobg")
 				span “Design”
-				| 1165 Job found
+				| 1165 Hourlie found
 			.boxsea
 				.seaData
 					label Search
 					input(class="ip_seaData", type="text", placeholder="Type a search term and hit Enter...")
 				.sl_jbStaData
-					label Job Status
+					label Hourlie Status
 					select(class="default-usage-select")
 						option(class="option") All
 						option Web Development(5,018)
@@ -92,43 +102,50 @@ block content
 						option Writing & Translation(2,665)
 						option Social media(1,622)
 			.coverAll
-				-	for(var i=0;i<resHourlies.length;i++)
-						.lstItem
-							.coverImg
-								a(href="/hourliedetail?id="+resHourlies[i]._id+"&value="+resHourlies[i].project_name.replace(/ /g,"-")+"", class="linkCoImg")
-									img(class="cover_imgFreelist", src="images/228x190.jpg", title="", alt="")
-									.cover_hov
-										span(class="vwHov") Views:
-											span 16,000
-										span(class="soldHov") sold
-											span 36
-							.coverInfo
-								.coverInfo_statis
-									p I design your house with beautiful images and architecture
-								.coverFt
-									.avaJbData
-										a(href="")
-											img(src="images/avaPst.jpg")
-									.naCoverFt
-										a(class="auCover") John Doe
-										p $10,000 USD
-									.rtNaCoFt
-										p Vietnam
-			.pagMore
-				ul(class="pagination")
-					li
-						a(class="prepag", href="")
-					li
-						a(class="actpag", href="") 1
-					li
-						a(class="actpag", href="") 2
-					li
-						a(class="actpag", href="") 3
-					li
-						a(class="morepag", href="") ...
-					li
-						a(class="actpag", href="") 23
-					li
-						a(class="actpag", href="") 24
-					li
-						a(class="nextpag", href="")
+				#list_hourlie_search
+					-	for(var i=0;i<resHourlies.length;i++)
+							.lstItem
+								.coverImg
+									a(href="/hourliedetail?id="+resHourlies[i]._id+"&value="+resHourlies[i].project_name.replace(/ /g,"-")+"", class="linkCoImg")
+										img(class="cover_imgFreelist", src="images/228x190.jpg", title="", alt="")
+										.cover_hov
+											span(class="vwHov") Views:
+												span 16,000
+											span(class="soldHov") sold
+												span 36
+								.coverInfo
+									.coverInfo_statis
+										p I design your house with beautiful images and architecture
+									.coverFt
+										.avaJbData
+											a(href="")
+												img(src="images/avaPst.jpg")
+										.naCoverFt
+											a(class="auCover") John Doe
+											p $10,000 USD
+										.rtNaCoFt
+											p Vietnam
+					.pagMore
+						if(arrOption['page']!=undefined)
+							input(type="hidden", value=""+arrOption['page']+"", id="input_hourlie_page",data-text="page",class="sort_hourlie", data-param="page")
+						else
+							input(type="hidden", value="", id="input_hourlie_page",data-text="page",class="sort_hourlie", data-param="page")
+						if(resNumHourlies>9)
+							ul(class="pagination")
+								-	var num_p = 0;
+								if(resNumHourlies%9>0)
+									-	var num_p = parseInt(resNumHourlies/9)+1
+								else
+									-	var num_p = parseInt(resNumHourlies/9)
+								li
+									a(class="prepag", href="")
+								-	for(var i=1; i<=num_p;i++)
+										li
+											if(i==1)
+												a(data-id=""+i+"", data-text="page", class="actpag event_click_search_hourlie", href="javascript:void(0);")= i
+											else
+												a(data-id=""+i+"", data-text="page", href="javascript:void(0);", class="event_click_search_hourlie")= i
+								li
+									a(class="nextpag", href="")
+block script
+	script(src='/javascripts/views/hourlies.js')

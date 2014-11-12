@@ -5,34 +5,107 @@ var IM = require('../modules/uploadimage-manager');
 var moment   	= Mogodb.moment;
 
 module.exports = function (app) {
-	
 	//--------------------------------------
 	// Redirect to home page
 	//--------------------------------------
 	app.get('/freelancer-services', function (req, res) {
-		HM.getHourlieDefault(20, 0, function(errHourlies, resHourlies) {
-			ALL.getAllCategories(function(errCategories, resCategories){
-				ALL.getItemCategory('5441d3bbed7f3d162c7cba71',function(errItemCategorie, resItemCategorie){
-					if(req.session.user==null){
-						res.render('block/font-end/hourlies', {
-							title : "List hourlies",
-							user : null,
-							resHourlies : resHourlies,
-							resCategories : resCategories,
-							resItemCategorie : resItemCategorie
+		//
+		var category = req.query.category;
+		var subcat = req.query.subcat;
+		var remote = req.query.location;
+		var filter = req.query.filter;
+		var sort = req.query.budget;
+		var page = req.query.page;
+		var sattus = req.query.status;
+		var arr = {
+			category : req.query.category, 
+			subcat : req.query.subcat,
+			remote : req.query.location,
+			filter : req.query.filter,
+			sort : req.query.budget,
+			page : req.query.page,
+			sattus : req.query.status
+		};
+		if(category==undefined && remote==undefined && filter==undefined && sort==undefined && page==undefined && sattus==undefined){
+			HM.getHourlieDefault(9, 0, function(errHourlies, resHourlies) {
+				ALL.getAllCategories(function(errCategories, resCategories){
+					ALL.getAllLocation(function(errLocations, resLocations){
+						HM.countAllHourlies(function(errNumHourlies, resNumHourlies){
+							if(req.session.user==null){
+								res.render('block/font-end/hourlies', {
+									title:"List Hourlies",
+									user : null,
+									resHourlies : resHourlies,
+									resCategories : resCategories,
+									resLocations : resLocations,
+									arrOption : arr,
+									resCategoryItem : null,
+									resNumHourlies : resNumHourlies
+								});
+							}else{
+								res.render('block/font-end/hourlies', {
+									title:"List HOurlies",
+									user : req.session.user,
+									resHourlies : resHourlies,
+									resCategories : resCategories,
+									resLocations : resLocations,
+									arrOption : arr,
+									resCategoryItem : null,
+									resNumHourlies : resNumHourlies
+								});
+							}
 						});
-					}else{
-						res.render('block/font-end/hourlies', {
-							title:"List hourlies",
-							user : req.session.user,
-							resHourlies : resHourlies,
-							resCategories : resCategories,
-							resItemCategorie : resItemCategorie
-						});
-					}
+					});
 				});
 			});
-		});
+		}else{
+			if(req.query.type=="get"){
+				HM.hourlieSortFiller(arr ,function(errHourlies, resHourlies){
+					HM.countAllHourliesGet(arr, function(errNumHourlies, resNumHourlies){
+						res.render('block/font-end/hourlie_get', {
+							resHourlies : resHourlies,
+							resNumHourlies : resNumHourlies,
+							arrOption : arr
+						});
+					});
+				});
+			}else{
+				ALL.getAllCategories(function(errCategories, resCategories){
+					ALL.getAllLocation(function(errLocations, resLocations){
+						ALL.getItemCategory(arr['category'],function(errCategoryItem, resCategoryItem){
+							HM.hourlieSortFiller(arr ,function(errHourlies, resHourlies){
+								HM.countAllHourliesGet(arr, function(errNumHourlies, resNumHourlies){
+									if(req.session.user==null){
+										res.render('block/font-end/hourlies', {
+											title:"List hourlies",
+											user : null,
+											resHourlies : resHourlies,
+											resCategories : resCategories,
+											resLocations : resLocations,
+											arrOption : arr,
+											resCategoryItem : resCategoryItem,
+											resNumHourlies : resNumHourlies
+										});
+									}else{
+										res.render('block/font-end/hourlies', {
+											title:"List hourlies",
+											user : req.session.user,
+											resHourlies : resHourlies,
+											resCategories : resCategories,
+											resLocations : resLocations,
+											arrOption : arr,
+											resCategoryItem : resCategoryItem,
+											resNumHourlies : resNumHourlies
+										});
+									}
+								});
+							});
+						});
+					});
+				});
+			}
+		}
+		//
 	});
 	
 	//--------------------------------------
