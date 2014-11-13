@@ -160,7 +160,8 @@ module.exports = function (app) {
 					date_update : n,
 				};
 				CM.addContest(document, function(errContest, resContest){
-					res.send('success',200);
+					var url_payment = "/payment?id="+resContest[0]._id+"&amount=300&name="+resContest[0].project_name+"";
+					res.send(url_payment, 200);
 				});
 			}else{
 				IM.uploadimage('contests',req.files.files_contest[0], function(errFile, resFile){
@@ -172,5 +173,13 @@ module.exports = function (app) {
 		}else{
 			res.send('not-login',200);
 		}
+	});
+	//--------------------------------------
+	// Page select type payment
+	//--------------------------------------
+	app.get('/payment', function (req, res) {
+		res.render('block/font-end/payment', {
+			title : 'payment pro'
+		});
 	});
 }

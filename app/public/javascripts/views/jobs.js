@@ -5,6 +5,7 @@ $(document).ready(function(){
 			range: true,
 			min: 0,
 			max: 500,
+			disabled: true,
 			values: [ 75, 300 ],
 			slide: function( event, ui ) {
 				$( "#amount-fixed" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
@@ -18,6 +19,7 @@ $(document).ready(function(){
 			range: true,
 			min: 0,
 			max: 500,
+			disabled: true,
 			values: [ 75, 300 ],
 			slide: function( event, ui ) {
 				$( "#amount-per-hour" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
@@ -43,6 +45,8 @@ $(document).ready(function(){
 			}
 		}else if($(this).attr('data-text') == "page"){
 			$('#input_job_'+$(this).attr('data-text')+'').val($(this).attr('data-id'));
+		}else if($(this).attr('data-text') == "type"){
+			alert("xxx yyy");
 		}
 		var i = 0;
 		var url = "";

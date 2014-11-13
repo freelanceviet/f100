@@ -1,0 +1,32 @@
+extends ../../layout_font_end
+
+block content
+	#content
+		#payment_content
+			h1 Chon mot trong 3 hinh thuc thanh toan
+			table
+				tr
+					td
+						input(type="radio", value="Any", id="hourlieType", name="hourlietype")
+						input(type="hidden", name="url_payment", value="", id="url_payment", value="https://www.baokim.vn/payment/product/version11?business=duonggiahai89@gmail.com&id=12345&order_description=mo_ta_san_pham&product_name=tensanpham&product_price=12000000&product_quantity=12&total_amount=144000000&url_cancel=duongdanhuythanhtoan&url_detail=&url_success=duongdanthanhtoanthanhcong")
+					td Bao Kiem
+					td
+						img(src="https://www.baokim.vn/application/uploads/pages/quy-trinh-thanh-toan.png")
+				tr
+					td
+						input(type="radio", value="Any", id="hourlieType", name="hourlietype")
+					td Paypal
+					td
+						img(src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoQykTXLUxjbtYIuMCs-pLht_SHpSSvSmZY6YDfxfgFM19anFavg")
+				tr
+					td
+						input(type="radio", value="Any", id="hourlieType", name="hourlietype")
+					td COD
+					td
+				tr
+					td
+						button(value="Tiep tuc") Tiep tuc
+					td
+					td
+block script
+	script(src='/javascripts/views/payment.js')

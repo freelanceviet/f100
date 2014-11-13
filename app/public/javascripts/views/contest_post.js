@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	alert('sss');
 	var CP = new ContestPost();
 	var v_CP = new ContestBostValidator();
 	// Load auto complete tag
@@ -89,7 +90,7 @@ $(document).ready(function(){
 				if(responseText=='not-login'){
 					alert("Please login to continue!");
 				}else{
-					alert("Post Success!");
+					window.location.href = responseText;
 				}
 			},
 			error : function(e){

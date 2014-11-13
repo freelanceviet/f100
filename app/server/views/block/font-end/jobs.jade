@@ -29,19 +29,20 @@ block content
 							
 			.cte_lfin.cl_sub
 				h3(class="titleLtData") Job Type
+				input(type="hidden", value="", id="input_job_type",data-text="type",class="sort_job", data-param="type")
 				p(class="ip_lfin")
-					input(type="radio", value="Any", id="jobType", name="jobtype")
+					input(type="radio", value="Any", id="jobType", name="jobtype", checked, class="event_click_search_job")
 					label(for="jobType") Any
 				.frm_ipLf(style="height:70px;")
 					p(class="ip_lfin")
-						input(type="radio", value="Any", id="fixed", name="jobtype")
+						input(type="radio", value="Any", id="fixed", name="jobtype", class="event_click_search_job")
 						label(for="fixed") Fixed
 					.sldFix.sldFix_sub
 						input(type="text", id="amount-fixed", readonly, style="border:0; color:#f6931f; font-weight:bold;", class="input_slider")
 						#slider-range-fixed.srf_sub
 				.frm_ipLf(style="height:70px;")
 					p(class="ip_lfin")
-						input(type="radio", value="Any", id="perhou", name="jobtype")
+						input(type="radio", value="Any", id="perhou", name="jobtype", class="event_click_search_job")
 						label(for="perhou") Per Hour
 					.sldFix.sldFix_sub
 						input(type="text", id="amount-per-hour", readonly, style="border:0; color:#f6931f; font-weight:bold;", class="input_slider")
