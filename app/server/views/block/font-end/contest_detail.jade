@@ -1,59 +1,14 @@
 extends ../../layout_font_end
 
 block content
-	#content
-		#contest_detail_view
-			.banner_contest
-				include contest_detail_banner
-			.content_contest
-				.c2_left
-					include contest_detail_bar
-				.c2_right
-					.post_form_proposal
-					.post_comment_contest
-						form(method="post", action="/post_comment_contest", id="post-comment-contest")
-							input(type='hidden', name="id_contest", value=""+resContestItem._id+"")
-							input(type='hidden', name="id_file", value="0", id="id_file")
-							input(type="hidden", id="contest_post_type", name="contest_post_type", value="0")
-							.pcc_header
-								span Post
-								input(type="file", multiple="true", name="ac_img[]", class="tc0_bt_img", id="photoimg-contest-comment")
-							.pcc_content
-								textarea(name="f_comment_contest", id="f_comment_contest")
-							.pcc_image_content
-							.pcc_buttom
-								input(type="submit", value="Comment", id="bt_submit_contest")
-					.list_comment_contest
-						-	for(var i=0; i<resComments.length;i++)
-								.l2c_item
-									.l2ci_info_user
-										img(src=""+resComments[i].user_image+"")
-										a(href="")= resComments[i].user_fullname
-										span= resComments[i].time_sort
-									.l2ci_description
-										span= resComments[i].comment
-									.l2ci_image
-										if(resComments[i].file!=undefined)
-											-	for(var j=0; j<resComments[i].file.length; j++)
-													img(src='/upload/contests?type=resize&width=400&height=300&name='+resComments[i].file[j].public_id+'.'+resComments[i].file[j].format+'')
-									.l2ci_comment
-										if(resComments[i].list_comment!=undefined)
-											-	for(var j=0; j<resComments[i].list_comment.length; j++)
-													.l2ci_item
-														img(src=""+resComments[i].list_comment[j].user_avatar+"")
-														.l2ci_item_info
-															h2= resComments[i].list_comment[j].full_name
-															span= resComments[i].list_comment[j].content
-									.l2ci_option
-										a(href="javascript:void(0);", data-id=""+resComments[i]._id+"", data-type="like", class="event_like_comment_contest") Like
-										a(href="javascript:void(0);", class="event_enter_comment_contest") Comment
-										a(href="") Share
-									.option_comment_contest
-										form(method="post", action="/store_comment_sub", class="form_comment_sub")
-											input(type="hidden", name="comment_id", value=""+resComments[i]._id+"")
-											textarea(name="comment_nd", style="float:left; width:99%;margin-bottom:5px")
-											input(type="submit", value="Send", class="bt_submit_comment_sub")
+	.container
+		h2(class="titleMtnIn") Populat competition
+		.compet_main
+			include contest/banner
+			.artCompet
+				h1 Time line
 block script
 	script(src='/javascripts/form-validators/jobContestValidator.js')
 	script(src='/javascripts/form-validators/proposalContestValidator.js')
 	script(src='/javascripts/views/contest_detail.js')
+	link(rel='stylesheet', href='/stylesheets/style.css')

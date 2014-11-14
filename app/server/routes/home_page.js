@@ -9,7 +9,7 @@ module.exports = function (app) {
 	// router admin home page
 	//--------------------------------------
 	app.get('/', function (req, res) {
-		CM.getContestDefault(8, 0, function(errContests, resContests) {
+		CM.getContestDefault(9, 0, function(errContests, resContests) {
 			JM.getJobDefault(4, 0, function(errJobs, resJobs){
 				ALL.getAllCategories(function(errCategories, resCategories){
 					HM.getHourlieDefault(10, 0, function(errHourlies, resHourlies) {

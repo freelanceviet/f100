@@ -1,0 +1,26 @@
+.cov_compet
+	.pho_compet
+		.img_compet
+			img(src="images/cover_competition.jpg")
+			span(class="hv_covCompet")
+		.nameCompet
+			h2 Markisa T-Shirt Design Competition 2014
+		.lk_fbCompet
+			.fb-share-button(data-href="https://developers.facebook.com/docs/plugins/", data-layout="button")
+	.timelineCompet
+		.ctn_tline
+			.frm_tline.clearfix
+				ul(class="lst_navTline clearfix")
+					li
+						a(class="nav_tline activeTline", href="/contestdetail?id="+resContestItem._id+"&tab=timeline&value="+resContestItem.project_name.replace(/ /g,"-")+"")
+							span Timeline
+					li
+						a(class="nav_tline", href="/contestdetail?id="+resContestItem._id+"&tab=brief&value="+resContestItem.project_name.replace(/ /g,"-")+"")
+							span Contest Brief
+					li
+						a(class="nav_tline", href="/contestdetail?id="+resContestItem._id+"&tab=proposal&value="+resContestItem.project_name.replace(/ /g,"-")+"")
+							span Proposals
+			a(class="btnmore btn_tlineCom", href="") submission
+		.avaCompet
+			a(class="inavaCompet", href="#")
+				img(src="images/banner2.jpg")

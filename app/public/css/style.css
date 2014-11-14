@@ -1,7 +1,4 @@
-/*
- * CSS framework Bica.
- * Version 1.1
- */
+
 /* Reset */
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,caption,table,tbody,tfoot,thead{margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100.01%;font-family:inherit;vertical-align:baseline;}
 
@@ -42,7 +39,6 @@ audio:not([controls]){display:none;}
 img{border:0; -ms-interpolation-mode:bicubic; vertical-align:middle;}
 svg:not(:root){overflow:hidden;}
 figure{margin:0;}
-fieldset{border:1px solid #c0c0c0; margin:0 2px; padding:0.35em 0.625em 0.75em;}
 legend{border:0; padding:0;}
 
 /* Font */
@@ -102,7 +98,11 @@ ol li{list-style:decimal inside;}
     p,h2,h3{orphans:3; widows:3;}
     h2,h3{page-break-after:avoid;}
 }
-
+.npad {padding: 0 !important;}
+.nmag{margin: 0 !important;;}
+.nbtmp {padding: 0 !important; margin: 0 !important;}
+.pullFlt_right {float: right !important;}
+.pullFlt_left {float: left !important;}
 /*** 	IE 10 	 ***/
 
 .ie10 ...{}
@@ -110,7 +110,6 @@ ol li{list-style:decimal inside;}
 
 
 /***	Style	 ***/
-@import url('../css/style.css');
 @font-face {
     font-family:'HelBd';
     src: url('../font/HelBd.eot');
@@ -176,17 +175,17 @@ a{
 	color:#333;
 	text-decoration:none;
 }
-	a:hover, .ctcFt a:hover, .ftBt a:hover {color:#f8674a;text-decoration:none;}
+	a:hover, .ctcFt a:hover, .ftBt a:hover, .over_lstCompet a:hover {color:#f8674a;text-decoration:none;}
 
-.coJob, .naCoverFt .auCover {color: #f8674a;}
+.coJob, .naCoverFt .auCover, .clorg {color: #f8674a;}
 .coJob:hover, header a:hover, .auCover:hover {color: #2c3e50;}
 
-#wrapper:before, #wrapper:after, .inStp:before, .inStp:after, .popu:before, .popu:after, .txtCatePopu:before, .txtCatePopu:after, .ctn_ltData:before, .ctn_ltData:after, .container:before, .container:after, .jMore:before, .jMore:after, .lstFlc:before, .lstFlc:after, .cnPle:before, .cnPle:after, .statis:before, .statis:after, .mineGj:before, .mineGj:after, .navLogReg:before, .navLogReg:after, .lang:before, .lang:after, .txtsldFix:before, .txtsldFix:after, .boxsea:before, .boxsea:after, .pagination:before, .pagination:after, .coverAll:before, .coverAll:after, .cover_hov:before, .cover_hov:after, .coverFt:before, .coverFt:after {
+#wrapper:before, #wrapper:after, .inStp:before, .inStp:after, .popu:before, .popu:after, .txtCatePopu:before, .txtCatePopu:after, .ctn_ltData:before, .ctn_ltData:after, .container:before, .container:after, .jMore:before, .jMore:after, .lstFlc:before, .lstFlc:after, .cnPle:before, .cnPle:after, .statis:before, .statis:after, .mineGj:before, .mineGj:after, .navLogReg:before, .navLogReg:after, .lang:before, .lang:after, .txtsldFix:before, .txtsldFix:after, .boxsea:before, .boxsea:after, .pagination:before, .pagination:after, .coverAll:before, .coverAll:after, .cover_hov:before, .cover_hov:after, .coverFt:before, .coverFt:after, .lst_ckSup:before, .lst_ckSup:after, .lstCompet:before, .lstCompet:after {
     content: '';
     display: table;
 }
 
-#wrapper:after, .inStp:after, .popu:after, .txtCatePopu:after, .ctn_ltData:after, .container:after, .jMore:after, .lstFlc:after, .cnPle:after, .statis:after, .mineGj:after, .navLogReg:after, .lang:after, .txtsldFix:after, .boxsea:after, .pagination:after, .coverAll:after, .cover_hov:after, .coverFt:after {clear: both;}
+#wrapper:after, .inStp:after, .popu:after, .txtCatePopu:after, .ctn_ltData:after, .container:after, .jMore:after, .lstFlc:after, .cnPle:after, .statis:after, .mineGj:after, .navLogReg:after, .lang:after, .txtsldFix:after, .boxsea:after, .pagination:after, .coverAll:after, .cover_hov:after, .coverFt:after, .lst_ckSup:after, .lstCompet:after {clear: both;}
 
 /*header*/
 	header, .search .btnSch, .titleRtData, .tpFlc .slcFlc, .staft, .chatwt, .pagination li a:hover, .pagination li a.actpag, .pagination li a.prepag:hover, .pagination li a.nextpag:hover {
@@ -228,7 +227,7 @@ a{
 	#nav{
         display: inline-block;
     }
-		#nav > li, .popu li, .lfCtePpu, .rtCtePpu, .lfJobData, .lfJobData, .avaJbData, .txtpst, .pcePst, .dtPst, .lstFlc li, .lstPle, .statis li, .ltFt, .rtFt, .mineGj > li, .lang a, .colrt_data, .seaData, .sl_jbStaData, .sl_sortData, .pagination li, .lstItem, .cover_hov .vwHov, .coverFt .naCoverFt {display:block; float:left;position: relative;}
+		#nav > li, .popu li, .lfCtePpu, .rtCtePpu, .lfJobData, .lfJobData, .avaJbData, .txtpst, .pcePst, .dtPst, .lstFlc li, .lstPle, .statis li, .ltFt, .rtFt, .mineGj > li, .lang a, .colrt_data, .seaData, .sl_jbStaData, .sl_sortData, .pagination li, .lstItem, .cover_hov .vwHov, .coverFt .naCoverFt, .lst_ckSup li, .lst_navTline li, .name_lstCompet, .grp_like li, .one_objCompet, .collf_brief, .colrt_brief {display:block; float:left;position: relative;}
 		#nav > li > a, .navLogReg a {
 			display: block;
 			padding: 25px 20px;
@@ -311,6 +310,110 @@ a{
         .lang a.langVn:hover, .lang a.langVn.activeLang {
             background-position: -48px 0;
         }
+
+        /*signup, login*/
+    .boxSup, .boxLogin {display: none;}
+        .ctnSup {
+            padding: 40px 0;
+            border-radius: 5px;
+        }
+            .ctnSup .fmSup {
+                display: block;
+                font-family: 'HelMd', sans-serif;
+                width: 415px;
+                margin: 0 auto;
+            }
+
+                .fmSup .supFb {
+                    display: block;
+                    text-align: center;
+                }
+
+                    .supFb p {
+                        margin-bottom: 10px;
+                    }
+
+                    .supFb p.clGrey {color: #8d8d8d;}
+                    .supFb .btnSupFb {
+                        font-family: 'HelBd', sans-serif;
+                        font-weight: 700;
+                        font-size: 14px;
+                        text-transform: uppercase;
+                        border: none;
+                        background: #3b5998 url("../images/icoGjd.png") no-repeat -105px -441px;
+                        padding: 15px 13px 13px 55px;
+                        color: #fff;
+                        border-radius: 5px;
+                    }
+
+                    .supFb .btnSupFb:hover {background-color: #23448a;}
+
+                    .supFb .lineSup {
+                        display: block;
+                        border-bottom: 1px solid #555555;
+                        position: relative;
+                        margin-top: 20px;
+                        text-align: center;
+                    }
+
+                        .lineSup em {
+                            display: block;
+                            background: #fff;
+                            padding: 2px 10px;
+                            position: absolute;
+                            left: 50%;
+                            margin-left: -11px;
+                            top: 50%;
+                            margin-top: -15px;
+                        }
+
+                    .gridSup {margin-top: 10px;}
+                        .gridSup label {display: block; margin: 3px 0; font-size: 13px;}
+                        .errSup {color: #f8674a;}
+
+                    .ipSup {
+                        display: block;
+                        border: 1px solid #c8c8c8;
+                        border-radius: 3px;
+                        padding: 10px 15px;
+                        width: 380px;
+                        transition: all 0.2s ease-in-out;
+                    }
+
+                        .ipSup:hover, .ipSup:active, .ipSup:focus {border-color: #2c3e50;}
+
+                    .ipErr {border: 1px solid #f8674a;}
+                    .btnsubmit {
+                        display: block;
+                        background: #f8674a;
+                        padding: 15px 0;
+                        text-transform: uppercase;
+                        width: 100%;
+                        border: none;
+                        color: #fff;
+                        font-family: 'HelBd', sans-serif;
+                        font-size: 14px;
+                        border-radius: 5px;
+                        transition: all 0.2s ease-in-out;
+                    }
+
+                        .btnsubmit:hover {background: #e74222;}
+
+                    .ckService {
+                        text-align: center;
+                        margin-top: 10px;
+                    }
+                    .fget_pass {
+                        font-style: italic;
+                        color: #848484;
+                        font-family: 'HelLt', sans-serif;
+                        font-size: 13px;
+                    }
+
+                        .fget_pass:hover {
+
+                        }
+        /*END signup, login*/
 /*END header*/
 
 /*slider*/
@@ -388,7 +491,7 @@ a{
                     font-family: 'HelRg';
                 }
 
-                    .inStp .thumbStpOne, .inStp .thumbStpTwo, .inStp .thumbStpThree, .telus, .telus, .lstsoci .icoFbFt, .lstsoci .icoGgFt, .lstsoci .icoTwFt, .lstsoci .icoInFt, .mailus, .chatwt p, .ip_lfin input + label, .ck_lfin input + label, .seaData .ip_seaData, .sl_jbStaData .jquery-selectbox, .sl_sortData .jquery-selectbox, .pagination li a.prepag , .pagination li a.nextpag, .cover_hov .vwHov, .cover_hov .soldHov  {
+                    .inStp .thumbStpOne, .inStp .thumbStpTwo, .inStp .thumbStpThree, .telus, .telus, .lstsoci .icoFbFt, .lstsoci .icoGgFt, .lstsoci .icoTwFt, .lstsoci .icoInFt, .mailus, .chatwt p, .ip_lfin input + label, .ck_lfin input + label, .seaData .ip_seaData, .sl_jbStaData .jquery-selectbox, .sl_sortData .jquery-selectbox, .pagination li a.prepag , .pagination li a.nextpag, .cover_hov .vwHov, .cover_hov .soldHov, .fueMark, .ck_sup input + label, .likeCompet, .cmtCompet {
                         background: url("../images/icoGjd.png") no-repeat 0 0;
                     }
 
@@ -460,7 +563,7 @@ a{
 
                     .rtCtePpu, .rtNaCoFt {float: right;}
                     .lfCtePpu .titCatePopu {
-                        font-family: 'HelBd';
+                        font-family: 'HelBd', sans-serif;
                         color: #000;
                         text-transform: uppercase;
                         white-space: nowrap;
@@ -471,7 +574,7 @@ a{
         text-transform: uppercase;
         padding: 5px 30px 5px 10px;
         background: #f8674a url("../images/icoGjd.png") no-repeat 90px -18px;
-        font-family: 'HelBd';
+        font-family: 'HelBd', sans-serif;
         font-size: 12px;
         border-radius: 3px;
     }
@@ -494,7 +597,7 @@ a{
     }
 
     .titleLtData, .titleRtData, .titleNobg {
-        font-family: 'HelMd';
+        font-family: 'HelMd', sans-serif;
         display: block;
         color: #fff;
         text-align: center;
@@ -522,7 +625,7 @@ a{
         .txtpst {width: 440px;}
         .txtpst .titPst {
             display: block;
-            font-family: 'HelBd';
+            font-family: 'HelBd', sans-serif;
             font-size: 16px;
         }
 
@@ -534,7 +637,7 @@ a{
             }
 
         .pcePst {width: 130px; text-align: right;}
-            .mainPce {color: #2c3e50; font-family: 'HelBd'}
+            .mainPce {color: #2c3e50; font-family: 'HelBd', sans-serif;}
         .dtPst {text-align: right; width: 95px;}
         .jMore, .pagMore {padding: 10px 25px;}
             .jMore span {line-height: 30px;}
@@ -562,11 +665,11 @@ a{
 
             .arRtData .ctnRtData li:active, .arRtData .ctnRtData li.actRtCate {
                 background: #fff;
-                font-family: 'HelBd';
+                font-family: 'HelBd', sans-serif;
             }
 
             .ctn_collfin li:active, .ctn_collfin li.actRtCate {
-                font-family: 'HelBd';
+                font-family: 'HelBd', sans-serif;
             }
 
             .arRtData .ctnRtData li a, .ctn_collfin li a {
@@ -584,7 +687,7 @@ a{
                 display: inline-block;
                 margin-right: 3px;
                 font-size: 16px;
-                font-family: 'HelMd';
+                font-family: 'HelMd', sans-serif;
             }
 
             .tpFlc select.slcFlc {color: #fff; padding: 8px 10px;}
@@ -618,7 +721,7 @@ a{
 
                 .lstFlc li .hvFlc {
                     width: 150px;
-                    font-family: 'HelLt';
+                    font-family: 'HelLt', sans-serif;
                     padding: 5px;
                 }
 
@@ -631,7 +734,7 @@ a{
                         overflow: hidden;
                     }
 
-                    .hvFlc h5, .hvFlc span, .lstPle h5 {font-family: 'HelBd'; font-weight: normal;}
+                    .hvFlc h5, .hvFlc span, .lstPle h5 {font-family: 'HelBd', sans-serif; font-weight: normal;}
                     .hvFlc span {float: right;}
 
     /*END Freelancer*/
@@ -674,9 +777,10 @@ a{
 .ip_lfin {
     display: block;
     margin: 13px 13px 0;
+    position: relative;
 }
 
-.ip_lfin input, .innFrmLf input {
+.ip_lfin input, .innFrmLf input, .ck_sup input {
     padding: 0;
     margin: 0;
     height: 16px;
@@ -685,9 +789,10 @@ a{
     position: absolute;
     left: 0;
     opacity: 0;
+    cursor: pointer;
 }
 
-.ip_lfin label, .innFrmLf label {
+.ip_lfin label, .innFrmLf label, .ck_sup label {
     cursor: pointer;
     display: block;
     line-height: 16px;
@@ -734,9 +839,24 @@ a{
 .ui-slider-horizontal .ui-slider-handle {top: -3px;}
 
 .innFrmLf {margin-left: 24px;}
-    .innFrmLf .ck_lfin {position: relative; margin-top: 10px;}
-        .innFrmLf input[type=radio] + label {background-position: -133px -231px;}
-        .innFrmLf input[type=radio]:checked + label {background-position: -133px -202px;}
+    .innFrmLf .ck_lfin,
+    .lst_ckSup {margin: 10px 0 20px;}
+    .lst_ckSup .ck_sup {
+        position: relative;
+        margin: 0 24px;
+    }
+
+        .innFrmLf input[type=radio] + label,
+        .ck_sup input[type=radio] + label,
+        .ck_sup input[type=checkbox] + label {
+            background-position: -133px -231px;
+        }
+
+        .innFrmLf input[type=radio]:checked + label,
+        .ck_sup input[type=radio]:checked + label,
+        .ck_sup input[type=checkbox]:checked + label {
+            background-position: -133px -202px;
+        }
 /*END colLeftIn*/
 
 /*colRightIn*/
@@ -801,7 +921,7 @@ a{
         /*pagination*/
 .pagMore {}
     .pagination {
-        width: 221px;
+        width: 222px;
         margin: 0 auto;
     }
     .pagination li {
@@ -866,17 +986,17 @@ a{
             .lstItem:hover .linkCoImg .cover_hov {
                 bottom: 0;
             }
-            .linkCoImg .cover_hov {
+            .linkCoImg .cover_hov, .hv_covCompet {
                 position: absolute;
                 bottom: -100%;
                 left: 0;
                 padding: 30px 5px 5px;
                 width: 218px;
-                background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2F2727), to(rgba(0,0,0,0)));
-                background: -webkit-linear-gradient(bottom, #2F2727, rgba(0,0,0,0));
-                background: -moz-linear-gradient(bottom, #2F2727, rgba(0,0,0,0));
-                background: -ms-linear-gradient(bottom, #2F2727, rgba(0,0,0,0));
-                background: -o-linear-gradient(bottom, #2F2727, rgba(0,0,0,0));
+                background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#5a5a5a), to(rgba(0,0,0,0)));
+                background: -webkit-linear-gradient(bottom, #5a5a5a, rgba(0,0,0,0));
+                background: -moz-linear-gradient(bottom, #5a5a5a, rgba(0,0,0,0));
+                background: -ms-linear-gradient(bottom, #5a5a5a, rgba(0,0,0,0));
+                background: -o-linear-gradient(bottom, #5a5a5a, rgba(0,0,0,0));
             }
 
             .cover_hov .vwHov, .cover_hov .soldHov {
@@ -904,8 +1024,232 @@ a{
             .naCoverFt p {font-family: 'HelMd'}
             .rtNaCoFt {width: 58px; overflow: hidden;}
 
+    .fueMark {
+        display: block;
+        background-position: 0 -440px;
+        width: 58px;
+        height: 58px;
+        position: absolute;
+        top: -3px;
+        right: -3px;
+        z-index: 1;
+    }
 
 /*END freelancerList*/
+
+/*Competition*/
+.compet_main {
+    padding: 1px;
+}
+
+    .cov_compet {
+        position: relative;
+        border: 1px solid #cfcfcf;
+    }
+        .pho_compet {
+            position: relative;
+            height: 370px;
+            overflow: hidden;
+            border-bottom: 1px solid #cfcfcf;
+        }
+            .img_compet img, .inavaCompet img, .one_objCompet img {width: 100%;}
+            .hv_covCompet {
+                bottom: 0;
+                width: 100%;
+                display: block;
+                opacity: .4;
+                padding: 30px 0;
+            }
+
+            .nameCompet {
+                position: absolute;
+                bottom: 15px;
+                left: 259px;
+                max-width: 560px;
+                color: #fff;
+                font-family: 'HelBd', sans-serif;
+                font-size: 18px;
+            }
+
+                .nameCompet h2 {
+                    padding-right: 20px;
+                    line-height: 24px;
+                    font-weight: normal;
+                }
+
+            .lk_fbCompet {
+                position: absolute;
+                right: 15px;
+                bottom: 15px;
+            }
+
+    .timelineCompet {
+        position: relative;
+    }
+
+        .avaCompet {
+            position: absolute;
+            left: 57px;
+            border: 1px solid #d3d3d3;
+            bottom: 12px;
+            width: 190px;
+            height: 190px;
+            overflow: hidden;
+            background: #fff;
+            display: table;
+            text-align: center;
+        }
+
+            .inavaCompet {
+                padding: 4px;
+                background: #fff;
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+        .ctn_tline {
+            padding-left: 255px;
+            width: 629px;
+        }
+
+            .frm_tline {
+                padding: 8px 0;
+            }
+
+                .frm_tline .lst_navTline li {
+                    border-right: 1px solid #cecece;
+                    padding: 0 20px;
+                }
+
+                .lst_navTline .nav_tline {
+                    float: left;
+                    box-shadow: inset 0 -4px 0 rgba(255,255,255,0);
+                    padding: 12px 9px;
+                    font-family: 'HelBd', sans-serif;
+                    font-size: 16px;
+                    color: #636363;
+                    -webkit-transition: all 0.2s ease-in-out;
+                    -moz-transition: all 0.2s ease-in-out;
+                    -o-transition: all 0.2s ease-in-out;
+                    transition: all 0.2s ease-in-out;
+                }
+
+                    .lst_navTline .nav_tline:hover {
+                        box-shadow: inset 0 -4px 0 #2c3e50;
+                        color: #2c3e50;
+                    }
+
+                    .lst_navTline .activeTline {color: #2c3e50;}
+
+                a.btn_tlineCom {
+                    position: absolute;
+                    right: 16px;
+                    top: 15px;
+                    background: #f8674a url("../images/icoGjd.png") no-repeat 97px -17px;
+                }
+
+.artCompet {
+    background: #ebebeb;
+    padding: 18px;
+}
+    .in_artCompet {
+        border: 1px solid #dfdfdf;
+    }
+
+        .lstCompet {background: #fff; padding-bottom: 20px;}
+
+            .objCompet {padding: 13px 13px 13px 1px;}
+
+            .one_objCompet {
+                display: block;
+                margin-left: 12px;
+                margin-bottom: 12px;
+                width: 228px;
+                height: 228px;
+                border: 1px solid #d1d1d1;
+                overflow: hidden;
+                position: relative;
+            }
+                .one_objCompet .thumb_lstCompet {display: table; text-align: center; border: none; height: 100%;}
+                .thumb_lstCompet a {display: table-cell; vertical-align: middle;}
+
+                .over_lstCompet {
+                    position: absolute;
+                    bottom: -100%;
+                    left: 0;
+                    padding: 20px 8px 8px;
+                    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#5a5a5a), to(rgba(0,0,0,0)));
+                    background: -webkit-linear-gradient(bottom, #5a5a5a, rgba(0,0,0,0));
+                    background: -moz-linear-gradient(bottom, #5a5a5a, rgba(0,0,0,0));
+                    background: -ms-linear-gradient(bottom, #5a5a5a, rgba(0,0,0,0));
+                    background: -o-linear-gradient(bottom, #5a5a5a, rgba(0,0,0,0));
+                    -webkit-transition: all 0.2s ease-in-out;
+                    -moz-transition: all 0.2s ease-in-out;
+                    -o-transition: all 0.2s ease-in-out;
+                    transition: all 0.2s ease-in-out;
+                }
+
+                .one_objCompet:hover .over_lstCompet {
+                    bottom: 0;
+                }
+
+                .over_lstCompet a {color: #fff;}
+                .name_lstCompet {width: 117px; padding-right: 15px;}
+                .likeCompet {
+                    background-position: -130px -482px;
+                    padding-left: 24px;
+                    margin-right: 8px;
+                }
+
+                .cmtCompet {
+                    background-position: -130px -502px;
+                    padding-left: 24px;
+                }
+
+    .collf_brief {
+        padding: 0 25px;
+        border-right: 1px solid #dfdfdf;
+        width: 528px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+        .collf_brief h3, .colrt_brief h3, p {margin-bottom: 15px;}
+
+        .txtDrpt li, .dln, .sod {
+            background: url("../images/icoBrief.png") no-repeat 0 0;
+            padding-left: 25px;
+        }
+
+        .txtDrpt li {
+            background-position: 6px -132px;
+            margin-bottom: 15px;
+        }
+
+    .colrt_brief {
+        padding: 0 25px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        width: 355px;
+    }
+
+        .alt_tpBrief {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dfdfdf;
+        }
+
+            .lstPri li p {
+                padding-left: 25px;
+            }
+
+            .dln {background-position: 0 0;}
+            .sod {background-position: 0 -56px;}
+        .colrt_brief .alt_tpBrief:last-child {
+            border: none;
+        }
+
+/*END Competition*/
 
     /*footer*/
 .staft .container, .ctcFt .container, .ftBt .container, .pgMtnFt .container {margin-bottom: 0;}
@@ -915,7 +1259,7 @@ a{
         padding: 15px 0;
     }
 
-        .statis li h5 {font-family: 'HelMd'; font-size: 22px; font-weight: normal}
+        .statis li h5 {font-family: 'HelMd', sans-serif; font-size: 22px; font-weight: normal}
 
 .ctcFt {
     padding: 15px 0 10px;
@@ -1021,24 +1365,5 @@ a{
             padding: 0 80px 0 60px;
             background-position: 150px -406px;
         }
-.input_slider{
-	float:left;
-	width:100%;
-	float: left;
-	width: 100%;
-	margin-top: 5px;
-	margin-bottom: 8px;
-}
-.sldFix_sub{
-	float:left;
-	width:100%;
-}
-.srf_sub{
-	float:left;
-	width:90%;
-}
-.cl_sub{
-	height:250px !important;
-}
     /*END footer*/
 /*END main*/

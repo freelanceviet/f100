@@ -28,10 +28,81 @@ header
 					a(href="/how-it-work", class="lstNavc") How It Work
 		.navLogReg
 			if(!user)
-				a(href="/login", class="login") login
-				a(href="/register", class="reg") sign up
+				a(href="#inlineLogin", class="login ctnIn cboxElement") login
+				a(href="#inlineSup", class="reg ctnIn cboxElement") sign up
 			else
 				a(href="/logout", class="reg") logout
 		.lang
 			a(href="", class="langEn activeLang")
 			a(href="", class="langVn")
+	.boxLogin
+		#inlineLogin.ctnSup
+			form(class="fmSup")
+				.supFb
+					h2(class="titleMtn")
+					p Don’t have account? Sign up
+					button(class="btnSupFb") Login with facebook
+					span(class="lineSup")
+						em Or
+				fieldset(class="gridSup")
+					label Email
+					input(class="ipSup ipErr", name="first_name")
+					label(class="errSup") Enter your email
+				fieldset(class="gridSup")
+					label Password
+					input(class="ipSup", name="first_name")
+					label(class="errSup") Enter your password
+				.ckService
+					ul(class="lst_ckSup")
+						li(class="ck_sup nmag")
+							input(type="checkbox", id="remem", name="ckSup")
+							label(for="remem") Remember me
+						li(class="ck_sup nmag pullFlt_right")
+							a(class="fget_pass", href="") Forgot password
+				.fieldset
+					button(type="submit", class="btnsubmit") Login
+	.boxSup
+		#inlineSup.ctnSup
+			form(class="fmSup")
+				.supFb
+					h2(class="titleMtn")
+					p  Already have an account? Login
+					p(class="clGrey") Sign up with Facebook and discover what your friend are doing
+					button(class="btnSupFb") Sign up with facebook
+					.fbGetjobdone
+					span(class="lineSup")
+						em Or
+				fieldset(class="gridSup")
+					label First Name
+					input(class="ipSup ipErr", name="first_name")
+					label(class="errSup") Enter your first name
+				fieldset(class="gridSup")
+					label Last Name
+					input(class="ipSup", name="last_name")
+					label(class="errSup") Enter your last name
+				fieldset(class="gridSup")
+					label Email
+					input(class="ipSup", name="last_name")
+					label(class="errSup") Enter your email	
+				fieldset(class="gridSup")
+					label Password
+					input(class="ipSup", name="last_name")
+					label(class="errSup") Enter your password
+				fieldset(class="gridSup")
+					label Location
+					input(class="ipSup", name="last_name")
+					label(class="errSup") Enter your location
+				.ckService
+					h5 What are you looking for?
+					ul(class="lst_ckSup")
+						li(class="ck_sup")
+							input(type="radio", id="buySer", name="ckSup")
+							label(for="buySer") Buy Services
+						li(class="ck_sup")
+							input(type="radio", id="selSer", name="ckSup")
+							label(for="selSer") Sell Services
+						li(class="ck_sup")
+							input(type="radio", id="both_ckSup", name="ckSup")
+							label(for="both_ckSup") Both
+				fieldset
+					button(type="submit", class="btnsubmit") Sign up

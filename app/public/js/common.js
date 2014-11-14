@@ -21,11 +21,39 @@ $(document).ready(function(){
 
     $('#scrolbr').tinyscrollbar();
 
+    $(".ctnIn").colorbox({inline:true, width:"50%"});
 
     //Style selectbox
     $('.default-usage-select').selectbox();
-});
+    $( "#sliderhand, #sliderhandPer" ).slider();
 
+    $('.innFrmLf li input[type="radio"]').click(function(){
+        var _parent = $(this).attr('parent');
+        $('#'+_parent).trigger('click');
+    });
+
+    $('.ip_lfin input[type="radio"]').click(function(){
+        var _name = $(this).attr('name');
+        var _this = $(this);
+        $('.ip_lfin input[name="'+_name+'"]').each(function(){
+            var _id = $(this).attr('id'); // id = onsite
+            if(_this.attr('id') != _id){
+                $('.innFrmLf li input[parent="'+_id+'"]').attr('checked', false);
+            }else{
+                var flag = false;
+                $('.innFrmLf li input[parent="'+_id+'"]').each(function(){
+                    if($(this).is(":checked")){
+                        flag = true;
+                    }
+                });
+                if(flag == false){
+                    $('.innFrmLf li input[parent="'+_id+'"]').eq(0).attr('checked', true);
+                }
+            }
+        });
+    });
+
+});
 
 /* SWF Object
 var flashvars = {};

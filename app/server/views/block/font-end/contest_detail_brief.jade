@@ -1,45 +1,56 @@
 extends ../../layout_font_end
 
 block content
-	#content
-		#contest_detail_view
-			.banner_contest
-				if(user && user._id==resContestItem.user_info.user_id)
-					form(method="post", action="/change_banner_contest_image", id="edit-event-contest-banner")
-						.upload
-							input(id="photoimg-contest-banner", type="file", name="photos")
-						input(type='hidden', name="id_contest", value=""+resContestItem._id+"")
-				if(resContestItem.image_banner!=undefined)
-					img(src='/upload/profile_avatar?type=resize&width=1000&height=333&name='+resContestItem.image_banner.public_id+'.'+resContestItem.image_banner.format+'', class="banner_contest_jq")
-				else
-					img(src="/images/allthecrg-banner.jpg", class="banner_contest_jq")
-				.avatar
-					.avatar-content
-						if(resContestItem.image_avatar!=undefined)
-							img(src='/upload/profile_avatar?type=resize&width=130&height=130&name='+resContestItem.image_avatar.public_id+'.'+resContestItem.image_avatar.format+'')
-						else
-							img(src="/images/default_contest.png")
-						if(user && user._id==resContestItem.user_info.user_id)
-							form(method="post", action="/change_avatar_contest_image", id="edit-event-contest-avatar")
-								.upload
-									input(id="photoimg-contest-avatar", type="file", name="photos")
-								input(type='hidden', name="id_contest", value=""+resContestItem._id+"")
-				.title_contest= resContestItem.project_name
-				.like_share
-					a(href="") Like
-					a(href="") Share
-				.list_option_su
-					a(href="/contestdetail?id="+resContestItem._id+"&tab=timeline&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Timeline
-					a(href="/contestdetail?id="+resContestItem._id+"&tab=brief&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Cotest Brief
-					a(href="/contestdetail?id="+resContestItem._id+"&tab=proposal&value="+resContestItem.project_name.replace(/ /g,"-")+"", class="los_item") Proposals
-				.submitssion Submission
-			.content_contest
-				.c2_left
-					include contest_detail_bar
-				.c2_right
-					.c2_r_bief
-						h2 About
-						span= resContestItem.job_description
+	.container
+		h2(class="titleMtnIn") Populat competition
+		.compet_main
+			include contest/banner
+			.artCompet
+				.in_artCompet
+					.lstCompet
+						.collf_brief
+							h3(class="clorg") About
+							p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+							h3(class="clorg") Description
+							ul(class="txtDrpt")
+								-	for(var i=0;i<3;i++)
+										li
+											p There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+						.colrt_brief
+							.alt_tpBrief
+								h3(class="clorg") Prize
+								ul(class="lstPri")
+									li
+										label(class="pullFlt_left")
+											img(src="images/aw.png")
+										p One 1st prize chosen by the Board of Director of GetJobDone
+									li
+										label(class="pullFlt_left")
+											img(src="images/mey.png")
+										p Value:
+											b 2,500,000 VND
+									li
+										label(class="pullFlt_left")
+											img(src="images/aw.png")
+										p One entrant withh the highest vote
+									li
+										label(class="pullFlt_left")
+											img(src="images/mey.png")
+										p Value:
+											b 2,500,000 VND
+							.alt_tpBrief
+								h3(class="clorg") Deadline & Announcement
+								ul(class="lstPri")
+									li(class="dln")
+										p(class="npad") Deadline to submit
+										p(class="npad")
+											b 14/11/2014
+									li(class="sod")
+										p(class="npad") Annountcement Day:
+										p(class="npad")
+											b 22/11/2014
+							.alt_tpBrief
+								h3(class="clorg") Eligibility
 block script
 	script(src='/javascripts/form-validators/jobContestValidator.js')
 	script(src='/javascripts/form-validators/proposalContestValidator.js')
