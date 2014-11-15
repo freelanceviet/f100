@@ -26,7 +26,7 @@ exports.getItemAccount = function(user_id, callback){
 exports.addNewAccount = function(newData, callback){
 	free_user.findOne({$or:[{email:newData.email.toLowerCase()},{username:newData.username.toLowerCase()}]}, function(e, o) {
 		if (o){
-			callback('username-taken');
+			callback('username-taken', null);
 		}else{
 			saltAndHash(newData.pass, function(hash){
 				newData.pass = hash;
@@ -65,6 +65,21 @@ exports.updateAvatarContest = function(id, docImage, callback){
 		callback(null, null);
 	});
 };
+
+// ------------------------------------
+// Test exits account is accounts collection
+// document: 
+// callback: status or null
+// ------------------------------------
+exports.testExitsAccountFaceBook = function(idFace, callback){
+	free_user.findOne({face_id:idFace}, function(err, res) {
+		if(res){
+			callback(null,res);
+		}else{
+			callback(null,null);
+		}
+	});
+}
 
 //
 var generateSalt = function()

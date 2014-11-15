@@ -51,7 +51,7 @@ module.exports = function (app) {
 			var document = {
 				first_name 	: req.param('reg-first-name-tf'),
 				last_name 	: req.param('reg-last-name-tf'),
-				username	: req.param('reg-username-name-tf').toLowerCase(),
+				username	: req.param('reg-user-name-tf').toLowerCase(),
 				email    	: req.param('reg-email-tf').toLowerCase(),
 				pass	  	: req.param('reg-pass-tf'),
 				loca_id	  	: loc,
@@ -59,7 +59,11 @@ module.exports = function (app) {
 				type		: req.param('f_type')
 			};
 			PM.addNewAccount(document, function(errUser, resUser){
-				res.send(resUser,200);
+				if(errUser==null){
+					res.send(resUser,200);
+				}else{
+					res.send(errUser, 200);
+				}
 			});
 		});
 	});
@@ -135,42 +139,26 @@ module.exports = function (app) {
 			sex = 0;
 		}
 		// test exits account facebook_ on collection
-		AM.testExitsAccountFaceBook(req.body.id,function(errFaceTest,resFaceTest){
+		PM.testExitsAccountFaceBook(req.body.id,function(errFaceTest,resFaceTest){			
 			if(resFaceTest){
 				req.session.user = resFaceTest;
-				if(req.session.user.hm_vicinity.toString()!=req.body.vicinity_name.toString()){
-					AM.updateLocalUser(req.session.user._id,parseFloat(req.body.lon),parseFloat(req.body.lat),req.body.name_short_country,req.body.city_name,req.body.vicinity_name,function(errP,resP){
-						res.send(resFaceTest._id, 200);
-					});
-				}else{
-					res.send(resFaceTest._id, 200);
-				}
+				res.send('exits', 200);
 			}else{
 				var document = {
-					'first_name' 	: req.body.first_name,
-					'last_name' 	: req.body.last_name,
-					'search_name'   : req.body.last_name+" "+req.body.first_name,
-					'face_id'       : req.body.id,
-					'email'    	    : null,
-					'email_try'	    : null,
-					'pass'	  	    : null,
-					'month'	  	    : null,
-					'day'	  	    : null,
-					'year'	  	    : null,
-					'sex'  	  	    : sex,
-					'coordinate'	: [parseFloat(req.body.lon),parseFloat(req.body.lat)],
-					'hm_country'    : req.body.name_short_country,
-					'hm_city'       : req.body.city_name,
-					'hm_vicinity'   : req.body.vicinity_name,
-					'avatar'		: "https://graph.facebook.com/"+req.body.id+"/picture?type=large",
-					'banner'		: "../images/default-image/banner-defulat.jpg"
+					first_name 	: req.body.first_name,
+					last_name 	: req.body.last_name,
+					face_id     : req.body.id,
+					username	: '',
+					email    	: '',
+					avatar		: "https://graph.facebook.com/"+req.body.id+"/picture?type=large",
+					type		: ''
 				};
-				AM.insertAccountFace(document, function(errFaceDocument,resFaceDocument){
-					if(resFaceDocument){
-						req.session.user = resFaceDocument;
-						res.send(resFaceDocument._id, 200);
+				PM.addNewAccount(document, function(errUser,resUser){
+					if(resUser){
+						req.session.user = resUser;
+						res.send('show-dialog-info', 200);
 					}else{
-						res.send(resFaceDocument._id, 200);
+						res.send('error', 200);
 					}
 				});
 			}

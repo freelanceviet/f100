@@ -16,8 +16,11 @@ $(document).ready(function(){
 			return rp_val.validateForm();
 		},
 		success	: function(responseText, status, xhr, $form){
-			alert(responseText);
-			//$(location).attr('href',responseText);
+			if(responseText=="username-taken"){
+				alert("User name or Email exits!");
+			}else{
+				$('.login ').trigger('click');
+			}
 		},
 		error : function(e){
             alert(e.responseText);

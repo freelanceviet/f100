@@ -35,55 +35,75 @@ function statusChangeCallback(response) {
 	// for FB.getLoginStatus().
 	if (response.status === 'connected') {
 		// Logged into your app and Facebook.
-		login_with_f_connected(response)
+		login_with_f_connected()
 	} else if (response.status === 'not_authorized') {
 		// The person is logged into Facebook, but not your app.
 		document.getElementById('status').innerHTML = 'Please log ' + 'into this app.';
 	} else {
 		//top.location=window.location="http://www.facebook.com/dialog/oauth/?scope=read_stream,publish_stream,friends_photos,friends_activities&client_id=497471193688530&redirect_uri=http://apps.facebook.com/filtered_feed/&response_type=code";
-		login_with_f_not_connect(response);
+		login_with_f_not_connect();
 	}
 }
 // Login with face book connected
-function login_with_f_connected(response){
-	$.ajax({
-		url: '/login_with_facebook',
-		type: 'POST',
-		data: {id:response.id,name:response.name,first_name:response.first_name,last_name:response.last_name,gender:response.gender},
-		beforeSend: function() { 
-			
-		},
-		success: function(data){
-			window.location.href = '/';
-		},
-		error: function(jqXHR){
-			console.log(jqXHR.responseText+' :: '+jqXHR.statusText);
-		}
+function login_with_f_connected(){
+	FB.api('/me?fields=id,name,feed{message},first_name,last_name,birthday', function(response) {
+		$.ajax({
+			url: '/login_with_facebook',
+			type: 'POST',
+			data: {id:response.id,name:response.name,first_name:response.first_name,last_name:response.last_name,gender:response.gender},
+			beforeSend: function() { 
+				
+			},
+			success: function(data){
+				if(data=="exits"){
+					$('.show_box_welcome_login').trigger('click');
+					$('#cboxClose').css('display', 'none');
+					setTimeout(function(){
+						$('#cboxClose').trigger('click');
+						$('#cboxClose').css('display', 'block');
+					}, 3000);
+				}else if(data=="show-dialog-info"){
+					$('.show_box_bonus_info_user').trigger('click');
+				}else{
+					alert("Not connect internet now! Please try again later!");
+				}
+			},
+			error: function(jqXHR){
+				console.log(jqXHR.responseText+' :: '+jqXHR.statusText);
+			}
+		});
 	});
 }
 // Login with face book not connect
 function login_with_f_not_connect(response){
 	FB.login(function(response) {
-		if (response.authResponse) {
-			FB.api('/me', function(response) {
-				$.ajax({
-					url: '/login_with_facebook',
-					type: 'POST',
-					data: {id:response.id,name:response.name,first_name:response.first_name,last_name:response.last_name,gender:response.gender,lat:lat,lon:lon,name_short_country:name_short_country,city_name:city_name,vicinity_name:vicinity_name},
-					beforeSend: function() { 
-						
-					},
-					success: function(data){
-						window.location.href = '/';
-					},
-					error: function(jqXHR){
-						console.log(jqXHR.responseText+' :: '+jqXHR.statusText);
+		FB.api('/me?fields=id,name,feed{message},first_name,last_name,birthday', function(response) {
+			$.ajax({
+				url: '/login_with_facebook',
+				type: 'POST',
+				data: {id:response.id,name:response.name,first_name:response.first_name,last_name:response.last_name,gender:response.gender},
+				beforeSend: function() { 
+					
+				},
+				success: function(data){
+					if(data=="exits"){
+						$('.show_box_welcome_login').trigger('click');
+						$('#cboxClose').css('display', 'none');
+						setTimeout(function(){
+							$('#cboxClose').trigger('click');
+							$('#cboxClose').css('display', 'block');
+						}, 3000);
+					}else if(data=="show-dialog-info"){
+						$('.show_box_bonus_info_user').trigger('click');
+					}else{
+						alert("Not connect internet now! Please try again later!");
 					}
-				});
+				},
+				error: function(jqXHR){
+					console.log(jqXHR.responseText+' :: '+jqXHR.statusText);
+				}
 			});
-		} else {
-			console.log('User cancelled login or did not fully authorize.', "addpoint.js line 730");
-		}
+		});
 	}, {
 		scope: 'email,user_photos'
 	});

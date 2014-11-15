@@ -17,3 +17,25 @@
 .cl_sub{
 	height:250px !important;
 }
+#cboxLoadedContent{
+	height: auto !important;
+}
+.boxWelcome{
+	display:none;
+}
+.box_welcome_info{
+	width:100%;
+	height:100px;
+}
+.box_welcome_info img{
+	float:left;
+	margin:5px;
+	width:90px;
+	height:90px;
+}
+.boxBonusInfoUser{
+	display:none;
+}
+.btnSupFb{
+	cursor:pointer;
+}
