@@ -1,9 +1,16 @@
 function RegisterValidator(){
 	// build array maps of the form inputs & control groups
 	this.formFields = [$('#reg-first-name-tf'), 
-	                   $('#reg-last-name-tf'), 
+	                   $('#reg-last-name-tf'),  
 	                   $('#reg-email-tf'), 
-	                   $('#reg-pass-tf')
+	                   $('#reg-pass-tf'),
+					   $('#reg-user-name-tf')
+	                  ];
+	this.formTexts = [$('#reg-first-name-cf'), 
+	                   $('#reg-last-name-cf'),  
+	                   $('#reg-email-cf'), 
+	                   $('#reg-pass-cf'),
+					   $('#reg-user-name-cf')
 	                  ];
 	this.validateFirstName = function(s){
 		return s.length>=2;
@@ -19,29 +26,44 @@ function RegisterValidator(){
 	{
 		return s.length >= 6;
 	}
-	this.showErrors = function(e){
-		for(var i=0;i<e.length;i++){
-			alert(e[i]);
+	this.validateUserName = function(s){
+		return s.length>=3;
+	}
+	this.showErrors = function(errGroupOPtion, controlGroups){
+		$('input').removeClass('ipErr');
+		$('.errSup').css('display','none');
+		for(var i=0;i<errGroupOPtion.length;i++){
+			errGroupOPtion[i].addClass('ipErr');
+			controlGroups[i].css('display','block');
 		}
 	}
 }
 RegisterValidator.prototype.validateForm=function(){
 	// Add place to form
-	var e = [];
+	var errInput = [];
+	var errText = [];
 	if (this.validateFirstName(this.formFields[0].val()) == false) {
-		e.push('Please Enter First Name');
+		errInput.push(this.formFields[0]);
+		errText.push(this.formTexts[0]);
 	}
 	if (this.validateLastName(this.formFields[1].val()) == false) {
-		e.push('Please Enter Last Name');
+		errInput.push(this.formFields[1]);
+		errText.push(this.formTexts[1]);
 	}
 	if (this.validateEmail(this.formFields[2].val()) == false) {
-		this.controlGroups[2].addClass('error'); e.push('Please Enter A Valid Email');
+		errInput.push(this.formFields[2]);
+		errText.push(this.formTexts[2]);
 	}
 	if (this.validatePassword(this.formFields[3].val()) == false) {
-		e.push('Password Should Be At Least 6 Characters');
+		errInput.push(this.formFields[3]);
+		errText.push(this.formTexts[3]);
+	}
+	if (this.validateUserName(this.formFields[4].val()) == false) {
+		errInput.push(this.formFields[4]);
+		errText.push(this.formTexts[4]);
 	}
 	
-	if (e.length) this.showErrors(e);
+	if (errInput.length) this.showErrors(errInput, errText);
 	
-	return e.length === 0;
+	return errInput.length === 0;
 }

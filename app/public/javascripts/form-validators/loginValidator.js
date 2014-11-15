@@ -3,9 +3,9 @@ function LoginValidator(){
 	this.formFields = [$('#lo-email-tf'), 
 	                   $('#lo-pass-tf')
 	                  ];
-	this.controlGroups = [$('#lo-email-cg'), 
-		                  $('#lo-pass-cg')
-			             ];
+	this.controlGroups = [$('#lo-email-cf'), 
+	                   $('#lo-pass-cf')
+	                  ];
 	
 	this.validateEmail = function(e){
 		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -15,23 +15,28 @@ function LoginValidator(){
 	{
 		return s.length >= 6;
 	}
-	this.showErrors = function(e){
-		for(var i=0;i<e.length;i++){
-			alert(e[i]);
+	this.showErrors = function(errGroupOPtion, controlGroups){
+		$('input').removeClass('ipErr');
+		$('.errSup').css('display','none');
+		for(var i=0;i<errGroupOPtion.length;i++){
+			errGroupOPtion[i].addClass('ipErr');
+			controlGroups[i].css('display','block');
 		}
 	}
 }
 LoginValidator.prototype.validateForm=function(){
-	var e = [];
+	var errGroupOPtion = [];
+	var coGroups = [];
 	for (var i=0; i < this.controlGroups.length; i++) this.controlGroups[i].removeClass('error');
 	if (this.validateEmail(this.formFields[0].val()) == false) {
-		this.controlGroups[0].addClass('error'); e.push('Please Enter A Valid Email');
+		errGroupOPtion.push(this.formFields[0]); 
+		coGroups.push(this.controlGroups[0]);
 	}
 	if (this.validatePassword(this.formFields[1].val()) == false) {
-		this.controlGroups[1].addClass('error');
-		e.push('Password Should Be At Least 6 Characters');
+		errGroupOPtion.push(this.formFields[1]); 
+		coGroups.push(this.controlGroups[1]);
 	}
-	if (e.length) this.showErrors(e);
+	if (errGroupOPtion.length) this.showErrors(errGroupOPtion, coGroups);
 	
-	return e.length === 0;
+	return errGroupOPtion.length === 0;
 }

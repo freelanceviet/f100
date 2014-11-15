@@ -13,25 +13,29 @@ module.exports = function (app) {
 			JM.getJobDefault(4, 0, function(errJobs, resJobs){
 				ALL.getAllCategories(function(errCategories, resCategories){
 					HM.getHourlieDefault(10, 0, function(errHourlies, resHourlies) {
-						if(req.session.user==null){
-							res.render('block/font-end/home_page', {
-								user : null,
-								title:"Home page",
-								resCategories : resCategories,
-								resContests : resContests,
-								resJobs : resJobs,
-								resHourlies : resHourlies
-							});
-						}else{
-							res.render('block/font-end/home_page', {
-								user : req.session.user,
-								title : "Home page",
-								resCategories : resCategories,
-								resContests : resContests,
-								resJobs : resJobs,
-								resHourlies : resHourlies
-							});
-						}
+						ALL.getAllLocation(function(errLocation, resLocation){
+							if(req.session.user==null){
+								res.render('block/font-end/home_page', {
+									user : null,
+									title:"Home page",
+									resCategories : resCategories,
+									resContests : resContests,
+									resJobs : resJobs,
+									resHourlies : resHourlies,
+									resLocation : resLocation
+								});
+							}else{
+								res.render('block/font-end/home_page', {
+									user : req.session.user,
+									title : "Home page",
+									resCategories : resCategories,
+									resContests : resContests,
+									resJobs : resJobs,
+									resHourlies : resHourlies,
+									resLocation : resLocation
+								});
+							}
+						});
 					});
 				});
 			});

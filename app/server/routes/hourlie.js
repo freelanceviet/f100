@@ -26,85 +26,91 @@ module.exports = function (app) {
 			page : req.query.page,
 			sattus : req.query.status
 		};
-		if(category==undefined && remote==undefined && filter==undefined && sort==undefined && page==undefined && sattus==undefined){
-			HM.getHourlieDefault(9, 0, function(errHourlies, resHourlies) {
-				ALL.getAllCategories(function(errCategories, resCategories){
-					ALL.getAllLocation(function(errLocations, resLocations){
-						HM.countAllHourlies(function(errNumHourlies, resNumHourlies){
-							if(req.session.user==null){
-								res.render('block/font-end/hourlies', {
-									title:"List Hourlies",
-									user : null,
-									resHourlies : resHourlies,
-									resCategories : resCategories,
-									resLocations : resLocations,
-									arrOption : arr,
-									resCategoryItem : null,
-									resNumHourlies : resNumHourlies
-								});
-							}else{
-								res.render('block/font-end/hourlies', {
-									title:"List HOurlies",
-									user : req.session.user,
-									resHourlies : resHourlies,
-									resCategories : resCategories,
-									resLocations : resLocations,
-									arrOption : arr,
-									resCategoryItem : null,
-									resNumHourlies : resNumHourlies
-								});
-							}
-						});
-					});
-				});
-			});
-		}else{
-			if(req.query.type=="get"){
-				HM.hourlieSortFiller(arr ,function(errHourlies, resHourlies){
-					HM.countAllHourliesGet(arr, function(errNumHourlies, resNumHourlies){
-						res.render('block/font-end/hourlie_get', {
-							resHourlies : resHourlies,
-							resNumHourlies : resNumHourlies,
-							arrOption : arr
-						});
-					});
-				});
-			}else{
-				ALL.getAllCategories(function(errCategories, resCategories){
-					ALL.getAllLocation(function(errLocations, resLocations){
-						ALL.getItemCategory(arr['category'],function(errCategoryItem, resCategoryItem){
-							HM.hourlieSortFiller(arr ,function(errHourlies, resHourlies){
-								HM.countAllHourliesGet(arr, function(errNumHourlies, resNumHourlies){
-									if(req.session.user==null){
-										res.render('block/font-end/hourlies', {
-											title:"List hourlies",
-											user : null,
-											resHourlies : resHourlies,
-											resCategories : resCategories,
-											resLocations : resLocations,
-											arrOption : arr,
-											resCategoryItem : resCategoryItem,
-											resNumHourlies : resNumHourlies
-										});
-									}else{
-										res.render('block/font-end/hourlies', {
-											title:"List hourlies",
-											user : req.session.user,
-											resHourlies : resHourlies,
-											resCategories : resCategories,
-											resLocations : resLocations,
-											arrOption : arr,
-											resCategoryItem : resCategoryItem,
-											resNumHourlies : resNumHourlies
-										});
-									}
-								});
+		ALL.getAllLocation(function(errLocation, resLocation){
+			if(category==undefined && remote==undefined && filter==undefined && sort==undefined && page==undefined && sattus==undefined){
+				HM.getHourlieDefault(9, 0, function(errHourlies, resHourlies) {
+					ALL.getAllCategories(function(errCategories, resCategories){
+						ALL.getAllLocation(function(errLocations, resLocations){
+							HM.countAllHourlies(function(errNumHourlies, resNumHourlies){
+								if(req.session.user==null){
+									res.render('block/font-end/hourlies', {
+										title:"List Hourlies",
+										user : null,
+										resHourlies : resHourlies,
+										resCategories : resCategories,
+										resLocations : resLocations,
+										arrOption : arr,
+										resCategoryItem : null,
+										resNumHourlies : resNumHourlies,
+										resLocation : resLocation
+									});
+								}else{
+									res.render('block/font-end/hourlies', {
+										title:"List HOurlies",
+										user : req.session.user,
+										resHourlies : resHourlies,
+										resCategories : resCategories,
+										resLocations : resLocations,
+										arrOption : arr,
+										resCategoryItem : null,
+										resNumHourlies : resNumHourlies,
+										resLocation : resLocation 
+									});
+								}
 							});
 						});
 					});
 				});
+			}else{
+				if(req.query.type=="get"){
+					HM.hourlieSortFiller(arr ,function(errHourlies, resHourlies){
+						HM.countAllHourliesGet(arr, function(errNumHourlies, resNumHourlies){
+							res.render('block/font-end/hourlie_get', {
+								resHourlies : resHourlies,
+								resNumHourlies : resNumHourlies,
+								arrOption : arr
+							});
+						});
+					});
+				}else{
+					ALL.getAllCategories(function(errCategories, resCategories){
+						ALL.getAllLocation(function(errLocations, resLocations){
+							ALL.getItemCategory(arr['category'],function(errCategoryItem, resCategoryItem){
+								HM.hourlieSortFiller(arr ,function(errHourlies, resHourlies){
+									HM.countAllHourliesGet(arr, function(errNumHourlies, resNumHourlies){
+										if(req.session.user==null){
+											res.render('block/font-end/hourlies', {
+												title:"List hourlies",
+												user : null,
+												resHourlies : resHourlies,
+												resCategories : resCategories,
+												resLocations : resLocations,
+												arrOption : arr,
+												resCategoryItem : resCategoryItem,
+												resNumHourlies : resNumHourlies,
+												resLocation : resLocation
+											});
+										}else{
+											res.render('block/font-end/hourlies', {
+												title:"List hourlies",
+												user : req.session.user,
+												resHourlies : resHourlies,
+												resCategories : resCategories,
+												resLocations : resLocations,
+												arrOption : arr,
+												resCategoryItem : resCategoryItem,
+												resNumHourlies : resNumHourlies,
+												resLocation : resLocation
+											});
+										}
+									});
+								});
+							});
+						});
+					});
+				}
 			}
-		}
+		});
 		//
 	});
 	

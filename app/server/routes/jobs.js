@@ -25,85 +25,91 @@ module.exports = function (app) {
 			page : req.query.page,
 			sattus : req.query.status
 		};
-		if(category==undefined && remote==undefined && filter==undefined && sort==undefined && page==undefined && sattus==undefined){
-			JM.getJobDefault(7, 0, function(errJobs, resJobs){
-				ALL.getAllCategories(function(errCategories, resCategories){
-					ALL.getAllLocation(function(errLocations, resLocations){
-						JM.countAllJobs(function(errNumJobs, resNumJobs){
-							if(req.session.user==null){
-								res.render('block/font-end/jobs', {
-									title:"List jobs",
-									user : null,
-									resJobs : resJobs,
-									resCategories : resCategories,
-									resLocations : resLocations,
-									arrOption : arr,
-									resCategoryItem : null,
-									resNumJobs : resNumJobs
-								});
-							}else{
-								res.render('block/font-end/jobs', {
-									title:"List jobs",
-									user : req.session.user,
-									resJobs : resJobs,
-									resCategories : resCategories,
-									resLocations : resLocations,
-									arrOption : arr,
-									resCategoryItem : null,
-									resNumJobs : resNumJobs
-								});
-							}
-						});
-					});
-				});
-			});
-		}else{
-			if(req.query.type=="get"){
-				JM.jobSortFiller(arr ,function(errJobs, resJobs){
-					JM.countAllJobsGet(arr, function(errNumJobs, resNumJobs){
-						res.render('block/font-end/job_get', {
-							resJobs : resJobs,
-							resNumJobs : resNumJobs,
-							arrOption : arr
-						});
-					});
-				});
-			}else{
-				ALL.getAllCategories(function(errCategories, resCategories){
-					ALL.getAllLocation(function(errLocations, resLocations){
-						ALL.getItemCategory(arr['category'],function(errCategoryItem, resCategoryItem){
-							JM.jobSortFiller(arr ,function(errJobs, resJobs){
-								JM.countAllJobsGet(arr, function(errNumJobs, resNumJobs){
-									if(req.session.user==null){
-										res.render('block/font-end/jobs', {
-											title:"List jobs",
-											user : null,
-											resJobs : resJobs,
-											resCategories : resCategories,
-											resLocations : resLocations,
-											arrOption : arr,
-											resCategoryItem : resCategoryItem,
-											resNumJobs : resNumJobs
-										});
-									}else{
-										res.render('block/font-end/jobs', {
-											title:"List jobs",
-											user : req.session.user,
-											resJobs : resJobs,
-											resCategories : resCategories,
-											resLocations : resLocations,
-											arrOption : arr,
-											resCategoryItem : resCategoryItem,
-											resNumJobs : resNumJobs
-										});
-									}
-								});
+		ALL.getAllLocation(function(errLocation, resLocation){
+			if(category==undefined && remote==undefined && filter==undefined && sort==undefined && page==undefined && sattus==undefined){
+				JM.getJobDefault(7, 0, function(errJobs, resJobs){
+					ALL.getAllCategories(function(errCategories, resCategories){
+						ALL.getAllLocation(function(errLocations, resLocations){
+							JM.countAllJobs(function(errNumJobs, resNumJobs){
+								if(req.session.user==null){
+									res.render('block/font-end/jobs', {
+										title:"List jobs",
+										user : null,
+										resJobs : resJobs,
+										resCategories : resCategories,
+										resLocations : resLocations,
+										arrOption : arr,
+										resCategoryItem : null,
+										resNumJobs : resNumJobs,
+										resLocation : resLocation
+									});
+								}else{
+									res.render('block/font-end/jobs', {
+										title:"List jobs",
+										user : req.session.user,
+										resJobs : resJobs,
+										resCategories : resCategories,
+										resLocations : resLocations,
+										arrOption : arr,
+										resCategoryItem : null,
+										resNumJobs : resNumJobs,
+										resLocation : resLocation
+									});
+								}
 							});
 						});
 					});
 				});
+			}else{
+				if(req.query.type=="get"){
+					JM.jobSortFiller(arr ,function(errJobs, resJobs){
+						JM.countAllJobsGet(arr, function(errNumJobs, resNumJobs){
+							res.render('block/font-end/job_get', {
+								resJobs : resJobs,
+								resNumJobs : resNumJobs,
+								arrOption : arr
+							});
+						});
+					});
+				}else{
+					ALL.getAllCategories(function(errCategories, resCategories){
+						ALL.getAllLocation(function(errLocations, resLocations){
+							ALL.getItemCategory(arr['category'],function(errCategoryItem, resCategoryItem){
+								JM.jobSortFiller(arr ,function(errJobs, resJobs){
+									JM.countAllJobsGet(arr, function(errNumJobs, resNumJobs){
+										if(req.session.user==null){
+											res.render('block/font-end/jobs', {
+												title:"List jobs",
+												user : null,
+												resJobs : resJobs,
+												resCategories : resCategories,
+												resLocations : resLocations,
+												arrOption : arr,
+												resCategoryItem : resCategoryItem,
+												resNumJobs : resNumJobs,
+												resLocation : resLocation
+											});
+										}else{
+											res.render('block/font-end/jobs', {
+												title:"List jobs",
+												user : req.session.user,
+												resJobs : resJobs,
+												resCategories : resCategories,
+												resLocations : resLocations,
+												arrOption : arr,
+												resCategoryItem : resCategoryItem,
+												resNumJobs : resNumJobs, 
+												resLocation : resLocation
+											});
+										}
+									});
+								});
+							});
+						});
+					});
+				}
 			}
-		}
+		});
 	});
 	//--------------------------------------
 	// Redirect to page post a job
