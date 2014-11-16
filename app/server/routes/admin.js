@@ -350,4 +350,31 @@ module.exports = function (app) {
 		});
 	});
 	
+	//--------------------------------------
+	// Router admin_ home page
+	//--------------------------------------
+	app.get('/contest', function (req, res) {
+		AM.getAllContest(function(errItem, resItem){
+			res.render('block/admin/contest', {
+				title:"List contests",
+				resItem : resItem
+			});
+		}); 
+	});
+	
+	//-----------------------------------------------------
+	// Change status of contest
+	//-----------------------------------------------------
+	app.get('/change_status_contest', function (req, res) {
+		var status = req.query.status;
+		var id_contest = req.query.id;
+		AM.updateStatusContest(id_contest, status, function(errItem, resItem){
+			if(resItem){
+				res.send('success', 200);
+			}else{
+				res.send('eroor', 200);
+			}
+		});
+	});
+	
 }

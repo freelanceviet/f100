@@ -16,6 +16,8 @@ module.exports = function (app) {
 		var sort = req.query.budget;
 		var page = req.query.page;
 		var sattus = req.query.status;
+		var jobtype = req.query.jobtype;
+		var type_value = req.query.type_value;
 		var arr = {
 			category : req.query.category, 
 			subcat : req.query.subcat,
@@ -23,10 +25,12 @@ module.exports = function (app) {
 			filter : req.query.filter,
 			sort : req.query.budget,
 			page : req.query.page,
-			sattus : req.query.status
+			sattus : req.query.status,
+			jobtype : req.query.jobtype,
+			type_value : req.query.type_value
 		};
 		ALL.getAllLocation(function(errLocation, resLocation){
-			if(category==undefined && remote==undefined && filter==undefined && sort==undefined && page==undefined && sattus==undefined){
+			if(category==undefined && remote==undefined && filter==undefined && sort==undefined && page==undefined && sattus==undefined && jobtype==undefined && type_value==undefined){
 				JM.getJobDefault(7, 0, function(errJobs, resJobs){
 					ALL.getAllCategories(function(errCategories, resCategories){
 						ALL.getAllLocation(function(errLocations, resLocations){

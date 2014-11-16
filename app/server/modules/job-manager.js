@@ -8,6 +8,7 @@ var ObjectID	          = Mogodb.ObjectID;
 // ------------------------------------
 // Sort job example
 exports.jobSortFiller = function(arr, callback){
+	console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 	var doc = {};
 	if(arr['category']!=undefined){
 		doc.category_id = arr['category'];
@@ -21,7 +22,6 @@ exports.jobSortFiller = function(arr, callback){
 	if(arr['sattus']!=undefined){
 		doc.sattus = parseInt(arr['sattus']);
 	}
-	
 	var limit = 7;
 	var skip = 0;
 	if(arr['page']!=undefined){

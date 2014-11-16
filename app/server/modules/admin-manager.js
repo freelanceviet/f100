@@ -8,6 +8,7 @@ var free_currency_range	  = Mogodb.free_currency_range;
 var free_optional	      = Mogodb.free_optional;
 var free_location	      = Mogodb.free_location;
 var free_comments		  = Mogodb.free_comments;
+var free_contests		  = Mogodb.free_contests;
 var ObjectID	          = Mogodb.ObjectID;
 
 // ------------------------------------
@@ -298,3 +299,30 @@ exports.deleteCurrencyRange = function(id, callback){
 		callback(null, null);
 	});
 };
+
+// ------------------------------------
+// Get list categories
+// note: 
+// callback: arr list categories
+// ------------------------------------
+exports.getAllContest = function(callback){
+	free_contests.find({})
+	.sort([['date_update', 'asc']])
+	.toArray(
+		function(e, res) {
+		if (e) callback(e)
+		else callback(null, res)
+	});
+};
+
+// ------------------------------------
+// Update status of contest
+// note: 
+// callback:
+// ------------------------------------
+exports.updateStatusContest = function(id_contest, value,callback){
+	free_contests.update({_id:new ObjectID(id_contest)}, {$set: {status:value}}, {multi:true}, function(err,res) {
+		callback(null,res);
+	});
+};
+

@@ -8,20 +8,24 @@ module.exports = function (app) {
 	// Redirect to home page
 	//--------------------------------------
 	app.get('/contests', function (req, res) {
-		CM.getContestDefault(20, 0, function(errContests, resContests) {
-			if(req.session.user==null){
-				res.render('block/font-end/contests', {
-					title : "List contests",
-					user : null,
-					resContests : resContests
-				});
-			}else{
-				res.render('block/font-end/contests', {
-					title:"List contests",
-					user : req.session.user,
-					resContests : resContests
-				});
-			}
+		ALL.getAllLocation(function(errLocation, resLocation){
+			CM.getContestDefault(20, 0, function(errContests, resContests) {
+				if(req.session.user==null){
+					res.render('block/font-end/contests', {
+						title : "List contests",
+						user : null,
+						resContests : resContests,
+						resLocation : resLocation
+					});
+				}else{
+					res.render('block/font-end/contests', {
+						title:"List contests",
+						user : req.session.user,
+						resContests : resContests,
+						resLocation : resLocation
+					});
+				}
+			});
 		});
 	});
 	//--------------------------------------
@@ -158,6 +162,7 @@ module.exports = function (app) {
 					date_add : addDate.format('YYYY-MM-DD hh:mm:ss'),
 					date_spam : n,
 					date_update : n,
+					status : 0
 				};
 				CM.addContest(document, function(errContest, resContest){
 					var url_payment = "/payment?id="+resContest[0]._id+"&amount=300&name="+resContest[0].project_name+"";

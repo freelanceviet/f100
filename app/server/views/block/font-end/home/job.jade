@@ -46,6 +46,6 @@
 				ul(class="ctnRtData overview")
 					-	for(var i=0;i<resCategories.length;i++)
 							li
-								a(href="")= resCategories[i].name_en
+								a(href="/job-database?category="+resCategories[i]._id+"")= resCategories[i].name_en
 									if(resCategories[i].numjob!=undefined)
 										span= '('+resCategories[i].numjob+')'
