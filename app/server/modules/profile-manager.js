@@ -81,6 +81,23 @@ exports.testExitsAccountFaceBook = function(idFace, callback){
 	});
 }
 
+// ------------------------------------
+// Update user with face book data 
+// document: 
+// callback:
+// ------------------------------------
+exports.updateUserWithFace = function(id, doc, callback){
+	free_user.findOne({$or:[{email:doc.email.toLowerCase()},{username:doc.username.toLowerCase()}]}, function(e, o) {
+		if (o){
+			callback('username-taken', null);
+		}else{
+			free_user.update({_id:new ObjectID(id)}, {$set: doc}, {multi:true}, function(err) {
+				callback(null, null);
+			});
+		}
+	});
+}
+
 //
 var generateSalt = function()
 {

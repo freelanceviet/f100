@@ -52,12 +52,11 @@ function login_with_f_connected(){
 			type: 'POST',
 			data: {id:response.id,name:response.name,first_name:response.first_name,last_name:response.last_name,gender:response.gender},
 			beforeSend: function() { 
-				
 			},
 			success: function(data){
 				if(data=="exits"){
 					$('.show_box_welcome_login').trigger('click');
-					$('#cboxClose').css('display', 'none');
+					//$('#cboxClose').css('display', 'none');
 					setTimeout(function(){
 						$('#cboxClose').trigger('click');
 						$('#cboxClose').css('display', 'block');

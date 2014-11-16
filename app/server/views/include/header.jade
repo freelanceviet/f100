@@ -40,58 +40,43 @@ header
 		#inlineWelcom
 			.box_welcome_info
 				img(src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/c31.0.160.160/p160x160/10613060_791975877529222_7968269928891565951_n.jpg?oh=ce4d6854f2aa6272a8968330ca802845&oe=54DC2F23&__gda__=1424349747_5f7b990c12d9a75b618b91f375543adb")
-	.boxBonusInfoUser
+	.boxSup
 		a(href="#inlineBonusInfoUser", class="ctnIn show_box_bonus_info_user") ---
-			#inlineBonusInfoUser
-				form(class="fmSup", method="post", action="/storeUser", id="register_form", enctype="multipart/form-data;utf-8")
-					.supFb
-						h2(class="titleMtn")
-						p  Already have an account? Login
-						p(class="clGrey") Sign up with Facebook and discover what your friend are doing
-						button(class="btnSupFb") Sign up with facebook
-						.fbGetjobdone
-						span(class="lineSup")
-							em Or
-					fieldset(class="gridSup")
-						label First Name
-						input(class="ipSup", tabindex="1", name="reg-first-name-tf", id="reg-first-name-tf")
-						label(class="errSup", id="reg-first-name-cf", style="display:none") Enter your first name
-					fieldset(class="gridSup")
-						label Last Name
-						input(class="ipSup", tabindex="2", name="reg-last-name-tf", id="reg-last-name-tf")
-						label(class="errSup", id="reg-last-name-cf", style="display:none") Enter your last name
-					fieldset(class="gridSup")
-						label Username
-						input(class="ipSup", tabindex="3", name="reg-user-name-tf", id="reg-user-name-tf")
-						label(class="errSup", id="reg-user-name-cf", style="display:none") Enter your username
-					fieldset(class="gridSup")
-						label Email
-						input(class="ipSup", tabindex="4", name="reg-email-tf", id="reg-email-tf")
-						label(class="errSup", id="reg-email-cf", style="display:none") Enter your email
-					fieldset(class="gridSup")
-						label Password
-						input(type="password", class="ipSup", tabindex="5", name="reg-pass-tf", id="reg-pass-tf")
-						label(class="errSup", id="reg-pass-cf", style="display:none") Enter your password
-					fieldset(class="gridSup")
-						label Location
-						input(class="ipSup", tabindex="6", name="reg-location-tf", id="reg-location-tf")
-						.form_register_location_au(style="display:none")
-							-	for(var i=0;i<resLocation.length;i++)
-									input(type="hidden", class="item_location", value=""+resLocation[i].lo_name+"")
-					.ckService
-						h5 What are you looking for?
-						ul(class="lst_ckSup")
-							li(class="ck_sup")
-								input(type="radio", id="buySer", name="f_type", value="1")
-								label(for="buySer") Buy Services
-							li(class="ck_sup")
-								input(type="radio", id="selSer", name="f_type", value="2")
-								label(for="selSer") Sell Services
-							li(class="ck_sup")
-								input(type="radio", id="both_ckSup", name="f_type", checked, value="0")
-								label(for="both_ckSup") Both
-					fieldset
-						button(type="submit", class="btnsubmit", id="rp-bt-action-form") Sign up
+		#inlineBonusInfoUser.ctnSup
+			form(class="fmSup", method="post", action="/storeUserUpdateFacebook", id="register_update_face_form", enctype="multipart/form-data;utf-8")
+				.supFb
+					h2(class="titleMtn")
+					p  Update info to continue with page!
+					p(class="clGrey") Sign up with Facebook and discover what your friend are doing
+					.fbGetjobdone
+					span(class="lineSup")
+						em Or
+				fieldset(class="gridSup")
+					label Username
+					input(class="ipSup", tabindex="3", name="reg-user-name-tf", id="reg-user-name-tf")
+					label(class="errSup", id="reg-user-name-cf", style="display:none") Enter your username
+				fieldset(class="gridSup")
+					label Email
+					input(class="ipSup", tabindex="4", name="reg-email-tf", id="reg-email-tf")
+					label(class="errSup", id="reg-email-cf", style="display:none") Enter your email
+				fieldset(class="gridSup")
+					label Password
+					input(type="password", class="ipSup", tabindex="5", name="reg-pass-tf", id="reg-pass-tf")
+					label(class="errSup", id="reg-pass-cf", style="display:none") Enter your password
+				.ckService
+					h5 What are you looking for?
+					ul(class="lst_ckSup")
+						li(class="ck_sup")
+							input(type="radio", id="buySer", name="f_type", value="1")
+							label(for="buySer") Buy Services
+						li(class="ck_sup")
+							input(type="radio", id="selSer", name="f_type", value="2")
+							label(for="selSer") Sell Services
+						li(class="ck_sup")
+							input(type="radio", id="both_ckSup", name="f_type", checked, value="0")
+							label(for="both_ckSup") Both
+				fieldset
+					button(type="submit", class="btnsubmit", id="rp-bt-action-form-update") Sign up
 	.boxLogin
 		#inlineLogin.ctnSup
 			form(class="fmSup", method="post",action="/login", id="login-form", enctype="multipart/form-data;utf-8")
@@ -173,4 +158,5 @@ block script
 	script(src='/javascripts/form-validators/loginValidator.js')
 	script(src='/javascripts/views/login.js')
 	script(src='/javascripts/form-validators/registerValidator.js')
+	script(src='/javascripts/form-validators/faceUpdateValidator.js')
 	script(src='/javascripts/views/register.js')

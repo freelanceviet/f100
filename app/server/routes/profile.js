@@ -164,4 +164,28 @@ module.exports = function (app) {
 			}
 		});
 	});
+	//--------------------------------------
+	// Update info login with face book
+	//--------------------------------------
+	app.post('/storeUserUpdateFacebook', function(req, res){
+		if(req.session.user){
+			var document = {
+				username	: req.param('reg-user-name-tf').toLowerCase(),
+				email    	: req.param('reg-email-tf').toLowerCase(),
+				pass	  	: req.param('reg-pass-tf'),
+				loca_id	  	: null,
+				type		: req.param('f_type')
+			};
+			var user = req.session.user;
+			PM.updateUserWithFace(user[0]._id, document, function(errUser, resUser){
+				if(errUser==null){
+					res.send(resUser,200);
+				}else{
+					res.send(errUser, 200);
+				}
+			});
+		}else{
+			res.send('Login to continue!', 200);
+		}
+	});
 }

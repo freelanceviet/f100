@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	var rp_val = new RegisterValidator();
+	var fb_val = new FaceUpdateValidator();
 	// Auto for location
 	$(function() {
 		var availableTags = new Array();
@@ -20,6 +21,22 @@ $(document).ready(function(){
 				alert("User name or Email exits!");
 			}else{
 				$('.login ').trigger('click');
+			}
+		},
+		error : function(e){
+            alert(e.responseText);
+		}
+	});
+	// Post update form login with face book 
+	$('#register_update_face_form').ajaxForm({
+		beforeSubmit : function(formData, jqForm, options){
+			return fb_val.validateForm();
+		},
+		success	: function(responseText, status, xhr, $form){
+			if(responseText=="username-taken"){
+				alert("User name or Email exits!");
+			}else{
+				alert('Login and update successfull! Close to continue!');
 			}
 		},
 		error : function(e){
