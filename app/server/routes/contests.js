@@ -97,7 +97,7 @@ module.exports = function (app) {
 				if(!req.param('chkbx_assisted')){
 					var assisted = null;
 				}else{
-					var assisted = req.param('chkbx_assisted')[0];
+					assisted = req.param('chkbx_assisted');
 				}
 				// Location
 				var location = null;
@@ -157,12 +157,13 @@ module.exports = function (app) {
 					currency_title : req.param('contest_currency_title'),
 					currency_name : req.param('contest_currency_name'),
 					budget : req.param('budget_value'),
+					bonus_price : req.param('price_sum_ponust'),
 					location : location,
 					user_info : user_info, 
 					date_add : addDate.format('YYYY-MM-DD hh:mm:ss'),
 					date_spam : n,
 					date_update : n,
-					status : 0
+					status : -1
 				};
 				CM.addContest(document, function(errContest, resContest){
 					var url_payment = "/payment?id="+resContest[0]._id+"&amount=300&name="+resContest[0].project_name+"";
@@ -183,8 +184,62 @@ module.exports = function (app) {
 	// Page select type payment
 	//--------------------------------------
 	app.get('/payment', function (req, res) {
-		res.render('block/font-end/payment', {
-			title : 'payment pro'
-		});
+		if(req.session.user){
+			var id_contest = req.query.id;
+			if(id_contest!=undefined){
+				ALL.getAllLocation(function(errLocation, resLocation){
+					CM.getItemContest(id_contest, function(errContestItem, resContestItem){
+						if(resContestItem.user_info.user_id == req.session.user._id){
+							if(resContestItem){
+								res.render('block/font-end/payment', {
+									title : 'payment pro',
+									resLocation : resLocation,
+									resContestItem : resContestItem
+								});
+							}else{
+								res.send('ID not correct!', 200);
+							}
+						}else{
+							res.send('ID not correct!', 200);
+						}
+					});
+				});
+			}else{
+				res.send('url not invalid!');
+			}
+		}else{
+			res.send('Login to continue!', 200);
+		}
 	});
+	
+	//--------------------------------------
+	// Form add post job
+	//--------------------------------------
+	app.post('/payments_redirect', function (req, res) {
+		if(req.session.user){
+			var type_payment = req.param('type_payment');
+			var id_contest = req.param('id_contest');
+			CM.getItemContest(id_contest, function(errContestItem, resContestItem){
+				if(resContestItem){
+					if(type_payment=='cod'){
+						CM.updateStatusContest(id_contest, 0, function(errContestItemUpdate, resContestItemUpdate){
+							var url = "/contestdetail?id="+id_contest+"&tab=timeline&value="+resContestItem.project_name.replace(/ /g,"-")+"";
+							res.send(url, 200);
+						});
+					}else if(type_payment=='baokiem'){
+						res.send('thanh toan bang bao kiem', 200);
+					}else if(type_payment=='paypal'){
+						res.send('thanh toan voi  paypal', 200);
+					}else{
+						res.send('Method is not supports', 200);
+					}
+				}else{
+					res.send('ID is not correct!', 200);
+				}
+			});
+		}else{
+			res.send('Login to continue!', 200);
+		}
+	});
+	
 }

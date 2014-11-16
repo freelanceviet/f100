@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	alert('sss');
 	var CP = new ContestPost();
 	var v_CP = new ContestBostValidator();
 	// Load auto complete tag
@@ -63,7 +62,7 @@ $(document).ready(function(){
 		CP.uploadImageForCommentPlace();
 	});
 	// Set input skill to form
-	$('#rp-bt-action-form').click(function(){
+	$('body').on('click', '#rp-bt-action-form', function (e) {
 		$('#rp-attributes-content-cg').empty();
 		$('.au_skill').find('.tagit-label').each(function(){
 			var html = '<input type="hidden"  class="contest_skill" name="contest_skill[]" value="'+$(this).text()+'" >';
@@ -79,7 +78,8 @@ $(document).ready(function(){
 		$('#contest_currency_name').val(val_name_c);
 	});
 	// Form post contest action
-	$('#rp-bt-action-form').click(function(){
+	$('body').on('click', '#rp-bt-action-form', function (e) {
+		alert('bi chi rua troi');
 		var num_file = $('.ffi_remove').length;
 		$('#contest_post_f').val(num_file);
 		$('#post_contest_form').ajaxForm({
@@ -99,13 +99,33 @@ $(document).ready(function(){
 		});
 	});
 	// Event change currency
-	$('#currency').change(function() {
+	$('body').on('change', '#currency', function (e) {
 		var tite_cu = $("#currency option:selected").attr('title');
 		var rate_cu = $("#currency option:selected").attr('rate_usd');
 		$('#contest_currency_title').html(tite_cu);
 		$('#tygia_value').val(rate_cu);
 		var price = tite_cu + (parseInt($('#budget_value').val())*rate_cu);
 		$('#amount').val(price);
+		var price_sum = (parseInt($('#price_sum_ponust').val()) + parseInt($('#budget_value').val())) * rate_cu
+		$('#sum_moneny').html(price_sum + tite_cu);
+	});
+	// Event click optional price
+	$('body').on('click', '.chkbx_assisted', function (e) {
+		var sum_optional = 0;
+		$('.chkbx_assisted').each(function(){
+			var ele = $(this);
+			if(ele.is(':checked')){
+				sum_optional = sum_optional + parseInt(ele.attr('data-price'));
+			}
+		});
+		var all_price = parseInt($('#budget_value').val()) + sum_optional;
+		$('#price_sum_ponust').val(sum_optional);
+		
+		var tite_cu = $("#currency option:selected").attr('title');
+		var rate_cu = $("#currency option:selected").attr('rate_usd');
+		var price = tite_cu + (all_price*rate_cu);
+		$('#sum_moneny').html(price);
+		
 	});
 	// Show slider for budget
 	$(function() {
@@ -118,6 +138,9 @@ $(document).ready(function(){
 				$('#budget_value').val(ui.value);
 				var price = $('#contest_currency_title').text() + (parseInt(ui.value)*parseInt($('#tygia_value').val()));
 				$( "#amount" ).val(price);
+				var price_all = (parseInt(ui.value) + parseInt($('#price_sum_ponust').val()))*parseInt($('#tygia_value').val());
+				var tite_cu = $("#currency option:selected").attr('title');
+				$('#sum_moneny').html(tite_cu + price_all);
 			}
 		});
 		$( "#amount" ).val( $('#contest_currency_title').text() + $( "#slider-range-min" ).slider( "value" ) );

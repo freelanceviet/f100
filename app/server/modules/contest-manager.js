@@ -115,3 +115,13 @@ exports.getListProposalContest = function(id, limit, skip, callback){
 		callback(null,items);
 	});
 };
+
+// ------------------------------------
+// Update status of contest when uer select COD payment
+// note: 
+// ------------------------------------
+exports.updateStatusContest = function(id, status, callback){
+	free_contests.update({_id:new ObjectID(id)}, {$set: {status:0}}, {multi:true}, function(err) {
+		callback(null, null);
+	});
+};

@@ -41,6 +41,7 @@ block content
 						input(type="text", id="amount", readonly, style="border:0; color:#f6931f; font-weight:bold;")
 						input(type="hidden", id="budget_value", name="budget_value", value="37")
 						input(type="hidden", id="tygia_value", name="tygia_value", value=""+resCurrencyDefault.rate_usd+"")
+						input(type="hidden", id="default_money", value="37")
 						#slider-range-min
 					span(id="contest_currency_title")= resCurrencyDefault.title
 					input(type="hidden", name="contest_currency_title", id="contest_currency_title_", value=""+resCurrencyDefault.title+"")
@@ -72,16 +73,19 @@ block content
 						-	for(var i=0;i<resOptional.length;i++)
 								tr
 									td
-										input(type="checkbox", name="chkbx_assisted", value=""+resOptional[i]._id+"")
+										input(type="checkbox", name="chkbx_assisted", value=""+resOptional[i]._id+"", data-price=""+resOptional[i].price+"",class="chkbx_assisted")
 									td
 										icon-image
 									td
 										span= resOptional[i].title_en
 									td(class="job_optional_price", data-price=""+resOptional[i].price+"")
-										$29.00
+										span= "$" + resOptional[i].price
+				p
+					input(type="hidden", name="price_sum_ponust", id="price_sum_ponust", value="0")
+					span(id="sum_moneny") 37 $
 				p
 					input(type="submit", value="Post Project Now", id="rp-bt-action-form")
-block script
+block scripts
 	link(rel='stylesheet', href='/plugin/autocomplete/css/examples.css')
 	link(rel='stylesheet', href='/plugin/autocomplete/css/jquery.tagit.css')
 	link(rel='stylesheet', href='/plugin/autocomplete/css/tagit.ui-zendesk.css')
