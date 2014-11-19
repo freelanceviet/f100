@@ -68,6 +68,10 @@ $(document).ready(function(){
 			},
 			success	: function(responseText, status, xhr, $form){
 				$('.col_rtCompet').append(responseText);
+				$('#f_comment_contest').val('');
+				$('.option_ac').css('display','none');
+				$('.pcc_image_content').empty();
+				$('.pcc_image_content').css('display','none');
 			},
 			error : function(e){
 				alert(e.responseText);

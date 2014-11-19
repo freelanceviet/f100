@@ -200,7 +200,8 @@ module.exports = function (app) {
 				};
 				CM.insertCommentContest(documentWall, function(errComment, resComment){
 					res.render('block/font-end/contest/item_comment', {
-						resComments : resComment[0]
+						resComments : resComment[0],
+						user : req.session.user
 					});
 				});
 				// End save
