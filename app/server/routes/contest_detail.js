@@ -21,7 +21,8 @@ module.exports = function (app) {
 										user : null,
 										resContestItem : resContestItem,
 										resComments : resComments,
-										resLocation : resLocation
+										resLocation : resLocation,
+										css_selected : "timeline"
 									});
 								}else{
 									res.render('block/font-end/contest_detail', {
@@ -29,7 +30,8 @@ module.exports = function (app) {
 										user : req.session.user,
 										resContestItem : resContestItem,
 										resComments : resComments,
-										resLocation : resLocation
+										resLocation : resLocation,
+										css_selected : "timeline"
 									});
 								}
 							}else{
@@ -45,14 +47,16 @@ module.exports = function (app) {
 									title : "List contests",
 									user : null,
 									resContestItem : resContestItem,
-									resLocation : resLocation
+									resLocation : resLocation,
+									css_selected : "brief"
 								});
 							}else{
 								res.render('block/font-end/contest_detail_brief', {
 									title : "List contests",
 									user : req.session.user,
 									resContestItem : resContestItem,
-									resLocation : resLocation
+									resLocation : resLocation,
+									css_selected : "brief"
 								});
 							}
 						}else{
@@ -69,7 +73,8 @@ module.exports = function (app) {
 										user : null,
 										resContestItem : resContestItem,
 										resProposalContest : resProposalContest,
-										resLocation : resLocation
+										resLocation : resLocation,
+										css_selected : "proposal"
 									});
 								}else{
 									res.render('block/font-end/contest_detail_proposal', {
@@ -77,7 +82,8 @@ module.exports = function (app) {
 										user : req.session.user,
 										resContestItem : resContestItem,
 										resProposalContest : resProposalContest,
-										resLocation : resLocation
+										resLocation : resLocation,
+										css_selected : "proposal"
 									});
 								}
 							}else{

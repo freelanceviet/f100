@@ -6,7 +6,174 @@ block content
 		.compet_main
 			include contest/banner
 			.artCompet
-				h1 Time line
+				.col_lfCompet
+					.card_lfCompet
+						h2(class="titleCard bgOrg fntBd")
+							a(href="#") Prize
+						.inCard
+							h3(class="clorg fntBd") Prize
+							ul(class="lstPri")
+								li
+									label(class="pullFlt_left")
+										img(src="images/aw.png")
+									p One 1st prize chosen by the Board of Director of GetJobDone
+								li
+									label(class="pullFlt_left")
+										img(src="images/mey.png")
+									p Value:
+										b 2,500,000 VND
+								li
+									label(class="pullFlt_left")
+										img(src="images/aw.png")
+									p One entrant withh the highest vote
+								li
+									label(class="pullFlt_left")
+										img(src="images/mey.png")
+									p Value:
+										b 2,500,000 VND
+					.card_lfCompet
+						h2(class="titleCard bgBle fntBd")
+							a(href="") Deadline - important day
+						.inCard
+							ul(class="lstPri")
+								li(class="dln")
+									p(class="npad nmag") Deadline to submit
+									p(class="npad nmag")
+										b 14/11/2014
+								li(class="sod")
+									p(class="npad nmag") Annountcement Day:
+									p(class="npad nmag")
+										b 22/11/2014
+					.card_lfCompet
+						h2(class="titleCard bgBle fntBd")
+							a(href="") People
+						.inCard
+							.toLike
+								label(class="clBle fntBd icoLike") 1985 likes
+							.ctnLikeLf
+								.useLike
+									a(class="clBle fntBd", href="") Bao Khang Nguyen , 
+									a(class="clBle fntBd", href="") Thang Tran
+									| and 
+									a(class="clBle fntBd", href="") Yukio 
+									| and 
+									a(href="") 8795 more 
+									| like this.
+								ul(class="lstLike")
+									-	for(var i=0; i<18; i++)
+											li
+												a(href="", class="thumbsmLf")
+													img(src="images/thumb2.jpg", alt="")
+							.grp_cardLike
+								p Share this contest to your friends
+								.btn_grpLike
+									a(href="", class="sndMail")
+									button(class="shareFb npad")
+										img(src="images/btnFB.png")
+					.card_lfCompet
+						h2(class="titleCard bgBle fntBd")
+							a(href="#") Recently proposals
+						.lst_itemPosal
+							ul(class="inItemPosal")
+								-	for(var i=0; i<12; i++)
+										li(class="thumbmdLf", href="")
+											img(src="images/thumbComit.jpg")
+					.card_lfCompet
+						h2(class="titleCard bgBle fntBd")
+							a(href="") SIMILAR CONTEST
+						.lst_itemPosal
+							ul(class="inItemPosal")
+								-	for(var i=0; i<6; i++)
+										li
+											a(href="", class="thumbmdLf")
+												img(src="images/thumbComit.jpg")
+				.col_rtCompet
+					.card_rtCompet
+						.pst_rtCompet
+							ul(class="labelPst")
+								li
+									a(href="", class="lnk_pst act_pstRt")
+										span(class="icoLnkPst")
+										| Post
+								li
+									a(href="", class="lnk_photoPst")
+										span(class="icoLnkPhoPst")
+										| Photo/Video
+						.wrtPst
+							textarea(class="txtare", placeholder="Write something on this page", onkeyup="textAreaAdjust(this))
+					.card_rtCompet.in_rtCard
+						.auPst
+							.avaJbData
+								a(href="")
+									img(src="images/avaPst.jpg")
+							.naPst.txtpst
+								.auCmtpPst
+									span
+										a(href="", class="titPst coJob") Art Director
+								.timePst
+									span 1 hours ago
+						.maPst
+							.ctnPst_rtCm
+								p T-shirt design for Silliman University Baisanon Student Organization.
+							.thumbPst
+								a(href="", class="pstImg")
+									.wdt_fitlg
+										img(class="fitImg", src="http://widget.saoonline.vn/thumb_x600x/detail/2014/i1.saoonline.vn/data/news/2013/10/16/77/nhung-hot-girl-co-so-truong-dien-noi-y-6-1381919085.jpg")
+								a(href="", class="pstImg")
+									.wdt_fitlg
+										img(class="fitImg", src="http://widget.saoonline.vn/thumb_x600x/detail/2014/i1.saoonline.vn/data/news/2013/10/16/77/nhung-hot-girl-co-so-truong-dien-noi-y-6-1381919085.jpg")
+								a(href="", class="pstImg")
+									.wdt_fitmd
+										img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
+								a(href="", class="pstImg")
+									.wdt_fitmd
+										img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
+								a(href="", class="pstImg")
+									.wdt_fitmd
+										img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
+							.poLike.clearfix.fntMd
+								.pullFlt_left.lkCmSh
+									span
+										a(href="", class="clBle fntMd") Like
+									span
+										a(href="", class="clBle") Comment
+									span
+										a(href="", class="clBle") Share
+								ul(class="grp_like clearfix pullFlt_right")
+									li
+										a(href="", class="likeCompet clBle") 88
+									li
+										a(href="", class="cmtCompet clBle") 3
+						.lstCmtPst
+							ul(class="mainCmtPst")
+								li(class="talLikePst")
+									.useLike
+										a(class="clBle fntBd", href="#") Bao Khang Nguyen
+										| ,
+										a(class="clBle fntBd", href="#") Thang Tran
+										| and 
+										a(class="clBle fntBd", href="#") Yukio 
+										| and 
+										a(href="") 8795 more 
+										| like this.
+								-	for(var i=0; i<3; i++)
+										li(class="ctn_lstPstCmt clearfix")
+											.avaJbData
+												a(href="")
+													img(src="images/avaPst.jpg")
+											.naPst.txtpst
+												.auCmtpPst
+													span 
+														a(href="", class="titPst clBle") Art Director
+													span(class="fntMd") It's funny we worked on this exhibition too, but it was for a school project, so just a fictional thing
+												.timePst
+													span 1 hours ago
+								li(class="boxCmt clearfix")
+									.avaJbData
+										a(href="")
+											img(src="images/avaPst.jpg")
+									.areaPstCmt
+										textarea(class="herCmtPst", placeholder="Write a comment", onkeyup="textAreaAdjust(this)")
 block scripts
 	script(src='/javascripts/form-validators/jobContestValidator.js')
 	script(src='/javascripts/form-validators/proposalContestValidator.js')
