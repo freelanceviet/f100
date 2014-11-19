@@ -130,7 +130,9 @@ module.exports = function (app) {
 				time_sort : n
 			};
 			ALL.updateCommentContest(comment_id, document, function(errCommentContest, resCommentContest){
-				res.send(resCommentContest, 200);
+				res.render('block/font-end/contest/item_comment_sub', {
+					document : document
+				});
 			});
 			
 		}else{

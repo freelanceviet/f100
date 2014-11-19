@@ -199,7 +199,9 @@ module.exports = function (app) {
 					"file" : file_all 
 				};
 				CM.insertCommentContest(documentWall, function(errComment, resComment){
-					res.send('resComment', 200);
+					res.render('block/font-end/contest/item_comment', {
+						resComments : resComment[0]
+					});
 				});
 				// End save
 			}else{

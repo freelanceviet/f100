@@ -1,0 +1,54 @@
+.card_rtCompet.in_rtCard
+	.auPst
+		.avaJbData
+			a(href="")
+				img(src=""+resComments.user_image+"")
+		.naPst.txtpst
+			.auCmtpPst
+				span
+					a(href="", class="titPst coJob")= resComments.user_fullname
+			.timePst
+				span= resComments.time_sort
+	.maPst
+		.ctnPst_rtCm
+			p= resComments.comment
+		.thumbPst
+			a(href="", class="pstImg")
+				.wdt_fitlg
+					img(class="fitImg", src="http://widget.saoonline.vn/thumb_x600x/detail/2014/i1.saoonline.vn/data/news/2013/10/16/77/nhung-hot-girl-co-so-truong-dien-noi-y-6-1381919085.jpg")
+			a(href="", class="pstImg")
+				.wdt_fitlg
+					img(class="fitImg", src="http://widget.saoonline.vn/thumb_x600x/detail/2014/i1.saoonline.vn/data/news/2013/10/16/77/nhung-hot-girl-co-so-truong-dien-noi-y-6-1381919085.jpg")
+			a(href="", class="pstImg")
+				.wdt_fitmd
+					img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
+			a(href="", class="pstImg")
+				.wdt_fitmd
+					img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
+			a(href="", class="pstImg")
+				.wdt_fitmd
+					img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
+		.poLike.clearfix.fntMd
+			.pullFlt_left.lkCmSh
+				span
+					a(href="", class="clBle fntMd") Like
+				span
+					a(href="", class="clBle") Comment
+				span
+					a(href="", class="clBle") Share
+			ul(class="grp_like clearfix pullFlt_right")
+				li
+					a(href="", class="likeCompet clBle") 88
+				li
+					a(href="", class="cmtCompet clBle") 3
+	.lstCmtPst
+		ul(class="mainCmtPst")
+			li(class="boxCmt clearfix")
+				.avaJbData
+					a(href="")
+						img(src="images/avaPst.jpg")
+				.areaPstCmt
+					form(method="post", action="/store_comment_sub", class="form_comment_sub")
+						input(type="hidden", name="comment_id", value=""+resComments._id+"")
+						textarea(class="herCmtPst", name="comment_nd", placeholder="Write a comment", onkeyup="textAreaAdjust(this)")
+						input(type="submit", value="Send", class="bt_submit_comment_sub")

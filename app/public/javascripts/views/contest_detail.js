@@ -50,6 +50,7 @@ $(document).ready(function(){
 				}, 
 				success:function(response, status, xhr, $form){
 					$('#contest_post_type').val(0);
+					$('.pcc_image_content').css('display','block')
 					$('.pcc_image_content').append(response);
 				}, 
 				error:function(e){
@@ -66,7 +67,7 @@ $(document).ready(function(){
 				return V_JP.validatePostCommentAction();
 			},
 			success	: function(responseText, status, xhr, $form){
-				alert(responseText);
+				$('.col_rtCompet').append(responseText);
 			},
 			error : function(e){
 				alert(e.responseText);
@@ -78,7 +79,7 @@ $(document).ready(function(){
 		var se = $(this);
 		var urlGet = "/likeCommentContest?id="+se.attr('data-id')+"&type="+se.attr('data-type')+"";
 		$.get(urlGet, function(data){
-			alert(data);
+			se.remove();
 		});
 	});
 	// Event click show comment input
@@ -87,22 +88,30 @@ $(document).ready(function(){
 	});
 	// Event click send message comment of comment contest
 	$('body').on('click', '.bt_submit_comment_sub', function (e) {
-		var se =  $(this).parents('.l2c_item');
+		var se =  $(this).parents('.areaPstCmt');
+		var se_sub = $(this).parents('.mainCmtPst');
 		var text = se.find('textarea').val();
-		if(text){
-			se.find('.form_comment_sub').ajaxForm({
-				beforeSubmit : function(formData, jqForm, options){
-					alert('len luon');
-				},
-				success	: function(responseText, status, xhr, $form){
-					alert(responseText);
-				},
-				error : function(e){
-					alert(e.responseText);
-				}
-			});
-		}else{
-			alert('Please enter content!');
+		se.find('.form_comment_sub').ajaxForm({
+			beforeSubmit : function(formData, jqForm, options){
+				
+			},
+			success	: function(responseText, status, xhr, $form){
+				se_sub.append(responseText);
+			},
+			error : function(e){
+				alert(e.responseText);
+			}
+		});
+	});
+	//
+	$('.herCmtPst').on('keyup', function(e) {
+		var temp = $(this);
+		var se  = $(this).parents('.areaPstCmt');
+		if (e.which == 13) {
+			if(se.find('textarea').val().trim()!=""){
+				se.find('.bt_submit_comment_sub').trigger('click');
+				temp.val('');
+			}
 		}
 	});
 	// Event click add proposal for 
@@ -154,4 +163,9 @@ $(document).ready(function(){
 	});
 	// Hight light tab selected
 	$('#tab_'+$("#tab_selected").val()+'').addClass('activeTline');
+	// Event click show option post status
+	$('body').on('click', '#f_comment_contest', function (e) {
+		$('.option_ac').css('display','block');
+	});
+	
 });
