@@ -10,15 +10,16 @@
 	.timelineCompet
 		.ctn_tline
 			.frm_tline.clearfix
+				input(type="hidden", id="tab_selected", value=""+css_selected+"")
 				ul(class="lst_navTline clearfix")
 					li
-						a(class="nav_tline activeTline", href="/contestdetail?id="+resContestItem._id+"&tab=timeline&value="+resContestItem.project_name.replace(/ /g,"-")+"")
+						a(class="nav_tline", id="tab_timeline", href="/contestdetail?id="+resContestItem._id+"&tab=timeline&value="+resContestItem.project_name.replace(/ /g,"-")+"")
 							span Timeline
 					li
-						a(class="nav_tline", href="/contestdetail?id="+resContestItem._id+"&tab=brief&value="+resContestItem.project_name.replace(/ /g,"-")+"")
+						a(class="nav_tline", id="tab_brief", href="/contestdetail?id="+resContestItem._id+"&tab=brief&value="+resContestItem.project_name.replace(/ /g,"-")+"")
 							span Contest Brief
 					li
-						a(class="nav_tline", href="/contestdetail?id="+resContestItem._id+"&tab=proposal&value="+resContestItem.project_name.replace(/ /g,"-")+"")
+						a(class="nav_tline", id="tab_proposals", href="/contestdetail?id="+resContestItem._id+"&tab=proposal&value="+resContestItem.project_name.replace(/ /g,"-")+"")
 							span Proposals
 			a(class="btnmore btn_tlineCom", href="") submission
 		.avaCompet

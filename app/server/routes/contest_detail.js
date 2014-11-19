@@ -74,7 +74,7 @@ module.exports = function (app) {
 										resContestItem : resContestItem,
 										resProposalContest : resProposalContest,
 										resLocation : resLocation,
-										css_selected : "proposal"
+										css_selected : "proposals"
 									});
 								}else{
 									res.render('block/font-end/contest_detail_proposal', {
@@ -83,7 +83,7 @@ module.exports = function (app) {
 										resContestItem : resContestItem,
 										resProposalContest : resProposalContest,
 										resLocation : resLocation,
-										css_selected : "proposal"
+										css_selected : "proposals"
 									});
 								}
 							}else{

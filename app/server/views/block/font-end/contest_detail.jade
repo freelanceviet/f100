@@ -88,92 +88,105 @@ block content
 											a(href="", class="thumbmdLf")
 												img(src="images/thumbComit.jpg")
 				.col_rtCompet
-					.card_rtCompet
-						.pst_rtCompet
-							ul(class="labelPst")
-								li
-									a(href="", class="lnk_pst act_pstRt")
-										span(class="icoLnkPst")
-										| Post
-								li
-									a(href="", class="lnk_photoPst")
-										span(class="icoLnkPhoPst")
-										| Photo/Video
-						.wrtPst
-							textarea(class="txtare", placeholder="Write something on this page", onkeyup="textAreaAdjust(this))
-					.card_rtCompet.in_rtCard
-						.auPst
-							.avaJbData
-								a(href="")
-									img(src="images/avaPst.jpg")
-							.naPst.txtpst
-								.auCmtpPst
-									span
-										a(href="", class="titPst coJob") Art Director
-								.timePst
-									span 1 hours ago
-						.maPst
-							.ctnPst_rtCm
-								p T-shirt design for Silliman University Baisanon Student Organization.
-							.thumbPst
-								a(href="", class="pstImg")
-									.wdt_fitlg
-										img(class="fitImg", src="http://widget.saoonline.vn/thumb_x600x/detail/2014/i1.saoonline.vn/data/news/2013/10/16/77/nhung-hot-girl-co-so-truong-dien-noi-y-6-1381919085.jpg")
-								a(href="", class="pstImg")
-									.wdt_fitlg
-										img(class="fitImg", src="http://widget.saoonline.vn/thumb_x600x/detail/2014/i1.saoonline.vn/data/news/2013/10/16/77/nhung-hot-girl-co-so-truong-dien-noi-y-6-1381919085.jpg")
-								a(href="", class="pstImg")
-									.wdt_fitmd
-										img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
-								a(href="", class="pstImg")
-									.wdt_fitmd
-										img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
-								a(href="", class="pstImg")
-									.wdt_fitmd
-										img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
-							.poLike.clearfix.fntMd
-								.pullFlt_left.lkCmSh
-									span
-										a(href="", class="clBle fntMd") Like
-									span
-										a(href="", class="clBle") Comment
-									span
-										a(href="", class="clBle") Share
-								ul(class="grp_like clearfix pullFlt_right")
+					form(method="post", action="/post_comment_contest", id="post-comment-contest")
+						input(type='hidden', name="id_contest", value=""+resContestItem._id+"")
+						input(type='hidden', name="id_file", value="0", id="id_file")
+						input(type="hidden", id="contest_post_type", name="contest_post_type", value="0")
+						.card_rtCompet
+							.pst_rtCompet
+								ul(class="labelPst")
 									li
-										a(href="", class="likeCompet clBle") 88
+										a(href="", class="lnk_pst act_pstRt")
+											span(class="icoLnkPst")
+											| Post
 									li
-										a(href="", class="cmtCompet clBle") 3
-						.lstCmtPst
-							ul(class="mainCmtPst")
-								li(class="talLikePst")
-									.useLike
-										a(class="clBle fntBd", href="#") Bao Khang Nguyen
-										| ,
-										a(class="clBle fntBd", href="#") Thang Tran
-										| and 
-										a(class="clBle fntBd", href="#") Yukio 
-										| and 
-										a(href="") 8795 more 
-										| like this.
-								-	for(var i=0; i<3; i++)
-										li(class="ctn_lstPstCmt clearfix")
+										a(href="", class="lnk_photoPst")
+											span(class="icoLnkPhoPst")
+											| Photo/Video
+							.wrtPst
+								textarea(name="f_comment_contest", id="f_comment_contest", class="txtare", placeholder="Write something on this page", onkeyup="textAreaAdjust(this))
+							.option_ac
+								.oc_bt_lo
+									button(type="submit", class="btnsubmit", id="bt_submit_contest") Submit
+							.imgul_hidden
+					-	for(var k=0; k<resComments.length;k++)
+							.card_rtCompet.in_rtCard
+								.auPst
+									.avaJbData
+										a(href="")
+											img(src=""+resComments[k].user_image+"")
+									.naPst.txtpst
+										.auCmtpPst
+											span
+												a(href="", class="titPst coJob")= resComments[k].user_fullname
+										.timePst
+											span= resComments[k].time_sort
+								.maPst
+									.ctnPst_rtCm
+										p= resComments[k].comment
+									.thumbPst
+										a(href="", class="pstImg")
+											.wdt_fitlg
+												img(class="fitImg", src="http://widget.saoonline.vn/thumb_x600x/detail/2014/i1.saoonline.vn/data/news/2013/10/16/77/nhung-hot-girl-co-so-truong-dien-noi-y-6-1381919085.jpg")
+										a(href="", class="pstImg")
+											.wdt_fitlg
+												img(class="fitImg", src="http://widget.saoonline.vn/thumb_x600x/detail/2014/i1.saoonline.vn/data/news/2013/10/16/77/nhung-hot-girl-co-so-truong-dien-noi-y-6-1381919085.jpg")
+										a(href="", class="pstImg")
+											.wdt_fitmd
+												img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
+										a(href="", class="pstImg")
+											.wdt_fitmd
+												img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
+										a(href="", class="pstImg")
+											.wdt_fitmd
+												img(class="fitImg", src="http://eva-img.24hstatic.com/upload/2-2014/images/2014-06-24/1403605302-hotgirlviet-langsao-eva--7-.jpg")
+									.poLike.clearfix.fntMd
+										.pullFlt_left.lkCmSh
+											span
+												a(href="", class="clBle fntMd") Like
+											span
+												a(href="", class="clBle") Comment
+											span
+												a(href="", class="clBle") Share
+										ul(class="grp_like clearfix pullFlt_right")
+											li
+												a(href="", class="likeCompet clBle") 88
+											li
+												a(href="", class="cmtCompet clBle") 3
+								.lstCmtPst
+									ul(class="mainCmtPst")
+										li(class="talLikePst")
+											.useLike
+												a(class="clBle fntBd", href="#") Bao Khang Nguyen
+												| ,
+												a(class="clBle fntBd", href="#") Thang Tran
+												| and 
+												a(class="clBle fntBd", href="#") Yukio 
+												| and 
+												a(href="") 8795 more 
+												| like this.
+										if(resComments[k].list_comment!=undefined)
+											-	for(var m=0; m<resComments[k].list_comment.length; m++)
+													li(class="ctn_lstPstCmt clearfix")
+														.avaJbData
+															a(href="")
+																img(src=""+resComments[k].list_comment[m].user_avatar+"")
+														.naPst.txtpst
+															.auCmtpPst
+																span 
+																	a(href="", class="titPst clBle")= resComments[k].list_comment[m].full_name
+																span(class="fntMd")= resComments[k].list_comment[m].content
+															.timePst
+																span 1 hours ago
+										li(class="boxCmt clearfix")
 											.avaJbData
 												a(href="")
 													img(src="images/avaPst.jpg")
-											.naPst.txtpst
-												.auCmtpPst
-													span 
-														a(href="", class="titPst clBle") Art Director
-													span(class="fntMd") It's funny we worked on this exhibition too, but it was for a school project, so just a fictional thing
-												.timePst
-													span 1 hours ago
-								li(class="boxCmt clearfix")
-									.avaJbData
-										a(href="")
-											img(src="images/avaPst.jpg")
-									.areaPstCmt
-										textarea(class="herCmtPst", placeholder="Write a comment", onkeyup="textAreaAdjust(this)")
+											.areaPstCmt
+												form(method="post", action="/store_comment_sub", class="form_comment_sub")
+													input(type="hidden", name="comment_id", value=""+resComments[k]._id+"")
+													textarea(class="herCmtPst", name="comment_nd", placeholder="Write a comment", onkeyup="textAreaAdjust(this)")
+													input(type="submit", value="Send", class="bt_submit_comment_sub")
 block scripts
 	script(src='/javascripts/form-validators/jobContestValidator.js')
 	script(src='/javascripts/form-validators/proposalContestValidator.js')

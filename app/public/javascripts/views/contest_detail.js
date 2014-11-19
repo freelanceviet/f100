@@ -152,4 +152,6 @@ $(document).ready(function(){
 			}
 		});
 	});
+	// Hight light tab selected
+	$('#tab_'+$("#tab_selected").val()+'').addClass('activeTline');
 });
