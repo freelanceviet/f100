@@ -53,6 +53,13 @@ $(document).ready(function(){
         });
     });
 
+
+    var myDate = new Date();
+    var prettyDate =(myDate.getMonth()+1) + '/' + myDate.getDate() + '/' +
+        myDate.getFullYear();
+    $( ".dateSl" ).val(prettyDate);
+    $( ".dateSl" ).datepicker();
+
 });
 
 /* SWF Object
@@ -63,4 +70,9 @@ swfobject.embedSWF("flash.swf", "divID", "100%", "100%", "9.0.0","expressInstall
 
 function test(){
 	trace('a');
+}
+
+function textAreaAdjust(o) {
+    o.style.height = "1px";
+    o.style.height = (0+o.scrollHeight)+"px";
 }

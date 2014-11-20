@@ -1,5 +1,5 @@
-select(name="skill_subcategory", id="skill_subcategory")
-	option(value="-1") Select a job (Optional)
+select(name="skill_subcategory default-usage-select", id="skill_subcategory") 
+	option(value="-1",class="option") Select a job (Optional)
 	-	for(var i=0;i<resCategoryItem.items.length;i++)
 			option(value=""+resCategoryItem.items[i].id+"")= resCategoryItem.items[i].name
 span(class="skill_subcategory_help_err")

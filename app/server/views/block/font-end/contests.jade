@@ -1,11 +1,24 @@
 extends ../../layout_font_end
 
 block content
-	#content
-		#contests_content
-			-	for(var i=0;i<resContests.length;i++)
-					a(href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"", class="item_contest")
-						.ic_img
-							img(src="http://www.bongda.com.vn/Data/Image/2013/Thang02/05/fanmu8.jpg")
-						span(ic_name)= resContests[i].project_name
+	.container
+		h2(class="titleMtnIn") Competition List
+		ul(class="popu")
+			-	for(var i=0; i<resContests.length; i++)
+					li
+						.ctnPopu
+							.arThumb
+								a(href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"", class="thumbPopu")
+									if(resContests[i].image_avatar==undefined)
+										img(src="images/thumb.jpg", alt="Web developer")
+									else
+										img(src='/upload/profile_avatar?type=resize&width=400&height=300&name='+resContests[i].image_avatar.public_id+'.'+resContests[i].image_avatar.format+'', alt="Web developer")
+								.hvCatePopu
+									a(href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"")= resContests[i].job_description
+							.txtCatePopu
+								.lfCtePpu
+									a(href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"", class="titCatePopu")= resContests[i].project_name
+									p= resContests[i].currency_title+" " +resContests[i].budget+" "+resContests[i].currency_name
+								.rtCtePpu
+									p= resContests[i].user_info.user_name_l+ " "+resContests[i].user_info.user_name_f
 						

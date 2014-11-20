@@ -2,7 +2,7 @@ function ContestBostValidator(){
 	// build array maps of the form inputs & control groups
 	this.formFields = [
 						$('#project_name'),
-						$('.contest_skill')
+						$('#job_description')
 	                  ];
 	
 	this.validatePostComment = function(s){
@@ -11,28 +11,36 @@ function ContestBostValidator(){
 	this.validateProjectName = function(s){
 		return s.length >= 10;
 	}
-	this.validateSkill = function(s)
-	{
-		return $('.contest_skill').length;
+	this.validateDescription = function(s){
+		return s.length >= 10;
 	}
-	this.showErrors = function(e){
-		for(var i=0;i<e.length;i++){
-			alert(e[i]);
+	this.showErrors = function(errGroupOPtion){
+		$('input').removeClass('post_co_err');
+		$('ul').removeClass('post_co_err');
+		if(errGroupOPtion.length>0){
+			$(window).scrollTop(0);
+			for(var i=0;i<errGroupOPtion.length;i++){
+				if(errGroupOPtion[i] != ".contest_skill"){
+					errGroupOPtion[i].addClass('post_co_err');
+				}else{
+					$('.au_skill').find('.tagit').addClass('post_co_err');
+				}
+			}
 		}
 	}
 }
 // Post contest
 ContestBostValidator.prototype.validateForm=function(){
-	var e = [];
+	var errGroupOPtion = [];
 	if (this.validateProjectName(this.formFields[0].val()) == false) {
-		e.push('This field is required (project name).');
+		errGroupOPtion.push(this.formFields[0]);
 	}
-	if (this.validateSkill(this.formFields[1].val()) == false) {
-		e.push('Please select at least 1 skill.');
+	if (this.validateDescription(this.formFields[1].val()) == false) {
+		errGroupOPtion.push(this.formFields[1]);
 	}
-	if (e.length) this.showErrors(e);
+	if (errGroupOPtion.length) this.showErrors(errGroupOPtion);
 	
-	return e.length === 0;
+	return errGroupOPtion.length === 0;
 }
 // Post comment for contest
 ContestBostValidator.prototype.validatePostCommentAction = function(){

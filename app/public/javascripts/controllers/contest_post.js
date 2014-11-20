@@ -37,10 +37,10 @@ ContestPost.prototype.uploadImageForCommentPlace=function(){
 		$("#contest_post_type").val(1);
 		$("#post_contest_form").ajaxForm({
 			beforeSubmit:function(formData, jqForm, options){
-				
+				$('.itu_default').parent().remove();
 			}, 
 			success:function(response, status, xhr, $form){
-				$('.job_post_file_content').append(response);
+				$('.lstThumbUp').append(response);
 				$("#contest_post_type").val(0);
 			}, 
 			error:function(e){

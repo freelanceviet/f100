@@ -1,0 +1,11 @@
+extends ../../layout_font_end
+
+block content
+	#content
+		#contests_content
+			-	for(var i=0;i<resContests.length;i++)
+					a(href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"", class="item_contest")
+						.ic_img
+							img(src="http://www.bongda.com.vn/Data/Image/2013/Thang02/05/fanmu8.jpg")
+						span(ic_name)= resContests[i].project_name
+						

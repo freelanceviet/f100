@@ -171,7 +171,7 @@ module.exports = function (app) {
 				});
 			}else{
 				IM.uploadimage('contests',req.files.files_contest[0], function(errFile, resFile){
-					res.render('block/font-end/block/jobs/file', {
+					res.render('block/font-end/block/jobs/file_contest_post', {
 						resFile:resFile
 					});
 				});

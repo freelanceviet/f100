@@ -1,90 +1,151 @@
 extends ../../layout_font_end
 
 block content
-	#content
-		#form-post-contest
+	.container
+		.compet_main
 			form(method="post", action="/addpostcontest", id="post_contest_form", enctype="multipart/form-data;utf-8")
 				input(type="hidden", id="contest_post_type", name="contest_post_type", value="0")
 				input(type="hidden", id="contest_post_f", name="contest_post_f", value="0")
-				p
-					span What work do you require?
-					select(id="skill_category", name="skill_category")
-						option(value="-1") Select a category of work (Optional)
-						-	for(var i=0;i<resCategories.length;i++)
-								option(value=""+resCategories[i]._id+"")= resCategories[i].name_en
-					span(class="skill_category_help_err")
-				p
-					span Project name: 
-					input(type="text", name="project_name", id="project_name", placeholder="What do you need done...")
-					span(class="project_name_help_err")
-				p
-					#rp-attributes-content-cg
-					.contest_skill_hidden
-						-	for(var i=0;i<resSkill.length;i++)
-								input(type="hidden", class="skill_name", value=""+resSkill[i].name+"")
-					span Enter some skills that relate to the project:
-					.au_skill
-						input(type="text", name="contest_skill", id="contest_skill")
-					span(class="contest_skill_help_err")
-				p
-					span Describe your project in detail:
-					textarea(name="job_description", id="job_description", style="width:100%")
-					span(class="job_description_help_err")
-				p
-					span Add file:
-					input(type="file", id="contest_post_file", name="files_contest[]", multiple="", title="No files selected.", class="valid")
-					span(class="contest_post_file_help_err")
-				p(class="job_post_file_content")
-				p
-					span what is your budget?
-					.contest_slider_content
-						input(type="text", id="amount", readonly, style="border:0; color:#f6931f; font-weight:bold;")
-						input(type="hidden", id="budget_value", name="budget_value", value="37")
-						input(type="hidden", id="tygia_value", name="tygia_value", value=""+resCurrencyDefault.rate_usd+"")
-						input(type="hidden", id="default_money", value="37")
-						#slider-range-min
-					span(id="contest_currency_title")= resCurrencyDefault.title
-					input(type="hidden", name="contest_currency_title", id="contest_currency_title_", value=""+resCurrencyDefault.title+"")
-					input(type="hidden", name="contest_currency_name", id="contest_currency_name", value=""+resCurrencyDefault.name+"")
-					.contest_op_currency
-						select(name="currency", id="currency")
-							-	for(var i=0; i<resCurrency.length;i++)
-									if(resCurrency[i].is_default==0)
-										option(value=""+resCurrency[i]._id+"", title=""+resCurrency[i].title+"", rate_usd=""+resCurrency[i].rate_usd+"")= resCurrency[i].name
-									else
-										option(value=""+resCurrency[i]._id+"", title=""+resCurrency[i].title+"", selected, rate_usd=""+resCurrency[i].rate_usd+"")= resCurrency[i].name
-						
-				p
-					span Run your contest for:
-					input(type="text", id="contest_length", value="7", maxlength="2", name="contest_length")
-					span Days Select between 3 to 30 days
-				p
-					span Location:
-					#lo-attributes-content-cg
-					.job_location_hidden
-						-	for(var i=0;i<resLocation.length;i++)
-								input(type="hidden", class="location_name", value=""+resLocation[i].lo_name+"")
-					span Enter some location:
-					.au_location
-						input(type="text", id="job_location")
-					span(class="job_location_help_err")
-				p
-					table
-						-	for(var i=0;i<resOptional.length;i++)
-								tr
-									td
-										input(type="checkbox", name="chkbx_assisted", value=""+resOptional[i]._id+"", data-price=""+resOptional[i].price+"",class="chkbx_assisted")
-									td
-										icon-image
-									td
-										span= resOptional[i].title_en
-									td(class="job_optional_price", data-price=""+resOptional[i].price+"")
-										span= "$" + resOptional[i].price
-				p
-					input(type="hidden", name="price_sum_ponust", id="price_sum_ponust", value="0")
-					span(id="sum_moneny") 37 $
-				p
-					input(type="submit", value="Post Project Now", id="rp-bt-action-form")
+				.artCompet
+					.in_artCompet
+						.lstCompet
+							.boxcate
+								.seaData
+									label Competition Name
+									input(class="ipNaPst ipGet", id="project_name", name="project_name",style="width:302px", type="text", placeholder="Enter name for your competition")
+								.sl_jbStaData.sl_comPst
+									label Main Categories
+									select(id="skill_category", name="skill_category")
+										option(value="-1", class="option") Select a category of work (Optional)
+										-	for(var i=0;i<resCategories.length;i++)
+												option(value=""+resCategories[i]._id+"")= resCategories[i].name_en
+								.sl_jbStaData.sl_comPst.skill_category_sub
+									label Main Categories
+									select(id="skill_subcategory")
+										option(class="option") Sub category
+					.in_artCompet
+						.lstCompet
+							.collf_brief
+								.fmposal
+									h3(class="clorg") About
+									.arePosal
+										textarea(class="ctn_arePosal", placeholder="Your Proposal Details")
+								.fmposal
+									h3(class="clorg") Description
+									.arePosal
+										textarea(class="ctn_arePosal", id="job_description", name="job_description", placeholder="Your Proposal Details")
+								.fmposal
+									h3(class="clorg") Add Showcase
+									div
+										.fmUpimg
+											i(class="icoUp")
+											span(class="btnUp btnmore bgBle")
+												span Upload file
+												input(class="btnUpimg valid", type="file",id="contest_post_file", name="files_contest[]", multiple="", title="No files selected.")
+										ul(class="lstThumbUp")
+											li
+												span(class="itemThumUp itu_default")
+											li
+												span(class="itemThumUp itu_default")
+											li
+												span(class="itemThumUp itu_default")
+							.colrt_brief
+								.alt_tpBrief
+									h3(class="clorg") Add Prize
+									.fmPrtPrize
+										#arPrtPe.prtPrize
+											p(class="fntMd")
+											.prtPe
+												input(class="ipnaPrt", type="text", placeholder="Name of prize")
+												.contest_slider_content
+													input(type="text", id="amount", readonly, style="border:0; color:#f6931f; font-weight:bold;")
+													input(type="hidden", id="budget_value", name="budget_value", value="100")
+													input(type="hidden", id="tygia_value", name="tygia_value", value=""+resCurrencyDefault.rate_usd+"")
+													input(type="hidden", id="default_money", value="100")
+													#slider-range-min
+											.contest_op_currency
+												span(id="contest_currency_title")= resCurrencyDefault.title
+												input(type="hidden", name="contest_currency_title", id="contest_currency_title_", value=""+resCurrencyDefault.title+"")
+												input(type="hidden", name="contest_currency_name", id="contest_currency_name", value=""+resCurrencyDefault.name+"")
+												select(name="currency", id="currency")
+													-	for(var i=0; i<resCurrency.length;i++)
+															if(resCurrency[i].is_default==0)
+																option(value=""+resCurrency[i]._id+"", title=""+resCurrency[i].title+"", rate_usd=""+resCurrency[i].rate_usd+"")= resCurrency[i].name
+															else
+																option(value=""+resCurrency[i]._id+"", title=""+resCurrency[i].title+"", selected, rate_usd=""+resCurrency[i].rate_usd+"")= resCurrency[i].name
+											a(href="", id="lnkAdd", style="display:none") + Add new prize
+								.alt_tpBrief
+									h3(class="clorg") Deadline & Announcement
+									ul(class="lstPri")
+										li(class="dln")
+											p(class="npad nmag") 
+												| Deadline to submit
+											p(class="npad")
+												input(type="text", class="dateSl fntBd")
+										li(class="sod")
+											p(class="npad nmag") Annountcement Day:
+											p(class="npad")
+												input(type="text", class="dateSl fntBd")
+								.alt_tpBrief(style="border-bottom:none")
+									h3(class="clorg") Location
+									.fmPrtPrize
+										.job_location_hidden
+											-	for(var i=0;i<resLocation.length;i++)
+													input(type="hidden", class="location_name", value=""+resLocation[i].lo_name+"")
+										#arPrtPe.prtPrize
+											p(class="fntMd")
+											.prtPe
+												input(class="ipnaPrt", id="job_location", type="text", placeholder="Location if you have...")
+								.alt_tpBrief
+									h3(class="clorg") Skill 
+									.fmPrtPrize
+										.contest_skill_hidden
+											-	for(var i=0;i<resSkill.length;i++)
+													input(type="hidden", class="skill_name", value=""+resSkill[i].name+"")
+										#arPrtPe.prtPrize
+											p(class="fntMd")
+											.prtPe
+												.au_skill
+													input(type="text", name="contest_skill", id="contest_skill", class="ipnaPrt")
+					.in_artCompet
+						.lstCompet
+							h3(class="clorg alcter") Choose Packages (Optional)
+							ul(class="lstPack")
+								-	for(var i=0;i<resOptional.length;i++)
+										li(class="conPack")
+											input(class="btnUpimg chkbx_assisted", type="checkbox", name="chkbx_assisted", value=""+resOptional[i]._id+"", data-price=""+resOptional[i].price+"")
+											.ctnFurPack
+												.icolstPack
+													span(class="icoPack")
+													p(class="clorg fntBd") Feature
+												.txtPack
+													p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+												.pricePack.pullFlt_right
+													span(class="ctnPricePk fntBd job_optional_price", data-price=""+resOptional[i].price+"")= resOptional[i].price
+														sup(class="untPk") $
+					.in_artCompet
+						.lstCompet
+							h3(class="clorg alcter") Submission
+							.subPoli
+								ul(class="lstTtl")
+									li(class="itemTtl")
+										h3(class="fntBd numTtl") Amount:
+											input(type="hidden", name="price_sum_ponust", id="price_sum_ponust", value="0")
+											span(class="ctnPricePk", id="sum_moneny") 100
+												sup(class="untPk") USD
+									li(class="itemTtl")
+										h3(class="fntBd numTtl") Tax:
+											span(class="ctnPricePk") 180
+												sup(class="untPk") USD
+									li(class="itemTtl")
+										h3(class="fntBd numTtl") Total:
+											span(class="ctnPricePk") 180
+												sup(class="untPk") USD
+								p By clicking 'Get Entries Now', you are indicating that you have read and agree to the
+									a(href="", class="clorg") Terms & Conditions 
+									| and 
+									a(href="", class="clorg") Privacy Policy
+								button(class="fntBd btnsubmit btnget", type="submit", id="rp-bt-action-form") GET ENTry NOW
 block scripts
 	link(rel='stylesheet', href='/plugin/autocomplete/css/examples.css')
 	link(rel='stylesheet', href='/plugin/autocomplete/css/jquery.tagit.css')

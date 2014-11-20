@@ -1,7 +1,15 @@
 .cov_compet
+	if(user && user._id==resContestItem.user_info.user_id)
+		form(method="post", action="/change_banner_contest_image", id="edit-event-contest-banner")
+			.upload
+				input(id="photoimg-contest-banner", type="file", name="photos")
+			input(type='hidden', name="id_contest", value=""+resContestItem._id+"")
 	.pho_compet
 		.img_compet
-			img(src="images/cover_competition.jpg")
+			if(resContestItem.image_banner!=undefined)
+				img(src='/upload/profile_avatar?type=resize&width=1000&height=333&name='+resContestItem.image_banner.public_id+'.'+resContestItem.image_banner.format+'', class="banner_contest_jq")
+			else
+				img(src="images/cover_competition.jpg", class="banner_contest_jq")
 			span(class="hv_covCompet")
 		.nameCompet
 			h2 Markisa T-Shirt Design Competition 2014
@@ -23,5 +31,13 @@
 							span Proposals
 			a(class="btnmore btn_tlineCom", href="") submission
 		.avaCompet
-			a(class="inavaCompet", href="#")
-				img(src="images/banner2.jpg")
+			a(class="inavaCompet avatar-content", href="#")
+				if(resContestItem.image_avatar!=undefined)
+					img(src='/upload/profile_avatar?type=resize&width=130&height=130&name='+resContestItem.image_avatar.public_id+'.'+resContestItem.image_avatar.format+'')
+				else
+					img(src="/images/thumb3.jpg")
+				if(user && user._id==resContestItem.user_info.user_id)
+					form(method="post", action="/change_avatar_contest_image", id="edit-event-contest-avatar")
+						.upload
+							input(id="photoimg-contest-avatar", type="file", name="photos")
+						input(type='hidden', name="id_contest", value=""+resContestItem._id+"")

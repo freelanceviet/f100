@@ -1,0 +1,95 @@
+extends ../../layout_font_end
+
+block content
+	#content
+		#form-post-contest
+			form(method="post", action="/addpostcontest", id="post_contest_form", enctype="multipart/form-data;utf-8")
+				input(type="hidden", id="contest_post_type", name="contest_post_type", value="0")
+				input(type="hidden", id="contest_post_f", name="contest_post_f", value="0")
+				p
+					span What work do you require?
+					select(id="skill_category", name="skill_category")
+						option(value="-1") Select a category of work (Optional)
+						-	for(var i=0;i<resCategories.length;i++)
+								option(value=""+resCategories[i]._id+"")= resCategories[i].name_en
+					span(class="skill_category_help_err")
+				p
+					span Project name: 
+					input(type="text", name="project_name", id="project_name", placeholder="What do you need done...")
+					span(class="project_name_help_err")
+				p
+					#rp-attributes-content-cg
+					.contest_skill_hidden
+						-	for(var i=0;i<resSkill.length;i++)
+								input(type="hidden", class="skill_name", value=""+resSkill[i].name+"")
+					span Enter some skills that relate to the project:
+					.au_skill
+						input(type="text", name="contest_skill", id="contest_skill")
+					span(class="contest_skill_help_err")
+				p
+					span Describe your project in detail:
+					textarea(name="job_description", id="job_description", style="width:100%")
+					span(class="job_description_help_err")
+				p
+					span Add file:
+					input(type="file", id="contest_post_file", name="files_contest[]", multiple="", title="No files selected.", class="valid")
+					span(class="contest_post_file_help_err")
+				p(class="job_post_file_content")
+				p
+					span what is your budget?
+					.contest_slider_content
+						input(type="text", id="amount", readonly, style="border:0; color:#f6931f; font-weight:bold;")
+						input(type="hidden", id="budget_value", name="budget_value", value="37")
+						input(type="hidden", id="tygia_value", name="tygia_value", value=""+resCurrencyDefault.rate_usd+"")
+						input(type="hidden", id="default_money", value="37")
+						#slider-range-min
+					span(id="contest_currency_title")= resCurrencyDefault.title
+					input(type="hidden", name="contest_currency_title", id="contest_currency_title_", value=""+resCurrencyDefault.title+"")
+					input(type="hidden", name="contest_currency_name", id="contest_currency_name", value=""+resCurrencyDefault.name+"")
+					.contest_op_currency
+						select(name="currency", id="currency")
+							-	for(var i=0; i<resCurrency.length;i++)
+									if(resCurrency[i].is_default==0)
+										option(value=""+resCurrency[i]._id+"", title=""+resCurrency[i].title+"", rate_usd=""+resCurrency[i].rate_usd+"")= resCurrency[i].name
+									else
+										option(value=""+resCurrency[i]._id+"", title=""+resCurrency[i].title+"", selected, rate_usd=""+resCurrency[i].rate_usd+"")= resCurrency[i].name
+						
+				p
+					span Run your contest for:
+					input(type="text", id="contest_length", value="7", maxlength="2", name="contest_length")
+					span Days Select between 3 to 30 days
+				p
+					span Location:
+					#lo-attributes-content-cg
+					.job_location_hidden
+						-	for(var i=0;i<resLocation.length;i++)
+								input(type="hidden", class="location_name", value=""+resLocation[i].lo_name+"")
+					span Enter some location:
+					.au_location
+						input(type="text", id="job_location")
+					span(class="job_location_help_err")
+				p
+					table
+						-	for(var i=0;i<resOptional.length;i++)
+								tr
+									td
+										input(type="checkbox", name="chkbx_assisted", value=""+resOptional[i]._id+"", data-price=""+resOptional[i].price+"",class="chkbx_assisted")
+									td
+										icon-image
+									td
+										span= resOptional[i].title_en
+									td(class="job_optional_price", data-price=""+resOptional[i].price+"")
+										span= "$" + resOptional[i].price
+				p
+					input(type="hidden", name="price_sum_ponust", id="price_sum_ponust", value="0")
+					span(id="sum_moneny") 37 $
+				p
+					input(type="submit", value="Post Project Now", id="rp-bt-action-form")
+block scripts
+	link(rel='stylesheet', href='/plugin/autocomplete/css/examples.css')
+	link(rel='stylesheet', href='/plugin/autocomplete/css/jquery.tagit.css')
+	link(rel='stylesheet', href='/plugin/autocomplete/css/tagit.ui-zendesk.css')
+	script(src='/plugin/autocomplete/js/tag-it.js')
+	script(src='/javascripts/form-validators/jobContestValidator.js')
+	script(src='/javascripts/controllers/contest_post.js')
+	script(src='/javascripts/views/contest_post.js')

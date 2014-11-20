@@ -16,8 +16,8 @@ $(document).ready(function(){
 		var se = $(this);
 		var urlGet = "/getSubCategory?category_id="+se.val()+"";
 		$.get(urlGet, function(data){
-			se.parents('p').find('#skill_subcategory').remove();
-			se.parents('p').append(data);
+			$('.skill_category_sub').find('#skill_subcategory').remove();
+			$('.skill_category_sub').append(data);
 		});
 	});
 	// Event change category to show sub category
@@ -79,7 +79,6 @@ $(document).ready(function(){
 	});
 	// Form post contest action
 	$('body').on('click', '#rp-bt-action-form', function (e) {
-		alert('bi chi rua troi');
 		var num_file = $('.ffi_remove').length;
 		$('#contest_post_f').val(num_file);
 		$('#post_contest_form').ajaxForm({
@@ -107,7 +106,8 @@ $(document).ready(function(){
 		var price = tite_cu + (parseInt($('#budget_value').val())*rate_cu);
 		$('#amount').val(price);
 		var price_sum = (parseInt($('#price_sum_ponust').val()) + parseInt($('#budget_value').val())) * rate_cu
-		$('#sum_moneny').html(price_sum + tite_cu);
+		$('#sum_moneny').html(price_sum);
+		$('#sum_moneny').find('.untPk').html(tite_cu);
 	});
 	// Event click optional price
 	$('body').on('click', '.chkbx_assisted', function (e) {
@@ -131,9 +131,9 @@ $(document).ready(function(){
 	$(function() {
 		$( "#slider-range-min" ).slider({
 			range: "min",
-			value: 37,
-			min: 1,
-			max: 700,
+			value: 100,
+			min: 50,
+			max: 10000,
 			slide: function( event, ui ) {
 				$('#budget_value').val(ui.value);
 				var price = $('#contest_currency_title').text() + (parseInt(ui.value)*parseInt($('#tygia_value').val()));

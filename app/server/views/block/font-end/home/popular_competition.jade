@@ -9,7 +9,7 @@
 								if(resContests[i].image_avatar==undefined)
 									img(src="images/thumb.jpg", alt="Web developer")
 								else
-									img(src='/upload/profile_avatar?type=resize&width=400&height=300&name='+resContests[i].image_avatar.public_id+'.'+resContests[i].image_avatar.format+'', alt="Web developer")
+									img(src='/upload/profile_avatar?type=resize&width=400&height=350&name='+resContests[i].image_avatar.public_id+'.'+resContests[i].image_avatar.format+'', alt="Web developer")
 							.hvCatePopu
 								a(href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"")= resContests[i].job_description
 						.txtCatePopu

@@ -103,6 +103,7 @@ ol li{list-style:decimal inside;}
 .nbtmp {padding: 0 !important; margin: 0 !important;}
 .pullFlt_right {float: right !important;}
 .pullFlt_left {float: left !important;}
+.ipGet {border: 1px solid #c4c4c4; border-radius: 3px; padding: 10px;}
 /*** 	IE 10 	 ***/
 
 .ie10 ...{}
@@ -195,17 +196,17 @@ a{
 	color:#333;
 	text-decoration:none;
 }
-	a:hover, .ctcFt a:hover, .ftBt a:hover, .over_lstCompet a:hover {color:#f8674a;text-decoration:none;}
+	a:hover, .ctcFt a:hover, .ftBt a:hover, .over_lstCompet a:hover, .lbOverOpt:hover {color:#f8674a;text-decoration:none;}
 
 .coJob, .naCoverFt .auCover, .clorg, .titleCard a:hover {color: #f8674a;}
 .coJob:hover, header a:hover, .auCover:hover, .clBle {color: #2c3e50;}
 
-#wrapper:before, #wrapper:after, .inStp:before, .inStp:after, .popu:before, .popu:after, .txtCatePopu:before, .txtCatePopu:after, .ctn_ltData:before, .ctn_ltData:after, .container:before, .container:after, .jMore:before, .jMore:after, .lstFlc:before, .lstFlc:after, .cnPle:before, .cnPle:after, .statis:before, .statis:after, .mineGj:before, .mineGj:after, .navLogReg:before, .navLogReg:after, .lang:before, .lang:after, .txtsldFix:before, .txtsldFix:after, .boxsea:before, .boxsea:after, .pagination:before, .pagination:after, .coverAll:before, .coverAll:after, .cover_hov:before, .cover_hov:after, .coverFt:before, .coverFt:after, .lst_ckSup:before, .lst_ckSup:after, .lstCompet:before, .lstCompet:after, .thumbPst:before, .thumbPst:after, .artCompet:before, .artCompet:after, .lstLike:before, .lstLike:after, .btn_grpLike:before, .btn_grpLike:after, .inItemPosal:before, .inItemPosal:after, .labelPst:before, .labelPst:after, .auPst:before, .auPst:after {
+#wrapper:before, #wrapper:after, .inStp:before, .inStp:after, .popu:before, .popu:after, .txtCatePopu:before, .txtCatePopu:after, .ctn_ltData:before, .ctn_ltData:after, .container:before, .container:after, .jMore:before, .jMore:after, .lstFlc:before, .lstFlc:after, .cnPle:before, .cnPle:after, .statis:before, .statis:after, .mineGj:before, .mineGj:after, .navLogReg:before, .navLogReg:after, .lang:before, .lang:after, .txtsldFix:before, .txtsldFix:after, .boxsea:before, .boxsea:after, .pagination:before, .pagination:after, .coverAll:before, .coverAll:after, .cover_hov:before, .cover_hov:after, .coverFt:before, .coverFt:after, .lst_ckSup:before, .lst_ckSup:after, .lstCompet:before, .lstCompet:after, .thumbPst:before, .thumbPst:after, .artCompet:before, .artCompet:after, .lstLike:before, .lstLike:after, .btn_grpLike:before, .btn_grpLike:after, .inItemPosal:before, .inItemPosal:after, .labelPst:before, .labelPst:after, .auPst:before, .auPst:after, .lstThumbUp:before, .lstThumbUp:after, .ctnFurPack:before, .ctnFurPack:after, .lstTtl:before, .lstTtl:after, .boxcate:before, .boxcate:after {
     content: '';
     display: table;
 }
 
-#wrapper:after, .inStp:after, .popu:after, .txtCatePopu:after, .ctn_ltData:after, .container:after, .jMore:after, .lstFlc:after, .cnPle:after, .statis:after, .mineGj:after, .navLogReg:after, .lang:after, .txtsldFix:after, .boxsea:after, .pagination:after, .coverAll:after, .cover_hov:after, .coverFt:after, .lst_ckSup:after, .lstCompet:after, .thumbPst:after, .artCompet:after, .lstLike:after, .btn_grpLike:after, .inItemPosal:after, .labelPst:after, .auPst:after {clear: both;}
+#wrapper:after, .inStp:after, .popu:after, .txtCatePopu:after, .ctn_ltData:after, .container:after, .jMore:after, .lstFlc:after, .cnPle:after, .statis:after, .mineGj:after, .navLogReg:after, .lang:after, .txtsldFix:after, .boxsea:after, .pagination:after, .coverAll:after, .cover_hov:after, .coverFt:after, .lst_ckSup:after, .lstCompet:after, .thumbPst:after, .artCompet:after, .lstLike:after, .btn_grpLike:after, .inItemPosal:after, .labelPst:after, .auPst:after, .lstThumbUp:after, .ctnFurPack:after, .boxcate:after {clear: both;}
 
 /*header*/
 	header, .search .btnSch, .titleRtData, .tpFlc .slcFlc, .staft, .chatwt, .pagination li a:hover, .pagination li a.actpag, .pagination li a.prepag:hover, .pagination li a.nextpag:hover, .bgOrg {
@@ -242,12 +243,12 @@ a{
 		position:relative;
 	}
 
-    nav, .paner, .vMore, .cateFlc .tpFlc {text-align: center;}
+    nav, .paner, .vMore, .cateFlc .tpFlc, .alcter {text-align: center;}
 
 	#nav{
         display: inline-block;
     }
-		#nav > li, .popu li, .lfCtePpu, .rtCtePpu, .lfJobData, .lfJobData, .avaJbData, .txtpst, .pcePst, .dtPst, .lstFlc li, .lstPle, .statis li, .ltFt, .rtFt, .mineGj > li, .lang a, .colrt_data, .seaData, .sl_jbStaData, .sl_sortData, .pagination li, .lstItem, .cover_hov .vwHov, .coverFt .naCoverFt, .lst_ckSup li, .lst_navTline li, .name_lstCompet, .grp_like li, .one_objCompet, .collf_brief, .colrt_brief, .thumbPst .pstImg, .col_lfCompet, .col_rtCompet, .lstLike li, .sndMail, .shareFb, .inItemPosal li, .labelPst li, .areaPstCmt {display:block; float:left;position: relative;}
+		#nav > li, .popu li, .lfCtePpu, .rtCtePpu, .lfJobData, .lfJobData, .avaJbData, .txtpst, .pcePst, .dtPst, .lstFlc li, .lstPle, .statis li, .ltFt, .rtFt, .mineGj > li, .lang a, .colrt_data, .seaData, .sl_jbStaData, .sl_sortData, .pagination li, .lstItem, .cover_hov .vwHov, .coverFt .naCoverFt, .lst_ckSup li, .lst_navTline li, .name_lstCompet, .grp_like li, .one_objCompet, .collf_brief, .colrt_brief, .thumbPst .pstImg, .col_lfCompet, .col_rtCompet, .lstLike li, .sndMail, .shareFb, .inItemPosal li, .labelPst li, .areaPstCmt, .lstThumbUp li, .icolstPack, .txtPack, .itemTtl {display:block; float:left;position: relative;}
 		#nav > li > a, .navLogReg a {
 			display: block;
 			padding: 25px 20px;
@@ -332,7 +333,7 @@ a{
         }
 
         /*signup, login*/
-    .boxSup, .boxLogin {display: none;}
+    .boxSup, .boxLogin, .submiss {display: none;}
         .ctnSup {
             padding: 40px 0;
             border-radius: 5px;
@@ -437,7 +438,7 @@ a{
 /*END header*/
 
 /*slider*/
-.page {position: relative;}
+.page, .btnUp {position: relative;}
 .page .search {
     position: absolute;
     bottom: 130px;
@@ -446,7 +447,7 @@ a{
     text-align: center;
 }
     .search .ipSch, .search .btnSch {padding: 15px;border-radius: 3px;}
-    .search .ipSch, .ip_seaData {
+    .search .ipSch, .ip_seaData, .ipNaPst {
         font-family: 'HelLt';
         font-style: italic;
         border: 1px solid #afafaf;
@@ -511,7 +512,7 @@ a{
                     font-family: 'HelRg';
                 }
 
-                    .inStp .thumbStpOne, .inStp .thumbStpTwo, .inStp .thumbStpThree, .telus, .telus, .lstsoci .icoFbFt, .lstsoci .icoGgFt, .lstsoci .icoTwFt, .lstsoci .icoInFt, .mailus, .chatwt p, .ip_lfin input + label, .ck_lfin input + label, .seaData .ip_seaData, .sl_jbStaData .jquery-selectbox, .sl_sortData .jquery-selectbox, .pagination li a.prepag , .pagination li a.nextpag, .cover_hov .vwHov, .cover_hov .soldHov, .fueMark, .ck_sup input + label, .likeCompet, .cmtCompet, .sndMail, .icoLnkPhoPst, .icoLnkPst, .talLikePst .useLike {
+                    .inStp .thumbStpOne, .inStp .thumbStpTwo, .inStp .thumbStpThree, .telus, .telus, .lstsoci .icoFbFt, .lstsoci .icoGgFt, .lstsoci .icoTwFt, .lstsoci .icoInFt, .mailus, .chatwt p, .ip_lfin input + label, .ck_lfin input + label, .seaData .ip_seaData, .sl_jbStaData .jquery-selectbox, .sl_sortData .jquery-selectbox, .pagination li a.prepag , .pagination li a.nextpag, .cover_hov .vwHov, .cover_hov .soldHov, .fueMark, .ck_sup input + label, .likeCompet, .cmtCompet, .sndMail, .icoLnkPhoPst, .icoLnkPst, .talLikePst .useLike, .dateSl, .icoUp, .addava, .ui-widget-header .ui-icon {
                         background: url("../images/icoGjd.png") no-repeat 0 0;
                     }
 
@@ -551,7 +552,7 @@ a{
                 height: 280px;
                 position: relative;
             }
-                .arThumb img, .avaJbData img, .thumbFlc img, .avaPle img, .avaFlc img, .thumbsmLf img, .thumbmdLf img, .fitImg {width: 100%;}
+                .arThumb img, .avaJbData img, .thumbFlc img, .avaPle img, .avaFlc img, .thumbsmLf img, .thumbmdLf img, .fitImg, .itemThumUp img {width: 100%;}
                 .hvCatePopu, .hvFlc {
                     display: table;
                     position: absolute;
@@ -594,7 +595,7 @@ a{
                         min-height: 45px;
                     }
 
-    a.btnmore {
+    a.btnmore, .btnmore {
         color: #fff;
         text-transform: uppercase;
         padding: 5px 30px 5px 10px;
@@ -907,8 +908,6 @@ a{
             border: 1px solid #cfcfcf;
         }
 
-        .sl_jbStaData, .sl_sortData {
-        }
         .sl_jbStaData .jquery-selectbox, .sl_sortData .jquery-selectbox {
             background-color: #fff;
             background-position: 134px -85px;
@@ -917,6 +916,10 @@ a{
             border: 1px solid #cfcfcf;
             padding: 4px 20px 2px 10px;
         }
+
+        .sl_comPst .jquery-selectbox {background-position: 172px -85px;}
+        .sl_comPst .jquery-selectbox .jquery-selectbox-currentItem {text-transform: none;}
+        .sl_comPst .jquery-selectbox, .sl_comPst .jquery-selectbox {width: 164px;}
         .sl_jbStaData .jquery-selectbox .jquery-selectbox-item, .sl_sortData .jquery-selectbox .jquery-selectbox-item {
             padding-right: 10px;
         }
@@ -1076,7 +1079,9 @@ a{
             height: 370px;
             overflow: hidden;
             border-bottom: 1px solid #cfcfcf;
+            background: #e6e6e6;
         }
+
             .img_compet img, .inavaCompet img, .one_objCompet img {width: 100%;}
             .hv_covCompet {
                 bottom: 0;
@@ -1108,6 +1113,9 @@ a{
                 bottom: 15px;
             }
 
+            .pho_compet .chagCov {top: -100%; bottom: auto; border-radius: 0 0 0 5px}
+            .pho_compet:hover .chagCov {top: 0;}
+
     .timelineCompet {
         position: relative;
     }
@@ -1117,20 +1125,44 @@ a{
             left: 57px;
             border: 1px solid #d3d3d3;
             bottom: 12px;
-            width: 190px;
-            height: 190px;
+            width: 186px;
+            height: 186px;
             overflow: hidden;
             background: #fff;
             display: table;
+            padding: 4px;
             text-align: center;
         }
 
             .inavaCompet {
-                padding: 4px;
-                background: #fff;
+                background: #c4c4c4;
+                width: 100%;
                 display: table-cell;
                 vertical-align: middle;
             }
+
+            .chagPic {
+                display: block;
+                position: absolute;
+                bottom: 100%;
+                right: 0;
+                border-radius: 5px 0 0 0;
+                background: rgba(0,0,0,0.5);
+                color: #fff;
+                padding: 10px 5px;
+            }
+
+            .avaCompet:hover .chagPic {bottom: 0;}
+
+        .addava {
+            display: inline-block;
+            background-position: -135px -632px;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding-left: 23px;
+            color: #fff;
+        }
 
         .ctn_tline {
             padding-left: 255px;
@@ -1175,10 +1207,11 @@ a{
 
 .artCompet {
     background: #ebebeb;
-    padding: 18px;
+    padding: 18px 18px 0 18px;
 }
     .in_artCompet {
         border: 1px solid #dfdfdf;
+        margin-bottom: 18px;
     }
 
         .lstCompet {background: #fff; padding-bottom: 20px;}
@@ -1189,8 +1222,8 @@ a{
                 display: block;
                 margin-left: 12px;
                 margin-bottom: 12px;
-                width: 228px;
-                height: 228px;
+                width: 213px;
+                height: 213px;
                 border: 1px solid #d1d1d1;
                 overflow: hidden;
                 position: relative;
@@ -1219,7 +1252,7 @@ a{
                 }
 
                 .over_lstCompet a {color: #fff;}
-                .name_lstCompet {width: 117px; padding-right: 15px;}
+                .name_lstCompet {width: 102px; padding-right: 15px;}
                 .likeCompet {
                     background-position: -130px -492px;
                     padding-left: 24px;
@@ -1231,10 +1264,48 @@ a{
                     padding-left: 24px;
                 }
 
+                .ckOpt {
+                    position: absolute;
+                    top: -100%;
+                    right: 0;
+                    -webkit-transition: all 0.2s ease-in-out;
+                    -moz-transition: all 0.2s ease-in-out;
+                    -o-transition: all 0.2s ease-in-out;
+                    transition: all 0.2s ease-in-out;
+                    background: rgba(0,0,0,0.5);
+                    padding: 15px;
+                    border-radius: 0 0 0 5px;
+                }
+
+                .one_objCompet:hover .ckOpt {top: 0;}
+                    .ckOpt .lst_overOpt {}
+                        .lst_overOpt li.inOverOpt {position: relative; margin-bottom: 15px;}
+                        .lst_overOpt li.inOverOpt:last-child {margin-bottom: 0;}
+                            .inOverOpt input {
+                                position: absolute;
+                                left: -100%;
+                                top: 0;
+                                display: inline-block;
+                                cursor: pointer;
+                                opacity: 0;
+                            }
+
+                            .inOverOpt input[type=checkbox] + label.lbOverOpt {
+                                display: inline-block;
+                                background: url("../images/icoGjd.png") no-repeat -138px -604px;
+                                padding-left: 20px;
+                                color: #fff;
+                                cursor: pointer;
+                            }
+
+                            .inOverOpt input[type=checkbox]:checked + label.lbOverOpt {
+                                background-position: -138px -580px;
+                            }
+
     .collf_brief {
         padding: 0 25px;
         border-right: 1px solid #dfdfdf;
-        width: 528px;
+        width: 468px;
         margin-bottom: 20px;
         margin-top: 20px;
     }
@@ -1479,9 +1550,247 @@ a{
                         background: #fff;
                         padding: 10px;
                     }
-                        .areaPstCmt {}
+
+
+        .arePosal {padding-right: 20px; margin-bottom: 20px;}
+        .ctn_arePosal {
+            display: block;
+            font-style: italic;
+            width: 100%;
+            border: 1px solid #c4c4c4;
+            border-radius: 5px;
+            padding: 10px;
+            resize: none;
+            min-height: 124px;
+        }
+
+        #lnkAdd {cursor: pointer;}
+
+        .prtPe p.fntMd {margin-bottom: 10px;}
+        .prtPe .ipnaPrt, .prtPe .ipmoPrt {
+            display: block;
+            background: url("../images/aw.png") no-repeat 10px 10px;
+            width: 88%;
+            border: 1px solid #c4c4c4;
+            border-radius: 3px;
+            padding: 10px 10px 10px 35px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .prtPe .ipmoPrt {
+            background: url("../images/mey.png") no-repeat 10px 10px;
+        }
+
+        .dateSl {
+            border: none;
+            background-position: 94px -92px;
+            width: 91px;
+            padding-right: 20px;
+            margin-top: 5px;
+        }
+
+            .icoUp {
+                display: block;
+                float: left;
+                margin-right: 10px;
+                width: 27px;
+                height: 21px;
+                background-position: 0 -594px;
+            }
+            .btnUp .btnUpimg {
+                position: absolute;
+                top: 0;
+                right: 0;
+                opacity: 0;
+                cursor: pointer;
+                direction: ltr;
+                width: 100%;
+                height: 100%;
+            }
+
+        .ui-widget-content {
+            background: #fff;
+            border: 1px solid #dfdfdf;
+        }
+
+            .ui-widget-header, .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+                background: #e7e7e7;
+                border: none;
+                color: #080808;
+            }
+
+            .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {color: #000;}
+            .ui-state-active, .ui-widget-content .ui-state-active {color: #f8674a;}
+
+    .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {border: none; background: none;}
+
+.ui-widget-header .ui-icon.ui-icon-circle-triangle-e {
+    background-position: 0 -619px;
+}
+
+.ui-state-hover .ui-icon.ui-icon-circle-triangle-e, .ui-state-focus .ui-icon.ui-icon-circle-triangle-e {
+    background-position: -20px -619px;
+}
+.ui-widget-header .ui-icon.ui-icon-circle-triangle-w {
+    background-position: -57px -619px;
+}
+
+.ui-state-hover .ui-icon.ui-icon-circle-triangle-w, .ui-state-focus .ui-icon.ui-icon-circle-triangle-w {
+    background-position: -37px -619px;
+}
+
+.ui-icon {
+    width: 15px;
+    height: 20px;
+    cursor: pointer;
+}
+
+        .lstThumbUp li {
+            width: 92px;
+            margin-right: 10px;
+            overflow: hidden;
+            margin-top: 13px;
+        }
+
+            .lstThumbUp li .itemThumUp {
+                display: block;
+                height: 92px;
+                overflow: hidden;
+                background: #dfdfdf;
+            }
+
+
+    .lstCompet {
+        padding: 30px;
+    }
+
+
+        .lstPack {
+            margin-top: 20px;
+        }
+
+        .lstPack li:first-child.conPack {
+            border-top: 1px solid #d0d0d0;
+        }
+
+        .lstPack .conPack {
+            position: relative;
+            border-bottom: 1px solid #d0d0d0;
+        }
+
+        .lspaymnt li:first-child.conPack {
+            border-top: none;
+        }
+
+            .conPack .ctnFurPack {
+                display: block;
+                background: url("../images/ckPack.png") no-repeat 0 -45px;
+                padding: 10px 0 10px 30px;
+                cursor: pointer;
+            }
+
+                .lspaymnt .conPack .ctnFurPack {
+                    background-position: 0 -52px;
+                }
+            
+                .ctnFurPack .icolstPack {
+                    width: 170px;
+                    margin-right: 15px;
+                    padding-top: 8px;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+
+                .lspaymnt .ctnFurPack .icolstPack {
+                    width: 280px;
+                }
+
+                    .icolstPack .icoPack, .icolstPack .icoHglt, .icolstPack .icoComPk, .icolstPack .icoCtest {
+                        display: inline-block;
+                        background: url("../images/icoPack.png") no-repeat -3px 0;
+                        width: 41px;
+                        height: 32px;
+                    }
+
+                    .icolstPack .icoHglt {
+                        background-position: 0 -107px;
+                        height: 36px;
+                    }
+                    .icolstPack .icoComPk {
+                        background-position: 0 -33px;
+                    }
+                    .icolstPack .icoCtest {
+                        background-position: 0 -65px;
+                        height: 40px;
+                    }
+
+                .ctnFurPack .txtPack {
+                    width: 580px;
+                    margin-right: 15px;
+                }
+
+                .ctnFurPack .pricePack {
+                    width: 113px;
+                    text-align: right;
+                    padding-top: 8px;
+                }
+
+                    .ctnPricePk {
+                        font-size: 38px;
+                        position: relative;
+                    }
+
+                    .ctnPricePk .untPk {
+                        font-size: 13px;
+                        top: -1.5em;
+                    }
+
+            .btnUpimg {
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                cursor: pointer;
+            }
+
+            .conPack input[type=radio]:checked + .ctnFurPack {
+                background-position: 0 32px;
+            }
+
+            .conPack input[type=checkbox]:checked + .ctnFurPack {
+                background-position: 0 39px;
+            }
+
+            .subPoli {margin-top: 25px; text-align: center;}
+            .lstTtl .itemTtl {
+                width: 33%;
+                margin-bottom: 25px;
+            }
+
+                .itemTtl .numTtl {
+                    font-size: 24px;
+                    color: #818181;
+                }
+
+                .btnget {display: inline-block; width: auto; padding: 15px 20px; margin-top: 20px;}
+
+                .toltalPay {margin-top: 10px; text-align: right;}
+                    .toltalPay h3 {color: #747474;margin-bottom: 10px;}
+
+
+/*submission*/
+.inSubmiss {padding: 18px;}
+.arPrtPe {margin-bottom: 10px;}
+    .prtSubmiss {padding-right: 22px;}
+    .prtSubmiss input {width: 100%;}
+/*END submission*/
 
 /*END Competition*/
+
 
     /*footer*/
 .staft .container, .ctcFt .container, .ftBt .container, .pgMtnFt .container {margin-bottom: 0;}
