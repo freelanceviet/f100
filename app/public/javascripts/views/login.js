@@ -56,7 +56,8 @@ function login_with_f_connected(){
 			success: function(data){
 				if(data=="exits"){
 					$('.show_box_welcome_login').trigger('click');
-					//$('#cboxClose').css('display', 'none');
+					$('.box_welcome_info').find('h2').html(response.last_name+" "+ response.first_name);
+					$('#cboxClose').css('display', 'none');
 					setTimeout(function(){
 						$('#cboxClose').trigger('click');
 						$('#cboxClose').css('display', 'block');
@@ -111,6 +112,7 @@ function login_with_f_not_connect(response){
 // Button.  See the onlogin handler attached to it in the sample
 // code below.
 function checkLoginState() {
+	$('.sf_loading').css('display','block');
 	FB.getLoginStatus(function(response) {
 		statusChangeCallback(response);
 	});

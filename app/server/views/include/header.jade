@@ -40,6 +40,8 @@ header
 		#inlineWelcom
 			.box_welcome_info
 				img(src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/c31.0.160.160/p160x160/10613060_791975877529222_7968269928891565951_n.jpg?oh=ce4d6854f2aa6272a8968330ca802845&oe=54DC2F23&__gda__=1424349747_5f7b990c12d9a75b618b91f375543adb")
+				h1 Welcome
+				h2
 	.boxSup
 		a(href="#inlineBonusInfoUser", class="ctnIn show_box_bonus_info_user") ---
 		#inlineBonusInfoUser.ctnSup
@@ -81,6 +83,7 @@ header
 		#inlineLogin.ctnSup
 			form(class="fmSup", method="post",action="/login", id="login-form", enctype="multipart/form-data;utf-8")
 				.supFb
+					.sf_loading
 					h2(class="titleMtn")
 					p Don’t have account? Sign up
 					div(class="btnSupFb", onclick="checkLoginState();") Login with facebook
