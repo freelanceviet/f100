@@ -4,13 +4,13 @@ function RegisterValidator(){
 	                   $('#reg-last-name-tf'),  
 	                   $('#reg-email-tf'), 
 	                   $('#reg-pass-tf'),
-					   $('#reg-user-name-tf')
+					   $('#reg-user-name-su-tf')
 	                  ];
 	this.formTexts = [$('#reg-first-name-cf'), 
 	                   $('#reg-last-name-cf'),  
 	                   $('#reg-email-cf'), 
 	                   $('#reg-pass-cf'),
-					   $('#reg-user-name-cf')
+					   $('#reg-user-name-su-cf')
 	                  ];
 	this.validateFirstName = function(s){
 		return s.length>=2;
@@ -30,9 +30,11 @@ function RegisterValidator(){
 		return s.length>=3;
 	}
 	this.showErrors = function(errGroupOPtion, controlGroups){
+		console.log(errGroupOPtion);
 		$('input').removeClass('ipErr');
 		$('.errSup').css('display','none');
 		for(var i=0;i<errGroupOPtion.length;i++){
+			alert(i);
 			errGroupOPtion[i].addClass('ipErr');
 			controlGroups[i].css('display','block');
 		}
@@ -59,6 +61,7 @@ RegisterValidator.prototype.validateForm=function(){
 		errText.push(this.formTexts[3]);
 	}
 	if (this.validateUserName(this.formFields[4].val()) == false) {
+		alert(this.formFields[4].val());
 		errInput.push(this.formFields[4]);
 		errText.push(this.formTexts[4]);
 	}

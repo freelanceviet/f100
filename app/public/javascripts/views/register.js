@@ -18,7 +18,7 @@ $(document).ready(function(){
 		},
 		success	: function(responseText, status, xhr, $form){
 			if(responseText=="username-taken"){
-				alert("User name or Email exits!");
+				$().toastmessage('showErrorToast', "User name or Email exits!");
 			}else{
 				$('.login ').trigger('click');
 			}
@@ -34,9 +34,9 @@ $(document).ready(function(){
 		},
 		success	: function(responseText, status, xhr, $form){
 			if(responseText=="username-taken"){
-				alert("User name or Email exits!");
+				$().toastmessage('showErrorToast', "User name or Email exits!");
 			}else{
-				alert('Login and update successfull! Close to continue!');
+				$().toastmessage('showSuccessToast', "Login and update successfull! Close to continue");
 			}
 		},
 		error : function(e){

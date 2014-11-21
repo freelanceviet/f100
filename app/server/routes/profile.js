@@ -51,7 +51,7 @@ module.exports = function (app) {
 			var document = {
 				first_name 	: req.param('reg-first-name-tf'),
 				last_name 	: req.param('reg-last-name-tf'),
-				username	: req.param('reg-user-name-tf').toLowerCase(),
+				username	: req.param('reg-user-name-su-tf').toLowerCase(),
 				email    	: req.param('reg-email-tf').toLowerCase(),
 				pass	  	: req.param('reg-pass-tf'),
 				loca_id	  	: loc,
