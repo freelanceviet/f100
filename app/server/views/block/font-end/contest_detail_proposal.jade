@@ -21,19 +21,24 @@ block content
 								option Web Development(5,018)
 					.lstCompet
 						.objCompet.clearfix
-							-	for(var i=0;i<16;i++)
+							-	for(var i=0;i<resProposalContest.length;i++)
 									.one_objCompet
+										.op_select_optianal_se
+											ul
+												li 
+													input(type="checkbox", name="proposal_check_optional")
+													span Winner
 										p(class="thumb_lstCompet")
 											a(href="")
 												img(src="images/thumbComit5.jpg")
 										.over_lstCompet.clearfix
-											a(href="", class="name_lstCompet") John Doe
+											a(href="", class="name_lstCompet")= resProposalContest[i].user_info.user_name_l+" "+resProposalContest[i].user_info.user_name_f
 											ul(class="grp_like clearfix pullFlt_right")
 												li
 													a(href="", class="likeCompet") 88
 												li
 													a(href="", class="cmtCompet") 3
-						.pagMore
+						.pagMore(style="display:none")
 							ul(class="pagination")
 								li
 									a(class="prepag", href="")
@@ -49,3 +54,4 @@ block scripts
 	script(src='/javascripts/form-validators/jobContestValidator.js')
 	script(src='/javascripts/form-validators/proposalContestValidator.js')
 	script(src='/javascripts/views/contest_detail.js')
+	link(rel='stylesheet', href='/stylesheets/style.css')

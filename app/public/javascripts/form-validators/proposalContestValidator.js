@@ -7,19 +7,21 @@ function ProposalContestValidator(){
 	}
 	
 	this.showErrors = function(e){
-		for(var i=0;i<e.length;i++){
-			alert(e[i]);
+		if(e.length>0){
+			for(var i=0;i<e.length;i++){
+				e[i].addClass('post_co_err');
+			}
 		}
 	}
 }
 ProposalContestValidator.prototype.validateForm=function(){
 	// Add place to form
-	var e = [];
+	var errInput = [];
 	if (this.validateDescription(this.formFields[0].val()) == false) {
-		e.push('Please Enter description');
+		errInput.push(this.formFields[0]);
 	}
 	
-	if (e.length) this.showErrors(e);
+	if (errInput.length) this.showErrors(errInput);
 	
-	return e.length === 0;
+	return errInput.length === 0;
 }

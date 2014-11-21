@@ -229,7 +229,7 @@ module.exports = function (app) {
 	//--------------------------------------
 	app.post('/storeContestProposal', function (req, res) {
 		if(req.session.user){
-			var type_submit = req.param('contest_post_type');
+			var type_submit = req.param('contest_post_type_s');
 			if(type_submit==0){
 				// File up load for contest
 				var file_all = new Array();
@@ -277,6 +277,7 @@ module.exports = function (app) {
 					file_up : file_all,
 					user_info : user_info, 
 					date_add : addDate.format('YYYY-MM-DD hh:mm:ss'),
+					status: 0,
 					date_spam : n,
 					date_update : n,
 				};
@@ -285,7 +286,7 @@ module.exports = function (app) {
 				});
 			}else{
 				IM.uploadimage('proposals',req.files.files_proposal[0], function(errFile, resFile){
-					res.render('block/font-end/block/jobs/file', {
+					res.render('block/font-end/block/jobs/file_contest_proposal', {
 						resFile:resFile
 					});
 				});

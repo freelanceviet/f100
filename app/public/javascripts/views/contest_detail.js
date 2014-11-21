@@ -129,14 +129,15 @@ $(document).ready(function(){
 	// Event upload file for proposal
 	$('body').on('change', '#files_proposal_attach', function (e) {
 		if($('#files_proposal_attach').get(0).files.length > 0){
-			$("#contest_post_type").val(1);
+			$("#contest_post_type_s").val(1);
 			$("#form_post_proposal").ajaxForm({
 				beforeSubmit:function(formData, jqForm, options){
 					
 				}, 
 				success:function(response, status, xhr, $form){
-					$('.job_proposal_file_content').html(response);
-					$("#contest_post_type").val(0);
+					$("#contest_post_type_s").val(0);
+					$('#file_copo_list').find('.itu_default').css('display','none');
+					$('#file_copo_list').append(response);
 				}, 
 				error:function(e){
 				}
@@ -151,13 +152,14 @@ $(document).ready(function(){
 		$('#contest_post_r').val(num_item);
 		$('#form_post_proposal').ajaxForm({
 			beforeSubmit : function(formData, jqForm, options){
-				//return PCV.validateForm();
+				return PCV.validateForm();
 			},
 			success	: function(responseText, status, xhr, $form){
 				if(responseText=='not-login'){
-					alert("Please login to continue!");
+					$('.login ').trigger('click');
 				}else{
-					alert("Post Success!");
+					$().toastmessage('showSuccessToast', "Post proposal success!");
+					location.reload();
 				}
 			},
 			error : function(e){
@@ -171,5 +173,20 @@ $(document).ready(function(){
 	$('body').on('click', '#f_comment_contest', function (e) {
 		$('.option_ac').css('display','block');
 	});
-	
+	// Event hover on banner
+	$( ".cov_compet" ).hover(
+		function() {
+			$('.up_flag_contest_banner').css('display','block');
+		}, function() {
+			$('.up_flag_contest_banner').css('display','none');
+		}
+	);
+	// Event hover 
+	$( ".one_objCompet" ).hover(
+		function() {
+			$(this).find('.op_select_optianal_se').css('display','block');
+		}, function() {
+			$(this).find('.op_select_optianal_se').css('display','none');
+		}
+	);
 });

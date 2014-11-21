@@ -30,7 +30,6 @@ function RegisterValidator(){
 		return s.length>=3;
 	}
 	this.showErrors = function(errGroupOPtion, controlGroups){
-		console.log(errGroupOPtion);
 		$('input').removeClass('ipErr');
 		$('.errSup').css('display','none');
 		for(var i=0;i<errGroupOPtion.length;i++){
