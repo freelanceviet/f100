@@ -339,4 +339,81 @@ module.exports = function (app) {
 		}
 	});
 	
+	//--------------------------------------
+	// Get proposal detail
+	//--------------------------------------
+	app.get('/proposal-detail', function (req, res) {
+		var id_proposal = req.query.id;
+		CM.getProposalId(id_proposal, function(errProItem, resProItem){
+			if(req.session.user == null) {
+				res.render('block/font-end/contest/proposal', {
+					resProItem:resProItem,
+					user : null
+				});
+			}else{
+				res.render('block/font-end/contest/proposal', {
+					resProItem : resProItem,
+					user : req.session.user
+				});
+			}
+		});
+	});
+	//--------------------------------------
+	// Get proposal detail
+	//--------------------------------------
+	app.post('/comment_proposal_post', function (req, res) {
+		if(req.session.user) {
+			var user = req.session.user;
+			var id_proposal = req.param('id_proposal');
+			var text = req.param('content_comment_proposal');
+			var addDate = moment(new Date());
+			var d = new Date();
+			var n = d.getTime();
+			if(text.length>0){
+				var document = {
+					user_info : {user_id : user._id, user_av : user.avatar, user_name_f : user.first_name, user_name_l : user.last_name},
+					text : text,
+					date_spam : n,
+					date_update : n
+				};
+				CM.pushCommentForProposal(id_proposal, document,function(errProItem, resProItem){
+					res.render('block/font-end/contest/item_comment_proposal', {
+						resProItem : document
+					});
+				});
+			}
+		}else{
+			res.send('Login to continue!', 200);
+		}
+	});
+	
+	//--------------------------------------
+	// Get proposal detail
+	//--------------------------------------
+	app.get('/likeProposal', function (req, res) {
+		if(req.session.user) {
+			var user = req.session.user;
+			var id_proposal = req.query.id_proposal;
+			if(id_proposal!=undefined){
+				var d = new Date();
+				var n = d.getTime();
+				var document = {
+					user_id : user._id, 
+					user_av : user.avatar, 
+					user_name_f : user.first_name, 
+					user_name_l : user.last_name,
+					date_spam : n,
+					date_update : n
+				};
+				CM.pushLikeForProposalID(id_proposal, document,function(errProItem, resProItem){
+					res.send('ok', 200);
+				});
+			}else{
+				res.send('Url not avalid!', 200);
+			}
+		}else{
+			res.send('Login to continue!', 200);
+		}
+	});
+	
 }

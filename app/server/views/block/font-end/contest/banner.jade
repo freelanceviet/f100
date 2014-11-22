@@ -1,4 +1,5 @@
 .cov_compet
+	input(type="hidden", value=""+resContestItem._id+"", id="id_contest_de")
 	if(user && user._id==resContestItem.user_info.user_id)
 		form(method="post", action="/change_banner_contest_image", id="edit-event-contest-banner")
 			.upload.up_flag_contest_banner

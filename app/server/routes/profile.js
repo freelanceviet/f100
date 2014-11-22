@@ -8,7 +8,7 @@ module.exports = function (app) {
 	// Router profile page
 	//--------------------------------------
 	app.get('/profile', function (req, res) {
-		var id_user = '544b00bf0ee563480a000001';
+		var id_user = req.query._id;
 		PM.getItemAccount(id_user, function(errUser, resUser){
 			ALL.getAllLocation(function(errLocation, resLocation){
 				if(req.session.user==null){
@@ -95,7 +95,10 @@ module.exports = function (app) {
 				res.send(e, 200);
 			}else{
 				req.session.user = o;
-				res.send('xxx',200);
+				res.render('include/item_user_login_header', {
+					user: o,
+					face_status :null
+				});
 			} 
 		});
 	});
@@ -143,10 +146,13 @@ module.exports = function (app) {
 			sex = 0;
 		}
 		// test exits account facebook_ on collection
-		PM.testExitsAccountFaceBook(req.body.id,function(errFaceTest,resFaceTest){			
+		PM.testExitsAccountFaceBook(req.body.id,function(errFaceTest,resFaceTest){		
 			if(resFaceTest){
 				req.session.user = resFaceTest;
-				res.send('exits', 200);
+				res.render('include/item_user_login_header', {
+					user: resFaceTest,
+					face_status : 'exits'
+				});
 			}else{
 				var document = {
 					first_name 	: req.body.first_name,
@@ -159,8 +165,11 @@ module.exports = function (app) {
 				};
 				PM.addNewAccount(document, function(errUser,resUser){
 					if(resUser){
-						req.session.user = resUser;
-						res.send('show-dialog-info', 200);
+						req.session.user = resUser[0];
+						res.render('include/item_user_login_header', {
+							user: resUser[0],
+							face_status : 'show-dialog-info'
+						});
 					}else{
 						res.send('error', 200);
 					}

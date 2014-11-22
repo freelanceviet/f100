@@ -27,11 +27,21 @@ header
 				li
 					a(href="/how-it-work", class="lstNavc") How It Work
 		.navLogReg
-			if(!user)
-				a(href="#inlineLogin", class="login ctnIn cboxElement") login
-				a(href="#inlineSup", class="reg ctnIn cboxElement") sign up
-			else
-				a(href="/logout", class="reg") logout
+			.nav_login
+				if(!user)
+					a(href="#inlineLogin", class="login ctnIn cboxElement") login
+					a(href="#inlineSup", class="reg ctnIn cboxElement") sign up
+				else
+					.nav_login_a
+						if(typeof user.avatar === 'object')
+							img(src='/upload/profile_avatar?type=resize&width=100&height=100&name='+user.avatar.public_id+'.'+user.avatar.format+'')
+						else
+							img(src=""+user.avatar+"")
+						a(href="/profile?value=null&_id="+user._id+"")= user.last_name +" "+user.first_name
+						.icon_blue_chat
+						.icon_blue_notificaiton
+						i
+						.user_menu_drop
 		.lang
 			a(href="", class="langEn activeLang")
 			a(href="", class="langVn")
@@ -110,10 +120,11 @@ header
 		#inlineSup.ctnSup
 			form(class="fmSup", method="post", action="/storeUser", id="register_form", enctype="multipart/form-data;utf-8")
 				.supFb
+					.sf_loading
 					h2(class="titleMtn")
 					p  Already have an account? Login
 					p(class="clGrey") Sign up with Facebook and discover what your friend are doing
-					button(class="btnSupFb") Sign up with facebook
+					div(class="btnSupFb", onclick="checkLoginState();") Login with facebook
 					.fbGetjobdone
 					span(class="lineSup")
 						em Or

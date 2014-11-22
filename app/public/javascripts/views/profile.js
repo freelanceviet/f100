@@ -12,7 +12,7 @@ $(document).ready(function(){
 				}, 
 				success:function(response, status, xhr, $form){
 					if(response){
-						$('.pfbi_avatar').find('img').attr('src',response);
+						$('.f_img').find('img').attr('src',response);
 					}else{
 						alert('Not change image!');
 					}
@@ -21,5 +21,9 @@ $(document).ready(function(){
 				}
 			}).submit();
 		}
+	});
+	// Event click edit sumary profile 
+	$('body').on('click', '.iep_sumary', function (e) {
+		
 	});
 });

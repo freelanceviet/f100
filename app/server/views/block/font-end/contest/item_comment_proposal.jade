@@ -1,0 +1,8 @@
+.UFIRow
+	a(href="", class="UFIRowImgStatus")
+		img(src=""+resProItem.user_info.user_av+"")
+	.UFIRowImg
+		a(href="", class="ufiriNameUser")= resProItem.user_info.user_name_l +" "+resProItem.user_info.user_name_f
+		span(class="ufiriComment")= resProItem.text
+		.drivertime
+			a(href="", class="driver") 24 minutes ago

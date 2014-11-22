@@ -223,7 +223,66 @@ $(document).ready(function(){
 		}
 		var urlGet = "/updateStateConstestFontEnd?id_contest="+id_contest+"&state="+state+"";
 		$.get(urlGet, function(data){
-			alert(data);
+			$().toastmessage('showSuccessToast', "Success!");
 		});
+	});
+	// Event click show show detail proposal
+	$('body').on('click', '.show-img-wall-click', function (e) {
+		$('#modalDengkul-overlay,#modalDengkul').remove();
+		$('body').append('<div id="modalDengkul-overlay" style="display:block"></div>');
+		$('body').append('<div id="modalDengkul"></div>');
+		var modal = $('#modalDengkul');
+		modal.css({
+			top: ($(window).height() - modal.height()) / 2,
+			left: ($(window).width() - modal.width()) / 2
+		});
+		var urlGet = $(this).attr('href');
+		$.get(urlGet, function(data){
+			modal.html(data);
+		});
+		e.preventDefault();
+	});
+	// Event click close popup_
+	$('body').on('click', '#modalDengkul-overlay', function (e) {
+		$('#modalDengkul-overlay,#modalDengkul,#modalDengkul_login_form').remove();
+	});
+	// Event close bt click
+	$('body').on('click', '.closeTheater', function (e) {
+		$('#modalDengkul-overlay,#modalDengkul,#modalDengkul_login_form').remove();
+	});
+	// Event comment proposal
+	$('body').on('keyup', '.textInput', function (e) {
+		var temp = $(this);
+		var se  = $(this).parents('form');
+		if (e.which == 13) {
+			if(se.find('textarea').val().trim()!=""){
+				se.find('#bt_submit_comment_proposal').trigger('click');
+				temp.val('');
+			}
+		}
+	});
+	// Event submit form post comment for proposal
+	$('body').on('click', '#bt_submit_comment_proposal', function (e) {
+		$('#comment-image-form-proposal').ajaxForm({
+			beforeSubmit : function(formData, jqForm, options){
+				
+			},
+			success	: function(responseText, status, xhr, $form){
+				$('.ipr_list_comment_normal').append(responseText);
+			},
+			error : function(e){
+				alert(e.responseText);
+			}
+		});
+	});
+	// Event click like like proposal
+	$('body').on('click', '#blEventLikeProposal', function (e) {
+		var se = $(this);
+		var id_proposal = se.attr('data-id');
+		var urlGet = "/likeProposal?id_proposal="+id_proposal+"";
+		$.get(urlGet, function(data){
+			se.remove();
+		});
+		e.preventDefault();
 	});
 });

@@ -36,15 +36,21 @@ block content
 															input(type="checkbox", name="proposal_check_optional", checked, class="event_click_choose_winner", value=""+resProposalContest[i]._id+"")
 														span Winner
 										p(class="thumb_lstCompet")
-											a(href="")
+											a(href="proposal-detail?id="+resProposalContest[i]._id+"", class="show-img-wall-click")
 												img(src="images/thumbComit5.jpg")
 										.over_lstCompet.clearfix
 											a(href="", class="name_lstCompet")= resProposalContest[i].user_info.user_name_l+" "+resProposalContest[i].user_info.user_name_f
 											ul(class="grp_like clearfix pullFlt_right")
 												li
-													a(href="", class="likeCompet") 88
+													if(resProposalContest[i].num_like!=undefined)
+														a(class="likeCompet")= resProposalContest[i].num_like
+													else
+														a(class="likeCompet") 00
 												li
-													a(href="", class="cmtCompet") 3
+													if(resProposalContest[i].num_comment!=undefined)
+														a(href="", class="cmtCompet")= resProposalContest[i].num_comment
+													else
+														a(href="", class="cmtCompet") 0
 						.pagMore
 							if(resNumProposal>12)
 								ul(class="pagination")

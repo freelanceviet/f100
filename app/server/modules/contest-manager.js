@@ -149,3 +149,55 @@ exports.countAllProposals = function(id_contest, callback){
 	);
 };
 
+// ------------------------------------
+// Get proposal
+// note: 
+// callback: object
+// ------------------------------------
+exports.getProposalId = function(id, callback){
+	free_proposals.findOne({_id:new ObjectID(id)}, function(errItem, resItem){
+		if(resItem){
+			callback(null,resItem);
+		}else{
+			callback(null,null);
+		}
+	});
+};
+
+// ------------------------------------
+// Put comment for proposal
+// note: 
+// callback: object
+// ------------------------------------
+exports.pushCommentForProposal = function(id_proposal,  document, callback){
+	free_proposals.update({_id:new ObjectID(id_proposal)}, {$push: {list_comment:document}}, {multi:true}, function(errItem,resItem) {
+		free_proposals.update(
+			{ _id : new ObjectID(id_proposal) },
+			{ $inc: { num_comment : 1 }},
+			{ safe : true},
+			function (errNumCa, resNumCa) {
+				callback(null,resItem);
+			}
+		);
+	});
+};
+
+// ------------------------------------
+// Put like for proposal
+// note: 
+// callback: object
+// ------------------------------------
+exports.pushLikeForProposalID = function(id_proposal,  document, callback){
+	free_proposals.update({_id:new ObjectID(id_proposal)}, {$push: {list_like:document}}, {multi:true}, function(errItem,resItem) {
+		free_proposals.update(
+			{ _id : new ObjectID(id_proposal) },
+			{ $inc: { num_like : 1 }},
+			{ safe : true},
+			function (errNumCa, resNumCa) {
+				callback(null,resItem);
+			}
+		);
+	});
+};
+
+

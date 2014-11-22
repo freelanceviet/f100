@@ -11,7 +11,9 @@ $(document).ready(function(){
 			}else if(responseText=="invalid-password"){
 				$().toastmessage('showErrorToast', "Invalid-password");
 			}else{
-				if (status == 'success') window.location.href = '/';
+				if (status == 'success') 
+					$('.navLogReg').html(responseText);
+					$('#cboxClose').trigger('click');
 			}
 		},
 		error : function(e){
@@ -54,7 +56,9 @@ function login_with_f_connected(){
 			beforeSend: function() { 
 			},
 			success: function(data){
-				if(data=="exits"){
+				$('.navLogReg').html(data);
+				var type_face = $('#face_login_action_type').val();
+				if(type_face=="exits"){
 					$('.show_box_welcome_login').trigger('click');
 					$('.box_welcome_info').find('h2').html(response.last_name+" "+ response.first_name);
 					$('#cboxClose').css('display', 'none');
@@ -62,7 +66,7 @@ function login_with_f_connected(){
 						$('#cboxClose').trigger('click');
 						$('#cboxClose').css('display', 'block');
 					}, 3000);
-				}else if(data=="show-dialog-info"){
+				}else if(type_face=="show-dialog-info"){
 					$('.show_box_bonus_info_user').trigger('click');
 				}else{
 					alert("Not connect internet now! Please try again later!");
@@ -86,14 +90,16 @@ function login_with_f_not_connect(response){
 					
 				},
 				success: function(data){
-					if(data=="exits"){
+					$('.navLogReg').html(data);
+					var type_face = $('#face_login_action_type').val();
+					if(type_face=="exits"){
 						$('.show_box_welcome_login').trigger('click');
 						$('#cboxClose').css('display', 'none');
 						setTimeout(function(){
 							$('#cboxClose').trigger('click');
 							$('#cboxClose').css('display', 'block');
 						}, 3000);
-					}else if(data=="show-dialog-info"){
+					}else if(type_face=="show-dialog-info"){
 						$('.show_box_bonus_info_user').trigger('click');
 					}else{
 						alert("Not connect internet now! Please try again later!");

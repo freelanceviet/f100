@@ -1,0 +1,12 @@
+.nav_login_a
+	if(typeof user.avatar === 'object')
+		img(src='/upload/profile_avatar?type=resize&width=100&height=100&name='+user.avatar.public_id+'.'+user.avatar.format+'')
+	else
+		img(src=""+user.avatar+"")
+	a(href="/profile?value=null&_id="+user._id+"")= user.last_name +" "+user.first_name
+	.icon_blue_chat
+	.icon_blue_notificaiton
+	i
+	.user_menu_drop
+	if(face_status)
+		input(type="hidden", id="face_login_action_type", value=""+face_status+"")
