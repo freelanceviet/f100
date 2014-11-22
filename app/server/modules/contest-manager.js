@@ -121,7 +121,31 @@ exports.getListProposalContest = function(id, limit, skip, callback){
 // note: 
 // ------------------------------------
 exports.updateStatusContest = function(id, status, callback){
-	free_contests.update({_id:new ObjectID(id)}, {$set: {status:0}}, {multi:true}, function(err) {
+	free_contests.update({_id:new ObjectID(id)}, {$set: {status:status}}, {multi:true}, function(err) {
 		callback(null, null);
 	});
 };
+
+// ------------------------------------
+// Update status proposal of contest
+// note: 
+// ------------------------------------
+exports.updateStateProposalModel = function(id_proposal, status, callback){
+	free_proposals.update({_id:new ObjectID(id_proposal)}, {$set: {winner:status}}, {multi:true}, function(err) {
+		callback(null, null);
+	});
+};
+
+// ------------------------------------
+// Count all proposals
+// note: 
+// callback: num of proposal
+// ------------------------------------
+exports.countAllProposals = function(id_contest, callback){
+	free_proposals.find({project_id:id_contest}).count(
+		function(err, result) {
+			callback(null,result);
+		}
+	);
+};
+

@@ -10,19 +10,23 @@ module.exports = function (app) {
 	app.get('/profile', function (req, res) {
 		var id_user = '544b00bf0ee563480a000001';
 		PM.getItemAccount(id_user, function(errUser, resUser){
-			if(req.session.user==null){
-				res.render('block/font-end/profile', {
-					title : "List jobs",
-					user : null,
-					resUser : resUser
-				});
-			}else{
-				res.render('block/font-end/profile', {
-					title : "List jobs",
-					user : req.session.user,
-					resUser : resUser
-				});
-			}
+			ALL.getAllLocation(function(errLocation, resLocation){
+				if(req.session.user==null){
+					res.render('block/font-end/profile', {
+						title : "List jobs",
+						user : null,
+						resUser : resUser,
+						resLocation : resLocation
+					});
+				}else{
+					res.render('block/font-end/profile', {
+						title : "List jobs",
+						user : req.session.user,
+						resUser : resUser,
+						resLocation : resLocation
+					});
+				}
+			});
 		});
 	});
 	//--------------------------------------

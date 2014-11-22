@@ -189,4 +189,41 @@ $(document).ready(function(){
 			$(this).find('.op_select_optianal_se').css('display','none');
 		}
 	);
+	// Event click check user winner
+	$('body').on('click', '.event_click_choose_winner', function (e) {
+		var ele = $(this);
+		var state = 0;
+		var id_contest = $('#id_contest_de').val();
+		var id_proposal = ele.val();
+		if(ele.is(':checked')){
+			state = 1;
+		}else{
+			state  = 0;
+		}
+		var urlGet = "/updateStateProposal?id_proposal="+id_proposal+"&id_contest="+id_contest+"&state="+state+"";
+		$.get(urlGet, function(data){
+			if(data=="ok"){
+				if(state==1){
+					ele.parents('.one_objCompet').append('<div class="icon_winner"></div>');
+				}else{
+					ele.parents('.one_objCompet').find('.icon_winner').remove();
+				}
+			}
+		});
+	});
+	// Event click check complete contest 
+	$('body').on('click', '#cb_sc_show', function (e) {
+		var ele = $(this);
+		var state = 0;
+		var id_contest = $('#id_contest_de').val();
+		if(ele.is(':checked')){
+			state = 1;
+		}else{
+			state  = 0;
+		}
+		var urlGet = "/updateStateConstestFontEnd?id_contest="+id_contest+"&state="+state+"";
+		$.get(urlGet, function(data){
+			alert(data);
+		});
+	});
 });

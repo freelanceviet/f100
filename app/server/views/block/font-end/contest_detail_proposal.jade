@@ -3,6 +3,7 @@ extends ../../layout_font_end
 block content
 	.container
 		h2(class="titleMtnIn") Populat competition
+		input(type="hidden", value=""+resContestItem._id+"", id="id_contest_de")
 		.compet_main
 			include contest/banner
 			.artCompet
@@ -23,11 +24,17 @@ block content
 						.objCompet.clearfix
 							-	for(var i=0;i<resProposalContest.length;i++)
 									.one_objCompet
-										.op_select_optianal_se
-											ul
-												li 
-													input(type="checkbox", name="proposal_check_optional")
-													span Winner
+										if(resProposalContest[i].winner!=undefined && resProposalContest[i].winner==1)
+											.icon_winner
+										if(user && user._id == resContestItem.user_info.user_id)
+											.op_select_optianal_se
+												ul
+													li 
+														if(resProposalContest[i].winner==undefined || resProposalContest[i].winner==0)
+															input(type="checkbox", name="proposal_check_optional", class="event_click_choose_winner", value=""+resProposalContest[i]._id+"")
+														else
+															input(type="checkbox", name="proposal_check_optional", checked, class="event_click_choose_winner", value=""+resProposalContest[i]._id+"")
+														span Winner
 										p(class="thumb_lstCompet")
 											a(href="")
 												img(src="images/thumbComit5.jpg")
@@ -38,18 +45,24 @@ block content
 													a(href="", class="likeCompet") 88
 												li
 													a(href="", class="cmtCompet") 3
-						.pagMore(style="display:none")
-							ul(class="pagination")
-								li
-									a(class="prepag", href="")
-								li
-									a(class="actpag", href="") 1
-								li
-									a(class="actpag", href="") 2
-								li
-									a(class="actpag", href="") 3
-								li
-									a(class="nextpag", href="#")
+						.pagMore
+							if(resNumProposal>12)
+								ul(class="pagination")
+									-	var num_p = 0;
+									if(resNumProposal%12>0)
+										-	var num_p = parseInt(resNumProposal/12)+1
+									else
+										-	var num_p = parseInt(resNumProposal/12)
+									li
+										a(class="prepag", href="")
+									-	for(var i=1; i<=num_p;i++)
+											li
+												if(i==1)
+													a(data-id=""+i+"", data-text="page", class="actpag event_click_search_job", href="javascript:void(0);")= i
+												else
+													a(data-id=""+i+"", data-text="page", href="javascript:void(0);", class="event_click_search_job")= i
+									li
+										a(class="nextpag", href="")
 block scripts
 	script(src='/javascripts/form-validators/jobContestValidator.js')
 	script(src='/javascripts/form-validators/proposalContestValidator.js')

@@ -65,27 +65,31 @@ module.exports = function (app) {
 					});
 				}else if(req.query.tab=="proposal"){
 					CM.getItemContest(id_contest, function(errContestItem, resContestItem){
-						CM.getListProposalContest(id_contest, 20, 0, function(errProposalContest, resProposalContest){
+						CM.getListProposalContest(id_contest, 12, 0, function(errProposalContest, resProposalContest){
 							if(resContestItem){
-								if(req.session.user == null) {
-									res.render('block/font-end/contest_detail_proposal', {
-										title : "List contests",
-										user : null,
-										resContestItem : resContestItem,
-										resProposalContest : resProposalContest,
-										resLocation : resLocation,
-										css_selected : "proposals"
-									});
-								}else{
-									res.render('block/font-end/contest_detail_proposal', {
-										title : "List contests",
-										user : req.session.user,
-										resContestItem : resContestItem,
-										resProposalContest : resProposalContest,
-										resLocation : resLocation,
-										css_selected : "proposals"
-									});
-								}
+								CM.countAllProposals(id_contest, function(errNumProposal, resNumProposal){
+									if(req.session.user == null) {
+										res.render('block/font-end/contest_detail_proposal', {
+											title : "List contests",
+											user : null,
+											resContestItem : resContestItem,
+											resProposalContest : resProposalContest,
+											resLocation : resLocation,
+											css_selected : "proposals",
+											resNumProposal : resNumProposal
+										});
+									}else{
+										res.render('block/font-end/contest_detail_proposal', {
+											title : "List contests",
+											user : req.session.user,
+											resContestItem : resContestItem,
+											resProposalContest : resProposalContest,
+											resLocation : resLocation,
+											css_selected : "proposals",
+											resNumProposal : resNumProposal
+										});
+									}
+								});
 							}else{
 								res.send('url not correct!', 200);
 							}
@@ -295,4 +299,44 @@ module.exports = function (app) {
 			res.send('not-login',200);
 		}
 	});
+	
+	//--------------------------------------
+	// router admin home page
+	//--------------------------------------
+	app.get('/updateStateProposal', function (req, res) {
+		if(req.session.user != null) {
+			var id_contest = req.query.id_contest;
+			var id_proposal = req.query.id_proposal;
+			var state = req.query.state;
+			if(id_contest!=undefined && id_proposal!=undefined){
+				CM.updateStateProposalModel(id_proposal, state, function(errProItem, resProItem){
+					res.send('ok', 200);
+				});
+			}else{
+				res.send('Not correct!', 200);
+			}
+		}else{
+			res.send('Login to continue!', 200);
+		}
+	});
+	
+	//--------------------------------------
+	// get update status of contest
+	//--------------------------------------
+	app.get('/updateStateConstestFontEnd', function (req, res) {
+		if(req.session.user != null) {
+			var id_contest = req.query.id_contest;
+			var state = req.query.state;
+			if(id_contest!=undefined && state!=undefined){
+				CM.updateStatusContest(id_contest, state, function(errProItem, resProItem){
+					res.send('ok', 200);
+				});
+			}else{
+				res.send('Not correct!', 200);
+			}
+		}else{
+			res.send('Login to continue!', 200);
+		}
+	});
+	
 }

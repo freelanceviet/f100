@@ -30,7 +30,26 @@
 					li
 						a(class="nav_tline", id="tab_proposals", href="/contestdetail?id="+resContestItem._id+"&tab=proposal&value="+resContestItem.project_name.replace(/ /g,"-")+"")
 							span Proposals
-			a(class="btnmore btn_tlineCom ctnIn", href="#inlineProposal") submission
+			if(user)
+				if(user._id == resContestItem.user_info.user_id)
+					.cb_state_contest
+						if(resContestItem.status==0)
+							input(type="checkbox", id="cb_sc_show")
+						else
+							input(type="checkbox", id="cb_sc_show", checked)
+						label Finish!
+				else
+					if(resContestItem.status==0)
+						a(class="btnmore btn_tlineCom ctnIn", href="#inlineProposal") submission
+					else
+						.cb_state_contest 
+							h3 COMPLETED
+			else
+				if(resContestItem.status==0)
+					a(class="btnmore btn_tlineCom ctnIn", href="#inlineProposal") submission
+				else
+					.cb_state_contest
+						h3 COMPLETED
 		.avaCompet
 			a(class="inavaCompet avatar-content", href="#")
 				if(resContestItem.image_avatar!=undefined)

@@ -1,0 +1,50 @@
+extends ../../layout_font_end
+
+block content
+	#content
+		#profile_content
+			#pf_basic_info
+				.pfbi_avatar
+					if(resUser.avatar.created_at!=undefined)
+						img(src='/upload/profile_avatar?type=resize&width=1000&height=333&name='+resUser.avatar.public_id+'.'+resUser.avatar.format+'')
+					else
+						img(src=""+resUser.avatar+"")
+					if(user && user._id==resUser._id)
+						form(method="post", action="/change_avatar_profile_user", id="edit-event-profile-avatar")
+							.upload
+								input(id="photoimg-profile-avatar", type="file", name="photos")
+							input(type='hidden', name="id_profile", value=""+resUser._id+"")
+				.pfbi_info
+					a(href="")= resUser.last_name+" "+resUser.first_name
+					a(href="") Marketing Manager
+					span	Gioi thieu ve cong viec cua user chan han!... :D
+			#pf_basic_content
+				.pfbc_category
+					a(href="", class="item-01") Overview
+					a(href="", class="item-01") Feedback
+					a(href="", class="item-01") Portfolio
+					a(href="", class="item-01") Resume
+					a(href="", class="item-01") Examm & skill
+					a(href="", class="item-01") Contest
+				.pfbc_content
+					h3 Summary
+					span - Mặc dù nhiều đại biểu chia sẻ việc xây dựng sân bay Long Thành là cần thiết, song ý kiến chung của Quốc hội là quyết định ở thời điểm này chưa phù hợp. Rõ ràng đưa dự án Long Thành ra là không có lợi vì Quốc hội đang bàn nhiều về nợ công. Theo báo cáo cáo của Chính phủ thì nợ vẫn trong tầm kiểm soát, song đang có chiều hướng tăng nhanh.Hơn nữa, theo Nghị quyết 49 của Quốc hội, Long Thành thuộc diện dự án phải trình qua 2 kỳ họp. Do vậy, kỳ này chỉ tiến hành cho ý kiến. Việc trình dự án chậm so với quy định cũng có thể là lý do khiến Quốc hội chưa đồng ý.
+					.static-01
+						h3 Static
+					.static-02
+						#tabs
+							ul
+								li
+									a(href="#tabs-1") Completed work
+								li
+									a(href="#tabs-2") Work in progress
+								li
+									a(href="#tabs-3") Latest Bid One
+							#tabs-1
+								p Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.
+							#tabs-2
+								p Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
+							#tabs-3
+								p Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.
+block scripts
+	script(src='/javascripts/views/profile.js')

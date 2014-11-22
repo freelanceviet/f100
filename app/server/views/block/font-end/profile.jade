@@ -1,50 +1,61 @@
 extends ../../layout_font_end
 
 block content
-	#content
-		#profile_content
-			#pf_basic_info
-				.pfbi_avatar
-					if(resUser.avatar.created_at!=undefined)
-						img(src='/upload/profile_avatar?type=resize&width=1000&height=333&name='+resUser.avatar.public_id+'.'+resUser.avatar.format+'')
-					else
-						img(src=""+resUser.avatar+"")
-					if(user && user._id==resUser._id)
-						form(method="post", action="/change_avatar_profile_user", id="edit-event-profile-avatar")
-							.upload
-								input(id="photoimg-profile-avatar", type="file", name="photos")
-							input(type='hidden', name="id_profile", value=""+resUser._id+"")
-				.pfbi_info
-					a(href="")= resUser.last_name+" "+resUser.first_name
-					a(href="") Marketing Manager
-					span	Gioi thieu ve cong viec cua user chan han!... :D
-			#pf_basic_content
-				.pfbc_category
-					a(href="", class="item-01") Overview
-					a(href="", class="item-01") Feedback
-					a(href="", class="item-01") Portfolio
-					a(href="", class="item-01") Resume
-					a(href="", class="item-01") Examm & skill
-					a(href="", class="item-01") Contest
-				.pfbc_content
-					h3 Summary
-					span - Mặc dù nhiều đại biểu chia sẻ việc xây dựng sân bay Long Thành là cần thiết, song ý kiến chung của Quốc hội là quyết định ở thời điểm này chưa phù hợp. Rõ ràng đưa dự án Long Thành ra là không có lợi vì Quốc hội đang bàn nhiều về nợ công. Theo báo cáo cáo của Chính phủ thì nợ vẫn trong tầm kiểm soát, song đang có chiều hướng tăng nhanh.Hơn nữa, theo Nghị quyết 49 của Quốc hội, Long Thành thuộc diện dự án phải trình qua 2 kỳ họp. Do vậy, kỳ này chỉ tiến hành cho ý kiến. Việc trình dự án chậm so với quy định cũng có thể là lý do khiến Quốc hội chưa đồng ý.
-					.static-01
-						h3 Static
-					.static-02
-						#tabs
+	.container
+		h2(class="titleMtnIn") Duong Gia Hai's Profile
+		.compet_main
+			.artCompet
+				.in_artCompet
+					.lstCompet.aCsup
+						.f_statis_info
+							.fsi_tab
+								a(href="Freelancer", id="fsi_freelancer", class="ft_selected") Freelancer
+								a(href="Employer", id="fsi_employer") Employer
+							h2 Reputation
+							h2(style="margin-top:5px; font-size:22px") 4.5
+							.list_star
+								i
+								i
+								i
+								i
+								i
+							label (60 reviews)
+							.bt_see_more
+						.f_img
+							img(src="images/228x190.jpg")
+							.change_pick_profile_up
+								label Change picture
+									input(id="photoimg-contest-banner", type="file", name="photos")
+						.f_info
+							.fi_item
+								h2 Duong Gia Hai
+							.fi_item
+								p Design Website
+							.fi_item
+								label A perfect blend of creativity, energy, communication, clarity and restraint.
+				.in_artCompet
+					.lstCompet.ia_sub_ba_co
+						.ial_left
+							h2(class="il_h2") Summary
+							p(class="il_p") The two length or percentage values of the border-top-left-radius properties define the radii of a quarter ellipse that defines the shape of the corner of the outer border edge. The first value is the horizontal radius, the second the vertical radius. If the second value is omitted it is copied from the first. If either length is zero, the corner is square, not rounded. Percentages for the horizontal radius refer to the width of the border box, whereas percentages for the vertical radius refer to the height of the border box.
+						.ial_right
 							ul
+								li(class="li_ial_selected")
+									a(href="") Overview
 								li
-									a(href="#tabs-1") Completed work
+									a(href="") Feedback
 								li
-									a(href="#tabs-2") Work in progress
+									a(href="") Portfolio
 								li
-									a(href="#tabs-3") Latest Bid One
-							#tabs-1
-								p Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.
-							#tabs-2
-								p Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
-							#tabs-3
-								p Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.
+									a(href="") Resume
+								li
+									a(href="") Exans & Skills
+								li
+									a(href="") Contest Award
+								li
+									a(href="") Subcribed Post
+								
+							
+					
 block scripts
 	script(src='/javascripts/views/profile.js')
