@@ -59,7 +59,11 @@ $(document).ready(function(){
 	});
 	// Event upload file
 	$('#contest_post_file').change(function() {
-		CP.uploadImageForCommentPlace();
+		if($('.login ').length==1){
+			$('.login ').trigger('click');
+		}else{
+			CP.uploadImageForCommentPlace();
+		}
 	});
 	// Set input skill to form
 	$('body').on('click', '#rp-bt-action-form', function (e) {

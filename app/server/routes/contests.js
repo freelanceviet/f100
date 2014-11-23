@@ -156,6 +156,7 @@ module.exports = function (app) {
 					project_name : req.param('project_name'),
 					job_skill : req.param('contest_skill')[0],
 					job_description : req.param('job_description'),
+					contest_about : req.param('contest_about'),
 					file_up : file_all,
 					assisted : assisted,
 					contest_length : req.param('contest_length'),

@@ -76,7 +76,7 @@ block content
 							a(href="#") Recently proposals
 						.lst_itemPosal
 							ul(class="inItemPosal")
-								-	for(var i=0; i<12; i++)
+								-	for(var i=0; i<6; i++)
 										li(class="thumbmdLf", href="")
 											img(src="images/thumbComit.jpg")
 					.card_lfCompet
@@ -110,7 +110,7 @@ block content
 												label Photo/Video
 												input(type="file", multiple="true", name="ac_img[]", class="tc0_bt_img", id="photoimg-contest-comment")
 							.wrtPst
-								textarea(name="f_comment_contest", id="f_comment_contest", class="txtare", placeholder="Write something on this page", onkeyup="textAreaAdjust(this))
+								textarea(name="f_comment_contest", id="f_comment_contest", class="txtare js-auto-size", placeholder="Write something on this page")
 							.option_ac
 								.oc_bt_lo
 									button(type="submit", class="btnsubmit", id="bt_submit_contest") Submit
@@ -135,41 +135,41 @@ block content
 											if(resComments[k].file.length==1)
 												a(href="", class="pstImg")
 													.wdt_fitlg_1
-														img(class="fitImg", src='/upload/contests?type=resize&width=600&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'')
+														img(class="fitImg", href='/upload/contests?type=resize&width=600&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'',src='/upload/contests?type=resize&width=600&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'')
 											else if(resComments[k].file.length==2)
 												a(href="", class="pstImg")
 													.wdt_fitlg
-														img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'')
+														img(class="fitImg", href='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'',src='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'')
 												a(href="", class="pstImg")
 													.wdt_fitlg
-														img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[1].public_id+'.'+resComments[k].file[1].format+'')
+														img(class="fitImg", href='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[1].public_id+'.'+resComments[k].file[1].format+'',src='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[1].public_id+'.'+resComments[k].file[1].format+'')
 											else if(resComments[k].file.length==3)
 												a(href="", class="pstImg")
 													.wdt_fitlg_3
-														img(class="fitImg", src='/upload/contests?type=resize&width=400&height=600&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'')
+														img(class="fitImg", href='/upload/contests?type=resize&width=400&height=600&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'',src='/upload/contests?type=resize&width=400&height=600&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'')
 												-	for(var n=1;n<3;n++)
 														a(href="", class="pstImg")
 															.wdt_fitmd_3_3
-																img(class="fitImg", src='/upload/contests?type=resize&width=200&height=150&name='+resComments[k].file[n].public_id+'.'+resComments[k].file[n].format+'')
+																img(class="fitImg", href='/upload/contests?type=resize&width=200&height=150&name='+resComments[k].file[n].public_id+'.'+resComments[k].file[n].format+'', src='/upload/contests?type=resize&width=200&height=150&name='+resComments[k].file[n].public_id+'.'+resComments[k].file[n].format+'')
 											else if(resComments[k].file.length==4)
 												a(href="", class="pstImg")
 													.wdt_fitlg_1
-														img(class="fitImg", src='/upload/contests?type=resize&width=600&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'')
+														img(class="fitImg", href='/upload/contests?type=resize&width=600&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'', src='/upload/contests?type=resize&width=600&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'')
 												-	for(var n=1;n<4;n++)
 														a(href="", class="pstImg")
 															.wdt_fitmd
-																img(class="fitImg", src='/upload/contests?type=resize&width=200&height=150&name='+resComments[k].file[n].public_id+'.'+resComments[k].file[n].format+'')
+																img(class="fitImg", href='/upload/contests?type=resize&width=200&height=150&name='+resComments[k].file[n].public_id+'.'+resComments[k].file[n].format+'', src='/upload/contests?type=resize&width=200&height=150&name='+resComments[k].file[n].public_id+'.'+resComments[k].file[n].format+'')
 											else if(resComments[k].file.length==5)
 												a(href="", class="pstImg")
 													.wdt_fitlg
-														img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'')
+														img(class="fitImg", href='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'', src='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[0].public_id+'.'+resComments[k].file[0].format+'')
 												a(href="", class="pstImg")
 													.wdt_fitlg
-														img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[1].public_id+'.'+resComments[k].file[1].format+'')
+														img(class="fitImg", herf='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[1].public_id+'.'+resComments[k].file[1].format+'', src='/upload/contests?type=resize&width=400&height=400&name='+resComments[k].file[1].public_id+'.'+resComments[k].file[1].format+'')
 												-	for(var n=2;n<5;n++)
 														a(href="", class="pstImg")
 															.wdt_fitmd
-																img(class="fitImg", src='/upload/contests?type=resize&width=200&height=150&name='+resComments[k].file[n].public_id+'.'+resComments[k].file[n].format+'')
+																img(class="fitImg", href='/upload/contests?type=resize&width=200&height=150&name='+resComments[k].file[n].public_id+'.'+resComments[k].file[n].format+'',src='/upload/contests?type=resize&width=200&height=150&name='+resComments[k].file[n].public_id+'.'+resComments[k].file[n].format+'')
 											else if(resComments[k].file.length>5)
 												h1 Lon hon 5 hinh
 									.poLike.clearfix.fntMd

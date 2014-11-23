@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	var V_JP = new ContestBostValidator();
 	var PCV = new ProposalContestValidator();
+	$('textarea.js-auto-size').textareaAutoSize();
+	$(".fitImg").colorbox({rel:'fitImg'});
 	// Event change image avatar
 	$('body').on('change', '#photoimg-contest-avatar', function (e) {
 		if($('#photoimg-contest-avatar').get(0).files.length > 0){

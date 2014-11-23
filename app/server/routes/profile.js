@@ -200,7 +200,7 @@ module.exports = function (app) {
 				type		: req.param('f_type')
 			};
 			var user = req.session.user;
-			PM.updateUserWithFace(user[0]._id, document, function(errUser, resUser){
+			PM.updateUserWithFace(user._id, document, function(errUser, resUser){
 				if(errUser==null){
 					res.send(resUser,200);
 				}else{

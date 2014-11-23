@@ -10,12 +10,9 @@ block content
 					.lstCompet
 						.collf_brief
 							h3(class="clorg") About
-							p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+							p= resContestItem.contest_about
 							h3(class="clorg") Description
-							ul(class="txtDrpt")
-								-	for(var i=0;i<3;i++)
-										li
-											p There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+							p= resContestItem.job_description
 						.colrt_brief
 							.alt_tpBrief
 								h3(class="clorg") Prize
@@ -28,29 +25,22 @@ block content
 										label(class="pullFlt_left")
 											img(src="images/mey.png")
 										p Value:
-											b 2,500,000 VND
+											b= resContestItem.budget+" VND"
 									li
 										label(class="pullFlt_left")
 											img(src="images/aw.png")
 										p One entrant withh the highest vote
-									li
-										label(class="pullFlt_left")
-											img(src="images/mey.png")
-										p Value:
-											b 2,500,000 VND
 							.alt_tpBrief
 								h3(class="clorg") Deadline & Announcement
 								ul(class="lstPri")
 									li(class="dln")
 										p(class="npad") Deadline to submit
 										p(class="npad")
-											b 14/11/2014
+											b= resContestItem.day_begin
 									li(class="sod")
 										p(class="npad") Annountcement Day:
 										p(class="npad")
-											b 22/11/2014
-							.alt_tpBrief
-								h3(class="clorg") Eligibility
+											b= resContestItem.day_end
 block scripts
 	script(src='/javascripts/form-validators/jobContestValidator.js')
 	script(src='/javascripts/form-validators/proposalContestValidator.js')
