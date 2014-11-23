@@ -21,16 +21,11 @@ block content
 									label(class="pullFlt_left")
 										img(src="images/mey.png")
 									p Value:
-										b 2,500,000 VND
+										b= " "+ resContestItem.budget +" " + resContestItem.currency_name
 								li
 									label(class="pullFlt_left")
 										img(src="images/aw.png")
 									p One entrant withh the highest vote
-								li
-									label(class="pullFlt_left")
-										img(src="images/mey.png")
-									p Value:
-										b 2,500,000 VND
 					.card_lfCompet
 						h2(class="titleCard bgBle fntBd")
 							a(href="") Deadline - important day
@@ -39,11 +34,17 @@ block content
 								li(class="dln")
 									p(class="npad nmag") Deadline to submit
 									p(class="npad nmag")
-										b 14/11/2014
+										if(resContestItem.day_begin!=undefined)
+											b= resContestItem.day_begin
+										else
+											b 23/11/2014
 								li(class="sod")
 									p(class="npad nmag") Annountcement Day:
 									p(class="npad nmag")
-										b 22/11/2014
+										if(resContestItem.day_begin!=undefined)
+											b= resContestItem.day_end
+										else
+											b 23/11/2014
 					.card_lfCompet
 						h2(class="titleCard bgBle fntBd")
 							a(href="") People
@@ -69,7 +70,7 @@ block content
 								.btn_grpLike
 									a(href="", class="sndMail")
 									button(class="shareFb npad")
-										img(src="images/btnFB.png")
+										img(style="width:103px; height:26px",src="http://4.bp.blogspot.com/-G1Ljk9WpG4M/U432c8aZinI/AAAAAAAABUc/hfLj-P-xhXY/s1600/facebook_button-281x92.png")
 					.card_lfCompet
 						h2(class="titleCard bgBle fntBd")
 							a(href="#") Recently proposals
@@ -83,10 +84,13 @@ block content
 							a(href="") SIMILAR CONTEST
 						.lst_itemPosal
 							ul(class="inItemPosal")
-								-	for(var i=0; i<6; i++)
+								-	for(var i=0; i<resSimilarContest.length; i++)
 										li
-											a(href="", class="thumbmdLf")
-												img(src="images/thumbComit.jpg")
+											a(href="/contestdetail?id="+resSimilarContest[i]._id+"&tab=timeline&value="+resSimilarContest[i].project_name.replace(/ /g,"-")+"", class="thumbmdLf")
+												if(resSimilarContest[i].image_avatar==undefined)
+													img(src="images/thumbComit.jpg")
+												else
+													img(src='/upload/profile_avatar?type=resize&width=400&height=350&name='+resSimilarContest[i].image_avatar.public_id+'.'+resSimilarContest[i].image_avatar.format+'', alt="Web developer")
 				.col_rtCompet
 					form(method="post", action="/post_comment_contest", id="post-comment-contest")
 						input(type='hidden', name="id_contest", value=""+resContestItem._id+"")

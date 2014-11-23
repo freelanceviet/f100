@@ -98,6 +98,29 @@ exports.updateUserWithFace = function(id, doc, callback){
 	});
 }
 
+// ------------------------------------
+// Update user profile
+// document: 
+// callback:
+// ------------------------------------
+exports.updateUserProfile = function(id, type_edit, text, callback){
+	if(type_edit=="skill"){
+		free_user.update({_id:new ObjectID(id)}, {$set: {skill_text:text}}, {multi:true}, function(err) {
+			callback(null, null);
+		});
+	}else if(type_edit=="slogan"){
+		free_user.update({_id:new ObjectID(id)}, {$set: {slogan:text}}, {multi:true}, function(err) {
+			callback(null, null);
+		});
+	}else if(type_edit=="summary"){
+		free_user.update({_id:new ObjectID(id)}, {$set: {summary:text}}, {multi:true}, function(err) {
+			callback(null, null);
+		});
+	}else{
+		callback(null, null);
+	}
+}
+
 //
 var generateSalt = function()
 {

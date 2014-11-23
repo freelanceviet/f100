@@ -14,29 +14,33 @@ module.exports = function (app) {
 				if(req.query.tab=="timeline"){
 					CM.getItemContest(id_contest, function(errContestItem, resContestItem){
 						CM.getListCommentContest(id_contest, 20, 0, function(errComments, resComments){
-							if(resContestItem){
-								if(req.session.user == null) {
-									res.render('block/font-end/contest_detail', {
-										title : "List contests",
-										user : null,
-										resContestItem : resContestItem,
-										resComments : resComments,
-										resLocation : resLocation,
-										css_selected : "timeline"
-									});
+							CM.getContestDefault(6, 0, function(errSimilarContest, resSimilarContest){
+								if(resContestItem){
+									if(req.session.user == null) {
+										res.render('block/font-end/contest_detail', {
+											title : "List contests",
+											user : null,
+											resContestItem : resContestItem,
+											resComments : resComments,
+											resLocation : resLocation,
+											css_selected : "timeline",
+											resSimilarContest : resSimilarContest
+										});
+									}else{
+										res.render('block/font-end/contest_detail', {
+											title : "List contests",
+											user : req.session.user,
+											resContestItem : resContestItem,
+											resComments : resComments,
+											resLocation : resLocation,
+											css_selected : "timeline",
+											resSimilarContest : resSimilarContest
+										});
+									}
 								}else{
-									res.render('block/font-end/contest_detail', {
-										title : "List contests",
-										user : req.session.user,
-										resContestItem : resContestItem,
-										resComments : resComments,
-										resLocation : resLocation,
-										css_selected : "timeline"
-									});
+									res.send('url not correct!', 200);
 								}
-							}else{
-								res.send('url not correct!', 200);
-							}
+							});
 						});
 					});
 				}else if(req.query.tab=="brief"){

@@ -41,8 +41,8 @@ block content
 											| Remuneration package for right candidate
 							li(class="toltalPay")
 								h3(class="fntBd") Amount to spend
-								span(class="ctnPricePk fntBd") 180
-									sup(class="untPk") USD
+								span(class="ctnPricePk fntBd")= (parseInt(resContestItem.budget) + parseInt(resContestItem.bonus_price)) + (((parseInt(resContestItem.budget) + parseInt(resContestItem.bonus_price))*resSettings.tax)/100)
+									sup(class="untPk")= resContestItem.currency_name
 								p (included 10% VAT)
 								form(action="/payments_redirect", method="POST", id="payment-select")
 									input(type="hidden", value=""+resContestItem._id+"", name="id_contest")

@@ -6,6 +6,7 @@ block content
 			form(method="post", action="/addpostcontest", id="post_contest_form", enctype="multipart/form-data;utf-8")
 				input(type="hidden", id="contest_post_type", name="contest_post_type", value="0")
 				input(type="hidden", id="contest_post_f", name="contest_post_f", value="0")
+				input(type="hidden", id="contest_post_tax", name="contest_post_tax", value=""+resSettings.tax+"")
 				.artCompet
 					.in_artCompet
 						.lstCompet
@@ -56,12 +57,12 @@ block content
 										#arPrtPe.prtPrize
 											p(class="fntMd")
 											.prtPe
-												input(class="ipnaPrt", type="text", placeholder="Name of prize")
+												input(class="ipnaPrt", name="name_prize", type="text", placeholder="Name of prize")
 												.contest_slider_content
 													input(type="text", id="amount", readonly, style="border:0; color:#f6931f; font-weight:bold;")
-													input(type="hidden", id="budget_value", name="budget_value", value="100")
+													input(type="hidden", id="budget_value", name="budget_value", value=""+resSettings.default_price+"")
 													input(type="hidden", id="tygia_value", name="tygia_value", value=""+resCurrencyDefault.rate_usd+"")
-													input(type="hidden", id="default_money", value="100")
+													input(type="hidden", id="default_money", value=""+resSettings.default_price+"")
 													#slider-range-min
 											.contest_op_currency
 												span(id="contest_currency_title")= resCurrencyDefault.title
@@ -81,11 +82,11 @@ block content
 											p(class="npad nmag") 
 												| Deadline to submit
 											p(class="npad")
-												input(type="text", class="dateSl fntBd")
+												input(type="text", class="dateSl fntBd", name="day_begin")
 										li(class="sod")
 											p(class="npad nmag") Annountcement Day:
 											p(class="npad")
-												input(type="text", class="dateSl fntBd")
+												input(type="text", class="dateSl fntBd", name="day_end")
 								.alt_tpBrief(style="border-bottom:none")
 									h3(class="clorg") Location
 									.fmPrtPrize
@@ -131,16 +132,16 @@ block content
 									li(class="itemTtl")
 										h3(class="fntBd numTtl") Amount:
 											input(type="hidden", name="price_sum_ponust", id="price_sum_ponust", value="0")
-											span(class="ctnPricePk", id="sum_moneny") 100
-												sup(class="untPk") USD
+											span(class="ctnPricePk", id="sum_moneny")= resSettings.default_price
+												sup(class="untPk")= resCurrencyDefault.title
 									li(class="itemTtl")
 										h3(class="fntBd numTtl") Tax:
-											span(class="ctnPricePk") 180
-												sup(class="untPk") USD
+											span(class="ctnPricePk", id="tax_money")= (resSettings.default_price*resSettings.tax)/100
+												sup(class="untPk")= resCurrencyDefault.title
 									li(class="itemTtl")
 										h3(class="fntBd numTtl") Total:
-											span(class="ctnPricePk") 180
-												sup(class="untPk") USD
+											span(class="ctnPricePk", id="total_money")= ((resSettings.default_price*resSettings.tax)/100) + resSettings.default_price
+												sup(class="untPk")= resCurrencyDefault.title
 								p By clicking 'Get Entries Now', you are indicating that you have read and agree to the
 									a(href="", class="clorg") Terms & Conditions 
 									| and 

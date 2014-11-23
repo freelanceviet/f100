@@ -8,6 +8,7 @@ var free_currency_range	  = Mogodb.free_currency_range;
 var free_optional	      = Mogodb.free_optional;
 var free_location	      = Mogodb.free_location;
 var free_comments		  = Mogodb.free_comments;
+var free_settings		  = Mogodb.free_settings;
 var ObjectID	          = Mogodb.ObjectID;
 
 // ------------------------------------
@@ -22,6 +23,21 @@ exports.getAllCategories = function(callback){
 		function(e, res) {
 		if (e) callback(e)
 		else callback(null, res)
+	});
+};
+
+// ------------------------------------
+// Get info settings
+// note: 
+// callback: object
+// ------------------------------------
+exports.getItemSetting = function(callback){
+	free_settings.findOne({_id:new ObjectID('5471450ced7f3d0a34d14317')}, function(errItem, resItem){
+		if(resItem){
+			callback(null,resItem);
+		}else{
+			callback(null,null);
+		}
 	});
 };
 

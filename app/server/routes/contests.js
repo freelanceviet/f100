@@ -39,15 +39,18 @@ module.exports = function (app) {
 						ALL.getAllOptional(function(errOptional, resOptional) {
 							ALL.getCurrencyDefault(function(errCurrencyDefault, resCurrencyDefault) {
 								ALL.getAllLocation(function(errLocation, resLocation) {
-									res.render('block/font-end/contest_post', {
-										title : "Form Post Contest",
-										user : null,
-										resCategories : resCategories,
-										resSkill : resSkill,
-										resCurrency : resCurrency,
-										resOptional : resOptional,
-										resCurrencyDefault : resCurrencyDefault,
-										resLocation : resLocation
+									ALL.getItemSetting(function(errSettings, resSettings){
+										res.render('block/font-end/contest_post', {
+											title : "Form Post Contest",
+											user : null,
+											resCategories : resCategories,
+											resSkill : resSkill,
+											resCurrency : resCurrency,
+											resOptional : resOptional,
+											resCurrencyDefault : resCurrencyDefault,
+											resLocation : resLocation,
+											resSettings : resSettings
+										});
 									});
 								});
 							});
@@ -62,15 +65,18 @@ module.exports = function (app) {
 						ALL.getAllOptional(function(errOptional, resOptional){
 							ALL.getCurrencyDefault(function(errCurrencyDefault, resCurrencyDefault){
 								ALL.getAllLocation(function(errLocation, resLocation){
-									res.render('block/font-end/contest_post', {
-										title:"Form Post Contest",
-										user:req.session.user,
-										resCategories:resCategories,
-										resSkill:resSkill,
-										resCurrency:resCurrency,
-										resOptional:resOptional,
-										resCurrencyDefault:resCurrencyDefault,
-										resLocation:resLocation
+									ALL.getItemSetting(function(errSettings, resSettings){
+										res.render('block/font-end/contest_post', {
+											title:"Form Post Contest",
+											user:req.session.user,
+											resCategories:resCategories,
+											resSkill:resSkill,
+											resCurrency:resCurrency,
+											resOptional:resOptional,
+											resCurrencyDefault:resCurrencyDefault,
+											resLocation:resLocation,
+											resSettings : resSettings
+										});
 									});
 								});
 							});
@@ -161,6 +167,9 @@ module.exports = function (app) {
 					location : location,
 					user_info : user_info, 
 					date_add : addDate.format('YYYY-MM-DD hh:mm:ss'),
+					name_prize : req.param('name_prize'),
+					day_begin: req.param('day_begin'),
+					day_end: req.param('day_end'),
 					date_spam : n,
 					date_update : n,
 					status : -1
@@ -188,20 +197,23 @@ module.exports = function (app) {
 			var id_contest = req.query.id;
 			if(id_contest!=undefined){
 				ALL.getAllLocation(function(errLocation, resLocation){
-					CM.getItemContest(id_contest, function(errContestItem, resContestItem){
-						if(resContestItem.user_info.user_id == req.session.user._id){
-							if(resContestItem){
-								res.render('block/font-end/payment', {
-									title : 'payment pro',
-									resLocation : resLocation,
-									resContestItem : resContestItem
-								});
+					ALL.getItemSetting(function(errSettings, resSettings){
+						CM.getItemContest(id_contest, function(errContestItem, resContestItem){
+							if(resContestItem.user_info.user_id == req.session.user._id){
+								if(resContestItem){
+									res.render('block/font-end/payment', {
+										title : 'payment pro',
+										resLocation : resLocation,
+										resContestItem : resContestItem,
+										resSettings : resSettings
+									});
+								}else{
+									res.send('ID not correct!', 200);
+								}
 							}else{
 								res.send('ID not correct!', 200);
 							}
-						}else{
-							res.send('ID not correct!', 200);
-						}
+						});
 					});
 				});
 			}else{

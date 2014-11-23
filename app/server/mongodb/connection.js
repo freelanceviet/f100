@@ -68,6 +68,7 @@ module.exports = {
 	free_comments:db.collection('free_comments'),
 	free_proposals:db.collection('free_proposals'),
 	free_hourlies:db.collection('free_hourlies'),
+	free_settings:db.collection('free_settings'),
 	ObjectID:ObjectID,
 	moment:moment
 }

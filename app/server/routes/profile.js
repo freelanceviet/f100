@@ -74,6 +74,16 @@ module.exports = function (app) {
 	//--------------------------------------
 	// Login Form
 	//--------------------------------------
+	app.get('/getInfoUser', function (req, res) {
+		var id_user = req.query.id;
+		PM.getItemAccount(id_user, function(errUser, resUser){
+			res.send(resUser, 200);
+		});
+	});
+	
+	//--------------------------------------
+	// Login Form
+	//--------------------------------------
 	app.get('/login', function (req, res) {
 		if(req.session.user==null){
 			ALL.getAllLocation(function(errLocation, resLocation){
@@ -200,5 +210,16 @@ module.exports = function (app) {
 		}else{
 			res.send('Login to continue!', 200);
 		}
+	});
+	
+	//--------------------------------------
+	// Update info login with face book
+	//--------------------------------------
+	app.post('/updateInfoUserPr', function(req, res){
+		var type_edit = req.param('user_type');
+		var text = req.param('info_user');
+		PM.updateUserProfile(req.session.user._id, type_edit, text, function(errUser, resUser){
+			res.send('ok',200);
+		});
 	});
 }

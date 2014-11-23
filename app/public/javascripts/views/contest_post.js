@@ -106,7 +106,9 @@ $(document).ready(function(){
 		var price = tite_cu + (parseInt($('#budget_value').val())*rate_cu);
 		$('#amount').val(price);
 		var price_sum = (parseInt($('#price_sum_ponust').val()) + parseInt($('#budget_value').val())) * rate_cu
-		$('#sum_moneny').html(price_sum);
+		$('#sum_moneny').html(price_sum+tite_cu);
+		$('#tax_money').html(((price_sum*$('#contest_post_tax').val())/100)+tite_cu);
+		$('#total_money').html(((price_sum*$('#contest_post_tax').val())/100)+price_sum+tite_cu)
 		$('#sum_moneny').find('.untPk').html(tite_cu);
 	});
 	// Event click optional price
@@ -123,15 +125,17 @@ $(document).ready(function(){
 		
 		var tite_cu = $("#currency option:selected").attr('title');
 		var rate_cu = $("#currency option:selected").attr('rate_usd');
-		var price = tite_cu + (all_price*rate_cu);
+		var price = (all_price*rate_cu)+tite_cu;
 		$('#sum_moneny').html(price);
+		$('#tax_money').html(((all_price*$('#contest_post_tax').val())/100)+tite_cu);
+		$('#total_money').html(((all_price*$('#contest_post_tax').val())/100)+all_price+tite_cu);
 		
 	});
 	// Show slider for budget
 	$(function() {
 		$( "#slider-range-min" ).slider({
 			range: "min",
-			value: 100,
+			value: parseInt($('#default_money').val()),
 			min: 50,
 			max: 10000,
 			slide: function( event, ui ) {
@@ -141,6 +145,8 @@ $(document).ready(function(){
 				var price_all = (parseInt(ui.value) + parseInt($('#price_sum_ponust').val()))*parseInt($('#tygia_value').val());
 				var tite_cu = $("#currency option:selected").attr('title');
 				$('#sum_moneny').html(tite_cu + price_all);
+				$('#tax_money').html(((price_all*$('#contest_post_tax').val())/100)+tite_cu);
+				$('#total_money').html(((price_all*$('#contest_post_tax').val())/100)+price_all+tite_cu);
 			}
 		});
 		$( "#amount" ).val( $('#contest_currency_title').text() + $( "#slider-range-min" ).slider( "value" ) );

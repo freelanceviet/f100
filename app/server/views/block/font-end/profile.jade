@@ -2,6 +2,8 @@ extends ../../layout_font_end
 
 block content
 	.container
+		if(user)
+			input(type="hidden", id="user_id_profile", value=""+user._id+"")
 		h2(class="titleMtnIn")= resUser.last_name+" "+resUser.first_name+"'s Profile"
 		.compet_main
 			.artCompet
@@ -36,17 +38,29 @@ block content
 							.fi_item
 								h2= resUser.last_name+" "+resUser.first_name
 							.fi_item
-								p Design Website
-								a(href="#inlineEditSkill", class="item_edit_pro ctnIn")
+								if(resUser.skill_text!=undefined)
+									p= resUser.skill_text
+								else
+									p Your skill...?
+								if(user && user._id==resUser._id)
+									a(href="#inlineEditSkill", class="item_edit_pro ctnIn", data-type="edit")
 							.fi_item
-								label A perfect blend of creativity, energy, communication, clarity and restraint.
-								a(href="#inlineEditSlogan", class="item_edit_pro iep_slogan ctnIn")
+								if(resUser.slogan!=undefined)
+									label= resUser.slogan
+								else
+									label A perfect blend of creativity, energy, communication, clarity and restraint.
+								if(user && user._id==resUser._id)
+									a(href="#inlineEditSlogan", class="item_edit_pro iep_slogan ctnIn", data-type="edit")
 				.in_artCompet
 					.lstCompet.ia_sub_ba_co
 						.ial_left
 							h2(class="il_h2") Summary
-							a(href="#inlineEditSumary", class="item_edit_pro iep_sumary ctnIn")
-							p(class="il_p") The two length or percentage values of the border-top-left-radius properties define the radii of a quarter ellipse that defines the shape of the corner of the outer border edge. The first value is the horizontal radius, the second the vertical radius. If the second value is omitted it is copied from the first. If either length is zero, the corner is square, not rounded. Percentages for the horizontal radius refer to the width of the border box, whereas percentages for the vertical radius refer to the height of the border box.
+							if(user && user._id==resUser._id)
+								a(href="#inlineEditSumary", class="item_edit_pro iep_sumary ctnIn", data-type="edit")
+							if(resUser.summary!=undefined)
+								p(class="il_p")= resUser.summary
+							else
+								p(class="il_p") The two length or percentage values of the border-top-left-radius properties define the radii of a quarter ellipse that defines the shape of the corner of the outer border edge. The first value is the horizontal radius, the second the vertical radius. If the second value is omitted it is copied from the first. If either length is zero, the corner is square, not rounded. Percentages for the horizontal radius refer to the width of the border box, whereas percentages for the vertical radius refer to the height of the border box.
 						.ial_right
 							ul
 								li(class="li_ial_selected")
@@ -64,39 +78,42 @@ block content
 								li
 									a(href="") Subcribed Post
 								
-				.boxSummary
+				.boxSummary(style="display:none")
 					#inlineEditSumary.ctnSup
 						form(class="fmSup",method="post", action="/updateInfoUserPr", id="form_post_profile", enctype="multipart/form-data;utf-8")
 							.collf_brief.box_style_contestp
 								.fmposal
 									h3(class="clorg") Your summary
 									.arePosal
-										textarea(class="ctn_arePosal", style="margin-bottom: 22px;", id="des_proposal",name="des_proposal", placeholder="Your Proposal Details")
+										textarea(class="ctn_arePosal", id="summary_123", style="margin-bottom: 22px;",name="info_user", placeholder="Your Proposal Details")
 								.fmposal
 									.bt_submit.bts_contest_proposal
-										input(type="submit", value="Submit", id="bt_submit_form_proposal")	
-				.boxSlogan
+										input(type="hidden", name="user_type", value="summary")
+										input(type="submit", value="Submit", id="bt_submit_form_edit_user")	
+				.boxSlogan(style="display:none")
 					#inlineEditSlogan.ctnSup
 						form(class="fmSup",method="post", action="/updateInfoUserPr", id="form_post_profile", enctype="multipart/form-data;utf-8")
 							.collf_brief.box_style_contestp
 								.fmposal
 									h3(class="clorg") Your slogan
 									.arePosal
-										textarea(class="ctn_arePosal", style="margin-bottom: 22px;", id="des_proposal",name="des_proposal", placeholder="Your Proposal Details")
+										textarea(class="ctn_arePosal", id="slogan_123",style="margin-bottom: 22px;",name="info_user", placeholder="Your Proposal Details")
 								.fmposal
 									.bt_submit.bts_contest_proposal
-										input(type="submit", value="Submit", id="bt_submit_form_proposal")
-				.boxSkill
+										input(type="hidden", name="user_type", value="slogan")
+										input(type="submit", value="Submit", id="bt_submit_form_edit_user")
+				.boxSkill(style="display:none")
 					#inlineEditSkill.ctnSup
 						form(class="fmSup",method="post", action="/updateInfoUserPr", id="form_post_profile", enctype="multipart/form-data;utf-8")
 							.collf_brief.box_style_contestp
 								.fmposal
 									h3(class="clorg") Your skill
 									.arePosal
-										textarea(class="ctn_arePosal", style="margin-bottom: 22px;", id="des_proposal",name="des_proposal", placeholder="Your Proposal Details")
+										textarea(class="ctn_arePosal",id="skill_123", style="margin-bottom: 22px;",name="info_user", placeholder="Your Proposal Details")
 								.fmposal
 									.bt_submit.bts_contest_proposal
-										input(type="submit", value="Submit", id="bt_submit_form_proposal")
+										input(type="hidden", name="user_type", value="skill")
+										input(type="submit", value="Submit", id="bt_submit_form_edit_user")
 					
 block scripts
 	script(src='/javascripts/views/profile.js')
