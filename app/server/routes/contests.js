@@ -38,6 +38,11 @@ module.exports = function (app) {
 					ALL.getAllCurrency(function(errCurrency, resCurrency) {
 						ALL.getAllOptional(function(errOptional, resOptional) {
 							ALL.getCurrencyDefault(function(errCurrencyDefault, resCurrencyDefault) {
+								console.log('sdfdsfsdfsdfsdfsd');
+								console.log('sdfdsfsdfsdfsdfsd');
+								console.log('sdfdsfsdfsdfsdfsd');
+								console.log('sdfdsfsdfsdfsdfsd');
+								console.log(resCurrencyDefault);
 								ALL.getAllLocation(function(errLocation, resLocation) {
 									ALL.getItemSetting(function(errSettings, resSettings){
 										res.render('block/font-end/contest_post', {
@@ -156,6 +161,7 @@ module.exports = function (app) {
 					project_name : req.param('project_name'),
 					job_skill : req.param('contest_skill')[0],
 					job_description : req.param('job_description'),
+					job_requirement : req.param('contest_requirement'),
 					contest_about : req.param('contest_about'),
 					file_up : file_all,
 					assisted : assisted,
@@ -236,7 +242,7 @@ module.exports = function (app) {
 				if(resContestItem){
 					if(type_payment=='cod'){
 						CM.updateStatusContest(id_contest, 0, function(errContestItemUpdate, resContestItemUpdate){
-							var url = "/contestdetail?id="+id_contest+"&tab=timeline&value="+resContestItem.project_name.replace(/ /g,"-")+"";
+							var url = "/contestdetail?id="+id_contest+"&tab=brief&value="+resContestItem.project_name.replace(/ /g,"-")+"";
 							res.send(url, 200);
 						});
 					}else if(type_payment=='baokiem'){

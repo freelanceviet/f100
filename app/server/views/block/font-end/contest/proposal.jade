@@ -1,21 +1,40 @@
 .img_poup_left
+	a(href="",  ajaxify="/get_file_proposal?id_proposal="+resProItem._id+"&num="+num_next+"",data-type="next", class="ipl-nav ipl-navRight event_click_show_proposal_nx")
+	a(href="",  ajaxify="/get_file_proposal?id_proposal="+resProItem._id+"&num="+num_last+"",data-type="back", class="ipl-nav ipl-navLeft event_click_show_proposal_nx")
 	.ipl_img
 		if(resProItem.file_up!=undefined)
-			-	var temp = ''
+			-	var temp = 0
 			-	for(var i=0; i<resProItem.file_up.length;i++)
-					if(resProItem.file_up[i].format=="jpg" || resProItem.file_up[i].format=="png")
+					if(resProItem.file_up[i].format.toLowerCase()=="jpg" || resProItem.file_up[i].format.toLowerCase()=="png")
 						-	temp = i
-			if(temp!='')
+			if(temp!=0)
 				img(src='/upload/proposals?type=normal&width=null&height=null&name='+resProItem.file_up[temp].public_id+'.'+resProItem.file_up[temp].format+'')
-.img_poup_right
+			else
+				a(href="")
+					img(src="/images/"+resProItem.file_up[temp].format+".png")
+	.img_sub_left_list
+		ul(class="inItemPosal")
+			-	for(var i=0; i<resProItem.file_up.length;i++)
+					li
+						a(href="", ajaxify="/get_file_proposal?id_proposal="+resProItem._id+"&num="+i+"",data-type="next", class="event_click_show_proposal_nx thumbmdLf")
+							if(resProItem.file_up[i].format.toLowerCase()=="jpg" || resProItem.file_up[i].format.toLowerCase()=="png")
+								img(src='/upload/proposals?type=resize&width=400&height=350&name='+resProItem.file_up[i].public_id+'.'+resProItem.file_up[i].format+'')
+							else
+								img(src="/images/"+resProItem.file_up[i].format+".png")
+.img_poup_right(style="margin-left: 2px;")
 	.closeTheater
 	.ipr_info_normal
 		.fbPhotoSnowliftAuthorPic
-			img(src=""+resProItem.user_info.user_av+"")
+			if(typeof resProItem.user_info.user_av === 'object')
+				img(src="/upload/profile_avatar?type=resize&width=100&height=100&name="+resProItem.user_info.user_av.public_id+"."+resProItem.user_info.user_av.format+"")
+			else
+				img(src=""+resProItem.user_info.user_av+"")
 		.fbPhotoContributorName
 			a(href="#",class="pp-tooltip-user-fpcn", style="cursor: pointer;")= resProItem.user_info.user_name_l+" "+resProItem.user_info.user_name_f
 			span
 				.fbDriver Đang theo dõi . 16 phút trước qua di động
+	.ipr_info_description
+		span= resProItem.proposal_description
 	.ipr_des_normal
 	if(user)
 		.ipr_option_normal
@@ -28,24 +47,32 @@
 					a(href="like", class="UFILikeLink", id="blEventLikeProposal", data-id=""+resProItem._id+"") Like
 			else
 				a(href="like", class="UFILikeLink", id="blEventLikeProposal", data-id=""+resProItem._id+"") Like
-			a(href="", class="UFILikeLink blToggleFormComment") Comment
+			a(href="", style="display:none", class="UFILikeLink blToggleFormComment") Comment
 	.ipr_list_comment_normal
 		if(resProItem.list_comment!=undefined)
 			-	for(var i=0; i<resProItem.list_comment.length; i++)
 					.UFIRow
 						a(href="", class="UFIRowImgStatus")
-							img(src=""+resProItem.list_comment[i].user_info.user_av+"")
+							if(typeof resProItem.list_comment[i].user_info.user_av === 'object')
+								img(src="/upload/profile_avatar?type=resize&width=100&height=100&name="+resProItem.list_comment[i].user_info.user_av.public_id+"."+resProItem.list_comment[i].user_info.user_av.format+"")
+							else
+								img(src=""+resProItem.list_comment[i].user_info.user_av+"")
 						.UFIRowImg
 							a(href="", class="ufiriNameUser")= resProItem.list_comment[i].user_info.user_name_l +" "+resProItem.list_comment[i].user_info.user_name_f
 							span(class="ufiriComment")= resProItem.list_comment[i].text
 							.drivertime
-								a(href="", class="driver") 24 minutes ago
+								a(href="", class="driver time_curent", title=""+resProItem.list_comment[i].date_update+"",time=""+resProItem.list_comment[i].date_spam+"")
 	if(user)
 		.ipr_comment_normal
 			.UFIArrow
-			img(src=""+user.avatar+"", class="icn-comment")
+			if(typeof resProItem.user_info.user_av === 'object')
+				img(src="/upload/profile_avatar?type=resize&width=100&height=100&name="+resProItem.user_info.user_av.public_id+"."+resProItem.user_info.user_av.format+"")
+			else
+				img(src=""+user.avatar+"", class="icn-comment")
 			.UFIArrowText
 				form(id="comment-image-form-proposal", method="post", action="/comment_proposal_post")
 					textarea(name="content_comment_proposal", placeholder="What are you want to say?", class="textInput UFIAddCommentInput", style="overflow: hidden; word-wrap: break-word; resize: none; height: 25px;")
 					input(type="submit", id="bt_submit_comment_proposal", style="display:none")
 					input(type="hidden", name="id_proposal", value=""+resProItem._id+"")
+block scripts
+	script(src='/javascripts/views/proposal_contest.js')

@@ -7,6 +7,7 @@ block content
 				input(type="hidden", id="contest_post_type", name="contest_post_type", value="0")
 				input(type="hidden", id="contest_post_f", name="contest_post_f", value="0")
 				input(type="hidden", id="contest_post_tax", name="contest_post_tax", value=""+resSettings.tax+"")
+				input(type="hidden", id="contest_post_optinal", name="contest_post_optinal", value=""+resSettings.default_optinal+"")
 				.artCompet
 					.in_artCompet
 						.lstCompet
@@ -30,11 +31,15 @@ block content
 								.fmposal
 									h3(class="clorg") About
 									.arePosal
-										textarea(class="ctn_arePosal", name="contest_about", placeholder="Your Proposal Details")
+										textarea(class="ctn_arePosal", name="contest_about", placeholder="About")
 								.fmposal
-									h3(class="clorg") Description
+									h3(class="clorg") Project Description
 									.arePosal
-										textarea(class="ctn_arePosal", id="job_description", name="job_description", placeholder="Your Proposal Details")
+										textarea(class="ctn_arePosal", id="job_description", name="job_description", placeholder="Your Project Description")
+								.fmposal
+									h3(class="clorg") Requirements
+									.arePosal
+										textarea(class="ctn_arePosal", name="contest_requirement", placeholder="Your Requirements")
 								.fmposal
 									h3(class="clorg") Add Showcase
 									div
@@ -52,19 +57,25 @@ block content
 												span(class="itemThumUp itu_default")
 							.colrt_brief
 								.alt_tpBrief
-									h3(class="clorg") Add Prize
+									h3(class="clorg") Budget
 									.fmPrtPrize
+										#arPrtPe.prtPrize
+											p(class="fntMd") Prize
+												.prtPe
+													input(class="ipmoPrt", id="im_money_budget",type="text", placeholder="Amount of money")
+												
+									.fmPrtPrize(style="margin-bottom:0px")
 										#arPrtPe.prtPrize
 											p(class="fntMd")
 											.prtPe
-												input(class="ipnaPrt", name="name_prize", type="text", placeholder="Name of prize")
+												input(class="ipnaPrt", name="name_prize", type="text", placeholder="Name of prize", style="display:none")
 												.contest_slider_content
-													input(type="text", id="amount", readonly, style="border:0; color:#f6931f; font-weight:bold;")
+													input(type="text",style="display:none", id="amount", readonly, style="border:0; color:#f6931f; font-weight:bold;")
 													input(type="hidden", id="budget_value", name="budget_value", value=""+resSettings.default_price+"")
 													input(type="hidden", id="tygia_value", name="tygia_value", value=""+resCurrencyDefault.rate_usd+"")
 													input(type="hidden", id="default_money", value=""+resSettings.default_price+"")
-													#slider-range-min
-											.contest_op_currency
+													#slider-range-min(style="display:none")
+											.contest_op_currency(style="display:none")
 												span(id="contest_currency_title")= resCurrencyDefault.title
 												input(type="hidden", name="contest_currency_title", id="contest_currency_title_", value=""+resCurrencyDefault.title+"")
 												input(type="hidden", name="contest_currency_name", id="contest_currency_name", value=""+resCurrencyDefault.name+"")
@@ -82,11 +93,11 @@ block content
 											p(class="npad nmag") 
 												| Deadline to submit
 											p(class="npad")
-												input(type="text", class="dateSl fntBd", name="day_begin")
+												input(type="text", class="dateSl fntBd", name="day_begin", style="width:94px")
 										li(class="sod")
 											p(class="npad nmag") Annountcement Day:
 											p(class="npad")
-												input(type="text", class="dateSl fntBd", name="day_end")
+												input(type="text", class="dateSl fntBd", name="day_end", style="width:94px")
 								.alt_tpBrief(style="border-bottom:none")
 									h3(class="clorg") Location
 									.fmPrtPrize
@@ -97,7 +108,7 @@ block content
 											p(class="fntMd")
 											.prtPe
 												input(class="ipnaPrt", id="job_location", type="text", placeholder="Location if you have...")
-								.alt_tpBrief
+								.alt_tpBrief(style="display:none")
 									h3(class="clorg") Skill 
 									.fmPrtPrize
 										.contest_skill_hidden
@@ -114,34 +125,31 @@ block content
 							ul(class="lstPack")
 								-	for(var i=0;i<resOptional.length;i++)
 										li(class="conPack")
-											input(class="btnUpimg chkbx_assisted", type="checkbox", name="chkbx_assisted", value=""+resOptional[i]._id+"", data-price=""+resOptional[i].price+"")
+											input(class="btnUpimg chkbx_assisted job_optional_price", id="price_optional_contest", checked, disabled ,type="checkbox", name="chkbx_assisted", value=""+resOptional[i]._id+"", data-price=""+(resSettings.default_price*20)/100+"")
 											.ctnFurPack
 												.icolstPack
 													span(class="icoPack")
 													p(class="clorg fntBd") Feature
 												.txtPack
 													p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
-												.pricePack.pullFlt_right
-													span(class="ctnPricePk fntBd job_optional_price", data-price=""+resOptional[i].price+"")= resOptional[i].price
-														sup(class="untPk") $
+												#ppr_pro.pricePack.pullFlt_right
+													span(class="ctnPricePk fntBd job_optional_price", id="price_ui_show_optinal",data-price=""+(resSettings.default_price*resSettings.default_optinal)/100+"")= (resSettings.default_price*resSettings.default_optinal)/100
+														sup(class="untPk")= resCurrencyDefault.title
 					.in_artCompet
 						.lstCompet
 							h3(class="clorg alcter") Submission
 							.subPoli
 								ul(class="lstTtl")
 									li(class="itemTtl")
-										h3(class="fntBd numTtl") Amount:
+										h3(class="fntBd numTtl") Amount: 
 											input(type="hidden", name="price_sum_ponust", id="price_sum_ponust", value="0")
-											span(class="ctnPricePk", id="sum_moneny")= resSettings.default_price
-												sup(class="untPk")= resCurrencyDefault.title
+											span(class="ctnPricePk ctnPricePk_", id="sum_moneny")= resSettings.default_price
 									li(class="itemTtl")
-										h3(class="fntBd numTtl") Tax:
-											span(class="ctnPricePk", id="tax_money")= (resSettings.default_price*resSettings.tax)/100
-												sup(class="untPk")= resCurrencyDefault.title
+										h3(class="fntBd numTtl") Tax: 
+											span(class="ctnPricePk ctnPricePk_", id="tax_money")= (resSettings.default_price*resSettings.tax)/100
 									li(class="itemTtl")
-										h3(class="fntBd numTtl") Total:
-											span(class="ctnPricePk", id="total_money")= ((resSettings.default_price*resSettings.tax)/100) + resSettings.default_price
-												sup(class="untPk")= resCurrencyDefault.title
+										h3(class="fntBd numTtl") Total: 
+											span(class="ctnPricePk ctnPricePk_", id="total_money")= ((resSettings.default_price*resSettings.tax)/100)
 								p By clicking 'Get Entries Now', you are indicating that you have read and agree to the
 									a(href="", class="clorg") Terms & Conditions 
 									| and 

@@ -1,12 +1,28 @@
-.nav_login_a
-	if(typeof user.avatar === 'object')
-		img(src='/upload/profile_avatar?type=resize&width=100&height=100&name='+user.avatar.public_id+'.'+user.avatar.format+'')
-	else
-		img(src=""+user.avatar+"")
-	a(href="/profile?value=null&_id="+user._id+"")= user.last_name +" "+user.first_name
-	.icon_blue_chat
-	.icon_blue_notificaiton
-	i
-	.user_menu_drop
-	if(face_status)
-		input(type="hidden", id="face_login_action_type", value=""+face_status+"")
+.usLog
+	input(type="hidden", value=""+face_status+"", id="face_login_action_type")
+	ul(class="lst_usLog")
+		li
+			a(class="naUsLogTp", href="/profile?value=null&_id="+user._id+"")
+				span(class="thumbUsLog")
+					if(typeof user.avatar === 'object')
+						img(src='/upload/profile_avatar?type=resize&width=100&height=100&name='+user.avatar.public_id+'.'+user.avatar.format+'')
+					else
+						img(src=""+user.avatar+"")
+				span(class="naNavTp fntMd")= user.last_name +" "+user.first_name
+		li
+			a(href="")
+				span(class="nofChat")
+		li
+			a(href="")
+				span(class="nofIn")
+		li
+			a(href="#")
+				span(class="dropIn")
+			.subNav
+				ul(class="ctnSub")
+					li
+						a(href="/logout") Log Out
+					li
+						a(href="/profile?value=null&_id="+user._id+"") My Profile
+					li
+						a(href="") Contest List

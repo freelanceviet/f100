@@ -1,0 +1,17 @@
+a(href="",  ajaxify="/get_file_proposal?id_proposal="+resProItem._id+"&num="+num_next+"",data-type="next", class="ipl-nav ipl-navRight event_click_show_proposal_nx")
+a(href="",  ajaxify="/get_file_proposal?id_proposal="+resProItem._id+"&num="+num_last+"",data-type="back", class="ipl-nav ipl-navLeft event_click_show_proposal_nx")
+.ipl_img
+	if(resProItem.file_up[num].format.toLowerCase()=='jpg' || resProItem.file_up[num].format.toLowerCase()=='png' || resProItem.file_up[num].format.toLowerCase()=='jpeg')
+		img(src='/upload/proposals?type=normal&width=null&height=null&name='+resProItem.file_up[num].public_id+'.'+resProItem.file_up[num].format+'')
+	else
+		a(href="")
+			img(src="/images/"+resProItem.file_up[num].format+".png")
+.img_sub_left_list
+	ul(class="inItemPosal")
+		-	for(var i=0; i<resProItem.file_up.length;i++)
+				li
+					a(href="", ajaxify="/get_file_proposal?id_proposal="+resProItem._id+"&num="+i+"",data-type="next", class="event_click_show_proposal_nx thumbmdLf")
+						if(resProItem.file_up[i].format.toLowerCase()=="jpg" || resProItem.file_up[i].format.toLowerCase()=="png")
+							img(src='/upload/proposals?type=resize&width=400&height=350&name='+resProItem.file_up[i].public_id+'.'+resProItem.file_up[i].format+'')
+						else
+							img(src="/images/"+resProItem.file_up[i].format+".png")

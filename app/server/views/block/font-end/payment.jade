@@ -20,7 +20,7 @@ block content
 											br
 											| Remuneration package for right candidate
 							li(class="conPack")
-								input(class="btnUpimg event_click_payment", type="radio", , value="paypal", id="paypal", name="payment_method")
+								input(class="btnUpimg event_click_payment", type="radio", , value="paypal", id="paypal", name="payment_method", disabled)
 								.ctnFurPack
 									.icolstPack
 										img(src="images/paypl.jpg")
@@ -30,7 +30,7 @@ block content
 											br
 											| Remuneration package for right candidate
 							li(class="conPack")
-								input(class="btnUpimg event_click_payment", type="radio", value="cod", id="cod", name="payment_method")
+								input(class="btnUpimg event_click_payment", type="radio", value="cod", id="cod", name="payment_method", checked)
 								.ctnFurPack
 									.icolstPack
 										img(src="images/paycd.jpg")
@@ -41,13 +41,28 @@ block content
 											| Remuneration package for right candidate
 							li(class="toltalPay")
 								h3(class="fntBd") Amount to spend
-								span(class="ctnPricePk fntBd")= (parseInt(resContestItem.budget) + parseInt(resContestItem.bonus_price)) + (((parseInt(resContestItem.budget) + parseInt(resContestItem.bonus_price))*resSettings.tax)/100)
-									sup(class="untPk")= resContestItem.currency_name
+								span(class="ctnPricePk fntBd", data-type=""+resContestItem.currency_name+"")= (parseInt(resContestItem.budget) + parseInt(resContestItem.bonus_price)) + (((parseInt(resContestItem.budget) + parseInt(resContestItem.bonus_price))*resSettings.tax)/100)
 								p (included 10% VAT)
 								form(action="/payments_redirect", method="POST", id="payment-select")
 									input(type="hidden", value=""+resContestItem._id+"", name="id_contest")
-									input(type="hidden", value="", name="type_payment", id="form_type_payment-tf")
+									input(type="hidden", value="cod", name="type_payment", id="form_type_payment-tf")
 									button(class="fntBd btnsubmit btnget", type="submit", id="bt_form_submit_payment") Deposit money
+								.infoBank
+									p
+										b Name of Bank:
+										| Ngân hàng Vietcombank
+									p
+										b Branch Name:
+										| PGD Bến Nghé
+									p
+										b Branch Address:
+										| 15 Nam Kì Khởi Nghĩa, Q1, HCM
+									p
+										b Account Name:
+										| Get Job Done Limited Company
+									p
+										b Account Number:
+										| 0071000671923
 	block scripts
 	script(src='/javascripts/form-validators/paymentValidator.js')
 	script(src='/javascripts/views/payment.js')

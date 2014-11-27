@@ -163,7 +163,7 @@ div.upload {
 #edit-event-contest-banner{
 	position:absolute;
 	top:0px;
-	right:0px;
+	left:0px;
 }
 div.upload label{
 	float: left;
@@ -296,7 +296,7 @@ div.post_com_up input {
 .cb_state_contest input{
 	float: left;
 	width: 20px;
-	margin-right:5px;
+	margin-right:6px;
 	height: 20px;
 }
 .cb_state_contest h3{
@@ -366,14 +366,6 @@ div.change_pick_profile_up input {
 	float:left;
 }
 .item_edit_pro{
-	float:left;
-	width:45px;
-	height:14px;
-	margin-left:5px;
-	background-image: url('../images/bt_edit.png');
-	background-repeat: no-repeat;
-	margin-top: 14px;
-	cursor:pointer;
 }
 .f_info h2{
 	float:left;
@@ -710,8 +702,6 @@ div.change_pick_profile_up input {
 	margin-top: 0px;
 	margin-left: 23px;
 	background-color: white;
-	border-bottom: 1px solid #F0EEEE;
-	height: 25px;
 }
 .img_poup_right .ipr_option_normal .UFILikeLink{
 	float:left;
@@ -866,4 +856,146 @@ div.change_pick_profile_up input {
 	cursor: default;
 	background-color: white;
 	zoom: 1;
+}
+.like_contest{
+	cursor: pointer;
+	z-index: 9999;
+	position: absolute;
+	bottom: 15px;
+	right: 72px;
+	width: 62px;
+	height: 20px;
+	background-image: url('../images/btnLike.jpg');
+	background-repeat: no-repeat;
+	background-size: 62px;
+	border-radius: 3px;
+}
+.like_contest a{
+	color:white;
+	font-weight:bold;
+}
+.itemThumUp{
+	position:relative;
+}
+.itemThumUp label{
+	position: absolute;
+	color: black;
+	top: 4px;
+	left: 6px;
+}
+.itemThumUp .delete_icon{
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	width:20px;
+	height:20px;
+	background-image: url('../images/remove.png');
+	background-repeat: no-repeat;
+	cursor:pointer;
+}
+.ctnPricePk{
+	
+}
+#dropdown-1{
+	top:70px !important;
+	left:108px !important;
+}
+.contest_status_x{
+	position: absolute;
+	top: -17px;
+	right: 0px;
+	width: 105px;
+	height: 41px;
+	border: 1px solid #eee;
+	background-color: #fafafa;
+	text-align:center;
+}
+.contest_status_x span{
+	display: block;
+	margin-top: 10px;
+	margin-left: 0px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.csx_span_close{
+	color:red;
+}
+.csx_span_open{
+	color:#8ac85d;
+}
+.csx_span_not_accept{
+	color:#ccc;
+}
+.file_contest_brief{
+	margin-top: 6px;
+	margin-left: 30px;
+}
+#first_name_pr_edit, #last_name_pr_edit{
+	width: 533px;
+	height: 30px;
+	padding-left: 10px;
+}
+.pr_fi_contest{
+	width: 635px;
+	margin: 0px;
+}
+#price_ui_show_optinal{
+	color:#818181 !important;
+}
+#ppr_pro{
+	width: 270px;
+	text-align: left;
+	margin-top: 25px;
+}
+.ipl-nav{
+	position: absolute;
+	border: 0;
+	cursor: pointer;
+	display: block;
+	padding: 0;
+	display:none;
+}
+.ipl-navRight {
+	right: 10px;
+	top: 50%;
+	width: 25px;
+	height: 45px;
+	background-image: url('../images/eyGvJdhIm0i.png');
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-position: -588px -30px;
+	z-index:1;
+}
+.ipl-navLeft {
+	left: 10px;
+	top: 50%;
+	width: 25px;
+	height: 45px;
+	background-image: url('../images/eyGvJdhIm0i.png');
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-position: -554px -30px;
+	z-index:1;
+}
+.lang{
+	display:none;
+}
+.pho_compet .ribLv{
+	text-align:center;
+}
+.boxLoginSuccessfull{
+	display:none;
+}
+.ipr_info_description{
+	float: left;
+	width: 91%;
+	margin-left: 21px;
+	margin-top: 8px;
+}
+.img_sub_left_list{
+	position: absolute;
+	left: 5px;
+	width: 99.2%;
+	height: 90px;
+	bottom: 5px;
 }

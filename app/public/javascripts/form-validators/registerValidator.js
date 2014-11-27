@@ -33,7 +33,6 @@ function RegisterValidator(){
 		$('input').removeClass('ipErr');
 		$('.errSup').css('display','none');
 		for(var i=0;i<errGroupOPtion.length;i++){
-			alert(i);
 			errGroupOPtion[i].addClass('ipErr');
 			controlGroups[i].css('display','block');
 		}
@@ -60,7 +59,6 @@ RegisterValidator.prototype.validateForm=function(){
 		errText.push(this.formTexts[3]);
 	}
 	if (this.validateUserName(this.formFields[4].val()) == false) {
-		alert(this.formFields[4].val());
 		errInput.push(this.formFields[4]);
 		errText.push(this.formTexts[4]);
 	}

@@ -111,9 +111,9 @@
 /*
  	Tiny Scrollbar
  */
-.scrolled { height:694px;  }
+.scrolled { height:682px;  }
 .scrolled .g-viewport { height: 100%; overflow: hidden; position: relative; }
-.scrolled .g-overview { list-style: none; position: absolute; left: 0; top: 0; padding:0 10px 0 0; width: 100%}
+.scrolled .g-overview { list-style: none; position: absolute; left: 0; top: 0; padding:0; width: 100%}
 .scrolled .g-thumb .end,
 .scrolled .g-thumb { background-color: #dedede; }
 .scrolled .g-scrollbar { position: relative; float: right; width: 8px; right: 2px;}

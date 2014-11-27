@@ -14,6 +14,8 @@ $(document).ready(function(){
 				if (status == 'success') 
 					$('.navLogReg').html(responseText);
 					$('#cboxClose').trigger('click');
+					$('.submission_bt').attr('href','#inlineProposal');
+					testReloadPage();
 			}
 		},
 		error : function(e){
@@ -22,6 +24,13 @@ $(document).ready(function(){
 	}); 
 	//
 });
+// Test reload page
+function testReloadPage(){
+	var type = $('#url_reload_page').val();
+	if(type=='yes'){
+		location.reload(true);
+	}
+}
 // Here we run a very simple test of the Graph API after login is
 // successful.  See statusChangeCallback() for when this call is made.
 function testAPI() {
@@ -31,18 +40,11 @@ function testAPI() {
 }
 // 
 function statusChangeCallback(response) {
-	// The response object is returned with a status field that lets the
-	// app know the current login status of the person.
-	// Full docs on the response object can be found in the documentation
-	// for FB.getLoginStatus().
 	if (response.status === 'connected') {
-		// Logged into your app and Facebook.
 		login_with_f_connected()
 	} else if (response.status === 'not_authorized') {
-		// The person is logged into Facebook, but not your app.
 		document.getElementById('status').innerHTML = 'Please log ' + 'into this app.';
 	} else {
-		//top.location=window.location="http://www.facebook.com/dialog/oauth/?scope=read_stream,publish_stream,friends_photos,friends_activities&client_id=497471193688530&redirect_uri=http://apps.facebook.com/filtered_feed/&response_type=code";
 		login_with_f_not_connect();
 	}
 }
@@ -65,9 +67,13 @@ function login_with_f_connected(){
 					setTimeout(function(){
 						$('#cboxClose').trigger('click');
 						$('#cboxClose').css('display', 'block');
-					}, 3000);
+					}, 1000);
+					$('.submission_bt').attr('href','#inlineProposal');
+					testReloadPage();
 				}else if(type_face=="show-dialog-info"){
 					$('.show_box_bonus_info_user').trigger('click');
+					$('.submission_bt').attr('href','#inlineProposal');
+					testReloadPage();
 				}else{
 					alert("Not connect internet now! Please try again later!");
 				}
@@ -98,9 +104,13 @@ function login_with_f_not_connect(response){
 						setTimeout(function(){
 							$('#cboxClose').trigger('click');
 							$('#cboxClose').css('display', 'block');
-						}, 3000);
+						}, 1000);
+						$('.submission_bt').attr('href','#inlineProposal');
+						testReloadPage();
 					}else if(type_face=="show-dialog-info"){
 						$('.show_box_bonus_info_user').trigger('click');
+						$('.submission_bt').attr('href','#inlineProposal');
+						testReloadPage();
 					}else{
 						alert("Not connect internet now! Please try again later!");
 					}

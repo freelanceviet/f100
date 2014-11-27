@@ -86,6 +86,8 @@ module.exports = function (app) {
 			var img = fs.readFileSync('app/public/upload/'+type+'/'+name+'');
 			res.writeHead(200, {'Content-Type': 'image/jpg' });
 			res.end(img, 'binary');
+		}else{
+			res.send('xxx', 200);
 		}
 	});
 	

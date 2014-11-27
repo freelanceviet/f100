@@ -1,8 +1,11 @@
 .UFIRow
 	a(href="", class="UFIRowImgStatus")
-		img(src=""+resProItem.user_info.user_av+"")
+		if(typeof resProItem.user_info.user_av === 'object')
+			img(src="/upload/profile_avatar?type=resize&width=100&height=100&name="+resProItem.user_info.user_av.public_id+"."+resProItem.user_info.user_av.format+"")
+		else
+			img(src=""+resProItem.user_info.user_av+"")
 	.UFIRowImg
 		a(href="", class="ufiriNameUser")= resProItem.user_info.user_name_l +" "+resProItem.user_info.user_name_f
 		span(class="ufiriComment")= resProItem.text
 		.drivertime
-			a(href="", class="driver") 24 minutes ago
+			a(href="", class="driver time_curent", title=""+resProItem.date_update+"",time=""+resProItem.date_spam+"")

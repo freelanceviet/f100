@@ -8,76 +8,148 @@ block content
 		.compet_main
 			.artCompet
 				.in_artCompet
-					.lstCompet.aCsup
-						.f_statis_info
-							.fsi_tab
-								a(href="Freelancer", id="fsi_freelancer", class="ft_selected") Freelancer
-								a(href="Employer", id="fsi_employer") Employer
-							h2 Reputation
-							h2(style="margin-top:5px; font-size:22px") 4.5
-							.list_star
-								i
-								i
-								i
-								i
-								i
-							label (60 reviews)
-							.bt_see_more
-						.f_img
-							if(resUser.avatar.created_at!=undefined)
-								img(src='/upload/profile_avatar?type=resize&width=200&height=200&name='+resUser.avatar.public_id+'.'+resUser.avatar.format+'')
-							else
-								img(src="images/228x190.jpg")
-							if(user && user._id.toString()==resUser._id.toString())
-								form(method="post", action="/change_avatar_profile_user", id="edit-event-profile-avatar")
-									.change_pick_profile_up
-										label Change picture
-											input(id="photoimg-profile-avatar", type="file", name="photos")
-									input(type='hidden', name="id_profile", value=""+resUser._id+"")
-						.f_info
-							.fi_item
-								h2= resUser.last_name+" "+resUser.first_name
-							.fi_item
+					.usDts
+						.lf_usDts
+							div(class="avaRtDts avaUs")
+								a(href="#", class="inavaCompet")
+									if(resUser.avatar.created_at!=undefined)
+										img(src='/upload/profile_avatar?type=resize&width=200&height=200&name='+resUser.avatar.public_id+'.'+resUser.avatar.format+'')
+									else
+										img(src="images/228x190.jpg")
+								if(user && user._id.toString()==resUser._id.toString())
+									form(method="post", action="/change_avatar_profile_user", id="edit-event-profile-avatar")
+										.change_pick_profile_up
+											label Change picture
+												input(id="photoimg-profile-avatar", type="file", name="photos")
+										input(type='hidden', name="id_profile", value=""+resUser._id+"")
+							.infoUs
+								h4(class="titPst clorg")= resUser.last_name+" "+resUser.first_name
+									if(user && user._id==resUser._id)
+										a(href="#inlineEditUserName", class="item_edit_pro ctnIn edit fntBd", data-type="edit") [
+											span(class="icoEdit")
+											| Edit]
 								if(resUser.skill_text!=undefined)
-									p= resUser.skill_text
+									p(class="crJb", style="display:none")= resUser.skill_text
+										if(user && user._id==resUser._id)
+											a(href="#inlineEditSkill", class="item_edit_pro ctnIn edit fntBd", data-type="edit") [
+												span(class="icoEdit")
+												| Edit]
 								else
-									p Your skill...?
-								if(user && user._id==resUser._id)
-									a(href="#inlineEditSkill", class="item_edit_pro ctnIn", data-type="edit")
-							.fi_item
-								if(resUser.slogan!=undefined)
-									label= resUser.slogan
+									p(class="crJb", style="display:none") Your skill...?
+										if(user && user._id==resUser._id)
+											a(href="#inlineEditSkill", class="item_edit_pro ctnIn edit fntBd", data-type="edit") [
+												span(class="icoEdit")
+												| Edit]
+								span(class="staUs")
+									if(resUser.slogan!=undefined)
+										.as= resUser.slogan
+									else
+										| A perfect blend of creativity, energy, communication, clarity and restraint.
+									if(user && user._id==resUser._id)
+										a(href="#inlineEditSlogan", class="item_edit_pro ctnIn edit fntBd", data-type="edit") [
+											span(class="icoEdit")
+											| Edit]
+						.rt_usDts
+							ul(class="tabUs", style="width: 237px;")
+								if(resUser.type==0)
+									li
+										a(href="#", class="tabFrl fntBd actTabs") Freelancer
+									li
+										a(href="#", class="tabEmp fntBd actTabs") Employer
+								else if(resUser.type==1)
+									li
+										a(href="#", class="tabFrl fntBd actTabs") Freelancer
+									li
+										a(href="", class="tabEmp fntBd") Employer
 								else
-									label A perfect blend of creativity, energy, communication, clarity and restraint.
-								if(user && user._id==resUser._id)
-									a(href="#inlineEditSlogan", class="item_edit_pro iep_slogan ctnIn", data-type="edit")
-				.in_artCompet
-					.lstCompet.ia_sub_ba_co
-						.ial_left
-							h2(class="il_h2") Summary
-							if(user && user._id==resUser._id)
-								a(href="#inlineEditSumary", class="item_edit_pro iep_sumary ctnIn", data-type="edit")
-							if(resUser.summary!=undefined)
-								p(class="il_p")= resUser.summary
-							else
-								p(class="il_p") The two length or percentage values of the border-top-left-radius properties define the radii of a quarter ellipse that defines the shape of the corner of the outer border edge. The first value is the horizontal radius, the second the vertical radius. If the second value is omitted it is copied from the first. If either length is zero, the corner is square, not rounded. Percentages for the horizontal radius refer to the width of the border box, whereas percentages for the vertical radius refer to the height of the border box.
-						.ial_right
-							ul
-								li(class="li_ial_selected")
-									a(href="") Overview
-								li
-									a(href="") Feedback
-								li
-									a(href="") Portfolio
-								li
-									a(href="") Resume
-								li
-									a(href="") Exans & Skills
-								li
-									a(href="") Contest Award
-								li
-									a(href="") Subcribed Post
+									li
+										a(href="#", class="tabFrl fntBd") Freelancer
+									li
+										a(href="", class="tabEmp fntBd actTabs") Employer
+							.rateUs
+								h2(class="fntBd clBle naRate") Markisa
+								h1(class="fntBd clBle pntRate") 4.5
+								.lstStar
+									span(class="fullStar")
+									span(class="fullStar")
+									span(class="fullStar")
+									span(class="fullStar")
+									span(class="fullStar")
+								p (0 reviews)
+								a(class="btnmore") View more
+						em(class="lineVer")
+				div(class="in_artCompet nbr")
+					.boxInfoUs
+						.col_lfUsDts
+							.sumUs
+								h5(class="clBle fntBd") Summary
+									if(user && user._id==resUser._id)
+										a(href="#inlineEditSumary", class="item_edit_pro ctnIn edit fntBd", data-type="edit") [
+											span(class="icoEdit")
+											|  Edit]
+								if(resUser.summary!=undefined)
+									p !{resUser.summary.replace(/\n?\r\n/g, '<br />' )}
+								else
+									p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+							.sumUs
+								h5(class="clBle fntBd") Attitude
+								.procInfo
+									ul(class="lst_procInfo")
+										li(class="echInfo")
+											label(class="tit_echInfo") Completion rate
+											b(class="perProc") 0%
+											.brProc
+												span(class="pshProc")
+										li(class="echInfo")
+											label(class="tit_echInfo") Completion rate
+											b(class="perProc") 0%
+											.brProc
+												span(class="pshProc")
+							.sumUs(style="display:none")
+								h5(class="clBle fntBd") Top skill
+								.skilUs
+									.depSkilUs
+										span(class="nuSkil") 20
+										span(class="nameSkil") Graphic
+									.lstSkilUs.pullFlt_right
+										ul(class="lstLike")
+											a(class="thumbsmLf", href="")
+												img(src="images/thumb.jpg")
+									em(class="lineHel")
+								.areUsDts
+									textarea(class="ctn_arePosal")
+						.col_rtUsDts
+							.nav_rtUsDts
+								ul(class="cntNav_rtUs")
+									li(class="acBg actBgNav")
+										a(href="", class="event_click_show_info_profile itmNav_rtUs ac_itmNav", data-id=""+resUser._id+"" ,data-type="overview") Overview
+									li(class="acBg")
+										a(href="", class="event_click_show_info_profile itmNav_rtUs", data-id=""+resUser._id+"" , data-type="feedback") Feedback
+									li(class="acBg")
+										a(href="", class="event_click_show_info_profile itmNav_rtUs", data-id=""+resUser._id+"" , data-type="contest") Competition Hosted
+									li(class="acBg")
+										a(href="", class="event_click_show_info_profile itmNav_rtUs", data-id=""+resUser._id+"" , data-type="contest_apply") Competition Participated
+									if(user && user._id==resUser._id)
+										li(class="acBg")
+											a(href="", class="event_click_show_info_profile itmNav_rtUs", data-id=""+resUser._id+"" , data-type="transaction") Transaction Detail
+		
+				.boxUserName(style="display:none")
+					#inlineEditUserName.ctnSup
+						form(class="fmSup",method="post", action="/updateInfoUserPr", id="form_post_profile", enctype="multipart/form-data;utf-8")
+							.collf_brief.box_style_contestp
+								.fmposal
+									h3(class="clorg") First name
+									.arePosal
+										input(type="text", name="first_name_pr_edit", id="first_name_pr_edit")
+								.fmposal
+									h3(class="clorg") Last name
+									.arePosal
+										input(type="text", name="last_name_pr_edit", id="last_name_pr_edit")
 								
+								.fmposal
+									.bt_submit.bts_contest_proposal
+										input(type="hidden", name="user_type", value="username")
+										input(type="submit", value="Submit", id="bt_submit_form_edit_user")	
 				.boxSummary(style="display:none")
 					#inlineEditSumary.ctnSup
 						form(class="fmSup",method="post", action="/updateInfoUserPr", id="form_post_profile", enctype="multipart/form-data;utf-8")

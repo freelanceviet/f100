@@ -1,7 +1,10 @@
 li(class="ctn_lstPstCmt clearfix")
 	.avaJbData
 		a(href="")
-			img(src=""+document.user_avatar+"")
+			if(typeof document.user_avatar === 'object')
+				img(src='/upload/profile_avatar?type=resize&width=100&height=100&name='+document.user_avatar.public_id+'.'+document.user_avatar.format+'')
+			else
+				img(src=""+document.user_avatar+"")
 	.naPst.txtpst
 		.auCmtpPst
 			span 

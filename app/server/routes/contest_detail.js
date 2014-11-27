@@ -15,31 +15,39 @@ module.exports = function (app) {
 					CM.getItemContest(id_contest, function(errContestItem, resContestItem){
 						CM.getListCommentContest(id_contest, 20, 0, function(errComments, resComments){
 							CM.getContestDefault(6, 0, function(errSimilarContest, resSimilarContest){
-								if(resContestItem){
-									if(req.session.user == null) {
-										res.render('block/font-end/contest_detail', {
-											title : "List contests",
-											user : null,
-											resContestItem : resContestItem,
-											resComments : resComments,
-											resLocation : resLocation,
-											css_selected : "timeline",
-											resSimilarContest : resSimilarContest
-										});
+								CM.getListLikeContest(id_contest,21, 0, function(errListLike, resListLike){
+									if(resContestItem){
+										if(req.session.user == null) {
+											res.render('block/font-end/contest_detail', {
+												title : "List contests",
+												user : null,
+												resContestItem : resContestItem,
+												resComments : resComments,
+												resLocation : resLocation,
+												css_selected : "timeline",
+												resSimilarContest : resSimilarContest,
+												resLikeTest : null,
+												resListLike : resListLike
+											});
+										}else{
+											CM.testLikeContestOfUser(id_contest,req.session.user._id, function(errLikeTest, resLikeTest){
+												res.render('block/font-end/contest_detail', {
+													title : "List contests",
+													user : req.session.user,
+													resContestItem : resContestItem,
+													resComments : resComments,
+													resLocation : resLocation,
+													css_selected : "timeline",
+													resSimilarContest : resSimilarContest,
+													resLikeTest : resLikeTest,
+													resListLike : resListLike
+												});
+											});
+										}
 									}else{
-										res.render('block/font-end/contest_detail', {
-											title : "List contests",
-											user : req.session.user,
-											resContestItem : resContestItem,
-											resComments : resComments,
-											resLocation : resLocation,
-											css_selected : "timeline",
-											resSimilarContest : resSimilarContest
-										});
+										res.send('url not correct!', 200);
 									}
-								}else{
-									res.send('url not correct!', 200);
-								}
+								});
 							});
 						});
 					});
@@ -52,15 +60,19 @@ module.exports = function (app) {
 									user : null,
 									resContestItem : resContestItem,
 									resLocation : resLocation,
-									css_selected : "brief"
+									css_selected : "brief",
+									resLikeTest : null
 								});
 							}else{
-								res.render('block/font-end/contest_detail_brief', {
-									title : "List contests",
-									user : req.session.user,
-									resContestItem : resContestItem,
-									resLocation : resLocation,
-									css_selected : "brief"
+								CM.testLikeContestOfUser(id_contest,req.session.user._id, function(errLikeTest, resLikeTest){
+									res.render('block/font-end/contest_detail_brief', {
+										title : "List contests",
+										user : req.session.user,
+										resContestItem : resContestItem,
+										resLocation : resLocation,
+										css_selected : "brief",
+										resLikeTest : resLikeTest
+									});
 								});
 							}
 						}else{
@@ -80,17 +92,21 @@ module.exports = function (app) {
 											resProposalContest : resProposalContest,
 											resLocation : resLocation,
 											css_selected : "proposals",
-											resNumProposal : resNumProposal
+											resNumProposal : resNumProposal,
+											resLikeTest : null
 										});
 									}else{
-										res.render('block/font-end/contest_detail_proposal', {
-											title : "List contests",
-											user : req.session.user,
-											resContestItem : resContestItem,
-											resProposalContest : resProposalContest,
-											resLocation : resLocation,
-											css_selected : "proposals",
-											resNumProposal : resNumProposal
+										CM.testLikeContestOfUser(id_contest,req.session.user._id, function(errLikeTest, resLikeTest){
+											res.render('block/font-end/contest_detail_proposal', {
+												title : "List contests",
+												user : req.session.user,
+												resContestItem : resContestItem,
+												resProposalContest : resProposalContest,
+												resLocation : resLocation,
+												css_selected : "proposals",
+												resNumProposal : resNumProposal,
+												resLikeTest : resLikeTest
+											});
 										});
 									}
 								});
@@ -279,18 +295,21 @@ module.exports = function (app) {
 					user_name_l : req.session.user.last_name
 				};
 				// Document for proposal
-				var document = {
-					project_id : req.param('contest_id'),
-					proposal_description : req.param('des_proposal'),
-					file_up : file_all,
-					user_info : user_info, 
-					date_add : addDate.format('YYYY-MM-DD hh:mm:ss'),
-					status: 0,
-					date_spam : n,
-					date_update : n,
-				};
-				CM.insertProposal(document, function(errProposal, resProposal){
-					res.send('success',200);
+				CM.countAllProposals(req.param('contest_id'), function(errNum, resNum){
+					var document = {
+						project_id : req.param('contest_id'),
+						proposal_description : req.param('des_proposal'),
+						file_up : file_all,
+						user_info : user_info, 
+						date_add : addDate.format('YYYY-MM-DD hh:mm:ss'),
+						status: 0,
+						date_spam : n,
+						date_update : n,
+						num : resNum
+					};
+					CM.insertProposal(document, function(errProposal, resProposal){
+						res.send('success',200);
+					});
 				});
 			}else{
 				IM.uploadimage('proposals',req.files.files_proposal[0], function(errFile, resFile){
@@ -349,15 +368,30 @@ module.exports = function (app) {
 	app.get('/proposal-detail', function (req, res) {
 		var id_proposal = req.query.id;
 		CM.getProposalId(id_proposal, function(errProItem, resProItem){
+			var num_all = resProItem.file_up.length;
+			var num_next = 0;
+			var num_last = 0;
+			if(num_all!=undefined){
+				if(num_all>1){
+					num_next = 1;
+					num_last = num_all - 1;
+				}
+			}
 			if(req.session.user == null) {
 				res.render('block/font-end/contest/proposal', {
 					resProItem:resProItem,
-					user : null
+					user : null,
+					num_all : num_all,
+					num_next : num_next,
+					num_last : num_last
 				});
 			}else{
 				res.render('block/font-end/contest/proposal', {
 					resProItem : resProItem,
-					user : req.session.user
+					user : req.session.user,
+					num_all : num_all,
+					num_next : num_next,
+					num_last : num_last
 				});
 			}
 		});
@@ -378,7 +412,7 @@ module.exports = function (app) {
 					user_info : {user_id : user._id, user_av : user.avatar, user_name_f : user.first_name, user_name_l : user.last_name},
 					text : text,
 					date_spam : n,
-					date_update : n
+					date_update : addDate.format('YYYY-MM-DD hh:mm:ss')
 				};
 				CM.pushCommentForProposal(id_proposal, document,function(errProItem, resProItem){
 					res.render('block/font-end/contest/item_comment_proposal', {
@@ -418,6 +452,57 @@ module.exports = function (app) {
 		}else{
 			res.send('Login to continue!', 200);
 		}
+	});
+	
+	// Like contest
+	app.get('/like-contest', function (req, res) {
+		if(req.session.user) {
+			var id_contest = req.query.id;
+			var d = new Date();
+			var n = d.getTime();
+			if(id_contest!=undefined){
+				var user = req.session.user;
+				var document = {
+					constest_id : id_contest,
+					user_info : {user_id:user._id,user_av:user.avatar, user_name_f:user.first_name,user_name_l:user.last_name},
+					date_spam : n,
+					date_update : n
+				};
+				CM.addLikeContest(document,function(errItem, resItem){
+					res.send('ok', 200);
+				});
+			}else{
+				res.send('Url not correct!', 200);
+			}
+		}else{
+			res.send('login to continue!', 200);
+		}
+	});
+	// Get proposal 
+	app.get('/get_file_proposal', function (req, res) {
+		var id_proposal = req.query.id_proposal;
+		var num = parseInt(req.query.num);
+		CM.getProposalId(id_proposal, function(errProItem, resProItem){
+			var num_all  = parseInt(resProItem.file_up.length);
+			var num_next = 0;
+			var num_last = 0;
+			if(num==0){
+				num_next  = 1;
+				num_last = num_all - 1;
+			}else if(num == (num_all-1)){
+				num_next  = 0;
+				num_last = num-1;
+			}else{
+				num_next  = num+1;
+				num_last = num-1;
+			}
+			res.render('block/font-end/contest/file_proposal_view', {
+				resProItem : resProItem,
+				num_next : num_next,
+				num_last : num_last,
+				num : num
+			});
+		});
 	});
 	
 }

@@ -41,6 +41,10 @@ $(document).ready(function(){
 			}).submit();
 		}
 	});
+	// Event click remove image upload
+	$('body').on('click', '.delete_icon', function (e) {
+		$(this).parents('.itemThumUp').remove();
+	});
 	
 	// Event up load image for comment contest
 	$('body').on('change', '#photoimg-contest-comment', function (e) {
@@ -49,11 +53,19 @@ $(document).ready(function(){
 			$("#post-comment-contest").ajaxForm({
 				beforeSubmit:function(formData, jqForm, options){
 					//
+					if(parseInt($('#photoimg-contest-comment').get(0).files.length)>5){
+						$('.option_ac').css('display','block');
+						$('.fixUpload').css('display','block');
+						return false;
+					}else{
+						return true;
+					}
 				}, 
 				success:function(response, status, xhr, $form){
 					$('#contest_post_type').val(0);
 					$('.pcc_image_content').css('display','block')
 					$('.pcc_image_content').append(response);
+					$('.fixUpload').css('display','none');
 				}, 
 				error:function(e){
 				}
@@ -62,14 +74,22 @@ $(document).ready(function(){
 	});
 	// Form submit comment contest
 	$('body').on('click', '#bt_submit_contest', function (e) {
+		var type_sb = $(this).attr('data-type');
 		var num_file = $('.tic-item-img').length;
 		$('#id_file').val(num_file);
 		$('#post-comment-contest').ajaxForm({
 			beforeSubmit : function(formData, jqForm, options){
-				return V_JP.validatePostCommentAction();
+				if(type_sb=="yes"){
+					return V_JP.validatePostCommentAction();
+				}else{
+					$('.login').trigger('click');
+					$('#login-form').find('.titleMtn').css('display','block');
+					return false;
+				}
 			},
 			success	: function(responseText, status, xhr, $form){
 				$('.col_rtCompet').append(responseText);
+				convert_time();
 				$('#f_comment_contest').val('');
 				$('.option_ac').css('display','none');
 				$('.pcc_image_content').empty();
@@ -173,6 +193,7 @@ $(document).ready(function(){
 	$('#tab_'+$("#tab_selected").val()+'').addClass('activeTline');
 	// Event click show option post status
 	$('body').on('click', '#f_comment_contest', function (e) {
+		$('.enterTit').css('display','none');
 		$('.option_ac').css('display','block');
 	});
 	// Event hover on banner
@@ -216,16 +237,11 @@ $(document).ready(function(){
 	// Event click check complete contest 
 	$('body').on('click', '#cb_sc_show', function (e) {
 		var ele = $(this);
-		var state = 0;
+		var state = 2;
 		var id_contest = $('#id_contest_de').val();
-		if(ele.is(':checked')){
-			state = 1;
-		}else{
-			state  = 0;
-		}
 		var urlGet = "/updateStateConstestFontEnd?id_contest="+id_contest+"&state="+state+"";
 		$.get(urlGet, function(data){
-			$().toastmessage('showSuccessToast', "Success!");
+			location.reload(true);
 		});
 	});
 	// Event click show show detail proposal
@@ -241,6 +257,7 @@ $(document).ready(function(){
 		var urlGet = $(this).attr('href');
 		$.get(urlGet, function(data){
 			modal.html(data);
+			convert_time();
 		});
 		e.preventDefault();
 	});
@@ -271,6 +288,7 @@ $(document).ready(function(){
 			},
 			success	: function(responseText, status, xhr, $form){
 				$('.ipr_list_comment_normal').append(responseText);
+				convert_time();
 			},
 			error : function(e){
 				alert(e.responseText);
@@ -287,4 +305,16 @@ $(document).ready(function(){
 		});
 		e.preventDefault();
 	});
+	// Event click like contest
+	$('body').on('click', '.event_click_like_contest', function (e) {
+		var se = $(this);
+		var urlGet = se.attr('href');
+		$.get(urlGet, function(data){
+			se.remove();
+		});
+		e.preventDefault();
+	});
+	// constest_detail_brief
+	var price_contest_brief = $('#constest_detail_brief').val();
+	$('#constest_detail_brief').parents('li').find('b').html(numeral(price_contest_brief).format('0,0')+" đ");
 });

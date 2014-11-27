@@ -28,6 +28,11 @@ function ContestBostValidator(){
 			}
 		}
 	}
+	this.showErrorPostCommentContest = function(errGroupOPtion){
+		if(errGroupOPtion.length>0){
+			$('.enterTit').css('display','block');
+		}
+	}
 }
 // Post contest
 ContestBostValidator.prototype.validateForm=function(){
@@ -46,10 +51,10 @@ ContestBostValidator.prototype.validateForm=function(){
 ContestBostValidator.prototype.validatePostCommentAction = function(){
 	var e = [];
 	if (this.validatePostComment($('#f_comment_contest').val()) == false) {
-		e.push('This field is required.');
+		e.push('err');
 	}
 	
-	if (e.length) this.showErrors(e);
+	if (e.length) this.showErrorPostCommentContest(e);
 	
 	return e.length === 0;
 }

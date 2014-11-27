@@ -1,6 +1,8 @@
 var Mogodb   	  = require('../mongodb/connection');
 
 var free_user    	      = Mogodb.free_user;
+var free_contests    	  = Mogodb.free_contests;
+var free_proposals        = Mogodb.free_proposals;
 var ObjectID	          = Mogodb.ObjectID;
 var crypto   	  		  = Mogodb.crypto;
 var moment   	          = Mogodb.moment;
@@ -31,7 +33,11 @@ exports.addNewAccount = function(newData, callback){
 			saltAndHash(newData.pass, function(hash){
 				newData.pass = hash;
 				newData.date = moment().format('MMMM Do YYYY, h:mm:ss a');
-				free_user.insert(newData, {safe: true}, callback);
+				free_user.insert(newData, { safe: true }, function (err, records) {
+					if(records!=null){
+						callback(null,records);
+					}
+				});
 			});
 		}
 	});
@@ -120,6 +126,58 @@ exports.updateUserProfile = function(id, type_edit, text, callback){
 		callback(null, null);
 	}
 }
+
+// ------------------------------------
+// Update user profile
+// document: 
+// callback:
+// ------------------------------------
+exports.updateUserProfileUserName = function(id, first_name, last_name, text, callback){
+	free_user.update({_id:new ObjectID(id)}, {$set: {first_name:first_name, last_name:last_name}}, {multi:true}, function(err) {
+		callback(null, null);
+	});
+};
+
+// ------------------------------------
+// Get list contest of user
+// note: 
+// callback: arr list contest
+// ------------------------------------
+exports.getListContestOfUser = function(id_user,callback){
+	free_contests.find({'user_info.user_id':id_user})
+	.toArray(
+		function(e, res) {
+		if (e) callback(e)
+		else callback(null, res)
+	});
+};
+
+// ------------------------------------
+// Get list contest of user
+// note: 
+// callback: arr list contest
+// ------------------------------------
+exports.getListContestApplyOfUser = function(id_user,callback){
+	free_proposals.find({'user_info.user_id':id_user.toString()},{project_id:1})
+	.toArray(
+		function(errItem1, resItem1) {
+			if (resItem1){
+				var arrID = new Array();
+				for(var i=0; i<resItem1.length; i++){
+					arrID.push(new ObjectID(resItem1[i].project_id));
+					if(arrID.length==resItem1.length){
+						free_contests.find({_id:{$in:arrID}})
+							.toArray( function(e, res) {
+								callback(null,res);
+						});
+					}
+				}
+			}else{
+				callback(null,null)
+			}
+	});
+};
+
 
 //
 var generateSalt = function()

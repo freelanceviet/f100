@@ -1,0 +1,37 @@
+.sumUs
+	h5(class="clBle fntBd") Summary
+		if(user && user._id==resUser._id)
+			a(href="#inlineEditSumary", class="item_edit_pro ctnIn edit fntBd", data-type="edit") [
+				span(class="icoEdit")
+				|  Edit]
+	if(resUser.summary!=undefined)
+		p !{resUser.summary.replace(/\n?\r\n/g, '<br />' )}
+	else
+		p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+.sumUs
+	h5(class="clBle fntBd") Attitude
+	.procInfo
+		ul(class="lst_procInfo")
+			li(class="echInfo")
+				label(class="tit_echInfo") Completion rate
+				b(class="perProc") 0%
+				.brProc
+					span(class="pshProc")
+			li(class="echInfo")
+				label(class="tit_echInfo") Completion rate
+				b(class="perProc") 0%
+				.brProc
+					span(class="pshProc")
+.sumUs(style="display:none")
+	h5(class="clBle fntBd") Top skill
+	.skilUs
+		.depSkilUs
+			span(class="nuSkil") 20
+			span(class="nameSkil") Graphic
+		.lstSkilUs.pullFlt_right
+			ul(class="lstLike")
+				a(class="thumbsmLf", href="")
+					img(src="images/thumb.jpg")
+		em(class="lineHel")
+	.areUsDts
+		textarea(class="ctn_arePosal")

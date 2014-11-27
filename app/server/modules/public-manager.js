@@ -120,7 +120,7 @@ exports.getAllOptional = function(callback){
 // callback: document
 // ------------------------------------
 exports.getCurrencyDefault = function(callback){
-	free_currency.findOne({'is_default':1}, function(errItem, resItem){
+	free_currency.findOne({'is_default':'1'}, function(errItem, resItem){
 		if(resItem){
 			callback(null,resItem);
 		}else{

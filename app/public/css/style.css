@@ -62,7 +62,6 @@ body{font-size:100%;font-family:sans-serif/*, Tahoma, Verdana*/;} /* 1em 10px */
 .clf{float:left}
 hr{border:none;border-top:1px solid #ccc;height:1px;clear:both}
 a		{text-decoration:none}
-a:hover	{text-decoration:underline}
 a:focus, a:active, a:hover, :focus,a,* {outline: 0;}
 h1,h2,h3,h4,h5,h6{font-weight:700;} /* 62.5% standar size */
 h1{font-size:1.8em;}
@@ -100,10 +99,14 @@ ol li{list-style:decimal inside;}
 }
 .npad {padding: 0 !important;}
 .nmag{margin: 0 !important;;}
+.nbr {border: none !important;}
 .nbtmp {padding: 0 !important; margin: 0 !important;}
 .pullFlt_right {float: right !important;}
 .pullFlt_left {float: left !important;}
 .ipGet {border: 1px solid #c4c4c4; border-radius: 3px; padding: 10px;}
+.flnone {float: none !important;}
+.nbor {border: none !important;}
+
 /*** 	IE 10 	 ***/
 
 .ie10 ...{}
@@ -196,25 +199,24 @@ a{
 	color:#333;
 	text-decoration:none;
 }
-	a:hover, .ctcFt a:hover, .ftBt a:hover, .over_lstCompet a:hover, .lbOverOpt:hover {color:#f8674a;text-decoration:none;}
+	a:hover, .ctcFt a:hover, .ftBt a:hover, .over_lstCompet a:hover, .lbOverOpt:hover {color:#f8674a;text-decoration:none !important;}
 
-.coJob, .naCoverFt .auCover, .clorg, .titleCard a:hover {color: #f8674a;}
+.coJob, .naCoverFt .auCover, .clorg, .titleCard a:hover {color: #f8674a !important;}
 .coJob:hover, header a:hover, .auCover:hover, .clBle {color: #2c3e50;}
 
-#wrapper:before, #wrapper:after, .inStp:before, .inStp:after, .popu:before, .popu:after, .txtCatePopu:before, .txtCatePopu:after, .ctn_ltData:before, .ctn_ltData:after, .container:before, .container:after, .jMore:before, .jMore:after, .lstFlc:before, .lstFlc:after, .cnPle:before, .cnPle:after, .statis:before, .statis:after, .mineGj:before, .mineGj:after, .navLogReg:before, .navLogReg:after, .lang:before, .lang:after, .txtsldFix:before, .txtsldFix:after, .boxsea:before, .boxsea:after, .pagination:before, .pagination:after, .coverAll:before, .coverAll:after, .cover_hov:before, .cover_hov:after, .coverFt:before, .coverFt:after, .lst_ckSup:before, .lst_ckSup:after, .lstCompet:before, .lstCompet:after, .thumbPst:before, .thumbPst:after, .artCompet:before, .artCompet:after, .lstLike:before, .lstLike:after, .btn_grpLike:before, .btn_grpLike:after, .inItemPosal:before, .inItemPosal:after, .labelPst:before, .labelPst:after, .auPst:before, .auPst:after, .lstThumbUp:before, .lstThumbUp:after, .ctnFurPack:before, .ctnFurPack:after, .lstTtl:before, .lstTtl:after, .boxcate:before, .boxcate:after {
+#wrapper:before, #wrapper:after, .inStp:before, .inStp:after, .popu:before, .popu:after, .txtCatePopu:before, .txtCatePopu:after, .ctn_ltData:before, .ctn_ltData:after, .container:before, .container:after, .jMore:before, .jMore:after, .lstFlc:before, .lstFlc:after, .cnPle:before, .cnPle:after, .statis:before, .statis:after, .mineGj:before, .mineGj:after, .navLogReg:before, .navLogReg:after, .lang:before, .lang:after, .txtsldFix:before, .txtsldFix:after, .boxsea:before, .boxsea:after, .pagination:before, .pagination:after, .coverAll:before, .coverAll:after, .cover_hov:before, .cover_hov:after, .coverFt:before, .coverFt:after, .lst_ckSup:before, .lst_ckSup:after, .lstCompet:before, .lstCompet:after, .thumbPst:before, .thumbPst:after, .artCompet:before, .artCompet:after, .lstLike:before, .lstLike:after, .btn_grpLike:before, .btn_grpLike:after, .inItemPosal:before, .inItemPosal:after, .labelPst:before, .labelPst:after, .auPst:before, .auPst:after, .lstThumbUp:before, .lstThumbUp:after, .ctnFurPack:before, .ctnFurPack:after, .lstTtl:before, .lstTtl:after, .arPrtPe:before, .arPrtPe:after, .itm_lstAtt:before, .itm_lstAtt:after, .auPst_rtCardDts:before, .auPst_rtCardDts:after, .hdClarifi:before, .hdClarifi:after, .mainClari:before, .mainClari:after, .wilDate:before, .wilDate:after, .usDts:before, .usDts:after, .tabUs:before, .tabUs:after, .boxInfoUs:before, .boxInfoUs:after, .echInfo:before, .echInfo:after, .skilUs:before, .skilUs:after, .lst_usLog:before, .lst_usLog:after, .naUsLogTp:before, .naUsLogTp:after, .notLog:before, .notLog:after, .prtEt:before, .prtEt:after, .lstPri:before, .lstPri:after, .ctnLbNa:before, .ctnLbNa:after {
     content: '';
     display: table;
 }
 
-#wrapper:after, .inStp:after, .popu:after, .txtCatePopu:after, .ctn_ltData:after, .container:after, .jMore:after, .lstFlc:after, .cnPle:after, .statis:after, .mineGj:after, .navLogReg:after, .lang:after, .txtsldFix:after, .boxsea:after, .pagination:after, .coverAll:after, .cover_hov:after, .coverFt:after, .lst_ckSup:after, .lstCompet:after, .thumbPst:after, .artCompet:after, .lstLike:after, .btn_grpLike:after, .inItemPosal:after, .labelPst:after, .auPst:after, .lstThumbUp:after, .ctnFurPack:after, .boxcate:after {clear: both;}
+#wrapper:after, .inStp:after, .popu:after, .txtCatePopu:after, .ctn_ltData:after, .container:after, .jMore:after, .lstFlc:after, .cnPle:after, .statis:after, .mineGj:after, .navLogReg:after, .lang:after, .txtsldFix:after, .boxsea:after, .pagination:after, .coverAll:after, .cover_hov:after, .coverFt:after, .lst_ckSup:after, .lstCompet:after, .thumbPst:after, .artCompet:after, .lstLike:after, .lstTtl:after, .btn_grpLike:after, .inItemPosal:after, .labelPst:after, .auPst:after, .lstThumbUp:after, .ctnFurPack:after, .arPrtPe:after, .itm_lstAtt:after, .auPst_rtCardDts:after, .hdClarifi:after, .mainClari:after, .wilDate:after, .usDts:after, .tabUs:after, .boxInfoUs:after, .echInfo:after, .skilUs:after, .lst_usLog:after, .naUsLogTp:after, .notLog:after, .prtEt:after, .lstPri:after, .ctnLbNa:after  {clear: both;}
 
 /*header*/
-	header, .search .btnSch, .titleRtData, .tpFlc .slcFlc, .staft, .chatwt, .pagination li a:hover, .pagination li a.actpag, .pagination li a.prepag:hover, .pagination li a.nextpag:hover, .bgOrg {
+	header, .search .btnSch, .titleRtData, .tpFlc .slcFlc, .staft, .chatwt, .pagMore .pagination li a:hover, .pagMore .pagination li a.actpag, .pagination li a.prepag:hover, .pagination li a.nextpag:hover {
         background-color: #f8674a;
     }
 
 	header{
-        border-bottom: 5px solid #2c3e50;
         color: #fff;
         position: relative;
         z-index: 9999;
@@ -225,7 +227,7 @@ a{
 	.logo{
 		position:absolute;
 		left:30px;
-		top: 25px;
+		top: 12px;
         font-size: 32px;
         font-weight: 300;
 	}
@@ -248,35 +250,35 @@ a{
 	#nav{
         display: inline-block;
     }
-		#nav > li, .popu li, .lfCtePpu, .rtCtePpu, .lfJobData, .lfJobData, .avaJbData, .txtpst, .pcePst, .dtPst, .lstFlc li, .lstPle, .statis li, .ltFt, .rtFt, .mineGj > li, .lang a, .colrt_data, .seaData, .sl_jbStaData, .sl_sortData, .pagination li, .lstItem, .cover_hov .vwHov, .coverFt .naCoverFt, .lst_ckSup li, .lst_navTline li, .name_lstCompet, .grp_like li, .one_objCompet, .collf_brief, .colrt_brief, .thumbPst .pstImg, .col_lfCompet, .col_rtCompet, .lstLike li, .sndMail, .shareFb, .inItemPosal li, .labelPst li, .areaPstCmt, .lstThumbUp li, .icolstPack, .txtPack, .itemTtl {display:block; float:left;position: relative;}
+		#nav > li, .popu li, .lfCtePpu, .rtCtePpu, .lfJobData, .lfJobData, .avaJbData, .txtpst, .pcePst, .dtPst, .lstFlc li, .lstPle, .statis li, .ltFt, .rtFt, .mineGj > li, .lang a, .colrt_data, .seaData, .sl_jbStaData, .sl_sortData, .pagination li, .lstItem, .cover_hov .vwHov, .coverFt .naCoverFt, .lst_ckSup li, .lst_navTline li, .name_lstCompet, .grp_like li, .one_objCompet, .collf_brief, .colrt_brief, .thumbPst .pstImg, .col_lfCompet, .col_rtCompet, .lstLike li, .sndMail, .shareFb, .inItemPosal li, .labelPst li, .areaPstCmt, .lstThumbUp li, .icolstPack, .txtPack, .itemTtl, .col_rtDts, .col_lfDts, .lf_clari, .rt_clari, .endDat, .lf_usDts, .rt_usDts, .avaUs, .infoUs, .tabUs li, .col_lfUsDts, .col_rtUsDts, .tit_echInfo, .perProc, .brProc, .depSkilUs, .lst_usLog > li, .lstPri li, .thumbLbNa, .ardLbNa {display:block; float:left;position: relative;}
 		#nav > li > a, .navLogReg a {
 			display: block;
 			padding: 25px 20px;
 			font-size: 14px;
             text-transform: uppercase;
+            white-space: nowrap;
 		}
-        #nav > li > a {padding: 25px 40px; }
+        #nav > li > a {padding: 15px 40px; }
 			#nav > li > a:hover{
 				color:#FFF;
 			}
 
-			#nav > li > a:hover + div.subNav, div.subNav:hover {
+			#nav > li > a:hover + div.subNav, #nav > li > a + div.subNav:hover, .lst_usLog > li > a:hover + div.subNav, .lst_usLog > li > a + div.subNav:hover {
                 display: block;
 			}
 
-            .lstNavb + .subNav {margin-left: -70px}
-            .lstNavc + .subNav {margin-left: -55px}
+            .lst_usLog > li > a:hover + div.subNav, .lst_usLog > li > a + div.subNav {left: auto; right: 0;}
+            #nav > li > a + div.subNav {left: 40px;}
             .subNav {
                 display: none;
                 position: absolute;
                 top: 50px;
-                left: 50%;
+                left: 0;
                 text-align: left;
                 border: 2px solid #f8674a;
                 border-radius: 3px;
                 background: #fff;
                 padding: 5px 10px;
-                margin-left: -50px;
             }
 
                 .ctnSub li:hover {box-shadow: inset 0 -4px 0 #2c3e50; transition: all 0.2s ease-in-out;}
@@ -295,10 +297,10 @@ a{
         white-space: nowrap;
     }
 
-        .navLogReg a {
+        .navLogReg .notLog a {
             display: inline-block;
             padding:0 10px;
-            margin: 25px 0;
+            margin: 17px 0;
         }
 
         .navLogReg a.login {
@@ -333,7 +335,20 @@ a{
         }
 
         /*signup, login*/
+
+    .titLbNa {
+        border-bottom: 1px solid #555;
+        padding: 20px 0;
+        margin: 0 40px 10px;
+    }
+    #finish .ctnLbFn > p {margin-bottom: 10px;}
+    #finish .ctnLbFn .bts_contest_proposal {display: block; text-align: center;}
+    .ctnSup .ctnLbNa, .ctnSup .ctnLbFn {padding: 0 40px;}
+    .ctnLbNa .thumbLbNa {width: 100px; margin-right: 20px;}
+    .ctnLbNa .ardLbNa {text-align: center; width: 77%; margin-top: 30px;}
+
     .boxSup, .boxLogin, .submiss {display: none;}
+        .ctnSupScc {padding: 40px 60px 20px;text-align: center;}
         .ctnSup {
             padding: 40px 0;
             border-radius: 5px;
@@ -350,12 +365,9 @@ a{
                     text-align: center;
                 }
 
-                    .supFb p {
-                        margin-bottom: 10px;
-                    }
-
                     .supFb p.clGrey {color: #8d8d8d;}
                     .supFb .btnSupFb {
+                        display: inline-block;
                         font-family: 'HelBd', sans-serif;
                         font-weight: 700;
                         font-size: 14px;
@@ -419,6 +431,33 @@ a{
                     }
 
                         .btnsubmit:hover {background: #e74222;}
+                    .card_rtCompet .option_ac {height: 26px; position: relative;}
+                    .option_ac .oc_bt_lo .btnsubmit {
+                        font-size: 12px;
+                        padding: 6px 13px;
+                        width: auto;
+                    }
+
+                    .option_ac .enterTit {
+                        display: block;
+                        position: absolute;
+                        top: 2px;
+                        left: 10px;
+                        border-radius: 3px;
+                    }
+
+                    .fixUpload {display: block; margin: 0 10px 10px;}
+
+                    .card_rtCompet .pcc_image_content {
+                        overflow: hidden;
+                        width: auto;
+                        padding: 11px;
+                    }
+
+                    .card_rtCompet .pcc_image_content .tic-item-img {
+                        width: 117px;
+                        padding: 0 2px 4px;
+                    }
 
                     .ckService {
                         text-align: center;
@@ -434,11 +473,49 @@ a{
                         .fget_pass:hover {
 
                         }
+
+.lst_usLog li {margin: 0 5px;}
+    .lst_usLog li .naUsLogTp {
+        display: block;
+        padding: 0;
+        margin: 10px 0;
+    }
+        .lst_usLog li .naUsLogTp  .naNavTp, .lst_usLog li .naUsLogTp .thumbUsLog {
+            display: inline-block;
+            float: left;
+            line-height: 35px;
+            margin-right: 5px;
+        }
+        .lst_usLog li .naUsLogTp .thumbUsLog {
+            width: 35px;
+            height: 35px;
+            overflow: hidden;
+            border-radius: 100px;
+        }
+
+        .lst_usLog > li > a {
+            padding: 16px 0;
+            margin: 0;
+        }
+
+        .lst_usLog li .nofChat,
+        .lst_usLog li .dropIn,
+        .lst_usLog li .nofIn {
+            display: block;
+            width: 24px;
+            height: 24px;
+            background-position: 0 -643px;
+        }
+        .lst_usLog li .nofChat:hover {background-position: 0 -667px;}
+        .lst_usLog li .nofIn {background-position: -30px -643px;}
+        .lst_usLog li .nofIn:hover {background-position: -30px -667px;}
+        .lst_usLog li .dropIn {background-position: -62px -643px; width: 37px;}
+        .lst_usLog li .dropIn:hover {background-position: -62px -667px;}
         /*END signup, login*/
 /*END header*/
 
 /*slider*/
-.page, .btnUp {position: relative;}
+.page, .btnUp, .arePosal {position: relative;}
 .page .search {
     position: absolute;
     bottom: 130px;
@@ -459,6 +536,7 @@ a{
         color: #fff;
         border: none;
         transition: all 0.1s ease-in-out;
+        padding: 15px;
     }
 
         .search .btnSch:hover {background: #ea4929;}
@@ -483,7 +561,7 @@ a{
 
         .titleMtn, .titleMtnIn {
             font-family: 'HelBd';
-            font-size: 26px;
+            font-size: 23px;
             color: #505050;
             margin-bottom: 15px;
             text-transform: uppercase;
@@ -501,18 +579,18 @@ a{
                     display: block;
                     float: left;
                     margin-left: 30px;
-                    width: 301px;
+                    width: 290px;
                 }
 
                 .inStp a span {
                     display: block;
-                    margin-top: 50px;
+                    margin-top: 20px;
                     font-size: 16px;
                     text-align: center;
                     font-family: 'HelRg';
                 }
 
-                    .inStp .thumbStpOne, .inStp .thumbStpTwo, .inStp .thumbStpThree, .telus, .telus, .lstsoci .icoFbFt, .lstsoci .icoGgFt, .lstsoci .icoTwFt, .lstsoci .icoInFt, .mailus, .chatwt p, .ip_lfin input + label, .ck_lfin input + label, .seaData .ip_seaData, .sl_jbStaData .jquery-selectbox, .sl_sortData .jquery-selectbox, .pagination li a.prepag , .pagination li a.nextpag, .cover_hov .vwHov, .cover_hov .soldHov, .fueMark, .ck_sup input + label, .likeCompet, .cmtCompet, .sndMail, .icoLnkPhoPst, .icoLnkPst, .talLikePst .useLike, .dateSl, .icoUp, .addava, .ui-widget-header .ui-icon {
+                    .inStp .thumbStpOne, .inStp .thumbStpTwo, .inStp .thumbStpThree, .telus, .telus, .lstsoci .icoFbFt, .lstsoci .icoGgFt, .lstsoci .icoTwFt, .lstsoci .icoInFt, .mailus, .chatwt p, .ip_lfin input + label, .ck_lfin input + label, .seaData .ip_seaData, .sl_jbStaData .jquery-selectbox, .sl_sortData .jquery-selectbox, .pagination li a.prepag , .pagination li a.nextpag, .cover_hov .vwHov, .cover_hov .soldHov, .fueMark, .ck_sup input + label, .likeCompet, .cmtCompet, .sndMail, .icoLnkPhoPst, .icoLnkPst, .talLikePst .useLike, .dateSl, .icoUp, .addava, .ui-widget-header .ui-icon, .btnClsPe, .icoRw, .lstStar .fullStar, .timeCmPst, .icoEdit, .queHel, .lstSkilUs .lstLike li .moreSkil, .icoStar, .nofChat, .nofIn, .dropIn {
                         background: url("../images/icoGjd.png") no-repeat 0 0;
                     }
 
@@ -531,68 +609,84 @@ a{
                     }
 
                     .inStp .thumbStpThree {
-                        background-position: -16px -230px;
+                        background-position: -23px -230px;
+                        width: 88px;
                     }
 
     /*popular*/
     .popu {margin-left: -20px;}
     .popu li {
-        width: 328px;
+        width: 241px;
         margin-left: 20px;
         margin-bottom: 20px;
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
 
         .ctnPopu {
             border: 1px solid #dfdfdf;
+            overflow: hidden;
+            transition: all .05s ease-in-out;
         }
+
+            .popu li .ctnPopu:hover {
+                box-shadow: 0 0 5px rgba(228,60,25,1);
+            }
 
             .ctnPopu .arThumb {
                 overflow: hidden;
-                height: 280px;
+                height: 227px;
                 position: relative;
+                /*z-index: -1;*/
             }
-                .arThumb img, .avaJbData img, .thumbFlc img, .avaPle img, .avaFlc img, .thumbsmLf img, .thumbmdLf img, .fitImg, .itemThumUp img {width: 100%;}
-                .hvCatePopu, .hvFlc {
+            .ctnPopu .arThumb img {min-height: 227px;}
+                .arThumb img, .avaJbData img, .thumbFlc img, .avaPle img, .avaFlc img, .thumbsmLf img, .thumbmdLf img, .fitImg, .itemThumUp img, .thumbUsLog img, .thumbLbNa img {width: 100%;}
+                .hvFlc {
                     display: table;
                     position: absolute;
-                    top: 100%;
+                    bottom: -100%;
                     left: 0;
                     background: rgba(0,0,0,0.5);
                     color: #fff;
-                    padding: 20px;
-                    width: 286px;
-                    height: 240px;
+                    padding: 20px 0;
+                    width: 100%;
+                    height: 100%;
                     transition: all 0.1s ease-in-out;
                 }
 
-                    .hvCatePopu a:hover, .hvCatePopu a {color: #fff;}
-                    .hvCatePopu a, .hvFlc a {
+
+                    .hvFlc a {
                         display: table-cell;
                         vertical-align: middle;
                         text-align: center;
+                        padding: 0 20px;
                     }
+                    .hvFlc a {padding: 0;}
                     .hvFlc p {min-height: 42px; overflow: hidden;}
 
-                .popu .ctnPopu:hover .hvCatePopu, .lstFlc li:hover .hvFlc {top: 0;}
+                .lstFlc li:hover .hvFlc {bottom: 0;}
 
                 .txtCatePopu {
                     line-height: 22px;
-                    padding: 6px;
-                    border-top: 5px solid #f8674a;
+                    padding: 10px;
+                    color: #636363;
+                    font-size: 14px;
                 }
 
-                    .rtCtePpu {width: 90px; text-align: right;}
+                    .rtCtePpu {width: 82px; text-align: right; white-space: nowrap;}
                     .rtCtePpu, .rtNaCoFt {float: right;}
                     .lfCtePpu {
-                        width: 215px;
+                        width: 126px;
+                        overflow: hidden;
+                        white-space: nowrap;
                     }
-                    .lfCtePpu .titCatePopu {
+                    .txtCatePopu .titCatePopu {
                         display: block;
                         font-family: 'HelBd', sans-serif;
-                        color: #000;
                         text-transform: uppercase;
+                        color: #3a3a3a;
                         min-height: 45px;
+                        font-size: 14px;
+                        margin-bottom: 5px;
                     }
 
     a.btnmore, .btnmore {
@@ -605,12 +699,12 @@ a{
         border-radius: 3px;
     }
 
-        a.btnmore:hover {background-color: #e64120;}
+        a.btnmore:hover, .bgOrg, .btnFmSub .btnmore:hover {background-color: #e64120;}
     /*END popular*/
 
     /*outJobData*/
 .lfJobData, .colrt_data {
-    width: 775px;
+    width: 765px;
     z-index: 1;
 }
 
@@ -618,7 +712,11 @@ a{
     border: 1px solid #dfdfdf;
 }
 
-    .titleLtData, .lang, .cateFlc, .ctcFt, .bgBle {
+    .bgBle {
+        background-color: #2c3e50 !important;
+    }
+
+    .titleLtData, .lang, .cateFlc, .ctcFt {
         background-color: #2c3e50;
     }
 
@@ -659,7 +757,7 @@ a{
             .txtpst .lstPst {margin: 5px 0;}
             .lstPst li {
                 padding-left: 13px;
-                background: url("../images/icoGjd.png")no-repeat -139px 0;
+                background: url("../images/dotLst.png")no-repeat 0 7px;
             }
 
         .pcePst {width: 130px; text-align: right;}
@@ -671,7 +769,7 @@ a{
 
     .rtJobData, .collf_data {
         float: left;
-        width: 245px;
+        width: 230px;
         overflow: hidden;
     }
 
@@ -786,7 +884,7 @@ a{
             overflow: hidden;
         }
 
-        .lstPle p {
+        .lstPle p, .staUs {
             background: url("../images/icoGjd.png") no-repeat -134px -25px;
             margin: 20px -10px 70px;
             padding: 0 17px;
@@ -862,7 +960,7 @@ a{
 
 .ui-slider-horizontal {height: 6px;}
 
-.ui-slider-horizontal .ui-slider-handle {top: -3px;}
+.ui-slider-horizontal .ui-slider-handle {top: -2px;}
 
 .innFrmLf {margin-left: 24px;}
     .innFrmLf .ck_lfin,
@@ -914,12 +1012,16 @@ a{
             width: 126px;
             color: #000;
             border: 1px solid #cfcfcf;
-            padding: 4px 20px 2px 10px;
+            padding: 5px 20px 3px 10px;
         }
 
-        .sl_comPst .jquery-selectbox {background-position: 172px -85px;}
-        .sl_comPst .jquery-selectbox .jquery-selectbox-currentItem {text-transform: none;}
-        .sl_comPst .jquery-selectbox, .sl_comPst .jquery-selectbox {width: 164px;}
+        /*.tpFlc .jquery-selectbox {width: 284px; height: 37px;}*/
+        /*.tpFlc .jquery-selectbox .jquery-selectbox-list {width: 100%;}*/
+
+.sl_comPst .jquery-selectbox {background-position: 172px -85px;}
+.sl_comPst .jquery-selectbox .jquery-selectbox-currentItem {text-transform: none;}
+/*.sl_sortData .jquery-selectbox .jquery-selectbox-currentItem {padding-top: 5px;}*/
+.sl_comPst .jquery-selectbox, .sl_comPst .jquery-selectbox {width: 164px;}
         .sl_jbStaData .jquery-selectbox .jquery-selectbox-item, .sl_sortData .jquery-selectbox .jquery-selectbox-item {
             padding-right: 10px;
         }
@@ -947,8 +1049,8 @@ a{
             }
 
         /*pagination*/
-.pagMore {}
-    .pagination {
+.pagMore .pagination {
+        display: block;
         width: 222px;
         margin: 0 auto;
     }
@@ -961,19 +1063,23 @@ a{
             background-position: 0 -126px;
             background-color: #2c3e50;
             border-radius: 2px;
+            /*width: 21px;*/
         }
         .pagination li a.nextpag {background-position: 0 -147px;}
 
-        .pagination li a {
+        .pagMore .pagination li a {
             display: block;
             font-family: 'HelBd';
             padding: 0 5px;
             font-size: 12px;
             color: #fff;
-            background: #cacaca;
+            background-color: #cacaca;
             border-radius: 3px;
             text-align: center;
             min-width: 10px;
+            /*border: none;*/
+            /*line-height: 20px;*/
+            /*float: none;*/
         }
 
         .pagination li a.morepag {background: none; color: #cacaca;}
@@ -1068,7 +1174,17 @@ a{
 /*Competition*/
 .compet_main {
     padding: 1px;
+    margin-top: -1px;
 }
+
+    .drfNote {
+        background: rgba(44,62,80,0.1);
+        border: 1px solid #2c3e50;
+        padding: 15px 30px;
+        margin: 20px 0;
+        border-radius: 5px;
+        font-size: 12px;
+    }
 
     .cov_compet {
         position: relative;
@@ -1077,12 +1193,13 @@ a{
         .pho_compet {
             position: relative;
             height: 370px;
-            overflow: hidden;
             border-bottom: 1px solid #cfcfcf;
             background: #e6e6e6;
         }
 
+            .pho_compet .img_compet {height: 100%;overflow: hidden;}
             .img_compet img, .inavaCompet img, .one_objCompet img {width: 100%;}
+            .inavaCompet img {height: 186px;}
             .hv_covCompet {
                 bottom: 0;
                 width: 100%;
@@ -1113,8 +1230,47 @@ a{
                 bottom: 15px;
             }
 
-            .pho_compet .chagCov {top: -100%; bottom: auto; border-radius: 0 0 0 5px}
+            .pho_compet .chagCov {top: -100%; bottom: auto; right: auto; border-radius: 0 0 5px 0;}
             .pho_compet:hover .chagCov {top: 0;}
+            .pho_compet .ribLv, .popu li .ribLv {
+                display: block;
+                position: absolute;
+                right: -5px;
+                top: -5px;
+                background: url("../images/ribLv.png") no-repeat 0 0;
+                text-transform: uppercase;
+                color: #fff;
+                font-size: 20px;
+                width: 130px;
+                height: 130px;
+            }
+
+                .pho_compet .ribLv .ribctn, .popu li .ribLv .ribctn {
+                    display: block;
+                    position: relative;
+                    top: 46px;
+                    right: -18px;
+                    text-align: center;
+                    z-index: 1;
+                    -ms-transform: rotate(45deg);
+                    -webkit-transform: rotate(45deg);
+                    -moz-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                }
+
+                .popu li .ribLv {
+                    background-size: 70px;
+                    width: 70px;
+                    height: 70px;
+                    right: -3px;
+                    top: -3px;
+                }
+
+                .popu li .ribLv .ribctn {
+                    font-size: 10px;
+                    top: 16px;
+                    right: -6px;
+                }
 
     .timelineCompet {
         position: relative;
@@ -1137,8 +1293,8 @@ a{
             .inavaCompet {
                 background: #c4c4c4;
                 width: 100%;
-                display: table-cell;
-                vertical-align: middle;
+                display: block;
+                height: 100%;
             }
 
             .chagPic {
@@ -1205,6 +1361,9 @@ a{
                     background: #f8674a url("../images/icoGjd.png") no-repeat 97px -17px;
                 }
 
+                a.btnmore.finsis {padding: 5px 10px;}
+                .bts_contest_proposal input:hover {background: #f8674a;}
+
 .artCompet {
     background: #ebebeb;
     padding: 18px 18px 0 18px;
@@ -1214,7 +1373,7 @@ a{
         margin-bottom: 18px;
     }
 
-        .lstCompet {background: #fff; padding-bottom: 20px;}
+        .lstCompet, .usDts, .col_lfUsDts, .col_rtUsDts {background: #fff; padding-bottom: 20px;}
 
             .objCompet {padding: 13px 13px 13px 1px;}
 
@@ -1233,7 +1392,7 @@ a{
 
                 .over_lstCompet {
                     position: absolute;
-                    bottom: -100%;
+                    bottom: 0;
                     left: 0;
                     padding: 20px 8px 8px;
                     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#5a5a5a), to(rgba(0,0,0,0)));
@@ -1247,8 +1406,8 @@ a{
                     transition: all 0.2s ease-in-out;
                 }
 
-                .one_objCompet:hover .over_lstCompet {
-                    bottom: 0;
+                .objCompet .one_objCompet:hover {
+                    box-shadow: 0 0 7px rgba(228,60,25,1q);
                 }
 
                 .over_lstCompet a {color: #fff;}
@@ -1307,20 +1466,46 @@ a{
         border-right: 1px solid #dfdfdf;
         width: 468px;
         margin-bottom: 20px;
-        margin-top: 20px;
     }
 
-        .collf_brief h3, .colrt_brief h3, .lstPri li p, .auPst, .maPst, .ctnPst_rtCm {margin-bottom: 15px;}
+    .collf_brief h3 {margin-top: 15px;}
 
-        .txtDrpt li, .dln, .sod, .icoLike {
+        .collf_brief h3, .colrt_brief h3, .lstPri li p, .auPst, .maPst, .ctnPst_rtCm, .fmPrtPrize, .fmposal, .fmposal h1, .nameAwa, .awaStar {margin-bottom: 15px;}
+
+        .dln, .sod, .icoLike {
             background: url("../images/icoBrief.png") no-repeat 0 0;
             padding-left: 25px;
         }
 
         .txtDrpt li {
-            background-position: 6px -132px;
+            background: url("../images/dotLst.png") no-repeat 7px 7px;
+            padding-left: 25px;
             margin-bottom: 15px;
         }
+        .maintxt {padding: 0 60px 40px;}
+        .titRom {margin: 30px 0 10px;}
+
+        .lstTxt {
+            padding-left: 44px;
+            margin: 10px 0;
+        }
+
+            .lstTxt .sublstTxt {
+                padding-left: 20px;
+            }
+
+            .lstTxt h2, .lstTxt h3, .lstTxt h4, .notIta {margin-bottom: 10px;}
+            .ouTxt li {
+                list-style: circle;
+                padding-left: 20px;
+            }
+            .notIta {margin-top: 10px;}
+            .oneLstTxt p {line-height: 20px; margin-bottom: 10px;}
+
+    .collf_brief .lstThumbUp {
+        height: 105px;
+        overflow-y: auto;
+    }
 
     .colrt_brief {
         padding: 0 25px;
@@ -1339,6 +1524,8 @@ a{
                 padding-left: 25px;
             }
 
+            .lstPri li.dln p, .lstPri li.sod p {margin: 0;}
+
             .dln {background-position: 0 0;}
             .sod {background-position: 0 -56px;}
         .colrt_brief .alt_tpBrief:last-child {
@@ -1356,6 +1543,10 @@ a{
             margin-bottom: 15px;
             border-radius: 3px;
         }
+
+            .col_lfCompet .card_lfCompet .inCard h3.clorg {margin-bottom: 10px;}
+            .col_lfCompet .card_lfCompet .inCard .lstPri li {margin-top: 0;}
+            .col_lfCompet .card_lfCompet .inCard .lstPri li.dln {margin-bottom: 10px;}
 
             .card_lfCompet .titleCard {
                 text-align: center;
@@ -1378,9 +1569,9 @@ a{
                 .toLike {
                     font-size: 16px;
                     text-align: center;
-                    border-bottom: 1px dashed #c3c3c3;
-                    padding-bottom: 10px;
-                    margin-bottom: 10px;
+                    border-top: 1px dashed #c3c3c3;
+                    padding-top: 15px;
+                    margin-bottom: -10px;
                 }
                     .toLike .icoLike {
                         display: inline-block;
@@ -1446,6 +1637,8 @@ a{
             padding: 10px 0;
         }
 
+        .labelPst .lnk_photoPst {padding-bottom: 0;}
+
         .labelPst .icoLnkPst, .labelPst .icoLnkPhoPst {
             display: inline-block;
             float: left;
@@ -1474,6 +1667,7 @@ a{
             border-top: 1px solid #dfdfdf;
             margin-top: -1px;
             padding: 10px;
+            position: relative;
         }
 
             .txtare, .herCmtPst {
@@ -1487,7 +1681,7 @@ a{
             }
 
             .in_rtCard {padding: 10px 20px;}
-                .auPst {margin-bottom: 5px;}
+                .auPst, .rateUs .lstStar {margin-bottom: 5px;}
                     .auPst .naPst {width: 538px;}
 
                     .thumbPst {margin-left: -5px; clear: both;overflow: hidden;}
@@ -1553,6 +1747,8 @@ a{
 
 
         .arePosal {padding-right: 20px; margin-bottom: 20px;}
+        .card_lfCompet .arePosal {padding: 0; margin-bottom: 20px;}
+        .card_lfCompet .arePosal .btnAtt {right: 0;}
         .ctn_arePosal {
             display: block;
             font-style: italic;
@@ -1566,7 +1762,6 @@ a{
 
         #lnkAdd {cursor: pointer;}
 
-        .prtPe p.fntMd {margin-bottom: 10px;}
         .prtPe .ipnaPrt, .prtPe .ipmoPrt {
             display: block;
             background: url("../images/aw.png") no-repeat 10px 10px;
@@ -1598,6 +1793,7 @@ a{
                 height: 21px;
                 background-position: 0 -594px;
             }
+            .btnUp {cursor: pointer;}
             .btnUp .btnUpimg {
                 position: absolute;
                 top: 0;
@@ -1623,7 +1819,7 @@ a{
             .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {color: #000;}
             .ui-state-active, .ui-widget-content .ui-state-active {color: #f8674a;}
 
-    .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {border: none; background: none;}
+    .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {border: none; background: rgba(0,0,0,0.6);}
 
 .ui-widget-header .ui-icon.ui-icon-circle-triangle-e {
     background-position: 0 -619px;
@@ -1663,8 +1859,40 @@ a{
 
     .lstCompet {
         padding: 30px;
+        position: relative;
     }
 
+        .lstCompet .colrt_brief.prtEt {
+            width: auto;
+        }
+
+            .prtEt .alt_tpBrief {
+                float: left;
+                margin-right: 20px;
+                border: none;
+                width: 400px;
+            }
+
+            .ipmoPrt.ipMon {
+                width: 230px;
+                float: left;
+            }
+
+            .prtPe .untVn {display: block; float: left; margin-left: 10px; line-height: 38px;}
+            .lstPri li {margin-right: 30px; margin-top: 10px;}
+            .lstCompet .colrt_brief.prtEt .alt_tpBrief h3 {margin-bottom: 10px;}
+
+            .infAuBrief {text-align: center;}
+            .infAuBrief .titAuBrief {text-align: left;}
+            .infAuBrief .avaRtDts, .infAuBrief .avaRtDts .inavaCompet, .infAuBrief .avaRtDts .inavaCompet img {
+                border-radius: 100px;
+            }
+
+        .lstCompet .gdGri {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+        }
 
         .lstPack {
             margin-top: 20px;
@@ -1690,19 +1918,30 @@ a{
                 cursor: pointer;
             }
 
+                .conPack .ovComin {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(255,255,255,.8);
+                    z-index: 9;
+                }
+
                 .lspaymnt .conPack .ctnFurPack {
                     background-position: 0 -52px;
                 }
             
                 .ctnFurPack .icolstPack {
-                    width: 170px;
+                    width: 120px;
                     margin-right: 15px;
                     padding-top: 8px;
                     text-align: center;
                     text-transform: uppercase;
                 }
 
-                .lspaymnt .ctnFurPack .icolstPack {
+                .lspaymnt .conPack .ctnFurPack .icolstPack {
                     width: 280px;
                 }
 
@@ -1726,18 +1965,18 @@ a{
                     }
 
                 .ctnFurPack .txtPack {
-                    width: 580px;
+                    width: 442px;
                     margin-right: 15px;
                 }
 
                 .ctnFurPack .pricePack {
-                    width: 113px;
+                    width: 270px;
                     text-align: right;
                     padding-top: 8px;
                 }
 
                     .ctnPricePk {
-                        font-size: 38px;
+                        font-size: 28px;
                         position: relative;
                     }
 
@@ -1778,18 +2017,502 @@ a{
 
                 .btnget {display: inline-block; width: auto; padding: 15px 20px; margin-top: 20px;}
 
-                .toltalPay {margin-top: 10px; text-align: right;}
+                .toltalPay {margin-top: 10px; text-align: right; position: relative; margin-bottom: 40px;}
                     .toltalPay h3 {color: #747474;margin-bottom: 10px;}
+                    .toltalPay .infoBank {
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        top: 20px;
+                        padding: 20px;
+                        background: #f6f6f6;
+                        text-align: left;
+                        line-height: 22px;
+                        margin-bottom: 20px;
+                        font-size: 13px;
+                    }
+
+                        .toltalPay .infoBank b {display: inline-block; width: 120px;}
 
 
 /*submission*/
-.inSubmiss {padding: 18px;}
-.arPrtPe {margin-bottom: 10px;}
+.inSubmiss {padding: 18px 18px 0; position: relative;}
+.submissDts .inSubmiss .ovrLogin {width: 101%;}
+    .inSubmiss .ovrLogin {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(255,255,255,0.9);
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+    }
+        .ovrLogin a {
+            position: relative;
+            top: 50%;
+            margin-top: -25px;
+        }
+        .ovrLogin a:hover {
+            color: #fff;
+        }
+    .inSubmiss .fmPrtPrize .addPutSub .grpTot input.ipGet {width: 98px; margin-right: 37px}
+    .card_lfCompet .inSubmiss .fmPrtPrize .addPutSub .grpTot input.ipGet {width: 120px;}
+    .grpTot > label {display: inline-block; margin-right: 10px; line-height: 38px;}
+    .arPrtPe .hfArPe {width: 430px; margin-right: 10px}
+    .card_lfCompet .arPrtPe .hfArPe {width: 485px;}
+    .arPrtPe .hfAmou {width: 120px; margin-right: 10px}
     .prtSubmiss {padding-right: 22px;}
+    .card_lfCompet .prtSubmiss {padding: 0;}
+    .clsPe {width: 27px; margin-top: 27px;}
+        .clsPe .btnClsPe {
+            background-position: -62px -504px;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            cursor: pointer;
+        }
+    .lstAtt {padding-left: 20px;}
+        .lstAtt .itm_lstAtt {padding: 5px 0;}
+        .itm_lstAtt a {display: block;}
+        .itm_lstAtt a:hover .icoRw {background-position-x: -91px;}
+        .itm_lstAtt .clsPe {margin: 0 0 0 15px;}
+        .itm_lstAtt .icoRw {
+            display: inline-block;
+            width: 13px;
+            height: 16px;
+            background-position: -77px -501px;
+            margin: 0 2px;
+        }
     .prtSubmiss input {width: 100%;}
+    .btnAtt {
+        position: absolute;
+        right: -2px;
+        bottom: 0;
+        cursor: pointer;
+    }
+    .btnFmSub {text-align: right;}
+        .btnFmSub .btnmore {border: none; background-position: 120px -18px;}
 /*END submission*/
 
 /*END Competition*/
+
+/*details*/
+.col_lfDts {width: 695px;margin-right: 10px;}
+
+    .col_lfDts .card_lfCompet {
+        padding: 10px 20px;
+    }
+
+        .col_lfDts .card_lfCompet .inCard_lfDts {
+            border-top: 1px solid #c6c6c6;
+            padding-top: 10px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+            .inCard_lfDts .loc_lfDts, .inCard_lfDts .wilDate, .inCard_lfDts .grpSend, .col_lfUsDts .sumUs, .col_lfUsDts .sumUs h5, .arPrtPe, .inSubmiss .fmposal h3, .prtPe p.fntMd, .supFb p, .procInfo .lst_procInfo .echInfo, .skilUs {
+                margin-bottom: 10px;
+            }
+
+            .inCard_lfDts .wilDate {
+                color: #929292;
+                font-family: 'HelMd';
+                text-transform: uppercase;
+                background: #ebebeb;
+                padding: 10px 20px;
+            }
+
+                .wilDate .sendPropo {right: 20px;}
+
+                .inCard_lfDts .wilDate .endDat:first-child {
+                    width: 170px;
+                }
+                .inCard_lfDts .wilDate .endDat {
+                    margin-right: 10px;
+                    width: 230px;
+                }
+
+                .endDat .txtDatDts, .endDat .nuCap {
+                    display: block;
+                    float: left;
+                    margin-right: 8px;
+                }
+
+                .endDat .nuCap {
+                    color: #000;
+                    font-size: 40px;
+                    font-family: 'HelBd';
+                    line-height: 38px;
+                }
+
+                    .endDat .nuCap sup {font-size: 20px}
+
+            .inCard_lfDts .wilDate, .mainClari, .skilUs {
+                position: relative;
+            }
+
+                .inCard_lfDts .loc_lfDts span {
+                    display: inline-block;
+                    margin-right: 20px;
+                }
+
+                .inCard_lfDts .grpSend .fntBd, .inCard_lfDts p {margin-top: 10px;}
+                    .inCard_lfDts .grpSend .lstLike li:last-child {margin-left: 10px;}
+
+            .inCard_lfDts .lstPst {padding-left: 20px;}
+
+.titLfDts {padding: 13px 0 0;}
+.col_rtDts {width: 250px;}
+    .col_rtDts .card_lfCompet {overflow: hidden;}
+    .col_rtDts .card_lfCompet .inCard {text-align: center;}
+        .nameAwa h2, .naRate {font-size: 22px;}
+        .dipCp {text-align: left;}
+        .dipCp h3 {text-align: center;}
+        .lstStar .fullStar {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            background-position: 0 -230px;
+        }
+            .lstStar .fullStar.hfStar {background-position: 0 -256px;}
+    .avaRtDts {
+        display: block;
+        width: 186px;
+        height: 186px;
+        text-align: center;
+        margin: 0 auto 15px;
+        overflow: hidden;
+        padding: 4px;
+        border: 1px solid #d3d3d3;
+        background: #fff;
+    }
+    .pdRtDts {padding: 10px;}
+    .auPst_rtCardDts {padding: 10px 0; border-bottom: 1px solid #cccccc;}
+    .naRtDts {width: 180px; margin: 0;}
+    .vwAll {margin: 10px; text-align: center;}
+    .card_lfCompet .pdRtDts .vwAll .btnVwAll {background-position: 75px -168px; display: inline-block;}
+    .card_lfCompet .vwAll .btnVwAll {background-position: 90px -168px; display: inline-block;}
+    .col_lfDts .card_lfCompet .vwAll .btnVwAll.bgBle:hover {background-color: #11202f !important;}
+.hdClarifi {margin-bottom: 20px;margin-top: 10px}
+.hdClarifi .askQues .btnmore {background-position-x: 120px;}
+.mainClari { padding-bottom: 20px;}
+    .lf_clari {
+        width: 125px;
+        margin-right: 8px;
+        z-index: 2;
+    }
+
+        .lf_clari .auCmt {text-align: center;}
+            .auCmt .timeCmPst {
+                display: block;
+                color: #adadad;
+                text-align: right;
+                padding-right: 20px;
+                text-transform: uppercase;
+                font-size: 11px;
+                margin-right: -3px;
+                margin-top: -3px;
+                background-position: 115px -294px;
+            }
+
+            .auCmt .thumbCmPst {
+                display: inline-block;
+                width: 39px;
+                height: 39px;
+                overflow: hidden;
+                margin-top: 10px;
+            }
+            .auCmt .thumbCmPst img {
+                border-radius: 100px;
+                border: 2px solid #e2e2e2;
+            }
+
+            .lineVer, .lineHel {
+                display: block;
+                background: #e1e1e1;
+                width: 1px;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 120px;
+            }
+
+            .lineHel {
+                width: 100%;
+                height: 1px;
+                left: 0;
+                top: 50%;
+            }
+
+    .rt_clari {
+        width: 520px;
+    }
+
+        .rt_clari .boxCmtPst {
+            border: 1px solid #e1e1e1;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        .rt_clari .repCmtPst {
+            background: url("../images/repCmt.png") no-repeat 20px 10px;
+            padding-left: 50px;
+        }
+
+.submissDts .inSubmiss {padding: 10px 0;}
+.edit {position: relative; top: -3px;}
+.icoEdit {
+    display: inline-block;
+    background-position: -105px 0;
+    width: 10px;
+    height: 8px;
+}
+
+a.edit:hover .icoEdit {background-position-y: -8px;}
+
+.nav_rtUsDts {
+    position: relative;
+    z-index: 9;
+    padding-top: 10px;
+}
+.cntNav_rtUs .acBg {
+    background: none;
+    padding-left: 16px;
+    margin-left: -17px;
+    margin-right: -1px;
+    margin-bottom: 1px;
+}
+.cntNav_rtUs li .itmNav_rtUs {
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    font-family: 'HelMd';
+    text-align: right;
+    padding-right: 11px;
+}
+
+    .icoStar {
+        background-position: -33px -595px;
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        margin-right: 15px;
+        top: 3px;
+        position: relative;
+    }
+
+.cntNav_rtUs .acBg:hover, .cntNav_rtUs .acBg.actBgNav {
+    background: url("../images/icoGjd.png") no-repeat -134px -659px;
+}
+.cntNav_rtUs .acBg:hover .itmNav_rtUs, .cntNav_rtUs .acBg .ac_itmNav {
+    background-color: #f8674a;
+    color: #fff;
+}
+
+    .itmNav_rtUs:hover {color: #fff;}
+/*END details*/
+
+/*userDetails*/
+.usDts, .boxInfoUs {padding: 0; position: relative;}
+    .usDts .lineVer, .boxInfoUs .lineVer {left: 680px;}
+    .usDts .lf_usDts {
+        width: 650px;
+        padding: 15px;
+        margin-right: 10px;
+    }
+
+    .lf_usDts .infoUs {
+        padding: 10px 0;
+        width: 439px;
+    }
+
+        .infoUs .crJb {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .infoUs .staUs {
+            display: block;
+            margin: 20px 0 0;
+            padding-left: 24px;
+            font-style: italic;
+        }
+
+        .infoUs .titPst {
+            font-family: 'HelBd';
+            font-size: 22px;
+        }
+
+    .avaUs {
+        margin: 0 15px 0 0;
+    }
+
+.rt_usDts {text-align: center; width: 263px; padding: 10px}
+.rt_usDts .tabUs {border-radius: 5px; overflow: hidden; margin: 10px auto; width: 231px;}
+.rt_usDts .tabUs li {
+    background: #ebebeb;
+}
+.rt_usDts .tabUs li .tabFrl,
+.rt_usDts .tabUs li .tabEmp {
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #969696;
+}
+
+    /*.rt_usDts .tabUs li .tabFrl:hover, .rt_usDts .tabUs li .tabEmp:hover,*/
+    .rt_usDts .tabUs li .tabFrl.actTabs, .rt_usDts .tabUs li .tabEmp.actTabs {
+        background: #2c3e50;
+        color: #fff;
+    }
+
+.rt_usDts .rateUs {
+    display: block;
+}
+
+    .rateUs .pntRate {font-size: 30px; margin: 10px 0;}
+    .rateUs .btnmore {display: inline-block; margin-top: 5px;}
+.boxInfoUs .col_lfUsDts {
+    margin: 0;
+    border: 1px solid #dfdfdf;
+    min-height: 195px;
+}
+
+.boxInfoUs .col_rtUsDts {
+    width: 303px;
+    border: 1px solid #dfdfdf;
+    margin-left: -1px;
+}
+
+.col_lfUsDts {padding: 15px 30px 15px 15px;width: 635px;}
+    .boxInfoUs .col_lfUsDts .popu {margin-left: -8px; margin-top: 6px;}
+    .boxInfoUs .col_lfUsDts .popu li {
+        width: 198px;
+        margin-left: 16px;
+        overflow: visible;
+    }
+    .boxInfoUs .col_lfUsDts .popu li .ctnPopu .arThumb {height: 180px;}
+    .boxInfoUs .col_lfUsDts .popu li .ctnPopu .arThumb img {min-height: 180px;}
+
+    .col_lfUsDts .sumUs p {
+        text-indent: 35px;
+    }
+
+        .queHel {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background-position: -90px -440px;
+            top: 2px;
+            position: relative;
+        }
+            .queHel:hover {background-position-y: -454px;}
+
+    .col_lfUsDts .sumUs .areUsDts {
+        width: 615px;
+    }
+
+    .notUpload .boxNtUp {
+        display: block;
+        padding: 28px 80px;
+        background: #f9f9f9;
+        border: 1px dashed #cdcdcd;
+        text-align: center;
+    }
+
+
+.echInfo .tit_echInfo, .echInfo .perProc {
+    display: block;
+    width: 230px;
+    margin-right: 5px;
+    text-align: right;
+    line-height: 30px;
+}
+.echInfo .perProc {
+    display: block;
+    width: 40px;
+}
+.echInfo .brProc {
+    display: block;
+    background: #ebebeb;
+    position: relative;
+    width: 327px;
+    border-radius: 3px;
+    height: 30px;
+    overflow: hidden;
+}
+
+    .echInfo .brProc .pshProc {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background: #2c3e50;
+    }
+
+.depSkilUs, .lstSkilUs {
+    z-index: 9;
+    background-color: #fff;
+    line-height: 31px;
+    padding: 0 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+    .depSkilUs .nuSkil {
+        background: #2c3e50;
+        padding: 0 10px;
+        font-family: 'HelBd';
+        color: #fff;
+        border-radius: 3px 0 0 3px;
+        display: inline-block;
+        float: left;
+    }
+
+    .depSkilUs .nameSkil {
+        border-radius: 0 3px 3px 0;
+        background: #e8e8e8;
+        display: inline-block;
+        padding: 0 10px;
+        float: left;
+    }
+
+    .lstSkilUs .lstLike li .moreSkil {
+        background-position: -92px -469px;
+        display: block;
+        width: 14px;
+        height: 14px;
+        margin: 10px 0 0 5px;
+    }
+
+    .transa {text-align: left;}
+    .transa .tableTran {
+        width: 100%;
+        max-width: 100%;
+    }
+
+        .tableTran thead {background: #2c3e50; color: #fff;}
+        .tableTran thead tr th, .tableTran tbody tr td {padding: 6px 10px;}
+        .tableTran thead tr th:first-child {width: 35px;}
+        .tableTran thead tr th.naTranc {width: 250px;}
+        .tableTran tbody tr {border-bottom: 1px solid #f3f3f3;}
+        .tableTran tbody tr:last-child {border: none;}
+        .transa .noteTrac {display: block; margin: 10px 0; text-align: center;}
+
+    .ctnnoteNo {
+        display: table;
+        width: 100%;
+        height: 195px;
+    }
+
+        .ctnnoteNo .noteNot {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+/*END userDetails*/
 
 
     /*footer*/
@@ -1806,7 +2529,7 @@ a{
 }
 
     .ctcFt .ltFt {
-        width: 380px;
+        width: 350px;
         margin-right: 20px;
     }
 

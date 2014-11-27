@@ -94,6 +94,7 @@
 /* DIRECTION CONTROLS (NEXT / PREV) */
 
 .bx-wrapper .bx-controls-direction a {
+    display: none;
 	position: absolute;
 	top: 50%;
 	margin-top: -16px;

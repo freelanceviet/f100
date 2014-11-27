@@ -20,29 +20,6 @@ $(document).ready(function(){
 			$('.skill_category_sub').append(data);
 		});
 	});
-	// Event change category to show sub category
-	$('body').on('change', '#currency', function (e) {
-		var se = $(this);
-		var urlGet = "/getSubBudget?currency_id="+se.val()+"";
-		$.get(urlGet, function(data){
-			$('#budget').remove();
-			$('.re_currency_d').remove();
-			$('#currency_content').append(data);
-			// Change optional value price
-			$('.job_optional_price').each(function(){
-				var ta = $(this);
-				var cu_title = $("#currency option:selected").attr('title');
-				var cu_rate = parseInt($("#currency option:selected").attr('rate_usd'));
-				var price = parseInt(ta.attr('data-price'));
-				var text = ""+cu_title+""+(price*cu_rate);
-				ta.text(text);
-			});
-			// Change title of min or max budget
-			if($('.sum_title').length>0){
-				$('.sum_title').html($('#cu_title_selected').val());
-			}
-		});
-	});
 	// Event change budget for currency range
 	$('body').on('change', '#budget', function (e) {
 		var se = $(this);
@@ -91,7 +68,8 @@ $(document).ready(function(){
 			},
 			success	: function(responseText, status, xhr, $form){
 				if(responseText=='not-login'){
-					alert("Please login to continue!");
+					$('.login').trigger('click');
+					$('#login-form').find('.titleMtn').css('display','block');
 				}else{
 					window.location.href = responseText;
 				}
@@ -107,13 +85,23 @@ $(document).ready(function(){
 		var rate_cu = $("#currency option:selected").attr('rate_usd');
 		$('#contest_currency_title').html(tite_cu);
 		$('#tygia_value').val(rate_cu);
-		var price = tite_cu + (parseInt($('#budget_value').val())*rate_cu);
+		var price = tite_cu + numeral((parseInt($('#budget_value').val())*rate_cu)).format('0,0');
 		$('#amount').val(price);
-		var price_sum = (parseInt($('#price_sum_ponust').val()) + parseInt($('#budget_value').val())) * rate_cu
+		var price_sum = (parseInt($('#price_sum_ponust').val()) + parseInt($('#budget_value').val())) * rate_cu;
 		$('#sum_moneny').html(price_sum+tite_cu);
 		$('#tax_money').html(((price_sum*$('#contest_post_tax').val())/100)+tite_cu);
 		$('#total_money').html(((price_sum*$('#contest_post_tax').val())/100)+price_sum+tite_cu)
 		$('#sum_moneny').find('.untPk').html(tite_cu);
+		
+		$('.chkbx_assisted ').each(function(){
+			var ta = $(this);
+			var cu_title = $("#currency option:selected").attr('title');
+			var cu_rate = parseFloat($("#currency option:selected").attr('rate_usd'));
+			var price = parseInt(ta.attr('data-price'));
+			var text = numeral(price*cu_rate).format('0,0')+" "+cu_title;
+			ta.parents('.conPack').find('.job_optional_price').text(text);
+		});
+				
 	});
 	// Event click optional price
 	$('body').on('click', '.chkbx_assisted', function (e) {
@@ -129,30 +117,44 @@ $(document).ready(function(){
 		
 		var tite_cu = $("#currency option:selected").attr('title');
 		var rate_cu = $("#currency option:selected").attr('rate_usd');
-		var price = (all_price*rate_cu)+tite_cu;
+		var price = numeral(all_price*rate_cu).format('0,0')+tite_cu;
 		$('#sum_moneny').html(price);
-		$('#tax_money').html(((all_price*$('#contest_post_tax').val())/100)+tite_cu);
-		$('#total_money').html(((all_price*$('#contest_post_tax').val())/100)+all_price+tite_cu);
+		$('#tax_money').html(numeral((all_price*$('#contest_post_tax').val())/100).format('0,0')+tite_cu);
+		$('#total_money').html((numeral(((all_price*$('#contest_post_tax').val())/100)+all_price).format('0,0'))+tite_cu);
 		
 	});
 	// Show slider for budget
-	$(function() {
-		$( "#slider-range-min" ).slider({
-			range: "min",
-			value: parseInt($('#default_money').val()),
-			min: 50,
-			max: 10000,
-			slide: function( event, ui ) {
-				$('#budget_value').val(ui.value);
-				var price = $('#contest_currency_title').text() + (parseInt(ui.value)*parseInt($('#tygia_value').val()));
-				$( "#amount" ).val(price);
-				var price_all = (parseInt(ui.value) + parseInt($('#price_sum_ponust').val()))*parseInt($('#tygia_value').val());
-				var tite_cu = $("#currency option:selected").attr('title');
-				$('#sum_moneny').html(tite_cu + price_all);
-				$('#tax_money').html(((price_all*$('#contest_post_tax').val())/100)+tite_cu);
-				$('#total_money').html(((price_all*$('#contest_post_tax').val())/100)+price_all+tite_cu);
-			}
-		});
-		$( "#amount" ).val( $('#contest_currency_title').text() + $( "#slider-range-min" ).slider( "value" ) );
+	$("#im_money_budget").keyup(function(){
+		var money = $(this).val();
+		var tite_cu = $("#currency option:selected").attr('title');
+		
+		
+		var price_optional = (parseInt(money)*parseFloat($('#contest_post_optinal').val()))/100;
+		$('#price_optional_contest').val(price_optional);
+		$('#price_ui_show_optinal').text(numeral(price_optional).format('0,0')+" "+tite_cu);
+		
+		$('#price_sum_ponust').val(price_optional);
+		
+		$('#budget_value').val(money);
+		var price = numeral((parseInt(money)*parseInt($('#tygia_value').val()))).format('0,0') + $('#contest_currency_title').text();
+		$( "#amount" ).val(price);
+		var price_all = (parseInt(money) + parseInt($('#price_sum_ponust').val()))*parseInt($('#tygia_value').val());
+		$('#sum_moneny').html(numeral(price_all).format('0,0')+tite_cu);
+		$('#tax_money').html(numeral(((price_all*$('#contest_post_tax').val())/100)).format('0,0')+tite_cu);
+		$('#total_money').html(numeral(((price_all*$('#contest_post_tax').val())/100)+price_all).format('0,0')+tite_cu);
+		
+		
 	});
+	//
+	$('.ctnPricePk_').each(function(){
+		var se = $(this);
+		var price = se.text();
+		cu_title = $("#currency option:selected").attr('title');
+		se.text(numeral(price).format('0,0')+ " " +cu_title);
+	});
+	
+	// constest_detail_brief
+	var price_contest_brief = $('#constest_detail_brief').val();
+	$('#constest_detail_brief').parents('li').find('b').html(numeral(price_contest_brief).format('0,0'));
+	
 });

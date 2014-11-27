@@ -11,25 +11,32 @@ block content
 						.collf_brief
 							h3(class="clorg") About
 							p= resContestItem.contest_about
-							h3(class="clorg") Description
-							p= resContestItem.job_description
+							h3(class="clorg", style="margin-top:10px") Description
+							p !{resContestItem.job_description.replace(/\n?\r\n/g, '<br />' )}
+							if(resContestItem.job_requirement!=undefined)
+								h3(class="clorg", style="margin-top:10px") Requirements
+								p !{resContestItem.job_requirement.replace(/\n?\r\n/g, '<br />' )}
 						.colrt_brief
+							.alt_tpBrief.infAuBrief
+								h3(class="clorg titAuBrief") Competition hosted by
+								.avaRtDts
+									em(class="inavaCompet")
+										if(typeof resContestItem.user_info.user_av === 'object')
+											img(src="/upload/profile_avatar?type=resize&width=200&height=200&name="+resContestItem.user_info.user_av.public_id+"."+resContestItem.user_info.user_av.format+"")
+										else
+											img(src=""+resContestItem.user_info.user_av+"")
+								.nameAwa
+									a(href="/profile?value=null&_id="+resContestItem.user_info.user_id+"")
+										h2(class="fntBd clBle")= resContestItem.user_info.user_name_l +" "+ resContestItem.user_info.user_name_f
 							.alt_tpBrief
 								h3(class="clorg") Prize
 								ul(class="lstPri")
 									li
 										label(class="pullFlt_left")
-											img(src="images/aw.png")
-										p One 1st prize chosen by the Board of Director of GetJobDone
-									li
-										label(class="pullFlt_left")
 											img(src="images/mey.png")
 										p Value:
+											input(type="hidden", id="constest_detail_brief", value=""+resContestItem.budget+"")
 											b= resContestItem.budget+" VND"
-									li
-										label(class="pullFlt_left")
-											img(src="images/aw.png")
-										p One entrant withh the highest vote
 							.alt_tpBrief
 								h3(class="clorg") Deadline & Announcement
 								ul(class="lstPri")
@@ -41,6 +48,13 @@ block content
 										p(class="npad") Annountcement Day:
 										p(class="npad")
 											b= resContestItem.day_end
+							if(resContestItem.file_up!=undefined && resContestItem.file_up.length>0)
+								.alt_tpBrief
+									h3(class="clorg") File 
+										ul(class="file_contest_brief")
+											-	for(var i=0; i<resContestItem.file_up.length; i++)
+													li
+														a(download, href='/upload/contests/'+resContestItem.file_up[i].public_id+'.'+resContestItem.file_up[i].format+'')= resContestItem.file_up[i].public_id+'.'+resContestItem.file_up[i].format
 block scripts
 	script(src='/javascripts/form-validators/jobContestValidator.js')
 	script(src='/javascripts/form-validators/proposalContestValidator.js')

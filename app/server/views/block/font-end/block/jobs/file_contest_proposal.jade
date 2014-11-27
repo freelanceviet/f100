@@ -1,7 +1,13 @@
 -	for(var i=0;i<resFile.length;i++)
 		li
 			span(class="itemThumUp")
-				img(src='/upload/proposals?type=resize&width=100&height=100&name='+resFile[i].public_id+'.'+resFile[i].format+'')
+				if(resFile[i].format=='pdf' || resFile[i].format=='docx' || resFile[i].format=='doc')
+					img(src="images/file_icon.png")
+					label= '.'+resFile[i].format
+					.delete_icon
+				else
+					img(src='/upload/proposals?type=resize&width=100&height=100&name='+resFile[i].public_id+'.'+resFile[i].format+'')
+					.delete_icon
 				.free_file_item(style="display:none")
 					input(type="hidden", value="", name="public_id[]", value=""+resFile[i].public_id+"")
 					input(type="hidden", value="", name="format[]", value=""+resFile[i].format+"")

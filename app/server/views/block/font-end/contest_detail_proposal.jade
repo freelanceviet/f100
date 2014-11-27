@@ -37,7 +37,15 @@ block content
 														span Winner
 										p(class="thumb_lstCompet")
 											a(href="proposal-detail?id="+resProposalContest[i]._id+"", class="show-img-wall-click")
-												img(src="images/thumbComit5.jpg")
+												if(resProposalContest[i].file_up!=undefined)
+													-	var temp = 0
+													-	for(var j=0; j<resProposalContest[i].file_up.length;j++)
+															if(resProposalContest[i].file_up[j].format.toLowerCase()=="jpg" || resProposalContest[i].file_up[j].format.toLowerCase()=="png")
+																-	temp = j
+													if(temp!=0)
+														img(src='/upload/proposals?type=resize&width=300&height=300&name='+resProposalContest[i].file_up[temp].public_id+'.'+resProposalContest[i].file_up[temp].format+'')
+													else
+														img(src="http://health.ucsd.edu/images/og-Default.png")
 										.over_lstCompet.clearfix
 											a(href="", class="name_lstCompet")= resProposalContest[i].user_info.user_name_l+" "+resProposalContest[i].user_info.user_name_f
 											ul(class="grp_like clearfix pullFlt_right")

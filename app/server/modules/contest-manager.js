@@ -3,6 +3,7 @@ var Mogodb   	   = require('../mongodb/connection');
 var free_contests  = Mogodb.free_contests;
 var free_comments  = Mogodb.free_comments;
 var free_proposals = Mogodb.free_proposals;
+var free_likes     = Mogodb.free_likes;
 var ObjectID	   = Mogodb.ObjectID;
 
 // ------------------------------------
@@ -200,4 +201,42 @@ exports.pushLikeForProposalID = function(id_proposal,  document, callback){
 	});
 };
 
+// ------------------------------------
+// Insert like for likes collection
+// note: 
+// callback:
+// ------------------------------------
+exports.addLikeContest = function(document, callback){
+	free_likes.insert(document, function(errDocument, resDocument){
+		callback(null, resDocument);
+	});
+};
 
+// ------------------------------------
+// Test exits like user with contest
+// note: 
+// callback:
+// ------------------------------------
+exports.testLikeContestOfUser = function(id_contest, id_user, callback){
+	free_likes.find({$and:[{constest_id:id_contest},{'user_info.user_id':id_user}]}).count(
+		function(err, result) {
+			callback(null,result);
+		}
+	);
+};
+
+// ------------------------------------
+// Get list like contest
+// note: 
+// callback:
+// ------------------------------------
+exports.getListLikeContest = function(id_contest, limit, skip,callback){
+	free_likes.find({constest_id:id_contest})
+	.limit(parseInt(limit))
+	.skip(parseInt(skip))
+	.sort([['date_spam', 'desc']])
+	.toArray(function(err, items)
+	{
+		callback(null,items);
+	});
+};

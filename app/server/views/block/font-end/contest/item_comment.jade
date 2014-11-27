@@ -1,118 +1,124 @@
 .card_rtCompet.in_rtCard
-								.auPst
-									.avaJbData
-										a(href="")
-											img(src=""+resComments.user_image+"")
-									.naPst.txtpst
-										.auCmtpPst
-											span
-												a(href="", class="titPst coJob")= resComments.user_fullname
-										.timePst
-											span= resComments.time_sort
-								.maPst
-									.ctnPst_rtCm
-										p= resComments.comment
-									.thumbPst
-										if(resComments.file!=undefined)
-											if(resComments.file.length==1)
-												a(href="", class="pstImg")
-													.wdt_fitlg_1
-														img(class="fitImg", src='/upload/contests?type=resize&width=600&height=400&name='+resComments.file[0].public_id+'.'+resComments.file[0].format+'')
-											else if(resComments.file.length==2)
-												a(href="", class="pstImg")
-													.wdt_fitlg
-														img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments.file[0].public_id+'.'+resComments.file[0].format+'')
-												a(href="", class="pstImg")
-													.wdt_fitlg
-														img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments.file[1].public_id+'.'+resComments.file[1].format+'')
-											else if(resComments.file.length==3)
-												a(href="", class="pstImg")
-													.wdt_fitlg_3
-														img(class="fitImg", src='/upload/contests?type=resize&width=400&height=600&name='+resComments.file[0].public_id+'.'+resComments.file[0].format+'')
-												-	for(var n=1;n<3;n++)
-														a(href="", class="pstImg")
-															.wdt_fitmd_3_3
-																img(class="fitImg", src='/upload/contests?type=resize&width=200&height=150&name='+resComments.file[n].public_id+'.'+resComments.file[n].format+'')
-											else if(resComments.file.length==4)
-												a(href="", class="pstImg")
-													.wdt_fitlg_1
-														img(class="fitImg", src='/upload/contests?type=resize&width=600&height=400&name='+resComments.file[0].public_id+'.'+resComments.file[0].format+'')
-												-	for(var n=1;n<4;n++)
-														a(href="", class="pstImg")
-															.wdt_fitmd
-																img(class="fitImg", src='/upload/contests?type=resize&width=200&height=150&name='+resComments.file[n].public_id+'.'+resComments.file[n].format+'')
-											else if(resComments.file.length==5)
-												a(href="", class="pstImg")
-													.wdt_fitlg
-														img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments.file[0].public_id+'.'+resComments.file[0].format+'')
-												a(href="", class="pstImg")
-													.wdt_fitlg
-														img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments.file[1].public_id+'.'+resComments.file[1].format+'')
-												-	for(var n=2;n<5;n++)
-														a(href="", class="pstImg")
-															.wdt_fitmd
-																img(class="fitImg", src='/upload/contests?type=resize&width=200&height=150&name='+resComments.file[n].public_id+'.'+resComments.file[n].format+'')
-											else if(resComments.file.length>5)
-												h1 Lon hon 5 hinh
-									.poLike.clearfix.fntMd
-										if(user)
-											.pullFlt_left.lkCmSh
-												-	var temp = 0
-												if(resComments.list_like!=undefined)
-													-	for(var x = 0; x<resComments.list_like.length; x++)
-															if(resComments.list_like[x].user_id == user._id)
-																-	temp = 1
-												if(temp==0)
-													span
-														a(class="event_like_comment_contest clBle fntMd", href="javascript:void(0);", data-id=""+resComments._id+"", data-type="like") Like
-												span
-													a(href="", class="clBle") Comment
-												span
-													a(href="", class="clBle") Share
-										ul(class="grp_like clearfix pullFlt_right")
-											li
-												if(resComments.list_like!=undefined)
-													a(href="", class="likeCompet clBle")= resComments.list_like.length
-											li
-												a(href="", class="cmtCompet clBle") 0
-								.lstCmtPst
-									ul(class="mainCmtPst")
-										li(class="talLikePst")
-											if(resComments.list_like!=undefined)
-												if(resComments.list_like.length>3)
-													.useLike
-														-	for(var b=0; b<resComments.list_like.length; b++)
-																a(class="clBle fntBd", href="#")= resComments.list_like[b].full_name + " "
-																| , 
-														| and 
-														a(href="")= (resComments.list_like.length - 3) + "more "  
-														| like this.
-												else
-													.useLike
-														-	for(var b=0; b<resComments.list_like.length; b++)
-																a(class="clBle fntBd", href="#")= resComments.list_like[b].full_name + " "
-																| , 
-														| like this.
-										if(resComments.list_comment!=undefined)
-											-	for(var m=0; m<resComments.list_comment.length; m++)
-													li(class="ctn_lstPstCmt clearfix")
-														.avaJbData
-															a(href="")
-																img(src=""+resComments.list_comment[m].user_avatar+"")
-														.naPst.txtpst
-															.auCmtpPst
-																span 
-																	a(href="", class="titPst clBle")= resComments.list_comment[m].full_name+ " "
-																span(class="fntMd", style="margin-left:5px")= resComments.list_comment[m].content
-															.timePst
-																span 1 hours ago
-										li(class="boxCmt clearfix")
-											if(user)
-												.avaJbData
-													a(href="")
-														img(src="images/avaPst.jpg")
-												.areaPstCmt
-													form(method="post", action="/store_comment_sub", class="form_comment_sub")
-														input(type="hidden", name="comment_id", value=""+resComments._id+"")
-														textarea(class="herCmtPst", name="comment_nd", placeholder="Write a comment")
-														input(type="submit", value="Send", class="bt_submit_comment_sub", style="display:none")
+	.auPst
+		.avaJbData
+			a(href="")
+				if(typeof resComments.user_image === 'object')
+					img(src='/upload/profile_avatar?type=resize&width=100&height=100&name='+resComments.user_image.public_id+'.'+resComments.user_image.format+'')
+				else
+					img(src=""+resComments.user_image+"")
+		.naPst.txtpst
+			.auCmtpPst
+				span
+					a(href="", class="titPst coJob")= resComments.user_fullname
+			.timePst
+				span(class="time_curent", title=""+resComments.time_add+"",time=""+resComments.time_sort+"")
+	.maPst
+		.ctnPst_rtCm
+			p= resComments.comment
+		.thumbPst
+			if(resComments.file!=undefined)
+				if(resComments.file.length==1)
+					a(href="", class="pstImg")
+						.wdt_fitlg_1
+							img(class="fitImg", src='/upload/contests?type=resize&width=600&height=400&name='+resComments.file[0].public_id+'.'+resComments.file[0].format+'')
+				else if(resComments.file.length==2)
+					a(href="", class="pstImg")
+						.wdt_fitlg
+							img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments.file[0].public_id+'.'+resComments.file[0].format+'')
+					a(href="", class="pstImg")
+						.wdt_fitlg
+							img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments.file[1].public_id+'.'+resComments.file[1].format+'')
+				else if(resComments.file.length==3)
+					a(href="", class="pstImg")
+						.wdt_fitlg_3
+							img(class="fitImg", src='/upload/contests?type=resize&width=400&height=600&name='+resComments.file[0].public_id+'.'+resComments.file[0].format+'')
+					-	for(var n=1;n<3;n++)
+							a(href="", class="pstImg")
+								.wdt_fitmd_3_3
+									img(class="fitImg", src='/upload/contests?type=resize&width=200&height=150&name='+resComments.file[n].public_id+'.'+resComments.file[n].format+'')
+				else if(resComments.file.length==4)
+					a(href="", class="pstImg")
+						.wdt_fitlg_1
+							img(class="fitImg", src='/upload/contests?type=resize&width=600&height=400&name='+resComments.file[0].public_id+'.'+resComments.file[0].format+'')
+					-	for(var n=1;n<4;n++)
+							a(href="", class="pstImg")
+								.wdt_fitmd
+									img(class="fitImg", src='/upload/contests?type=resize&width=200&height=150&name='+resComments.file[n].public_id+'.'+resComments.file[n].format+'')
+				else if(resComments.file.length==5)
+					a(href="", class="pstImg")
+						.wdt_fitlg
+							img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments.file[0].public_id+'.'+resComments.file[0].format+'')
+					a(href="", class="pstImg")
+						.wdt_fitlg
+							img(class="fitImg", src='/upload/contests?type=resize&width=400&height=400&name='+resComments.file[1].public_id+'.'+resComments.file[1].format+'')
+					-	for(var n=2;n<5;n++)
+							a(href="", class="pstImg")
+								.wdt_fitmd
+									img(class="fitImg", src='/upload/contests?type=resize&width=200&height=150&name='+resComments.file[n].public_id+'.'+resComments.file[n].format+'')
+				else if(resComments.file.length>5)
+					h1 Lon hon 5 hinh
+		.poLike.clearfix.fntMd
+			if(user)
+				.pullFlt_left.lkCmSh
+					-	var temp = 0
+					if(resComments.list_like!=undefined)
+						-	for(var x = 0; x<resComments.list_like.length; x++)
+								if(resComments.list_like[x].user_id == user._id)
+									-	temp = 1
+					if(temp==0)
+						span
+							a(class="event_like_comment_contest clBle fntMd", href="javascript:void(0);", data-id=""+resComments._id+"", data-type="like") Like
+					span
+						a(href="", class="clBle") Comment
+					span
+						a(href="", class="clBle") Share
+			ul(class="grp_like clearfix pullFlt_right")
+				li
+					if(resComments.list_like!=undefined)
+						a(href="", class="likeCompet clBle")= resComments.list_like.length
+				li
+					a(href="", class="cmtCompet clBle") 0
+	.lstCmtPst
+		ul(class="mainCmtPst")
+			li(class="talLikePst")
+				if(resComments.list_like!=undefined)
+					if(resComments.list_like.length>3)
+						.useLike
+							-	for(var b=0; b<resComments.list_like.length; b++)
+									a(class="clBle fntBd", href="#")= resComments.list_like[b].full_name + " "
+									| , 
+							| and 
+							a(href="")= (resComments.list_like.length - 3) + "more "  
+							| like this.
+					else
+						.useLike
+							-	for(var b=0; b<resComments.list_like.length; b++)
+									a(class="clBle fntBd", href="#")= resComments.list_like[b].full_name + " "
+									| , 
+							| like this.
+			if(resComments.list_comment!=undefined)
+				-	for(var m=0; m<resComments.list_comment.length; m++)
+						li(class="ctn_lstPstCmt clearfix")
+							.avaJbData
+								a(href="")
+									img(src=""+resComments.list_comment[m].user_avatar+"")
+							.naPst.txtpst
+								.auCmtpPst
+									span 
+										a(href="", class="titPst clBle")= resComments.list_comment[m].full_name+ " "
+									span(class="fntMd", style="margin-left:5px")= resComments.list_comment[m].content
+								.timePst
+									span 1 hours ago
+			li(class="boxCmt clearfix")
+				if(user)
+					.avaJbData
+						a(href="")
+							if(typeof user.avatar === 'object')
+								img(src='/upload/profile_avatar?type=resize&width=100&height=100&name='+user.avatar.public_id+'.'+user.avatar.format+'')
+							else
+								img(src=""+user.avatar+"")
+					.areaPstCmt
+						form(method="post", action="/store_comment_sub", class="form_comment_sub")
+							input(type="hidden", name="comment_id", value=""+resComments._id+"")
+							textarea(class="herCmtPst", name="comment_nd", placeholder="Write a comment")
+							input(type="submit", value="Send", class="bt_submit_comment_sub", style="display:none")

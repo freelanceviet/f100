@@ -7,6 +7,10 @@
 				input(id="photoimg-contest-banner", type="file", name="photos")
 			input(type='hidden', name="id_contest", value=""+resContestItem._id+"")
 	.pho_compet
+		if(user)
+			if(resLikeTest==0)
+				.like_contest
+					a(href="/like-contest?id="+resContestItem._id+"", class="event_click_like_contest")
 		.img_compet
 			if(resContestItem.image_banner!=undefined)
 				img(src='/upload/profile_avatar?type=resize&width=1000&height=333&name='+resContestItem.image_banner.public_id+'.'+resContestItem.image_banner.format+'', class="banner_contest_jq")
@@ -17,6 +21,14 @@
 			h2= resContestItem.project_name
 		.lk_fbCompet
 			.fb-share-button(data-href="https://developers.facebook.com/docs/plugins/", data-layout="button")
+		.ribLv
+			if(resContestItem.status==0)
+				span(class="ribctn fntBd") Draft
+			else if(resContestItem.status==1)
+				span(class="ribctn fntBd") Open
+			else
+				span(class="ribctn fntBd") Close
+			
 	.timelineCompet
 		.ctn_tline
 			.frm_tline.clearfix
@@ -33,26 +45,111 @@
 							span Proposals
 			if(user)
 				if(user._id == resContestItem.user_info.user_id)
-					.cb_state_contest
-						if(resContestItem.status==0)
-							input(type="checkbox", id="cb_sc_show")
-						else
-							input(type="checkbox", id="cb_sc_show", checked)
-						label Finish!
+						if(resContestItem.status==1)
+							a(class="btnmore btn_tlineCom finsis ctnIn", href="#finish") finish
 				else
-					if(resContestItem.status==0)
-						a(class="btnmore btn_tlineCom ctnIn", href="#inlineProposal") submission
-					else
-						.cb_state_contest 
-							h3 COMPLETED
+					if(resContestItem.status==1)
+						a(class="btnmore btn_tlineCom ctnIn submission_bt", href="#inlineProposal") submission
 			else
-				if(resContestItem.status==0)
-					a(class="btnmore btn_tlineCom ctnIn", href="#inlineProposal") submission
-				else
-					.cb_state_contest
-						h3 COMPLETED
+				if(resContestItem.status==1)
+					a(class="btnmore btn_tlineCom ctnIn submission_bt", href="#submiss") submission
+		.submiss
+			#submiss
+				.inSubmiss
+					.ovrLogin
+						a(class="fntBd btnsubmit btnget ctnIn", href="#inlineLogin") Sign in
+					form
+						.fmposal
+							h1(class="clBle fntBd") Submission
+							h3(class="fntMd") Your Proposal Details
+							.arePosal
+								textarea(class="ctn_arePosal", placeholder="Your Proposal Details")
+								span(class="btnAtt btnmore bgBle")
+									span Attack file
+									input(class="btnUpimg", type="type")
+						div
+							h3(class="fntMd") Your attachment:
+							.arePosal
+								ul(class="lstAtt")
+									li(class="itm_lstAtt")
+										a(href="", class="pullFlt_left fntBd") - fileattach1.pdf
+											span [
+												i(class="icoRw")
+												| Preview]
+										.clsPe.pullFlt_left
+											span(class="btnClsPe")
+									li(class="itm_lstAtt")
+										a(href="", class="pullFlt_left fntBd") - fileattach1.docx
+											span [
+												i(class="icoRw")
+												| Preview]
+										.clsPe.pullFlt_left
+											span(class="btnClsPe")	
+									li(class="itm_lstAtt")
+										a(href="", class="pullFlt_left fntBd") - fileattach1.doc
+											span [
+												i(class="icoRw")
+												| Preview]
+										.clsPe.pullFlt_left
+											span(class="btnClsPe")
+									li(class="itm_lstAtt")
+										a(href="", class="pullFlt_left fntBd") - fileattach1.pdf
+											span [
+												i(class="icoRw")
+												| Preview]
+										.clsPe.pullFlt_left
+											span(class="btnClsPe")
+						.fmPrtPrize
+							.arPrtPe
+								.hfArPe.pullFlt_left
+									p(class="fntMd") ITEMS:
+									.prtSubmiss
+										input(class="ipGet", type="text", placeholder="Enter description...")
+								.hfAmou.pullFlt_left
+									p(class="amount") Amount
+									.prtSubmiss
+										input(class="ipGet", type="text", placeholder="0.00")
+								.clsPe.pullFlt_left
+									span(class="btnClsPe")
+							.addPutSub.clearfix
+								a(class="lnkSubmiss pullFlt_left clorg", href="#") + Add new prize
+								.grpTot.pullFlt_right
+									label TOTAL
+									input(class="ipGet", type="text", placeholder="0.00")
+						.fmposal
+							h3(class="fntMd") Got more files to show case
+							.fmUpimg
+								i(class="icoUp")
+								span(class="btnUp btnmore bgBle")
+									span Upload file
+									input(class="btnUpimg", type="file")
+							ul(class="lstThumbUp")
+								li
+									span(class="itemThumUp")
+								li
+									span(class="itemThumUp")
+								li
+									span(class="itemThumUp")
+						.btnFmSub
+							button(class="btnmore", type="submit")Send proposal
+								
+		.boxLogin
+			#finish.ctnSup.npad
+				h4(class="fntBd titLbNa")
+				.ctnLbFn
+					p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+					p It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+					ul(class="txtDrpt")
+						li
+							p It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout
+						li
+							p It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout
+						li
+							p It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout
+					div(class="bt_submit bts_contest_proposal")
+						input(type="submit", value="Submit", id="cb_sc_show")
 		.avaCompet
-			a(class="inavaCompet avatar-content", href="#")
+			a(class="inavaCompet avatar-content", href="#", style="height: 186px;")
 				if(resContestItem.image_avatar!=undefined)
 					img(src='/upload/profile_avatar?type=resize&width=130&height=130&name='+resContestItem.image_avatar.public_id+'.'+resContestItem.image_avatar.format+'')
 				else

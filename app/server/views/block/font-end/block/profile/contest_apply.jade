@@ -1,0 +1,23 @@
+ul(class="popu")
+	-	for(var i=0; i<resContests.length; i++)
+			li
+				.ctnPopu
+					.arThumb
+						a(href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"", class="thumbPopu")
+							if(resContests[i].image_avatar==undefined)
+								img(src="images/thumb9.jpg", alt="Web developer")
+							else
+								img(src='/upload/profile_avatar?type=resize&width=400&height=350&name='+resContests[i].image_avatar.public_id+'.'+resContests[i].image_avatar.format+'', alt="Web developer")
+					.txtCatePopu
+						a(class="titCatePopu", href="/contestdetail?id="+resContests[i]._id+"&tab=timeline&value="+resContests[i].project_name.replace(/ /g,"-")+"")= resContests[i].project_name
+						.rtCtePpu
+							p(class="list_contest_item", data-price=""+resContests[i].budget+"", data-type=""+resContests[i].currency_name+"")= resContests[i].budget+" "+resContests[i].currency_name
+				.ribLv
+					if(resContests[i].status==0)
+						span(class="ribctn fntBd") Draft
+					else if(resContests[i].status==1)
+						span(class="ribctn fntBd") Open
+					else
+						span(class="ribctn fntBd") Close
+block scripts
+	script(src='/javascripts/views/profile_contest_list.js')

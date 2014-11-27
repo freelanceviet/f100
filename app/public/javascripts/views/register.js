@@ -20,7 +20,10 @@ $(document).ready(function(){
 			if(responseText=="username-taken"){
 				$().toastmessage('showErrorToast', "User name or Email exits!");
 			}else{
-				$('.login ').trigger('click');
+				$('.registed_box').trigger('click');
+				setTimeout(function(){
+					location.reload(true);
+				}, 2000);
 			}
 		},
 		error : function(e){

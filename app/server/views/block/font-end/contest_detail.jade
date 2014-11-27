@@ -2,7 +2,8 @@ extends ../../layout_font_end
 
 block content
 	.container
-		h2(class="titleMtnIn") Populat competition
+		input(type="hidden", id="url_reload_page", value="yes")
+		h2(class="titleMtnIn", style="position:relative") Populate competition
 		.compet_main
 			include contest/banner
 			.artCompet
@@ -15,21 +16,11 @@ block content
 							ul(class="lstPri")
 								li
 									label(class="pullFlt_left")
-										img(src="images/aw.png")
-									p One 1st prize chosen by the Board of Director of GetJobDone
-								li
-									label(class="pullFlt_left")
 										img(src="images/mey.png")
 									p Value:
-										b= " "+ resContestItem.budget +" " + resContestItem.currency_name
-								li
-									label(class="pullFlt_left")
-										img(src="images/aw.png")
-									p One entrant withh the highest vote
-					.card_lfCompet
-						h2(class="titleCard bgBle fntBd")
-							a(href="") Deadline - important day
-						.inCard
+										input(type="hidden", id="constest_detail_brief", value=""+resContestItem.budget+"")
+										b= resContestItem.budget+" VND"
+							h3(class="clorg fntBd") Important date
 							ul(class="lstPri")
 								li(class="dln")
 									p(class="npad nmag") Deadline to submit
@@ -45,40 +36,9 @@ block content
 											b= resContestItem.day_end
 										else
 											b 23/11/2014
-					.card_lfCompet
-						h2(class="titleCard bgBle fntBd")
-							a(href="") People
-						.inCard
-							.toLike
-								label(class="clBle fntBd icoLike") 1985 likes
-							.ctnLikeLf
-								.useLike
-									a(class="clBle fntBd", href="") Bao Khang Nguyen , 
-									a(class="clBle fntBd", href="") Thang Tran
-									| and 
-									a(class="clBle fntBd", href="") Yukio 
-									| and 
-									a(href="") 8795 more 
-									| like this.
-								ul(class="lstLike")
-									-	for(var i=0; i<18; i++)
-											li
-												a(href="", class="thumbsmLf")
-													img(src="images/thumb2.jpg", alt="")
-							.grp_cardLike
-								p Share this contest to your friends
-								.btn_grpLike
-									a(href="", class="sndMail")
-									button(class="shareFb npad")
-										img(style="width:103px; height:26px",src="http://4.bp.blogspot.com/-G1Ljk9WpG4M/U432c8aZinI/AAAAAAAABUc/hfLj-P-xhXY/s1600/facebook_button-281x92.png")
-					.card_lfCompet
-						h2(class="titleCard bgBle fntBd")
-							a(href="#") Recently proposals
-						.lst_itemPosal
-							ul(class="inItemPosal")
-								-	for(var i=0; i<6; i++)
-										li(class="thumbmdLf", href="")
-											img(src="images/thumbComit.jpg")
+							.inCard
+								.toLike
+									label(class="clBle fntBd icoLike")= resListLike.length+ " likes"
 					.card_lfCompet
 						h2(class="titleCard bgBle fntBd")
 							a(href="") SIMILAR CONTEST
@@ -111,22 +71,30 @@ block content
 												input(type="file", multiple="true", name="ac_img[]", class="tc0_bt_img", id="photoimg-contest-comment")
 							.wrtPst
 								textarea(name="f_comment_contest", id="f_comment_contest", class="txtare js-auto-size", placeholder="Write something on this page")
+							span(class="fixUpload clorg", style="display:none") * Limited to 5 photos
 							.option_ac
 								.oc_bt_lo
-									button(type="submit", class="btnsubmit", id="bt_submit_contest") Submit
+									label(class="errSup enterTit", style="display:none") * Please write something
+									if(user)
+										button(type="submit", class="btnsubmit", id="bt_submit_contest", data-type="yes") Submit
+									else
+										button(type="submit", class="btnsubmit", id="bt_submit_contest", data-type="no") Submit
 							.pcc_image_content
 					-	for(var k=0; k<resComments.length;k++)
 							.card_rtCompet.in_rtCard
 								.auPst
 									.avaJbData
 										a(href="")
-											img(src=""+resComments[k].user_image+"")
+											if(typeof resComments[k].user_image === 'object')
+												img(src='/upload/profile_avatar?type=resize&width=100&height=100&name='+resComments[k].user_image.public_id+'.'+resComments[k].user_image.format+'')
+											else
+												img(src=""+resComments[k].user_image+"")
 									.naPst.txtpst
 										.auCmtpPst
 											span
 												a(href="", class="titPst coJob")= resComments[k].user_fullname
 										.timePst
-											span= resComments[k].time_sort
+											span(class="time_curent", title=""+resComments[k].time_add+"",time=""+resComments[k].time_sort+"")
 								.maPst
 									.ctnPst_rtCm
 										p= resComments[k].comment
@@ -216,19 +184,25 @@ block content
 													li(class="ctn_lstPstCmt clearfix")
 														.avaJbData
 															a(href="")
-																img(src=""+resComments[k].list_comment[m].user_avatar+"")
+																if(typeof resComments[k].list_comment[m].user_avatar === 'object')
+																	img(src='/upload/profile_avatar?type=resize&width=100&height=100&name='+resComments[k].list_comment[m].user_avatar.public_id+'.'+resComments[k].list_comment[m].user_avatar.format+'')
+																else
+																	img(src=""+resComments[k].list_comment[m].user_avatar+"")
 														.naPst.txtpst
 															.auCmtpPst
 																span 
 																	a(href="", class="titPst clBle")= resComments[k].list_comment[m].full_name+ " "
 																span(class="fntMd", style="margin-left:5px")= resComments[k].list_comment[m].content
 															.timePst
-																span 1 hours ago
+																span(class="time_curent", title=""+resComments[k].list_comment[m].time_sort+"",time=""+resComments[k].list_comment[m].time_sort+"")
 										li(class="boxCmt clearfix")
 											if(user)
 												.avaJbData
 													a(href="")
-														img(src="images/avaPst.jpg")
+														if(typeof user.avatar === 'object')
+															img(src='/upload/profile_avatar?type=resize&width=100&height=100&name='+user.avatar.public_id+'.'+user.avatar.format+'')
+														else
+															img(src=""+user.avatar+"")
 												.areaPstCmt
 													form(method="post", action="/store_comment_sub", class="form_comment_sub")
 														input(type="hidden", name="comment_id", value=""+resComments[k]._id+"")

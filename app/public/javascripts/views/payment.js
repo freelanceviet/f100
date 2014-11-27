@@ -22,5 +22,8 @@ $(document).ready(function(){
 			}
 		});
 	});
+	// Format money for 
+	var price_payment = $('.ctnPricePk').text();
+	$('.ctnPricePk').html(numeral(price_payment).format('0,0')+" đ");
 	
 });

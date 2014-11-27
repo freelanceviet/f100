@@ -64,6 +64,7 @@ module.exports = function (app) {
 			};
 			PM.addNewAccount(document, function(errUser, resUser){
 				if(errUser==null){
+					req.session.user = resUser[0];
 					res.send(resUser,200);
 				}else{
 					res.send(errUser, 200);
@@ -218,8 +219,61 @@ module.exports = function (app) {
 	app.post('/updateInfoUserPr', function(req, res){
 		var type_edit = req.param('user_type');
 		var text = req.param('info_user');
-		PM.updateUserProfile(req.session.user._id, type_edit, text, function(errUser, resUser){
-			res.send('ok',200);
-		});
+		if(type_edit!='username'){
+			PM.updateUserProfile(req.session.user._id, type_edit, text, function(errUser, resUser){
+				res.send('ok',200);
+			});
+		}else{
+			PM.updateUserProfileUserName(req.session.user._id, req.param('first_name_pr_edit'), req.param('last_name_pr_edit'), text, function(errUser, resUser){
+				res.send('ok',200);
+			});
+		}
+	});
+	
+	//--------------------------------------
+	// Get info user with tab menu
+	//--------------------------------------
+	app.get('/getInfoUserProfilePro', function (req, res) {
+		var type = req.query.type;
+		var user_id = req.query.id;
+		if(type=="overview"){
+			PM.getItemAccount(user_id, function(errUser, resUser){
+				if(req.session.user==null){
+					res.render('block/font-end/block/profile/overview', {
+						user : null,
+						resUser : resUser
+					});
+				}else{
+					res.render('block/font-end/block/profile/overview', {
+						user : req.session.user,
+						resUser : resUser
+					});
+				}
+			});
+		}else if(type=="contest"){
+			PM.getListContestOfUser(user_id, function(errContests, resContests){
+				res.render('block/font-end/block/profile/contest', {
+					resContests : resContests
+				});
+			});
+		}else if(type=="contest_apply"){
+			PM.getListContestApplyOfUser(user_id, function(errContests, resContests){
+				res.render('block/font-end/block/profile/contest_apply', {
+					resContests : resContests
+				});
+			});
+		}else if(type=="transaction"){
+			PM.getListContestApplyOfUser(user_id, function(errContests, resContests){
+				res.render('block/font-end/block/profile/transaction', {
+					resContests : resContests
+				});
+			});
+		}else if(type=="feedback"){
+			PM.getListContestApplyOfUser(user_id, function(errContests, resContests){
+				res.render('block/font-end/block/profile/feedback', {
+					resContests : resContests
+				});
+			});
+		}
 	});
 }
