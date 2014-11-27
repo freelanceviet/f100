@@ -15,7 +15,7 @@ block content
 									if(resUser.avatar.created_at!=undefined)
 										img(src='/upload/profile_avatar?type=resize&width=200&height=200&name='+resUser.avatar.public_id+'.'+resUser.avatar.format+'')
 									else
-										img(src="images/228x190.jpg")
+										img(src="images/default_avatar.jpg")
 								if(user && user._id.toString()==resUser._id.toString())
 									form(method="post", action="/change_avatar_profile_user", id="edit-event-profile-avatar")
 										.change_pick_profile_up
